@@ -12,14 +12,6 @@ const people = defineCollection({
   }),
 });
 
-const pages = defineCollection({
-  loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/content/pages" }),
-  schema: z.object({
-    title: z.string(),
-    description: z.string().optional(),
-  }),
-});
-
 const research = defineCollection({
   loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/content/research" }),
   schema: z.object({
@@ -83,7 +75,6 @@ const partnerships = defineCollection({
 
 export const collections = {
   people,
-  pages,
   research,
   training,
   partnerships,

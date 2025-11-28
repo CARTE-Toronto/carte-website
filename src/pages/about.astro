@@ -1,5 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { Image } from 'astro:assets';
+import alexHeadshot from '../assets/alex-headshot.jpg';
 ---
 
 <BaseLayout title="About" description="Learn about CARTE - the Centre for Analytics and Artificial Intelligence Engineering at the University of Toronto.">
@@ -58,7 +60,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           </div>
           <div>
             <h3 class="font-bold text-[var(--color-uoft-blue)] mb-1">Industry Training</h3>
-            <p class="text-sm text-slate-600">Custom AI bootcamps designed for your team — not academic courses, but practical skills you can use immediately.</p>
+            <p class="text-sm text-slate-600">Custom AI training designed for your team — not academic courses, but practical skills you can use immediately.</p>
           </div>
         </div>
         <div class="flex gap-4">
@@ -116,7 +118,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           </div>
           <h3 class="text-xl font-bold text-[var(--color-uoft-blue)] mb-3">Training Programs</h3>
           <p class="text-slate-600 leading-relaxed mb-4">
-            Customized AI bootcamps for your team — from executive briefings to hands-on technical workshops. Practical skills, not academic theory.
+            Customized AI training for your team — from executive briefings to hands-on technical workshops. Practical skills, not academic theory.
           </p>
           <a href="/training" class="text-amber-600 font-semibold hover:text-amber-800 transition-colors">
             Learn more →
@@ -180,7 +182,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <!-- Photo placeholder - user will provide actual image -->
         <div class="flex-shrink-0">
           <div class="w-48 h-48 rounded-2xl overflow-hidden">
-            <img src="/alex-headshot.jpg" alt="Alex Olson" class="w-full h-full object-cover" />
+            <Image src={alexHeadshot} alt="Alex Olson" class="w-full h-full object-cover" />
           </div>
         </div>
         
@@ -188,7 +190,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           <h3 class="text-2xl font-bold text-[var(--color-uoft-blue)] mb-1">Alex Olson</h3>
           <p class="text-lg text-indigo-600 font-medium mb-4">Acting Head</p>
           <p class="text-slate-600 leading-relaxed">
-            Alex Olson is the Acting Head of CARTE at the University of Toronto's Faculty of Applied Science & Engineering. Holding both a master's and bachelor's degree in AI, Alex has strong technical expertise in artificial intelligence and collaborates with researchers throughout the university to bring AI benefits to new areas. In addition to research, Alex has extensive experience teaching bootcamps on AI, making complex topics accessible to learners of various backgrounds.
+            Alex Olson is the Acting Head of CARTE at the University of Toronto's Faculty of Applied Science & Engineering. Holding both a master's and bachelor's degree in AI, Alex has strong technical expertise in artificial intelligence and collaborates with researchers throughout the university to bring AI benefits to new areas. In addition to research, Alex has extensive experience teaching AI workshops, making complex topics accessible to learners of various backgrounds.
           </p>
         </div>
       </div>

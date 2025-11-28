@@ -3,22 +3,42 @@ interface Props {
   title?: string;
   subtitle?: string;
   background?: 'white' | 'gray';
+  tint?: 'none' | 'warm' | 'white' | 'blue-light' | 'blue-dark';
   class?: string;
 }
 
-const { title, subtitle, background = 'white', class: className } = Astro.props;
+const { title, subtitle, background = 'white', tint = 'none', class: className } = Astro.props;
 
 // 'white' now means 'default/transparent' (showing the pale body bg)
 // 'gray' now means a slightly darker/warmer section
 const bgClass = background === 'gray' ? 'bg-[#F2F0EB]' : '';
+
+// Tint overlay colors - semi-transparent to let dots show through
+const tintStyles: Record<string, string> = {
+  'none': '',
+  'warm': 'rgba(253, 251, 247, 0.7)',
+  'white': 'rgba(255, 255, 255, 0.5)',
+  'blue-light': 'rgba(99, 102, 241, 0.05)',
+  'blue-dark': 'rgba(17, 35, 56, 0.88)',
+};
+
+const tintColor = tintStyles[tint] || '';
 ---
 
-<section class={`${bgClass} py-12 md:py-20 ${className}`}>
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<section class={`relative ${bgClass} py-12 md:py-20 ${className}`}>
+  {tint !== 'none' && tintColor && (
+    <div 
+      class="absolute inset-0 pointer-events-none" 
+      style={`background: ${tintColor};`}
+    />
+  )}
+  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     {(title || subtitle) && (
       <div class="text-center mb-12">
-        {title && <h2 class="text-3xl font-extrabold text-uoft-blue sm:text-4xl">{title}</h2>}
-        {subtitle && <p class="mt-4 max-w-2xl text-xl text-gray-600 mx-auto font-normal">{subtitle}</p>}
+        <div class="inline-block bg-white/80 backdrop-blur-sm px-8 py-4 rounded-2xl">
+          {title && <h2 class="text-3xl font-extrabold text-uoft-blue sm:text-4xl">{title}</h2>}
+          {subtitle && <p class="mt-4 max-w-2xl text-xl text-gray-600 mx-auto font-normal">{subtitle}</p>}
+        </div>
       </div>
     )}
     <slot />

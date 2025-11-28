@@ -2,7 +2,7 @@
 title: "Customized ML Training for Research Groups"
 audience: "Research Groups"
 duration: "3-5 days"
-description: "Fully customized machine learning bootcamps tailored to specific research domains, from biomedical sciences to postdoctoral fellows in AI-adjacent fields."
+description: "Fully customized machine learning training tailored to specific research domains, from biomedical sciences to postdoctoral fellows in AI-adjacent fields."
 featured: false
 icon: "flask"
 tags: ["Researchers", "Custom", "Domain-Specific"]

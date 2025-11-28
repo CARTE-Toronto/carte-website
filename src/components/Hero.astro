@@ -18,26 +18,17 @@ function generateOrganicShape() {
 }
 
 const organicShapeBorderRadius = generateOrganicShape();
-
-// Rotating tagline words - applied/engineering-focused vocabulary emphasizing CARTE's practical, industry-oriented mission
-const taglineWords = [
-  'Engineering', 'Solutions', 'Industry', 'Implementation', 'Practice', 'Deployment',
-  'Scale', 'Production', 'Teams', 'Organizations', 'Operations', 'Infrastructure',
-  'Application', 'Impact', 'Partnership', 'Innovation', 'Excellence', 'Results'
-];
-const initialWord = taglineWords[Math.floor(Math.random() * taglineWords.length)];
 ---
 <div class="relative bg-transparent overflow-visible">
   <div class="max-w-7xl mx-auto overflow-visible">
-    <div class="relative z-10 pb-8 sm:pb-16 md:pb-20 lg:max-w-2xl lg:w-full lg:pb-28 xl:pb-32 pt-20 overflow-visible">
-      <main class="mt-10 mx-auto max-w-7xl px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 lg:px-8 xl:mt-28 overflow-visible">
+    <div class="relative z-10 pb-8 sm:pb-16 md:pb-20 lg:max-w-2xl lg:w-full lg:pb-28 xl:pb-32 pt-12 overflow-visible">
+      <main class="mt-6 mx-auto max-w-7xl px-4 sm:mt-8 sm:px-6 md:mt-10 lg:mt-12 lg:px-8 xl:mt-16 overflow-visible">
         <div class="sm:text-center lg:text-left overflow-visible">
-          <h1 class="text-5xl tracking-tight font-extrabold text-uoft-blue sm:text-6xl md:text-7xl leading-tight">
-            <span class="block xl:inline">Where AI Meets</span>
-            <span id="tagline-word" class="block text-uoft-accent xl:inline" data-words={JSON.stringify(taglineWords)}>{initialWord}</span>
+          <h1 class="text-5xl tracking-tight font-extrabold text-uoft-blue sm:text-6xl md:text-7xl leading-[1.1]">
+            Learn and apply AI with Canada's leading engineers.
           </h1>
           <p class="mt-6 text-lg text-gray-600 sm:mt-8 sm:text-xl sm:max-w-xl sm:mx-auto md:mt-8 md:text-xl lg:mx-0 font-normal leading-relaxed">
-            We help organizations apply AI to real engineering challenges — through training, research partnerships, and collaboration with 100+ faculty across 8 engineering departments.
+            One partnership connects you to AI expertise across the entirety of U of T Engineering.<br><br>From executive workshops to multi-year research collaborations, we help you move AI from concept to practice.
           </p>
           <div class="mt-8 sm:mt-10 sm:flex sm:justify-center lg:justify-start gap-4">
             <div class="rounded-full shadow-lg hover:shadow-xl transition-shadow">
@@ -47,7 +38,7 @@ const initialWord = taglineWords[Math.floor(Math.random() * taglineWords.length)
             </div>
             <div class="">
               <a href="/training" class="w-full flex items-center justify-center px-8 py-4 border-2 border-uoft-blue text-lg font-medium rounded-full text-uoft-blue bg-transparent hover:bg-blue-50 md:py-4 md:text-lg md:px-10 font-sans transition-colors">
-                Train Your Team
+                Build AI Skills
               </a>
             </div>
           </div>
@@ -106,22 +97,22 @@ const initialWord = taglineWords[Math.floor(Math.random() * taglineWords.length)
                   </select>
                 </div>
                 <div class="flex flex-wrap gap-x-4 gap-y-1 text-xs text-slate-500">
-                  <label class="flex items-center gap-1.5 cursor-pointer">
-                    <input type="checkbox" name="group[12960][4]" class="rounded border-slate-300 text-indigo-600 w-3.5 h-3.5" />
-                    <span>Graduate</span>
-                  </label>
-                  <label class="flex items-center gap-1.5 cursor-pointer">
-                    <input type="checkbox" name="group[12960][2]" class="rounded border-slate-300 text-indigo-600 w-3.5 h-3.5" />
-                    <span>Faculty</span>
-                  </label>
-                  <label class="flex items-center gap-1.5 cursor-pointer">
-                    <input type="checkbox" name="group[12960][8]" class="rounded border-slate-300 text-indigo-600 w-3.5 h-3.5" />
-                    <span>Postdoc</span>
-                  </label>
-                  <label class="flex items-center gap-1.5 cursor-pointer">
-                    <input type="checkbox" name="group[12960][128]" class="rounded border-slate-300 text-indigo-600 w-3.5 h-3.5" />
-                    <span>External</span>
-                  </label>
+                  <div class="flex items-center gap-1.5">
+                    <input type="checkbox" id="newsletter-graduate" name="group[12960][4]" class="rounded border-slate-300 text-indigo-600 w-3.5 h-3.5 cursor-pointer" />
+                    <label for="newsletter-graduate" class="cursor-pointer">Graduate</label>
+                  </div>
+                  <div class="flex items-center gap-1.5">
+                    <input type="checkbox" id="newsletter-faculty" name="group[12960][2]" class="rounded border-slate-300 text-indigo-600 w-3.5 h-3.5 cursor-pointer" />
+                    <label for="newsletter-faculty" class="cursor-pointer">Faculty</label>
+                  </div>
+                  <div class="flex items-center gap-1.5">
+                    <input type="checkbox" id="newsletter-postdoc" name="group[12960][8]" class="rounded border-slate-300 text-indigo-600 w-3.5 h-3.5 cursor-pointer" />
+                    <label for="newsletter-postdoc" class="cursor-pointer">Postdoc</label>
+                  </div>
+                  <div class="flex items-center gap-1.5">
+                    <input type="checkbox" id="newsletter-external" name="group[12960][128]" class="rounded border-slate-300 text-indigo-600 w-3.5 h-3.5 cursor-pointer" />
+                    <label for="newsletter-external" class="cursor-pointer">External</label>
+                  </div>
                 </div>
                 <!-- Honeypot -->
                 <div style="position: absolute; left: -5000px;" aria-hidden="true">
@@ -169,20 +160,8 @@ const initialWord = taglineWords[Math.floor(Math.random() * taglineWords.length)
     }
   }
 
-  // Randomize tagline word on view transitions
-  function randomizeTaglineWord() {
-    const wordElement = document.getElementById('tagline-word');
-    if (wordElement) {
-      const words = JSON.parse(wordElement.dataset.words || '[]');
-      if (words.length > 0) {
-        wordElement.textContent = words[Math.floor(Math.random() * words.length)];
-      }
-    }
-  }
-
   // Only regenerate on view transitions (not initial load, since it's already set)
   document.addEventListener('astro:page-load', () => {
     generateOrganicShape();
-    randomizeTaglineWord();
   });
 </script>

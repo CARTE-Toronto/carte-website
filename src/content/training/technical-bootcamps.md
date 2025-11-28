@@ -1,8 +1,8 @@
 ---
-title: "Customized Technical Bootcamps"
+title: "Customized Technical Training"
 audience: "Technical Teams & Staff"
 duration: "3-5 days"
-description: "Intensive, hands-on machine learning bootcamps customized to your industry and use cases. Employees gain practical skills in Python, data handling, and building ML models relevant to your business."
+description: "Intensive, hands-on machine learning training customized to your industry and use cases. Employees gain practical skills in Python, data handling, and building ML models relevant to your business."
 featured: true
 gradient: "from-sky-500 via-blue-500 to-indigo-600"
 pattern: "classroom"
@@ -10,12 +10,12 @@ tags: ["Hands-On", "Technical", "Customized"]
 order: 2
 testimonial:
   quote: "I have been hearing about AI in the news, and wanted to understand how it could apply to my role."
-  attribution: "Bootcamp participant, 2023"
+  attribution: "Training participant, 2023"
 ---
 
-Our technical bootcamps are designed to upskill employees with practical, hands-on AI and machine learning skills. Each program is customized to your organization's industry, data, and use cases.
+Our technical training programs are designed to upskill employees with practical, hands-on AI and machine learning skills. Each program is customized to your organization's industry, data, and use cases.
 
-**Typical bootcamp structure:**
+**Typical program structure:**
 - **Day 1:** Introduction to AI, Machine Learning, and Data Handling in Python
 - **Day 2:** Industry-specific applications and use cases
 - **Day 3:** Predictive analytics and practical model building

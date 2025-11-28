@@ -1,5 +1,5 @@
 ---
-title: "BioZone Machine Learning Bootcamp"
+title: "BioZone Machine Learning Intensive"
 audience: "BioZone Researchers"
 duration: "3 days"
 year: 2023
@@ -9,11 +9,11 @@ icon: "flask"
 tags: ["Biomedical", "Deep Learning"]
 order: 4
 testimonial:
-  quote: "Alex was the highlight of the bootcamp for sure - he was a fantastic instructor. You could really tell he knew what he was talking about."
+  quote: "Alex was the highlight of the program for sure - he was a fantastic instructor. You could really tell he knew what he was talking about."
   attribution: "BioZone participant, 2023"
 ---
 
-A three-day intensive bootcamp designed for BioZone researchers, covering:
+A three-day intensive program designed for BioZone researchers, covering:
 
 **Day 1: Machine Learning Basics**
 - Introduction to supervised and unsupervised learning

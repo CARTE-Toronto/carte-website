@@ -1,9 +1,33 @@
-:80 {
+# Redirect www to non-www (canonical URL)
+www.carte.utoronto.ca {
+    redir https://carte.utoronto.ca{uri} permanent
+}
+
+# Main site
+carte.utoronto.ca {
     root * /srv
     file_server
 
+    # Immutable cache for Astro assets (hashed filenames)
     @astro path /_astro/*
     header @astro Cache-Control "public, max-age=31536000, immutable"
 
+    # Security headers
+    header {
+        X-Content-Type-Options "nosniff"
+        X-Frame-Options "DENY"
+        Referrer-Policy "strict-origin-when-cross-origin"
+    }
+
     try_files {path} {path}/ {path}/index.html {path}.html
+
+    # Handle 404s gracefully
+    handle_errors {
+        respond "{err.status_code} {err.status_text}"
+    }
+}
+
+# Fallback for direct IP access or other hostnames (optional, for testing)
+:80 {
+    redir https://carte.utoronto.ca{uri} permanent
 }

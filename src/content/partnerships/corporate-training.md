@@ -1,6 +1,6 @@
 ---
 title: "Corporate Training"
-description: "Upskill your workforce with customized AI training programs—from executive briefings for leadership to hands-on technical bootcamps for your teams."
+description: "Upskill your workforce with customized AI training programs—from executive briefings for leadership to hands-on technical workshops for your teams."
 featured: true
 gradient: "from-amber-500 via-orange-500 to-red-500"
 pattern: "training"
@@ -13,7 +13,7 @@ We design and deliver AI training programs tailored to your organization's needs
 
 **Training options include:**
 - Executive AI briefings for C-Suite and senior leaders
-- Multi-day technical bootcamps for employees
+- Multi-day technical workshops for employees
 - Half-day workshops on specific topics
 - Ongoing project guidance and mentorship
 

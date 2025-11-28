@@ -1,9 +1,16 @@
 ---
 // Interactive dot grid background with cascading network activation
 // Creates a neural network aesthetic where activation spreads through connections
+// Optionally shifts colors based on scroll position: light theme → dark theme
+
+interface Props {
+  scrollColorTransition?: boolean;
+}
+
+const { scrollColorTransition = false } = Astro.props;
 ---
 
-<div id="dots-container" class="absolute inset-0 pointer-events-none overflow-hidden" style="z-index: -1;">
+<div id="dots-container" class="absolute inset-0 pointer-events-none overflow-hidden" style="z-index: -1;" data-scroll-transition={scrollColorTransition.toString()}>
   <canvas id="dots-canvas" class="pointer-events-none"></canvas>
 </div>
 
@@ -14,7 +21,6 @@
   // Configuration
   const GRID_SIZE = 24;
   const DOT_RADIUS = 1.5;
-  const DOT_COLOR = 'rgba(17, 35, 56, 0.06)';
   const ACTIVATION_RADIUS = 60; // pixels from cursor to directly activate dots
   const FADE_SPEED = 0.08; // how fast activation changes (lower = smoother)
   const MAX_LINE_OPACITY = 0.18; // maximum opacity for connecting lines
@@ -24,9 +30,33 @@
   const MAX_HOPS = 4; // how many hops activation can spread
   const HOP_DECAY = 0.55; // opacity multiplier per hop (0.5 = halve each hop)
   
+  // Color themes for scroll-based transition
+  // Light theme (top of page)
+  const LIGHT_BG = [253, 251, 247];        // #FDFBF7 - pale cream
+  const LIGHT_DOT = [17, 35, 56];          // #112338 - dark blue
+  const LIGHT_DOT_BASE_OPACITY = 0.06;
+  const LIGHT_DOT_ACTIVE_OPACITY = 0.15;
+  const LIGHT_LINE_MAX_OPACITY = 0.18;
+  
+  // Dark theme (bottom of page)
+  const DARK_BG = [17, 35, 56];            // #112338 - dark blue
+  const DARK_DOT = [253, 251, 247];        // #FDFBF7 - pale cream (inverted)
+  const DARK_DOT_BASE_OPACITY = 0.12;
+  const DARK_DOT_ACTIVE_OPACITY = 0.35;
+  const DARK_LINE_MAX_OPACITY = 0.25;
+  
+  // Scroll transition config
+  const TRANSITION_START = 0.45;  // Start transitioning at 45% scroll
+  const TRANSITION_END = 0.75;    // Fully dark by 75% scroll
+  
   let mouseX = -1000;
   let mouseY = -1000;
   let animationId: number;
+  let currentScrollT = 0; // Current interpolation value (0 = light, 1 = dark)
+  
+  // Check if scroll color transition is enabled via data attribute
+  const container = document.getElementById('dots-container');
+  const SCROLL_TRANSITION_ENABLED = container?.dataset.scrollTransition === 'true';
   
   // Seeded random number generator for consistent randomness
   function seededRandom(seed: number): () => number {
@@ -237,8 +267,56 @@
     }
   }
   
+  // Linear interpolation helper
+  function lerp(a: number, b: number, t: number): number {
+    return a + (b - a) * t;
+  }
+  
+  // Get scroll-based transition value (0 = light theme, 1 = dark theme)
+  function getScrollT(): number {
+    // If scroll transition is disabled, always return 0 (light theme)
+    if (!SCROLL_TRANSITION_ENABLED) return 0;
+    
+    const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+    if (scrollHeight <= 0) return 0;
+    
+    const scrollPercent = window.scrollY / scrollHeight;
+    
+    // Map scroll percent to transition range
+    if (scrollPercent <= TRANSITION_START) return 0;
+    if (scrollPercent >= TRANSITION_END) return 1;
+    
+    return (scrollPercent - TRANSITION_START) / (TRANSITION_END - TRANSITION_START);
+  }
+  
+  // Get interpolated color as RGB array
+  function getInterpolatedColor(lightColor: number[], darkColor: number[], t: number): number[] {
+    return [
+      Math.round(lerp(lightColor[0], darkColor[0], t)),
+      Math.round(lerp(lightColor[1], darkColor[1], t)),
+      Math.round(lerp(lightColor[2], darkColor[2], t))
+    ];
+  }
+  
   function draw() {
     const dpr = window.devicePixelRatio || 1;
+    
+    // Smoothly animate the scroll transition value
+    const targetScrollT = getScrollT();
+    currentScrollT += (targetScrollT - currentScrollT) * 0.1;
+    
+    // Calculate current colors based on scroll position
+    const bgColor = getInterpolatedColor(LIGHT_BG, DARK_BG, currentScrollT);
+    const dotColor = getInterpolatedColor(LIGHT_DOT, DARK_DOT, currentScrollT);
+    const dotBaseOpacity = lerp(LIGHT_DOT_BASE_OPACITY, DARK_DOT_BASE_OPACITY, currentScrollT);
+    const dotActiveOpacity = lerp(LIGHT_DOT_ACTIVE_OPACITY, DARK_DOT_ACTIVE_OPACITY, currentScrollT);
+    const lineMaxOpacity = lerp(LIGHT_LINE_MAX_OPACITY, DARK_LINE_MAX_OPACITY, currentScrollT);
+    
+    // Update container background color
+    const container = document.getElementById('dots-container');
+    if (container) {
+      container.style.backgroundColor = `rgb(${bgColor[0]}, ${bgColor[1]}, ${bgColor[2]})`;
+    }
     
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -267,12 +345,12 @@
         const connectionStrength = Math.min(dot.currentActivation, neighbor.currentActivation);
         
         if (connectionStrength > 0.001) {
-          const opacity = connectionStrength * MAX_LINE_OPACITY * connection.baseOpacity;
+          const opacity = connectionStrength * lineMaxOpacity * connection.baseOpacity;
           
           ctx.beginPath();
           ctx.moveTo(dot.x, dot.y);
           ctx.lineTo(neighbor.x, neighbor.y);
-          ctx.strokeStyle = `rgba(17, 35, 56, ${opacity})`;
+          ctx.strokeStyle = `rgba(${dotColor[0]}, ${dotColor[1]}, ${dotColor[2]}, ${opacity})`;
           ctx.lineWidth = 0.5;
           ctx.stroke();
         }
@@ -281,13 +359,11 @@
     
     // Draw all dots (slightly brighter when activated)
     for (const dot of dots) {
-      const baseOpacity = 0.06;
-      const activatedOpacity = 0.15;
-      const opacity = baseOpacity + (activatedOpacity - baseOpacity) * dot.currentActivation;
+      const opacity = dotBaseOpacity + (dotActiveOpacity - dotBaseOpacity) * dot.currentActivation;
       
       ctx.beginPath();
       ctx.arc(dot.x, dot.y, DOT_RADIUS, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(17, 35, 56, ${opacity})`;
+      ctx.fillStyle = `rgba(${dotColor[0]}, ${dotColor[1]}, ${dotColor[2]}, ${opacity})`;
       ctx.fill();
     }
     

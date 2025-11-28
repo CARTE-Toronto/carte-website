@@ -1,9 +1,9 @@
 ---
-title: "Energy Sector ML Bootcamp"
+title: "Energy Sector ML Training"
 audience: "Public Energy Organization"
 duration: "5 days"
 year: 2023
-description: "Week-long customized bootcamp for a public organization in the energy sector, covering AI fundamentals through to developing organizational AI strategy."
+description: "Week-long customized training for a public organization in the energy sector, covering AI fundamentals through to developing organizational AI strategy."
 featured: false
 icon: "briefcase"
 tags: ["Energy", "Strategy", "5-Day Program"]
