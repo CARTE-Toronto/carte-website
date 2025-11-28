@@ -1,0 +1,342 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+// Fetch all training programs from content collection
+const allTraining = await getCollection('training');
+
+// Split into featured and secondary, sorted by order
+const featuredTraining = allTraining
+  .filter(t => t.data.featured)
+  .sort((a, b) => a.data.order - b.data.order);
+
+const secondaryTraining = allTraining
+  .filter(t => !t.data.featured)
+  .sort((a, b) => a.data.order - b.data.order);
+
+// Collect testimonials from all training entries
+const testimonials = allTraining
+  .filter(t => t.data.testimonial)
+  .map(t => ({ ...t.data.testimonial, source: t.data.title }));
+---
+
+<BaseLayout title="Training" description="CARTE provides customizable AI and machine learning training for faculty, researchers, students, and industry partners.">
+  <!-- Hero Section -->
+  <section class="relative overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-24">
+      <div class="max-w-3xl">
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-[var(--color-uoft-blue)] leading-tight mb-6">
+          Upskill Your Organization<br/>
+          <span class="bg-gradient-to-r from-amber-500 via-orange-500 to-red-500 bg-clip-text text-transparent">In AI & Machine Learning</span>
+        </h1>
+        <p class="text-xl text-slate-600 leading-relaxed">
+          Custom AI training designed for your team — not academic courses, but practical skills you can apply immediately. From half-day executive briefings to multi-day technical bootcamps, we meet you where you are.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Training Section (Static Grid) -->
+  <section class="py-20 lg:py-28">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-[var(--color-uoft-blue)] mb-4">Industry Training Programs</h2>
+        <p class="text-lg text-slate-600 max-w-2xl mx-auto">Practical AI training tailored to your organization's needs and technical level — delivered by experts who understand real-world implementation.</p>
+      </div>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {featuredTraining.map((program, index) => (
+          <article class="group relative bg-white rounded-2xl shadow-lg shadow-slate-200/50 overflow-hidden hover:shadow-xl hover:shadow-slate-300/50 transition-all duration-500 hover:-translate-y-1">
+            <!-- Visual placeholder with gradient and pattern -->
+            <div class={`relative h-56 bg-gradient-to-br ${program.data.gradient} overflow-hidden`}>
+              <!-- Abstract pattern overlay -->
+              {program.data.pattern === "classroom" && (
+                <svg class="absolute inset-0 w-full h-full opacity-20" viewBox="0 0 400 200" preserveAspectRatio="xMidYMid slice">
+                  <g fill="white">
+                    <!-- Desks/tables -->
+                    <rect x="30" y="120" width="80" height="10" rx="2"/>
+                    <rect x="160" y="120" width="80" height="10" rx="2"/>
+                    <rect x="290" y="120" width="80" height="10" rx="2"/>
+                    <rect x="30" y="160" width="80" height="10" rx="2"/>
+                    <rect x="160" y="160" width="80" height="10" rx="2"/>
+                    <rect x="290" y="160" width="80" height="10" rx="2"/>
+                    <!-- Whiteboard -->
+                    <rect x="120" y="30" width="160" height="60" rx="4"/>
+                  </g>
+                </svg>
+              )}
+              {program.data.pattern === "lab" && (
+                <svg class="absolute inset-0 w-full h-full opacity-20" viewBox="0 0 400 200" preserveAspectRatio="xMidYMid slice">
+                  <g fill="white">
+                    <!-- Flask shapes -->
+                    <path d="M80 60 L80 100 L60 150 L100 150 L80 100 Z"/>
+                    <circle cx="80" cy="50" r="15"/>
+                    <path d="M200 70 L200 110 L170 160 L230 160 L200 110 Z"/>
+                    <circle cx="200" cy="55" r="20"/>
+                    <path d="M320 65 L320 105 L295 155 L345 155 L320 105 Z"/>
+                    <circle cx="320" cy="50" r="18"/>
+                  </g>
+                </svg>
+              )}
+              {program.data.pattern === "corporate" && (
+                <svg class="absolute inset-0 w-full h-full opacity-15" viewBox="0 0 400 200" preserveAspectRatio="xMidYMid slice">
+                  <g fill="white">
+                    <!-- Building/office shapes -->
+                    <rect x="50" y="60" width="60" height="140" rx="2"/>
+                    <rect x="130" y="40" width="80" height="160" rx="2"/>
+                    <rect x="230" y="80" width="50" height="120" rx="2"/>
+                    <rect x="300" y="50" width="70" height="150" rx="2"/>
+                    <!-- Windows -->
+                    <rect x="60" y="75" width="15" height="15" fill="currentColor" opacity="0.3"/>
+                    <rect x="85" y="75" width="15" height="15" fill="currentColor" opacity="0.3"/>
+                    <rect x="145" y="55" width="20" height="20" fill="currentColor" opacity="0.3"/>
+                    <rect x="175" y="55" width="20" height="20" fill="currentColor" opacity="0.3"/>
+                  </g>
+                </svg>
+              )}
+              {program.data.pattern === "network" && (
+                <svg class="absolute inset-0 w-full h-full opacity-15" viewBox="0 0 400 200" preserveAspectRatio="xMidYMid slice">
+                  <defs>
+                    <pattern id={`network-${index}`} width="50" height="50" patternUnits="userSpaceOnUse">
+                      <circle cx="25" cy="25" r="4" fill="white"/>
+                      <path d="M25 0v21M25 29v21M0 25h21M29 25h21" stroke="white" stroke-width="1"/>
+                    </pattern>
+                  </defs>
+                  <rect width="100%" height="100%" fill={`url(#network-${index})`}/>
+                </svg>
+              )}
+              
+              <!-- Audience badge -->
+              <div class="absolute top-4 right-4 px-3 py-1 bg-white/20 backdrop-blur-sm rounded-full text-white text-sm font-bold">
+                {program.data.audience}
+              </div>
+              
+              <!-- Decorative bottom curve -->
+              <div class="absolute bottom-0 left-0 right-0 h-8 bg-white" style="clip-path: ellipse(70% 100% at 50% 100%);"></div>
+            </div>
+            
+            <div class="p-6 pt-2">
+              <!-- Tags -->
+              <div class="flex flex-wrap gap-2 mb-3">
+                {program.data.tags.map(tag => (
+                  <span class="px-2.5 py-0.5 text-xs font-semibold rounded-full bg-amber-50 text-amber-700">{tag}</span>
+                ))}
+              </div>
+              
+              <h3 class="text-lg font-bold text-[var(--color-uoft-blue)] mb-2 leading-snug group-hover:text-amber-700 transition-colors">
+                {program.data.title}
+              </h3>
+              
+              {program.data.duration && (
+                <p class="text-sm text-slate-500 mb-3 flex items-center gap-1">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                  </svg>
+                  {program.data.duration}
+                </p>
+              )}
+              
+              <p class="text-slate-600 text-sm leading-relaxed mb-4">
+                {program.data.description}
+              </p>
+              
+              {program.data.testimonial && (
+                <div class="pt-4 border-t border-slate-100">
+                  <blockquote class="text-sm text-slate-500 italic">"{program.data.testimonial.quote}"</blockquote>
+                  <p class="text-xs text-slate-400 mt-1">— {program.data.testimonial.attribution}</p>
+                </div>
+              )}
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Training Portfolio Carousel Section -->
+  <section class="py-20 bg-gradient-to-b from-slate-50 to-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between mb-12">
+        <div>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-[var(--color-uoft-blue)] mb-4">Additional Training Programs</h2>
+          <p class="text-lg text-slate-600 max-w-2xl">We also deliver training for university faculty, research groups, and international partnerships.</p>
+        </div>
+        <!-- Carousel Navigation -->
+        <div class="flex items-center gap-3 mt-6 sm:mt-0">
+          <span class="text-sm text-slate-500 mr-2">{secondaryTraining.length} programs</span>
+          <button 
+            id="carousel-prev" 
+            class="w-10 h-10 rounded-full bg-white border border-slate-200 flex items-center justify-center hover:bg-amber-50 hover:border-amber-300 transition-colors shadow-sm disabled:opacity-40 disabled:cursor-not-allowed"
+            aria-label="Previous"
+          >
+            <svg class="w-5 h-5 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+            </svg>
+          </button>
+          <button 
+            id="carousel-next" 
+            class="w-10 h-10 rounded-full bg-white border border-slate-200 flex items-center justify-center hover:bg-amber-50 hover:border-amber-300 transition-colors shadow-sm disabled:opacity-40 disabled:cursor-not-allowed"
+            aria-label="Next"
+          >
+            <svg class="w-5 h-5 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+      
+      <!-- Carousel Container -->
+      <div class="relative -mx-4 px-4">
+        <div 
+          id="training-carousel" 
+          class="flex gap-6 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-4 -mb-4"
+          style="scrollbar-width: none; -ms-overflow-style: none;"
+        >
+          {secondaryTraining.map((program) => (
+            <article class="group bg-white rounded-xl border border-slate-200 p-6 hover:border-amber-300 hover:shadow-lg hover:shadow-amber-100/50 transition-all duration-300 flex-shrink-0 w-[320px] snap-start">
+              <!-- Icon -->
+              <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-slate-100 to-slate-50 flex items-center justify-center mb-4 group-hover:from-amber-100 group-hover:to-amber-50 transition-colors">
+                {program.data.icon === "academic" && (
+                  <svg class="w-6 h-6 text-slate-600 group-hover:text-amber-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5z"/>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"/>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222"/>
+                  </svg>
+                )}
+                {program.data.icon === "flask" && (
+                  <svg class="w-6 h-6 text-slate-600 group-hover:text-amber-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/>
+                  </svg>
+                )}
+                {program.data.icon === "briefcase" && (
+                  <svg class="w-6 h-6 text-slate-600 group-hover:text-amber-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                  </svg>
+                )}
+                {program.data.icon === "users" && (
+                  <svg class="w-6 h-6 text-slate-600 group-hover:text-amber-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
+                  </svg>
+                )}
+                {program.data.icon === "globe" && (
+                  <svg class="w-6 h-6 text-slate-600 group-hover:text-amber-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                  </svg>
+                )}
+                {program.data.icon === "calendar" && (
+                  <svg class="w-6 h-6 text-slate-600 group-hover:text-amber-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                  </svg>
+                )}
+              </div>
+              
+              <!-- Tags -->
+              <div class="flex flex-wrap gap-2 mb-3">
+                {program.data.tags.map(tag => (
+                  <span class="px-2 py-0.5 text-xs font-medium rounded bg-slate-100 text-slate-600">{tag}</span>
+                ))}
+              </div>
+              
+              <h3 class="text-base font-bold text-[var(--color-uoft-blue)] mb-2 leading-snug group-hover:text-amber-700 transition-colors line-clamp-2">
+                {program.data.title}
+              </h3>
+              
+              <div class="flex items-center gap-3 text-sm text-slate-500 mb-3">
+                {program.data.duration && (
+                  <span class="flex items-center gap-1">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    </svg>
+                    {program.data.duration}
+                  </span>
+                )}
+                {program.data.year && (
+                  <span>{program.data.year}</span>
+                )}
+              </div>
+              
+              <p class="text-slate-600 text-sm leading-relaxed mb-4 line-clamp-3">
+                {program.data.description}
+              </p>
+              
+              <div class="text-xs text-slate-400 font-medium">
+                {program.data.audience}
+              </div>
+            </article>
+          ))}
+        </div>
+        
+        <!-- Fade edges -->
+        <div class="absolute left-0 top-0 bottom-4 w-8 bg-gradient-to-r from-slate-50 to-transparent pointer-events-none"></div>
+        <div class="absolute right-0 top-0 bottom-4 w-8 bg-gradient-to-l from-slate-50 to-transparent pointer-events-none"></div>
+      </div>
+    </div>
+  </section>
+  
+  <style>
+    #training-carousel::-webkit-scrollbar {
+      display: none;
+    }
+    .line-clamp-2 {
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .line-clamp-3 {
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+  </style>
+  
+  <script>
+    const carousel = document.getElementById('training-carousel');
+    const prevBtn = document.getElementById('carousel-prev');
+    const nextBtn = document.getElementById('carousel-next');
+    const cardWidth = 320 + 24; // card width + gap
+    
+    function updateButtons() {
+      if (prevBtn && nextBtn && carousel) {
+        prevBtn.disabled = carousel.scrollLeft <= 0;
+        nextBtn.disabled = carousel.scrollLeft >= carousel.scrollWidth - carousel.clientWidth - 10;
+      }
+    }
+    
+    prevBtn?.addEventListener('click', () => {
+      carousel?.scrollBy({ left: -cardWidth, behavior: 'smooth' });
+    });
+    
+    nextBtn?.addEventListener('click', () => {
+      carousel?.scrollBy({ left: cardWidth, behavior: 'smooth' });
+    });
+    
+    carousel?.addEventListener('scroll', updateButtons);
+    updateButtons();
+  </script>
+
+  <!-- CTA Section -->
+  <section class="py-20">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div class="bg-gradient-to-br from-[var(--color-uoft-blue)] to-indigo-900 rounded-3xl p-12 shadow-2xl shadow-indigo-900/20">
+        <h2 class="text-3xl font-extrabold text-white mb-4">Interested in Training?</h2>
+        <p class="text-lg text-indigo-200 mb-8 max-w-2xl mx-auto">
+          Whether you're a faculty member, research group leader, or industry partner—we can design a training program tailored to your needs.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="mailto:somayeh.sadat@utoronto.ca" class="inline-flex items-center justify-center px-8 py-3 rounded-xl bg-white text-[var(--color-uoft-blue)] font-bold hover:bg-amber-50 transition-colors">
+            Contact Us
+            <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+            </svg>
+          </a>
+          <a href="/contact" class="inline-flex items-center justify-center px-8 py-3 rounded-xl bg-indigo-800/50 text-white font-bold hover:bg-indigo-800 transition-colors border border-indigo-600">
+            Learn More
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+

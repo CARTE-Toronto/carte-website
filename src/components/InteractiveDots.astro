@@ -1,0 +1,343 @@
+---
+// Interactive dot grid background with cascading network activation
+// Creates a neural network aesthetic where activation spreads through connections
+---
+
+<div id="dots-container" class="absolute inset-0 pointer-events-none overflow-hidden" style="z-index: -1;">
+  <canvas id="dots-canvas" class="pointer-events-none"></canvas>
+</div>
+
+<script>
+  const canvas = document.getElementById('dots-canvas') as HTMLCanvasElement;
+  const ctx = canvas.getContext('2d')!;
+  
+  // Configuration
+  const GRID_SIZE = 24;
+  const DOT_RADIUS = 1.5;
+  const DOT_COLOR = 'rgba(17, 35, 56, 0.06)';
+  const ACTIVATION_RADIUS = 60; // pixels from cursor to directly activate dots
+  const FADE_SPEED = 0.08; // how fast activation changes (lower = smoother)
+  const MAX_LINE_OPACITY = 0.18; // maximum opacity for connecting lines
+  const MAX_CONNECTION_DISTANCE = GRID_SIZE * 3; // search for neighbors within 3 grid cells
+  const MIN_CONNECTIONS = 2; // minimum connections per dot
+  const MAX_CONNECTIONS = 4; // maximum connections per dot
+  const MAX_HOPS = 4; // how many hops activation can spread
+  const HOP_DECAY = 0.55; // opacity multiplier per hop (0.5 = halve each hop)
+  
+  let mouseX = -1000;
+  let mouseY = -1000;
+  let animationId: number;
+  
+  // Seeded random number generator for consistent randomness
+  function seededRandom(seed: number): () => number {
+    return function() {
+      seed = (seed * 1103515245 + 12345) & 0x7fffffff;
+      return seed / 0x7fffffff;
+    };
+  }
+  
+  interface Connection {
+    neighborIdx: number;
+    baseOpacity: number; // individual opacity multiplier (0.5 - 1.0)
+  }
+  
+  interface Dot {
+    x: number;
+    y: number;
+    connections: Connection[];
+    currentActivation: number; // current animated activation level (0-1)
+    targetActivation: number; // target activation level for this frame
+  }
+  
+  let dots: Dot[] = [];
+  let cols = 0;
+  
+  function resize() {
+    const dpr = window.devicePixelRatio || 1;
+    const width = window.innerWidth;
+    const height = Math.max(
+      document.documentElement.scrollHeight,
+      document.body.scrollHeight,
+      window.innerHeight
+    );
+    
+    // Size the container to the full page
+    const container = document.getElementById('dots-container');
+    if (container) {
+      container.style.height = `${height}px`;
+    }
+    
+    canvas.width = width * dpr;
+    canvas.height = height * dpr;
+    canvas.style.width = `${width}px`;
+    canvas.style.height = `${height}px`;
+    
+    generateDots(width, height);
+  }
+  
+  function generateDots(width: number, height: number) {
+    dots = [];
+    cols = Math.ceil(width / GRID_SIZE) + 1;
+    const rows = Math.ceil(height / GRID_SIZE) + 1;
+    
+    // First pass: create all dots
+    for (let row = 0; row < rows; row++) {
+      for (let col = 0; col < cols; col++) {
+        dots.push({
+          x: col * GRID_SIZE,
+          y: row * GRID_SIZE,
+          connections: [],
+          currentActivation: 0,
+          targetActivation: 0
+        });
+      }
+    }
+    
+    // Second pass: find and select random neighbors for each dot
+    for (let i = 0; i < dots.length; i++) {
+      const dot = dots[i];
+      const col = i % cols;
+      const row = Math.floor(i / cols);
+      
+      // Create a seeded random generator based on dot position
+      const rand = seededRandom(col * 10000 + row * 100 + 42);
+      
+      // Find all potential neighbors (only "forward" to avoid duplicate lines)
+      const potentialNeighbors: { idx: number; dist: number }[] = [];
+      
+      // Search in a wider area for more organic connections
+      for (let dr = 0; dr <= 3; dr++) {
+        for (let dc = -2; dc <= 3; dc++) {
+          // Skip self and "backward" connections (already handled by other dots)
+          if (dr === 0 && dc <= 0) continue;
+          
+          const nc = col + dc;
+          const nr = row + dr;
+          
+          if (nc >= 0 && nc < cols && nr >= 0 && nr < rows) {
+            const neighborIdx = nr * cols + nc;
+            if (neighborIdx < dots.length && neighborIdx !== i) {
+              const neighbor = dots[neighborIdx];
+              const dist = getDistance(dot.x, dot.y, neighbor.x, neighbor.y);
+              if (dist <= MAX_CONNECTION_DISTANCE && dist > 0) {
+                potentialNeighbors.push({ idx: neighborIdx, dist });
+              }
+            }
+          }
+        }
+      }
+      
+      // Shuffle potential neighbors using seeded random
+      for (let j = potentialNeighbors.length - 1; j > 0; j--) {
+        const k = Math.floor(rand() * (j + 1));
+        [potentialNeighbors[j], potentialNeighbors[k]] = [potentialNeighbors[k], potentialNeighbors[j]];
+      }
+      
+      // Select a random number of connections (between MIN and MAX)
+      const numConnections = MIN_CONNECTIONS + Math.floor(rand() * (MAX_CONNECTIONS - MIN_CONNECTIONS + 1));
+      const selectedNeighbors = potentialNeighbors.slice(0, Math.min(numConnections, potentialNeighbors.length));
+      
+      // Create connections
+      for (const { idx: neighborIdx } of selectedNeighbors) {
+        // Random base opacity for this connection (creates visual hierarchy)
+        const baseOpacity = 0.6 + rand() * 0.4; // 0.6 to 1.0
+        
+        dot.connections.push({
+          neighborIdx,
+          baseOpacity
+        });
+      }
+    }
+  }
+  
+  function getDistance(x1: number, y1: number, x2: number, y2: number): number {
+    return Math.sqrt((x2 - x1) ** 2 + (y2 - y1) ** 2);
+  }
+  
+  // Spread activation through the network using BFS
+  function calculateActivations(mouseX: number, mouseY: number) {
+    // Reset all target activations
+    for (const dot of dots) {
+      dot.targetActivation = 0;
+    }
+    
+    // If mouse is off-screen, everything fades out
+    if (mouseX < -500 || mouseY < -500) return;
+    
+    // Find dots directly under/near the cursor (seed activation)
+    const activated = new Map<number, number>(); // dot index -> hop count
+    const queue: { idx: number; hops: number }[] = [];
+    
+    for (let i = 0; i < dots.length; i++) {
+      const dot = dots[i];
+      const dist = getDistance(dot.x, dot.y, mouseX, mouseY);
+      
+      if (dist < ACTIVATION_RADIUS) {
+        // Direct activation - strength based on distance from cursor
+        const strength = Math.pow(1 - dist / ACTIVATION_RADIUS, 1.5);
+        activated.set(i, 0);
+        dots[i].targetActivation = strength;
+        queue.push({ idx: i, hops: 0 });
+      }
+    }
+    
+    // BFS to spread activation through network
+    while (queue.length > 0) {
+      const { idx, hops } = queue.shift()!;
+      
+      if (hops >= MAX_HOPS) continue;
+      
+      const dot = dots[idx];
+      const parentActivation = dot.targetActivation;
+      
+      // Spread to connected neighbors
+      for (const connection of dot.connections) {
+        const neighborIdx = connection.neighborIdx;
+        const existingHops = activated.get(neighborIdx);
+        
+        // Only process if we haven't visited this node, or if we found a shorter path
+        if (existingHops === undefined || existingHops > hops + 1) {
+          activated.set(neighborIdx, hops + 1);
+          
+          // Activation decays with each hop
+          const neighborActivation = parentActivation * HOP_DECAY * connection.baseOpacity;
+          
+          if (neighborActivation > dots[neighborIdx].targetActivation) {
+            dots[neighborIdx].targetActivation = neighborActivation;
+          }
+          
+          if (neighborActivation > 0.01) {
+            queue.push({ idx: neighborIdx, hops: hops + 1 });
+          }
+        }
+      }
+      
+      // Also check reverse connections (dots that connect TO this dot)
+      for (let i = 0; i < dots.length; i++) {
+        const otherDot = dots[i];
+        for (const conn of otherDot.connections) {
+          if (conn.neighborIdx === idx) {
+            const existingHops = activated.get(i);
+            if (existingHops === undefined || existingHops > hops + 1) {
+              activated.set(i, hops + 1);
+              
+              const otherActivation = parentActivation * HOP_DECAY * conn.baseOpacity;
+              
+              if (otherActivation > dots[i].targetActivation) {
+                dots[i].targetActivation = otherActivation;
+              }
+              
+              if (otherActivation > 0.01) {
+                queue.push({ idx: i, hops: hops + 1 });
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  
+  function draw() {
+    const dpr = window.devicePixelRatio || 1;
+    
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    
+    // Mouse Y in page coordinates (canvas is in page space, mouse is in viewport space)
+    const scrollY = window.scrollY;
+    const pageMouseY = mouseY + scrollY;
+    
+    // Calculate target activations based on network propagation
+    calculateActivations(mouseX, pageMouseY);
+    
+    // Animate activations toward targets
+    for (const dot of dots) {
+      dot.currentActivation += (dot.targetActivation - dot.currentActivation) * FADE_SPEED;
+      if (dot.currentActivation < 0.001) dot.currentActivation = 0;
+    }
+    
+    // Draw connections where both endpoints are activated
+    for (let i = 0; i < dots.length; i++) {
+      const dot = dots[i];
+      
+      for (const connection of dot.connections) {
+        const neighbor = dots[connection.neighborIdx];
+        
+        // Connection opacity based on the minimum activation of both endpoints
+        const connectionStrength = Math.min(dot.currentActivation, neighbor.currentActivation);
+        
+        if (connectionStrength > 0.001) {
+          const opacity = connectionStrength * MAX_LINE_OPACITY * connection.baseOpacity;
+          
+          ctx.beginPath();
+          ctx.moveTo(dot.x, dot.y);
+          ctx.lineTo(neighbor.x, neighbor.y);
+          ctx.strokeStyle = `rgba(17, 35, 56, ${opacity})`;
+          ctx.lineWidth = 0.5;
+          ctx.stroke();
+        }
+      }
+    }
+    
+    // Draw all dots (slightly brighter when activated)
+    for (const dot of dots) {
+      const baseOpacity = 0.06;
+      const activatedOpacity = 0.15;
+      const opacity = baseOpacity + (activatedOpacity - baseOpacity) * dot.currentActivation;
+      
+      ctx.beginPath();
+      ctx.arc(dot.x, dot.y, DOT_RADIUS, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(17, 35, 56, ${opacity})`;
+      ctx.fill();
+    }
+    
+    animationId = requestAnimationFrame(draw);
+  }
+  
+  // Track mouse position
+  function handleMouseMove(e: MouseEvent) {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+  }
+  
+  function handleMouseLeave() {
+    mouseX = -1000;
+    mouseY = -1000;
+  }
+  
+  // Initialize
+  function init() {
+    document.addEventListener('mousemove', handleMouseMove);
+    document.addEventListener('mouseleave', handleMouseLeave);
+    window.addEventListener('resize', resize);
+    
+    // Watch for content changes that might affect page height
+    const resizeObserver = new ResizeObserver(() => {
+      resize();
+    });
+    resizeObserver.observe(document.body);
+    
+    resize();
+    draw();
+  }
+  
+  // Cleanup on page navigation (for Astro view transitions)
+  document.addEventListener('astro:before-swap', () => {
+    cancelAnimationFrame(animationId);
+    document.removeEventListener('mousemove', handleMouseMove);
+    document.removeEventListener('mouseleave', handleMouseLeave);
+  });
+  
+  init();
+</script>
+
+<style>
+  #dots-container {
+    background-color: var(--color-pale-bg);
+    min-height: 100%;
+  }
+  
+  #dots-canvas {
+    display: block;
+  }
+</style>

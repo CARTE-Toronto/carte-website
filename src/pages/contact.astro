@@ -1,0 +1,295 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Contact" description="Get in touch with CARTE - book a meeting, send us an email, or visit us at the Myhal Centre.">
+  <!-- Hero Section -->
+  <section class="relative overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-24">
+      <div class="max-w-3xl">
+        <h1 class="text-4xl sm:text-5xl font-extrabold text-[var(--color-uoft-blue)] leading-tight mb-6">
+          Get in Touch
+        </h1>
+        <p class="text-xl text-slate-600 leading-relaxed">
+          Interested in collaborating with CARTE? Book a meeting, send us an email, or visit us at the Myhal Centre.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <section class="py-16 lg:py-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-16">
+        
+        <!-- Left Column: Contact Info -->
+        <div>
+          <h2 class="text-2xl font-bold text-[var(--color-uoft-blue)] mb-8">Contact Information</h2>
+          
+          <div class="space-y-8">
+            <!-- Email -->
+            <div class="flex items-start gap-4">
+              <div class="w-12 h-12 rounded-xl bg-indigo-100 flex items-center justify-center flex-shrink-0">
+                <svg class="w-6 h-6 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                </svg>
+              </div>
+              <div>
+                <h3 class="font-semibold text-[var(--color-uoft-blue)] mb-1">Email</h3>
+                <a href="mailto:carte@utoronto.ca" class="text-indigo-600 hover:text-indigo-800 transition-colors text-lg">
+                  carte@utoronto.ca
+                </a>
+              </div>
+            </div>
+            
+            <!-- Location -->
+            <div class="flex items-start gap-4">
+              <div class="w-12 h-12 rounded-xl bg-emerald-100 flex items-center justify-center flex-shrink-0">
+                <svg class="w-6 h-6 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                </svg>
+              </div>
+              <div>
+                <h3 class="font-semibold text-[var(--color-uoft-blue)] mb-1">Location</h3>
+                <p class="text-slate-600">
+                  Myhal Centre for Engineering Innovation & Entrepreneurship<br/>
+                  55 St George Street<br/>
+                  Toronto, ON M5S 0C9
+                </p>
+              </div>
+            </div>
+            
+            <!-- Social -->
+            <div class="flex items-start gap-4">
+              <div class="w-12 h-12 rounded-xl bg-blue-100 flex items-center justify-center flex-shrink-0">
+                <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"/>
+                </svg>
+              </div>
+              <div>
+                <h3 class="font-semibold text-[var(--color-uoft-blue)] mb-2">Follow Us</h3>
+                <div class="flex items-center gap-4">
+                  <a href="https://www.linkedin.com/company/carte-toronto/" target="_blank" rel="noopener noreferrer" class="text-slate-500 hover:text-indigo-600 transition-colors" aria-label="LinkedIn">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                    </svg>
+                  </a>
+                  <a href="https://www.instagram.com/carte_uoft/" target="_blank" rel="noopener noreferrer" class="text-slate-500 hover:text-pink-600 transition-colors" aria-label="Instagram">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                    </svg>
+                  </a>
+                  <a href="https://www.youtube.com/channel/UC9mYr0Ru6hAeajusllYVC4g" target="_blank" rel="noopener noreferrer" class="text-slate-500 hover:text-red-600 transition-colors" aria-label="YouTube">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Right Column: Collapsible Actions -->
+        <div class="space-y-4">
+          <!-- Book a Meeting -->
+          <details class="group bg-white rounded-2xl border border-slate-200 shadow-lg overflow-hidden">
+            <summary class="bg-gradient-to-r from-indigo-600 to-violet-600 px-6 py-5 cursor-pointer list-none select-none">
+              <div class="flex items-center justify-between">
+                <div>
+                  <h2 class="text-xl font-bold text-white flex items-center gap-3">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                    </svg>
+                    Book an Exploratory Meeting
+                  </h2>
+                  <p class="text-indigo-100 text-sm mt-1">Schedule a 30-minute call to discuss how CARTE can help</p>
+                </div>
+                <svg class="w-6 h-6 text-white transition-transform duration-300 group-open:rotate-180 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                </svg>
+              </div>
+            </summary>
+            <div class="p-0">
+              <iframe 
+                src="https://outlook.office.com/book/CARTE1@utoronto.onmicrosoft.com/?ismsaljsauthenabled" 
+                width="100%" 
+                height="520" 
+                scrolling="yes" 
+                style="border:0"
+                title="Book a meeting with CARTE"
+              ></iframe>
+            </div>
+          </details>
+          
+          <!-- Newsletter Signup -->
+          <details class="group bg-white rounded-2xl border border-slate-200 shadow-lg overflow-hidden">
+            <summary class="bg-gradient-to-r from-emerald-600 to-teal-600 px-6 py-5 cursor-pointer list-none select-none">
+              <div class="flex items-center justify-between">
+                <div>
+                  <h2 class="text-xl font-bold text-white flex items-center gap-3">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                    </svg>
+                    Subscribe to Newsletter
+                  </h2>
+                  <p class="text-emerald-100 text-sm mt-1">Stay updated on AI research, training, and events</p>
+                </div>
+                <svg class="w-6 h-6 text-white transition-transform duration-300 group-open:rotate-180 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                </svg>
+              </div>
+            </summary>
+            <div class="p-6">
+              <p class="text-slate-600 mb-6">
+                Get occasional updates about AI research, upcoming training opportunities, and events at CARTE.
+              </p>
+              <form 
+                action="https://utoronto.us6.list-manage.com/subscribe/post?u=2aa2e869966773113b0712d28&amp;id=14f41f6d2f&amp;f_id=0012c2e1f0" 
+                method="post" 
+                id="mc-embedded-subscribe-form" 
+                name="mc-embedded-subscribe-form" 
+                target="_blank"
+                class="space-y-4"
+              >
+                <!-- Email -->
+                <div>
+                  <label for="mce-EMAIL" class="block text-sm font-medium text-slate-700 mb-1">
+                    Email Address <span class="text-red-500">*</span>
+                  </label>
+                  <input 
+                    type="email" 
+                    name="EMAIL" 
+                    id="mce-EMAIL"
+                    placeholder="you@example.com" 
+                    class="w-full px-4 py-2.5 rounded-lg border border-slate-300 focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none transition-shadow text-sm"
+                    required
+                  />
+                </div>
+                
+                <!-- Name Row -->
+                <div class="grid grid-cols-2 gap-3">
+                  <div>
+                    <label for="mce-FNAME" class="block text-sm font-medium text-slate-700 mb-1">First Name</label>
+                    <input 
+                      type="text" 
+                      name="FNAME" 
+                      id="mce-FNAME"
+                      class="w-full px-4 py-2.5 rounded-lg border border-slate-300 focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none transition-shadow text-sm"
+                    />
+                  </div>
+                  <div>
+                    <label for="mce-LNAME" class="block text-sm font-medium text-slate-700 mb-1">Last Name</label>
+                    <input 
+                      type="text" 
+                      name="LNAME" 
+                      id="mce-LNAME"
+                      class="w-full px-4 py-2.5 rounded-lg border border-slate-300 focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none transition-shadow text-sm"
+                    />
+                  </div>
+                </div>
+                
+                <!-- Organization -->
+                <div>
+                  <label for="mce-COMPANY" class="block text-sm font-medium text-slate-700 mb-1">Organization (if not UofT)</label>
+                  <input 
+                    type="text" 
+                    name="COMPANY" 
+                    id="mce-COMPANY"
+                    class="w-full px-4 py-2.5 rounded-lg border border-slate-300 focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none transition-shadow text-sm"
+                  />
+                </div>
+                
+                <!-- Academic Unit -->
+                <div>
+                  <label for="mce-MMERGE3" class="block text-sm font-medium text-slate-700 mb-1">Academic Unit (if UofT)</label>
+                  <select 
+                    name="MMERGE3" 
+                    id="mce-MMERGE3"
+                    class="w-full px-4 py-2.5 rounded-lg border border-slate-300 focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none transition-shadow text-sm bg-white"
+                  >
+                    <option value="">Select...</option>
+                    <option value="Applied Science &amp; Engineering">Applied Science & Engineering</option>
+                    <option value="Architecture, Landscape &amp; Design">Architecture, Landscape & Design</option>
+                    <option value="Arts &amp; Science">Arts & Science</option>
+                    <option value="Continuing Studies">Continuing Studies</option>
+                    <option value="Dentistry">Dentistry</option>
+                    <option value="Education">Education</option>
+                    <option value="Information">Information</option>
+                    <option value="Kinesiology &amp; Physical Education">Kinesiology & Physical Education</option>
+                    <option value="Law">Law</option>
+                    <option value="Management">Management</option>
+                    <option value="Medicine">Medicine</option>
+                    <option value="Music">Music</option>
+                    <option value="Nursing">Nursing</option>
+                    <option value="Pharmacy">Pharmacy</option>
+                    <option value="Public Health">Public Health</option>
+                    <option value="Social Work">Social Work</option>
+                    <option value="University of Toronto Mississauga">University of Toronto Mississauga</option>
+                    <option value="University of Toronto Scarborough">University of Toronto Scarborough</option>
+                    <option value="Other">Other</option>
+                  </select>
+                </div>
+                
+                <!-- Affiliation Type -->
+                <div>
+                  <label class="block text-sm font-medium text-slate-700 mb-2">Affiliation Type</label>
+                  <div class="grid grid-cols-2 gap-2 text-sm">
+                    <label class="flex items-center gap-2 cursor-pointer">
+                      <input type="checkbox" name="group[12960][1]" class="rounded border-slate-300 text-emerald-600 focus:ring-emerald-500" />
+                      <span class="text-slate-600">Undergraduate</span>
+                    </label>
+                    <label class="flex items-center gap-2 cursor-pointer">
+                      <input type="checkbox" name="group[12960][4]" class="rounded border-slate-300 text-emerald-600 focus:ring-emerald-500" />
+                      <span class="text-slate-600">Graduate Student</span>
+                    </label>
+                    <label class="flex items-center gap-2 cursor-pointer">
+                      <input type="checkbox" name="group[12960][8]" class="rounded border-slate-300 text-emerald-600 focus:ring-emerald-500" />
+                      <span class="text-slate-600">Postdoc</span>
+                    </label>
+                    <label class="flex items-center gap-2 cursor-pointer">
+                      <input type="checkbox" name="group[12960][2]" class="rounded border-slate-300 text-emerald-600 focus:ring-emerald-500" />
+                      <span class="text-slate-600">Faculty</span>
+                    </label>
+                    <label class="flex items-center gap-2 cursor-pointer">
+                      <input type="checkbox" name="group[12960][16]" class="rounded border-slate-300 text-emerald-600 focus:ring-emerald-500" />
+                      <span class="text-slate-600">Librarian</span>
+                    </label>
+                    <label class="flex items-center gap-2 cursor-pointer">
+                      <input type="checkbox" name="group[12960][32]" class="rounded border-slate-300 text-emerald-600 focus:ring-emerald-500" />
+                      <span class="text-slate-600">UofT Staff</span>
+                    </label>
+                    <label class="flex items-center gap-2 cursor-pointer">
+                      <input type="checkbox" name="group[12960][64]" class="rounded border-slate-300 text-emerald-600 focus:ring-emerald-500" />
+                      <span class="text-slate-600">Alumni</span>
+                    </label>
+                    <label class="flex items-center gap-2 cursor-pointer">
+                      <input type="checkbox" name="group[12960][128]" class="rounded border-slate-300 text-emerald-600 focus:ring-emerald-500" />
+                      <span class="text-slate-600">External Partner</span>
+                    </label>
+                  </div>
+                </div>
+                
+                <!-- Honeypot field for spam protection -->
+                <div style="position: absolute; left: -5000px;" aria-hidden="true">
+                  <input type="text" name="b_2aa2e869966773113b0712d28_14f41f6d2f" tabindex="-1" value="" />
+                </div>
+                
+                <button 
+                  type="submit" 
+                  name="subscribe"
+                  class="w-full px-6 py-3 bg-emerald-600 text-white font-semibold rounded-xl hover:bg-emerald-700 transition-colors"
+                >
+                  Subscribe
+                </button>
+              </form>
+            </div>
+          </details>
+        </div>
+        
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>

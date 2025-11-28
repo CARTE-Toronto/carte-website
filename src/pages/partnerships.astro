@@ -1,0 +1,291 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+// Fetch all partnership services from content collection
+const allPartnerships = await getCollection('partnerships');
+
+// Split into featured and secondary, sorted by order
+const featuredServices = allPartnerships
+  .filter(p => p.data.featured)
+  .sort((a, b) => a.data.order - b.data.order);
+
+const secondaryServices = allPartnerships
+  .filter(p => !p.data.featured)
+  .sort((a, b) => a.data.order - b.data.order);
+---
+
+<BaseLayout title="Partnerships" description="Partner with CARTE for sponsored research, corporate training, AI consulting, and more.">
+  <!-- Hero Section -->
+  <section class="relative overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-24">
+      <div class="max-w-3xl">
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-[var(--color-uoft-blue)] leading-tight mb-6">
+          Partner With<br/>
+          <span class="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">World-Class AI Expertise</span>
+        </h1>
+        <p class="text-xl text-slate-600 leading-relaxed">
+          From sponsored research to hands-on training, we offer multiple pathways to apply AI in your organization. Connect with 100+ faculty across 8 engineering departments — and let us help you navigate funding programs like NSERC Alliance and MITACS.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Services Section (Static Grid) -->
+  <section class="py-20 lg:py-28">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-[var(--color-uoft-blue)] mb-4">How We Work With Partners</h2>
+        <p class="text-lg text-slate-600 max-w-2xl mx-auto">From sponsored research to hands-on training, we offer multiple ways to engage with U of T's AI expertise.</p>
+      </div>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {featuredServices.map((service, index) => (
+          <article class="group relative bg-white rounded-2xl shadow-lg shadow-slate-200/50 overflow-hidden hover:shadow-xl hover:shadow-slate-300/50 transition-all duration-500 hover:-translate-y-1">
+            <!-- Visual placeholder with gradient and pattern -->
+            <div class={`relative h-56 bg-gradient-to-br ${service.data.gradient} overflow-hidden`}>
+              <!-- Abstract pattern overlay -->
+              {service.data.pattern === "research" && (
+                <svg class="absolute inset-0 w-full h-full opacity-20" viewBox="0 0 400 200" preserveAspectRatio="xMidYMid slice">
+                  <g fill="white">
+                    <!-- Abstract research/discovery shapes -->
+                    <circle cx="100" cy="100" r="40" fill="none" stroke="white" stroke-width="3"/>
+                    <circle cx="100" cy="100" r="25" fill="none" stroke="white" stroke-width="2"/>
+                    <circle cx="100" cy="100" r="8"/>
+                    <path d="M140 100 h60" stroke="white" stroke-width="2"/>
+                    <path d="M220 80 L260 100 L220 120" fill="none" stroke="white" stroke-width="2"/>
+                    <circle cx="300" cy="100" r="30" fill="none" stroke="white" stroke-width="2"/>
+                    <circle cx="300" cy="100" r="15"/>
+                  </g>
+                </svg>
+              )}
+              {service.data.pattern === "training" && (
+                <svg class="absolute inset-0 w-full h-full opacity-20" viewBox="0 0 400 200" preserveAspectRatio="xMidYMid slice">
+                  <g fill="white">
+                    <!-- Desks/classroom -->
+                    <rect x="30" y="120" width="80" height="10" rx="2"/>
+                    <rect x="160" y="120" width="80" height="10" rx="2"/>
+                    <rect x="290" y="120" width="80" height="10" rx="2"/>
+                    <rect x="30" y="160" width="80" height="10" rx="2"/>
+                    <rect x="160" y="160" width="80" height="10" rx="2"/>
+                    <rect x="290" y="160" width="80" height="10" rx="2"/>
+                    <rect x="120" y="30" width="160" height="60" rx="4"/>
+                  </g>
+                </svg>
+              )}
+              {service.data.pattern === "consulting" && (
+                <svg class="absolute inset-0 w-full h-full opacity-15" viewBox="0 0 400 200" preserveAspectRatio="xMidYMid slice">
+                  <defs>
+                    <pattern id={`consulting-${index}`} width="50" height="50" patternUnits="userSpaceOnUse">
+                      <circle cx="25" cy="25" r="4" fill="white"/>
+                      <path d="M25 0v21M25 29v21M0 25h21M29 25h21" stroke="white" stroke-width="1"/>
+                    </pattern>
+                  </defs>
+                  <rect width="100%" height="100%" fill={`url(#consulting-${index})`}/>
+                  <circle cx="200" cy="100" r="60" stroke="white" stroke-width="3" fill="none"/>
+                  <circle cx="200" cy="100" r="30" stroke="white" stroke-width="2" fill="none"/>
+                </svg>
+              )}
+              {service.data.pattern === "network" && (
+                <svg class="absolute inset-0 w-full h-full opacity-15" viewBox="0 0 400 200" preserveAspectRatio="xMidYMid slice">
+                  <defs>
+                    <pattern id={`network-${index}`} width="50" height="50" patternUnits="userSpaceOnUse">
+                      <circle cx="25" cy="25" r="4" fill="white"/>
+                      <path d="M25 0v21M25 29v21M0 25h21M29 25h21" stroke="white" stroke-width="1"/>
+                    </pattern>
+                  </defs>
+                  <rect width="100%" height="100%" fill={`url(#network-${index})`}/>
+                </svg>
+              )}
+              
+              <!-- Decorative bottom curve -->
+              <div class="absolute bottom-0 left-0 right-0 h-8 bg-white" style="clip-path: ellipse(70% 100% at 50% 100%);"></div>
+            </div>
+            
+            <div class="p-6 pt-2">
+              <!-- Tags -->
+              <div class="flex flex-wrap gap-2 mb-3">
+                {service.data.tags.map(tag => (
+                  <span class="px-2.5 py-0.5 text-xs font-semibold rounded-full bg-blue-50 text-blue-700">{tag}</span>
+                ))}
+              </div>
+              
+              <h3 class="text-lg font-bold text-[var(--color-uoft-blue)] mb-3 leading-snug group-hover:text-blue-700 transition-colors">
+                {service.data.title}
+              </h3>
+              
+              <p class="text-slate-600 text-sm leading-relaxed mb-4">
+                {service.data.description}
+              </p>
+              
+              {service.data.link && (
+                <a href={service.data.link} class="inline-flex items-center text-sm font-semibold text-blue-600 hover:text-blue-800 transition-colors">
+                  Learn more
+                  <svg class="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                  </svg>
+                </a>
+              )}
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Additional Engagement Options Carousel -->
+  <section class="py-20 bg-gradient-to-b from-slate-50 to-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between mb-12">
+        <div>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-[var(--color-uoft-blue)] mb-4">Additional Engagement Options</h2>
+          <p class="text-lg text-slate-600 max-w-2xl">More ways to connect with CARTE and the U of T engineering community.</p>
+        </div>
+        <!-- Carousel Navigation -->
+        <div class="flex items-center gap-3 mt-6 sm:mt-0">
+          <button 
+            id="carousel-prev" 
+            class="w-10 h-10 rounded-full bg-white border border-slate-200 flex items-center justify-center hover:bg-blue-50 hover:border-blue-300 transition-colors shadow-sm disabled:opacity-40 disabled:cursor-not-allowed"
+            aria-label="Previous"
+          >
+            <svg class="w-5 h-5 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+            </svg>
+          </button>
+          <button 
+            id="carousel-next" 
+            class="w-10 h-10 rounded-full bg-white border border-slate-200 flex items-center justify-center hover:bg-blue-50 hover:border-blue-300 transition-colors shadow-sm disabled:opacity-40 disabled:cursor-not-allowed"
+            aria-label="Next"
+          >
+            <svg class="w-5 h-5 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+      
+      <!-- Carousel Container -->
+      <div class="relative -mx-4 px-4">
+        <div 
+          id="partnerships-carousel" 
+          class="flex gap-6 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-4 -mb-4"
+          style="scrollbar-width: none; -ms-overflow-style: none;"
+        >
+          {secondaryServices.map((service) => (
+            <article class="group bg-white rounded-xl border border-slate-200 p-6 hover:border-blue-300 hover:shadow-lg hover:shadow-blue-100/50 transition-all duration-300 flex-shrink-0 w-[320px] snap-start">
+              <!-- Icon -->
+              <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-slate-100 to-slate-50 flex items-center justify-center mb-4 group-hover:from-blue-100 group-hover:to-blue-50 transition-colors">
+                {service.data.icon === "academic" && (
+                  <svg class="w-6 h-6 text-slate-600 group-hover:text-blue-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5z"/>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"/>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222"/>
+                  </svg>
+                )}
+                {service.data.icon === "beaker" && (
+                  <svg class="w-6 h-6 text-slate-600 group-hover:text-blue-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/>
+                  </svg>
+                )}
+                {service.data.icon === "briefcase" && (
+                  <svg class="w-6 h-6 text-slate-600 group-hover:text-blue-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                  </svg>
+                )}
+                {service.data.icon === "users" && (
+                  <svg class="w-6 h-6 text-slate-600 group-hover:text-blue-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
+                  </svg>
+                )}
+                {service.data.icon === "mic" && (
+                  <svg class="w-6 h-6 text-slate-600 group-hover:text-blue-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"/>
+                  </svg>
+                )}
+                {service.data.icon === "trophy" && (
+                  <svg class="w-6 h-6 text-slate-600 group-hover:text-blue-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/>
+                  </svg>
+                )}
+              </div>
+              
+              <!-- Tags -->
+              <div class="flex flex-wrap gap-2 mb-3">
+                {service.data.tags.map(tag => (
+                  <span class="px-2 py-0.5 text-xs font-medium rounded bg-slate-100 text-slate-600">{tag}</span>
+                ))}
+              </div>
+              
+              <h3 class="text-base font-bold text-[var(--color-uoft-blue)] mb-2 leading-snug group-hover:text-blue-700 transition-colors">
+                {service.data.title}
+              </h3>
+              
+              <p class="text-slate-600 text-sm leading-relaxed">
+                {service.data.description}
+              </p>
+            </article>
+          ))}
+        </div>
+        
+        <!-- Fade edges -->
+        <div class="absolute left-0 top-0 bottom-4 w-8 bg-gradient-to-r from-slate-50 to-transparent pointer-events-none"></div>
+        <div class="absolute right-0 top-0 bottom-4 w-8 bg-gradient-to-l from-slate-50 to-transparent pointer-events-none"></div>
+      </div>
+    </div>
+  </section>
+  
+  <style>
+    #partnerships-carousel::-webkit-scrollbar {
+      display: none;
+    }
+  </style>
+  
+  <script>
+    const carousel = document.getElementById('partnerships-carousel');
+    const prevBtn = document.getElementById('carousel-prev');
+    const nextBtn = document.getElementById('carousel-next');
+    const cardWidth = 320 + 24; // card width + gap
+    
+    function updateButtons() {
+      if (prevBtn && nextBtn && carousel) {
+        prevBtn.disabled = carousel.scrollLeft <= 0;
+        nextBtn.disabled = carousel.scrollLeft >= carousel.scrollWidth - carousel.clientWidth - 10;
+      }
+    }
+    
+    prevBtn?.addEventListener('click', () => {
+      carousel?.scrollBy({ left: -cardWidth, behavior: 'smooth' });
+    });
+    
+    nextBtn?.addEventListener('click', () => {
+      carousel?.scrollBy({ left: cardWidth, behavior: 'smooth' });
+    });
+    
+    carousel?.addEventListener('scroll', updateButtons);
+    updateButtons();
+  </script>
+
+  <!-- CTA Section -->
+  <section class="py-20">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div class="bg-gradient-to-br from-[var(--color-uoft-blue)] to-indigo-900 rounded-3xl p-12 shadow-2xl shadow-indigo-900/20">
+        <h2 class="text-3xl font-extrabold text-white mb-4">Ready to Partner?</h2>
+        <p class="text-lg text-indigo-200 mb-8 max-w-2xl mx-auto">
+          Whether you're exploring AI applications, looking to upskill your team, or seeking research collaboration—we're here to help you succeed.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="mailto:carte@utoronto.ca" class="inline-flex items-center justify-center px-8 py-3 rounded-xl bg-white text-[var(--color-uoft-blue)] font-bold hover:bg-blue-50 transition-colors">
+            Get in Touch
+            <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+            </svg>
+          </a>
+          <a href="/contact" class="inline-flex items-center justify-center px-8 py-3 rounded-xl bg-indigo-800/50 text-white font-bold hover:bg-indigo-800 transition-colors border border-indigo-600">
+            Contact Page
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+

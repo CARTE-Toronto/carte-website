@@ -1,0 +1,319 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+// Fetch all research papers from content collection
+const allResearch = await getCollection('research');
+
+// Split into featured and secondary, sorted by order
+const featuredResearch = allResearch
+  .filter(paper => paper.data.featured)
+  .sort((a, b) => a.data.order - b.data.order);
+
+const secondaryResearch = allResearch
+  .filter(paper => !paper.data.featured)
+  .sort((a, b) => a.data.order - b.data.order);
+---
+
+<BaseLayout title="Research" description="CARTE-supported research publications spanning computer vision, healthcare AI, sustainability, and more.">
+  <!-- Hero Section -->
+  <section class="relative overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-24">
+      <div class="max-w-3xl">
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-[var(--color-uoft-blue)] leading-tight mb-6">
+          Applied AI Research<br/>
+          <span class="bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">That Translates</span>
+        </h1>
+        <p class="text-xl text-slate-600 leading-relaxed">
+          CARTE supports collaborative research designed for real-world impact — bridging AI with civil engineering, healthcare, sustainability, and beyond. We help partners navigate funding and connect with faculty who can solve their specific challenges.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Research Section (Static Grid) -->
+  <section class="py-20 lg:py-28">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-[var(--color-uoft-blue)] mb-4">Featured Publications</h2>
+        <p class="text-lg text-slate-600 max-w-2xl mx-auto">CARTE-supported research solving real engineering challenges — from building science to healthcare to sustainability.</p>
+      </div>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {featuredResearch.map((paper, index) => (
+          <article class="group relative bg-white rounded-2xl shadow-lg shadow-slate-200/50 overflow-hidden hover:shadow-xl hover:shadow-slate-300/50 transition-all duration-500 hover:-translate-y-1">
+            <!-- Visual placeholder with gradient and pattern -->
+            <div class={`relative h-56 bg-gradient-to-br ${paper.data.gradient} overflow-hidden`}>
+              <!-- Abstract pattern overlay -->
+              {paper.data.pattern === "buildings" && (
+                <svg class="absolute inset-0 w-full h-full opacity-20" viewBox="0 0 400 200" preserveAspectRatio="xMidYMid slice">
+                  <rect x="20" y="80" width="40" height="120" fill="white" rx="2"/>
+                  <rect x="70" y="40" width="50" height="160" fill="white" rx="2"/>
+                  <rect x="130" y="100" width="35" height="100" fill="white" rx="2"/>
+                  <rect x="175" y="60" width="45" height="140" fill="white" rx="2"/>
+                  <rect x="230" y="90" width="40" height="110" fill="white" rx="2"/>
+                  <rect x="280" y="50" width="55" height="150" fill="white" rx="2"/>
+                  <rect x="345" y="70" width="40" height="130" fill="white" rx="2"/>
+                </svg>
+              )}
+              {paper.data.pattern === "houses" && (
+                <svg class="absolute inset-0 w-full h-full opacity-20" viewBox="0 0 400 200" preserveAspectRatio="xMidYMid slice">
+                  <g fill="white">
+                    <polygon points="50,120 80,90 110,120 110,160 50,160"/>
+                    <polygon points="140,100 180,60 220,100 220,160 140,160"/>
+                    <polygon points="250,110 290,70 330,110 330,160 250,160"/>
+                    <rect x="55" y="130" width="15" height="30"/>
+                    <rect x="85" y="125" width="12" height="15"/>
+                    <rect x="165" y="115" width="20" height="45"/>
+                    <rect x="195" y="110" width="15" height="20"/>
+                    <rect x="275" y="125" width="18" height="35"/>
+                    <rect x="300" y="120" width="12" height="15"/>
+                  </g>
+                </svg>
+              )}
+              {paper.data.pattern === "digital" && (
+                <svg class="absolute inset-0 w-full h-full opacity-15" viewBox="0 0 400 200" preserveAspectRatio="xMidYMid slice">
+                  <defs>
+                    <pattern id={`circuit-${index}`} width="40" height="40" patternUnits="userSpaceOnUse">
+                      <circle cx="20" cy="20" r="3" fill="white"/>
+                      <path d="M20 0v17M20 23v17M0 20h17M23 20h17" stroke="white" stroke-width="1.5"/>
+                    </pattern>
+                  </defs>
+                  <rect width="100%" height="100%" fill={`url(#circuit-${index})`}/>
+                  <circle cx="100" cy="100" r="40" stroke="white" stroke-width="2" fill="none" opacity="0.5"/>
+                  <circle cx="300" cy="80" r="50" stroke="white" stroke-width="2" fill="none" opacity="0.3"/>
+                </svg>
+              )}
+              
+              <!-- Year badge -->
+              <div class="absolute top-4 right-4 px-3 py-1 bg-white/20 backdrop-blur-sm rounded-full text-white text-sm font-bold">
+                {paper.data.year}
+              </div>
+              
+              <!-- Decorative bottom curve -->
+              <div class="absolute bottom-0 left-0 right-0 h-8 bg-white" style="clip-path: ellipse(70% 100% at 50% 100%);"></div>
+            </div>
+            
+            <div class="p-6 pt-2">
+              <!-- Tags -->
+              <div class="flex flex-wrap gap-2 mb-3">
+                {paper.data.tags.map(tag => (
+                  <span class="px-2.5 py-0.5 text-xs font-semibold rounded-full bg-indigo-50 text-indigo-700">{tag}</span>
+                ))}
+              </div>
+              
+              <h3 class="text-lg font-bold text-[var(--color-uoft-blue)] mb-2 leading-snug group-hover:text-indigo-700 transition-colors">
+                {paper.data.title}
+              </h3>
+              
+              <p class="text-sm text-slate-500 mb-3">
+                {paper.data.authors}
+              </p>
+              
+              <p class="text-slate-600 text-sm leading-relaxed mb-4">
+                {paper.data.description}
+              </p>
+              
+              <div class="flex items-center justify-between pt-4 border-t border-slate-100">
+                <span class="text-xs font-medium text-slate-400 uppercase tracking-wide">{paper.data.venue}</span>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Research Portfolio Carousel Section -->
+  <section class="py-20 bg-gradient-to-b from-slate-50 to-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between mb-12">
+        <div>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-[var(--color-uoft-blue)] mb-4">Research Portfolio</h2>
+          <p class="text-lg text-slate-600 max-w-2xl">Collaborative research across 8 engineering departments — with a focus on practical applications and real-world impact.</p>
+        </div>
+        <!-- Carousel Navigation -->
+        <div class="flex items-center gap-3 mt-6 sm:mt-0">
+          <span class="text-sm text-slate-500 mr-2">{secondaryResearch.length} publications</span>
+          <button 
+            id="carousel-prev" 
+            class="w-10 h-10 rounded-full bg-white border border-slate-200 flex items-center justify-center hover:bg-indigo-50 hover:border-indigo-300 transition-colors shadow-sm disabled:opacity-40 disabled:cursor-not-allowed"
+            aria-label="Previous"
+          >
+            <svg class="w-5 h-5 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+            </svg>
+          </button>
+          <button 
+            id="carousel-next" 
+            class="w-10 h-10 rounded-full bg-white border border-slate-200 flex items-center justify-center hover:bg-indigo-50 hover:border-indigo-300 transition-colors shadow-sm disabled:opacity-40 disabled:cursor-not-allowed"
+            aria-label="Next"
+          >
+            <svg class="w-5 h-5 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+      
+      <!-- Carousel Container -->
+      <div class="relative -mx-4 px-4">
+        <div 
+          id="portfolio-carousel" 
+          class="flex gap-6 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-4 -mb-4"
+          style="scrollbar-width: none; -ms-overflow-style: none;"
+        >
+          {secondaryResearch.map((paper) => (
+            <article class="group bg-white rounded-xl border border-slate-200 p-6 hover:border-indigo-300 hover:shadow-lg hover:shadow-indigo-100/50 transition-all duration-300 flex-shrink-0 w-[320px] snap-start">
+              <!-- Icon -->
+              <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-slate-100 to-slate-50 flex items-center justify-center mb-4 group-hover:from-indigo-100 group-hover:to-indigo-50 transition-colors">
+                {paper.data.icon === "database" && (
+                  <svg class="w-6 h-6 text-slate-600 group-hover:text-indigo-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4"/>
+                  </svg>
+                )}
+                {paper.data.icon === "health" && (
+                  <svg class="w-6 h-6 text-slate-600 group-hover:text-indigo-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+                  </svg>
+                )}
+                {paper.data.icon === "air" && (
+                  <svg class="w-6 h-6 text-slate-600 group-hover:text-indigo-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"/>
+                  </svg>
+                )}
+                {paper.data.icon === "code" && (
+                  <svg class="w-6 h-6 text-slate-600 group-hover:text-indigo-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/>
+                  </svg>
+                )}
+                {paper.data.icon === "chart" && (
+                  <svg class="w-6 h-6 text-slate-600 group-hover:text-indigo-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+                  </svg>
+                )}
+                {paper.data.icon === "globe" && (
+                  <svg class="w-6 h-6 text-slate-600 group-hover:text-indigo-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                  </svg>
+                )}
+                {paper.data.icon === "houses" && (
+                  <svg class="w-6 h-6 text-slate-600 group-hover:text-indigo-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+                  </svg>
+                )}
+                {paper.data.icon === "people" && (
+                  <svg class="w-6 h-6 text-slate-600 group-hover:text-indigo-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
+                  </svg>
+                )}
+              </div>
+              
+              <!-- Tags -->
+              <div class="flex flex-wrap gap-2 mb-3">
+                {paper.data.tags.map(tag => (
+                  <span class="px-2 py-0.5 text-xs font-medium rounded bg-slate-100 text-slate-600">{tag}</span>
+                ))}
+              </div>
+              
+              <h3 class="text-base font-bold text-[var(--color-uoft-blue)] mb-2 leading-snug group-hover:text-indigo-700 transition-colors line-clamp-2">
+                {paper.data.title}
+              </h3>
+              
+              <p class="text-sm text-slate-500 mb-3 line-clamp-1">
+                {paper.data.authors}
+              </p>
+              
+              <p class="text-slate-600 text-sm leading-relaxed mb-4 line-clamp-3">
+                {paper.data.description}
+              </p>
+              
+              <div class="flex items-center gap-2 text-xs text-slate-400">
+                <span class="font-medium">{paper.data.venue}</span>
+                <span>•</span>
+                <span>{paper.data.year}</span>
+              </div>
+            </article>
+          ))}
+        </div>
+        
+        <!-- Fade edges -->
+        <div class="absolute left-0 top-0 bottom-4 w-8 bg-gradient-to-r from-slate-50 to-transparent pointer-events-none"></div>
+        <div class="absolute right-0 top-0 bottom-4 w-8 bg-gradient-to-l from-slate-50 to-transparent pointer-events-none"></div>
+      </div>
+    </div>
+  </section>
+  
+  <style>
+    #portfolio-carousel::-webkit-scrollbar {
+      display: none;
+    }
+    .line-clamp-1 {
+      display: -webkit-box;
+      -webkit-line-clamp: 1;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .line-clamp-2 {
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .line-clamp-3 {
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+  </style>
+  
+  <script>
+    const carousel = document.getElementById('portfolio-carousel');
+    const prevBtn = document.getElementById('carousel-prev');
+    const nextBtn = document.getElementById('carousel-next');
+    const cardWidth = 320 + 24; // card width + gap
+    
+    function updateButtons() {
+      if (prevBtn && nextBtn && carousel) {
+        prevBtn.disabled = carousel.scrollLeft <= 0;
+        nextBtn.disabled = carousel.scrollLeft >= carousel.scrollWidth - carousel.clientWidth - 10;
+      }
+    }
+    
+    prevBtn?.addEventListener('click', () => {
+      carousel?.scrollBy({ left: -cardWidth, behavior: 'smooth' });
+    });
+    
+    nextBtn?.addEventListener('click', () => {
+      carousel?.scrollBy({ left: cardWidth, behavior: 'smooth' });
+    });
+    
+    carousel?.addEventListener('scroll', updateButtons);
+    updateButtons();
+  </script>
+
+  <!-- CTA Section -->
+  <section class="py-20">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div class="bg-gradient-to-br from-[var(--color-uoft-blue)] to-indigo-900 rounded-3xl p-12 shadow-2xl shadow-indigo-900/20">
+        <h2 class="text-3xl font-extrabold text-white mb-4">Collaborate With Us</h2>
+        <p class="text-lg text-indigo-200 mb-8 max-w-2xl mx-auto">
+          Whether you're a faculty member seeking AI expertise, an industry partner looking to sponsor research, or a student interested in applied AI projects—we're here to help.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="/contact" class="inline-flex items-center justify-center px-8 py-3 rounded-xl bg-white text-[var(--color-uoft-blue)] font-bold hover:bg-indigo-50 transition-colors">
+            Get in Touch
+            <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+            </svg>
+          </a>
+          <a href="/about" class="inline-flex items-center justify-center px-8 py-3 rounded-xl bg-indigo-800/50 text-white font-bold hover:bg-indigo-800 transition-colors border border-indigo-600">
+            About CARTE
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+

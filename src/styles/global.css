@@ -1,0 +1,28 @@
+@import "tailwindcss";
+
+@theme {
+  /* Deep, rich text color (almost black navy) */
+  --color-uoft-blue: #112338;
+  
+  /* A youthful, vibrant accent - "Electric Indigo" to replace the muted steel */
+  --color-uoft-accent: #6366F1; 
+  
+  /* A warm pop color for interactions - "Sunray" */
+  --color-pop: #F59E0B;
+  
+  --color-pale-bg: #FDFBF7;
+  
+  --font-sans: 'Host Grotesk', system-ui, sans-serif;
+}
+
+@layer base {
+  body {
+    @apply antialiased text-gray-800;
+    background-color: var(--color-pale-bg);
+    /* Dot pattern is now rendered by InteractiveDots canvas component */
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-sans font-extrabold;
+  }
+}

@@ -1,0 +1,44 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+  href: string;
+  date?: Date;
+  tag?: string;
+}
+
+const { title, description, href, date, tag } = Astro.props;
+---
+
+<a href={href} class="block h-full group">
+  <div class="bg-white rounded-3xl p-1 shadow-sm border border-stone-100 hover:shadow-xl hover:scale-[1.02] transition-all duration-300 h-full flex flex-col">
+    <div class="p-6 flex-grow rounded-[1.3rem] bg-white">
+      {tag && (
+        <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-blue-50 text-uoft-accent mb-4 tracking-wide uppercase">
+          {tag}
+        </span>
+      )}
+      <h3 class="text-2xl font-serif font-bold text-gray-900 group-hover:text-uoft-accent transition-colors leading-tight">
+        {title}
+      </h3>
+      {date && (
+        <p class="text-sm text-gray-500 mt-2 font-medium">
+          {date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+        </p>
+      )}
+      {description && (
+        <p class="mt-4 text-base text-gray-600 line-clamp-3 leading-relaxed">
+          {description}
+        </p>
+      )}
+    </div>
+    <div class="px-8 pb-6 pt-2 mt-auto">
+      <span class="inline-flex items-center text-sm font-bold text-uoft-blue group-hover:text-uoft-accent transition-colors">
+        Read more
+        <svg class="ml-2 w-5 h-5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+        </svg>
+      </span>
+    </div>
+  </div>
+</a>
