@@ -8,6 +8,7 @@ on:
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}
+  IMAGE_NAME_LOWER: carte-toronto/carte-website
 
 jobs:
   build:
@@ -55,7 +56,7 @@ jobs:
             cat > ~/carte/docker-compose.yml << 'EOF'
             services:
               web:
-                image: ghcr.io/${{ github.repository }}:latest
+                image: ghcr.io/carte-toronto/carte-website:latest
                 container_name: carte-web
                 restart: unless-stopped
                 ports:
