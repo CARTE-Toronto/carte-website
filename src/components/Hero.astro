@@ -30,13 +30,13 @@ const organicShapeBorderRadius = generateOrganicShape();
           <p class="mt-6 text-lg text-gray-600 sm:mt-8 sm:text-xl sm:max-w-xl sm:mx-auto md:mt-8 md:text-xl lg:mx-0 font-normal leading-relaxed">
             One partnership connects you to AI expertise across the entirety of U of T Engineering.<br><br>From executive workshops to multi-year research collaborations, we help you move AI from concept to practice.
           </p>
-          <div class="mt-8 sm:mt-10 sm:flex sm:justify-center lg:justify-start gap-4">
+          <div class="mt-8 sm:mt-10 flex flex-col sm:flex-row sm:justify-center lg:justify-start gap-4">
             <div class="rounded-full shadow-lg hover:shadow-xl transition-shadow">
               <a href="/partnerships" class="w-full flex items-center justify-center px-8 py-4 border border-transparent text-lg font-medium rounded-full text-white bg-uoft-blue hover:bg-uoft-accent md:py-4 md:text-lg md:px-10 font-sans transition-all duration-300">
                 Partner With Us
               </a>
             </div>
-            <div class="">
+            <div>
               <a href="/training" class="w-full flex items-center justify-center px-8 py-4 border-2 border-uoft-blue text-lg font-medium rounded-full text-uoft-blue bg-transparent hover:bg-blue-50 md:py-4 md:text-lg md:px-10 font-sans transition-colors">
                 Build AI Skills
               </a>
@@ -132,8 +132,8 @@ const organicShapeBorderRadius = generateOrganicShape();
     </div>
   </div>
   
-  <!-- Soft organic shape for the image container -->
-  <div class="lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2 p-4 lg:p-12 flex items-center justify-center">
+  <!-- Soft organic shape for the image container (hidden on mobile/tablet) -->
+  <div class="hidden lg:flex lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2 p-4 lg:p-12 items-center justify-center">
      <div class="w-full h-96 lg:h-full bg-gradient-to-br from-uoft-blue to-uoft-accent shadow-2xl flex items-center justify-center overflow-hidden relative organic-shape" style={`border-radius: ${organicShapeBorderRadius}`}>
         <Image src={heroImage} alt="CARTE" class="w-full h-full object-cover" loading="eager" />
         <div class="absolute inset-0 bg-gradient-to-br from-uoft-blue/40 to-uoft-accent/40"></div>

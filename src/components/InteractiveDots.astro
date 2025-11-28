@@ -45,9 +45,10 @@ const { scrollColorTransition = false } = Astro.props;
   const DARK_DOT_ACTIVE_OPACITY = 0.35;
   const DARK_LINE_MAX_OPACITY = 0.25;
   
-  // Scroll transition config
-  const TRANSITION_START = 0.45;  // Start transitioning at 45% scroll
-  const TRANSITION_END = 0.75;    // Fully dark by 75% scroll
+  // Scroll transition config (mobile transitions faster)
+  const isMobile = window.innerWidth < 640;
+  const TRANSITION_START = isMobile ? 0.25 : 0.55;  // Start transitioning at 25% (mobile) or 55% (desktop)
+  const TRANSITION_END = isMobile ? 0.45 : 0.85;    // Fully dark by 45% (mobile) or 85% (desktop)
   
   let mouseX = -1000;
   let mouseY = -1000;
