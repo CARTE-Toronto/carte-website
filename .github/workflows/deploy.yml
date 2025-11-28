@@ -77,6 +77,5 @@ jobs:
         run: |
           echo "Waiting for deployment to stabilize..."
           sleep 30
-          curl -f --retry 3 --retry-delay 10 https://${{ secrets.DEPLOY_HOST }}/ \
-            || curl -f --retry 3 --retry-delay 10 http://${{ secrets.DEPLOY_HOST }}/
+          curl -f --retry 3 --retry-delay 10 http://${{ secrets.DEPLOY_HOST }}/
 

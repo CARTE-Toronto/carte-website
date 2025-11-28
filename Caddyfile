@@ -1,9 +1,4 @@
-{
-    # UPDATE: Use a real email for Let's Encrypt notifications
-    email carte@utoronto.ca
-}
-
-carte.utoronto.ca {
+:80 {
     root * /srv
     file_server
 
@@ -12,4 +7,3 @@ carte.utoronto.ca {
 
     try_files {path} {path}/ {path}/index.html {path}.html
 }
-
