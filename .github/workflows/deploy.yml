@@ -51,8 +51,8 @@ jobs:
           key: ${{ secrets.DEPLOY_SSH_KEY }}
           envs: GITHUB_REPOSITORY
           script: |
-            mkdir -p /opt/carte
-            cat > /opt/carte/docker-compose.yml << 'EOF'
+            mkdir -p ~/carte
+            cat > ~/carte/docker-compose.yml << 'EOF'
             services:
               web:
                 image: ghcr.io/${{ github.repository }}:latest
@@ -68,7 +68,7 @@ jobs:
               caddy_data:
               caddy_config:
             EOF
-            cd /opt/carte
+            cd ~/carte
             docker compose pull
             docker compose up -d
             docker image prune -f
