@@ -13,7 +13,7 @@ testimonial:
   attribution: "Project lead, 2022"
 ---
 
-Beyond training, CARTE provides ongoing guidance on applied AI projects, helping your organization identify opportunities and execute initiatives that deliver measurable results.
+Beyond training, Carte provides ongoing guidance on applied AI projects, helping your organization identify opportunities and execute initiatives that deliver measurable results.
 
 **What we offer:**
 - Project scoping and feasibility assessment

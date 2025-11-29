@@ -10,7 +10,7 @@ tags: ["Education", "GenAI", "Workshops"]
 order: 15
 ---
 
-CARTE has delivered multiple workshops to help educators navigate the opportunities and challenges of large language models in teaching and learning.
+Carte has delivered multiple workshops to help educators navigate the opportunities and challenges of large language models in teaching and learning.
 
 **Representative sessions:**
 - *ChatGPT in the Classroom* – practical strategies for responsible use of LLMs in courses

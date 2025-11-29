@@ -3,7 +3,7 @@ title: "Genomic Data Science Intensive"
 audience: "Clinical & Genomics Researchers"
 duration: "3 days"
 year: 2024
-description: "Intensive training at Princess Margaret Hospital on applying machine learning to genomic and clinical data, adapted from CARTE's researcher training programs."
+description: "Intensive training at Princess Margaret Hospital on applying machine learning to genomic and clinical data, adapted from Carte's researcher training programs."
 featured: false
 icon: "flask"
 tags: ["Biomedical", "Genomics", "Deep Learning"]
@@ -22,5 +22,5 @@ This three-day program was delivered in collaboration with Princess Margaret Hos
 - Deep learning techniques for high-dimensional biological data
 - Discussion of data governance, privacy, and reproducibility in clinical research
 
-The program was adapted from CARTE's established researcher training and tailored to the needs of genomics and clinical teams at PMH.
+The program was adapted from Carte's established researcher training and tailored to the needs of genomics and clinical teams at PMH.
 

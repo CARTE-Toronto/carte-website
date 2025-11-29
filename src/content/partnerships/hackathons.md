@@ -7,7 +7,7 @@ tags: ["Events", "Students", "Innovation"]
 order: 6
 ---
 
-Partner with CARTE to run student competitions focused on emerging AI methodologies and technologies.
+Partner with Carte to run student competitions focused on emerging AI methodologies and technologies.
 
 **Past examples:**
 - Robotic Process Automation hackathon with Wrk and Blue Prism (2022)

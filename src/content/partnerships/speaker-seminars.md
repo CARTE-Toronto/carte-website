@@ -7,7 +7,7 @@ tags: ["Events", "Networking"]
 order: 5
 ---
 
-CARTE hosts industry speaker seminars where practitioners share insights on AI applications in their industries.
+Carte hosts industry speaker seminars where practitioners share insights on AI applications in their industries.
 
 **Why participate:**
 - Showcase your organization's AI capabilities

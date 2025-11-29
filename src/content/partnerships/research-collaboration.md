@@ -9,7 +9,7 @@ order: 1
 link: "/research"
 ---
 
-CARTE connects industry partners with leading faculty researchers at the University of Toronto to tackle applied AI challenges in your domain.
+Carte connects industry partners with leading faculty researchers at the University of Toronto to tackle applied AI challenges in your domain.
 
 **What we offer:**
 - Facilitated introductions to faculty affiliates with relevant expertise

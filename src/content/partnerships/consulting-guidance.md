@@ -8,7 +8,7 @@ tags: ["Consulting", "Projects", "Strategy"]
 order: 3
 ---
 
-Beyond training and research, CARTE provides hands-on consulting to help your organization successfully implement AI initiatives.
+Beyond training and research, Carte provides hands-on consulting to help your organization successfully implement AI initiatives.
 
 **How we help:**
 - Project scoping and feasibility assessment

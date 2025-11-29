@@ -13,7 +13,7 @@ testimonial:
   attribution: "Mitsubishi participant, 2025"
 ---
 
-CARTE partnered with Mitsubishi Corporation Americas to deliver an AI intensive hosted at the M-Lab in Toronto.
+Carte partnered with Mitsubishi Corporation Americas to deliver an AI intensive hosted at the M-Lab in Toronto.
 
 **Program components:**
 - Executive-level overview of AI capabilities and industry trends
@@ -22,5 +22,5 @@ CARTE partnered with Mitsubishi Corporation Americas to deliver an AI intensive 
 - Group exercises to identify high-impact AI use cases within Mitsubishi
 - Discussion of organizational readiness, data strategy, and governance
 
-The program built on CARTE's technical training, tailored specifically to Mitsubishi's innovation and strategy teams.
+The program built on Carte's technical training, tailored specifically to Mitsubishi's innovation and strategy teams.
 
