@@ -1,17 +1,6 @@
 import { defineCollection, z } from 'astro:content';
 import { glob } from 'astro/loaders';
 
-const people = defineCollection({
-  loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/content/people" }),
-  schema: z.object({
-    name: z.string(),
-    role: z.string(),
-    department: z.string().optional(),
-    image: z.string().optional(),
-    order: z.number().default(99),
-  }),
-});
-
 const research = defineCollection({
   loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/content/research" }),
   schema: z.object({
@@ -74,7 +63,6 @@ const partnerships = defineCollection({
 });
 
 export const collections = {
-  people,
   research,
   training,
   partnerships,

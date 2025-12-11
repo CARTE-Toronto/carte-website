@@ -25,7 +25,7 @@ const secondaryServices = allPartnerships
           <span class="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">World-Class AI Expertise</span>
         </h1>
         <p class="text-xl text-slate-600 leading-relaxed">
-          From sponsored research to hands-on training, we offer multiple pathways to apply AI in your organization. Connect with 100+ faculty across 8 engineering departments — and let us help you navigate funding programs like NSERC Alliance and MITACS.
+          From sponsored research to hands-on training, we offer multiple pathways to apply AI in your organization. Connect with 100+ faculty across 8 engineering departments — and let us help you navigate funding programs like NSERC Alliance and Mitacs Accelerate.
         </p>
       </div>
     </div>
@@ -36,11 +36,51 @@ const secondaryServices = allPartnerships
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-16">
         <h2 class="text-3xl sm:text-4xl font-extrabold text-[var(--color-uoft-blue)] mb-4">How We Work With Partners</h2>
-        <p class="text-lg text-slate-600 max-w-2xl mx-auto">From sponsored research to hands-on training, we offer multiple ways to engage with U of T's AI expertise.</p>
+        <p class="text-lg text-slate-600 max-w-2xl mx-auto">From sponsored research to hands-on training, we offer multiple ways to engage with UofT's AI expertise.</p>
       </div>
       
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {featuredServices.map((service, index) => (
+        <!-- Mitacs Accelerate Card (First Position) -->
+        <a href="#mitacs-accelerate" class="group relative bg-white rounded-2xl shadow-lg shadow-slate-200/50 overflow-hidden hover:shadow-xl hover:shadow-slate-300/50 transition-all duration-500 hover:-translate-y-1 block">
+          <div class="relative h-56 bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-600 overflow-hidden">
+            <svg class="absolute inset-0 w-full h-full opacity-20" viewBox="0 0 400 200" preserveAspectRatio="xMidYMid slice">
+              <g fill="white">
+                <circle cx="100" cy="100" r="40" fill="none" stroke="white" stroke-width="3"/>
+                <circle cx="100" cy="100" r="25" fill="none" stroke="white" stroke-width="2"/>
+                <circle cx="100" cy="100" r="8"/>
+                <path d="M140 100 h60" stroke="white" stroke-width="2"/>
+                <path d="M220 80 L260 100 L220 120" fill="none" stroke="white" stroke-width="2"/>
+                <circle cx="300" cy="100" r="30" fill="none" stroke="white" stroke-width="2"/>
+                <circle cx="300" cy="100" r="15"/>
+              </g>
+            </svg>
+            <div class="absolute bottom-0 left-0 right-0 h-8 bg-white" style="clip-path: ellipse(70% 100% at 50% 100%);"></div>
+          </div>
+          
+          <div class="p-6 pt-2">
+            <div class="flex flex-wrap gap-2 mb-3">
+              <span class="px-2.5 py-0.5 text-xs font-semibold rounded-full bg-blue-50 text-blue-700">Funding Program</span>
+              <span class="px-2.5 py-0.5 text-xs font-semibold rounded-full bg-blue-50 text-blue-700">Research</span>
+            </div>
+            
+            <h3 class="text-lg font-bold text-[var(--color-uoft-blue)] mb-3 leading-snug group-hover:text-blue-700 transition-colors">
+              Mitacs Accelerate
+            </h3>
+            
+            <p class="text-slate-600 text-sm leading-relaxed mb-4">
+              Leverage government funding to work with talented students on your AI research challenges. Contribute $7,500+ per internship and Mitacs matches it to create a $15,000+ research award.
+            </p>
+            
+            <div class="inline-flex items-center text-sm font-semibold text-blue-600 hover:text-blue-800 transition-colors">
+              Learn more
+              <svg class="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+              </svg>
+            </div>
+          </div>
+        </a>
+        
+        {featuredServices.filter(service => service.data.title !== "Sponsored Research").map((service, index) => (
           <article class="group relative bg-white rounded-2xl shadow-lg shadow-slate-200/50 overflow-hidden hover:shadow-xl hover:shadow-slate-300/50 transition-all duration-500 hover:-translate-y-1">
             <!-- Visual placeholder with gradient and pattern -->
             <div class={`relative h-56 bg-gradient-to-br ${service.data.gradient} overflow-hidden`}>
@@ -133,13 +173,235 @@ const secondaryServices = allPartnerships
     </div>
   </section>
 
+    <!-- Mitacs Accelerate Featured Section -->
+    <section id="mitacs-accelerate" class="py-20 lg:py-28 bg-gradient-to-b from-indigo-50 to-white scroll-mt-24">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-4xl mx-auto">
+          <div class="text-center mb-12">
+            <h2 class="text-3xl sm:text-4xl font-extrabold text-[var(--color-uoft-blue)] mb-4">Mitacs Accelerate</h2>
+            <p class="text-xl text-slate-600 max-w-2xl mx-auto">
+              Leverage government funding to work with talented students on your AI research challenges. Mitacs Accelerate provides cost-effective access to UofT's brightest minds.
+            </p>
+          </div>
+  
+          <div class="bg-white rounded-2xl shadow-lg border border-indigo-100 p-8 lg:p-12 mb-8">
+            <div class="grid md:grid-cols-2 gap-8 lg:gap-12">
+              <div>
+                <h3 class="text-2xl font-bold text-[var(--color-uoft-blue)] mb-4">How It Works for Partners</h3>
+                <p class="text-slate-700 mb-6 leading-relaxed">
+                  Mitacs Accelerate creates dynamic collaborations between your organization and UofT students. You contribute starting at <strong>$7,500 CAD</strong> per four- or six-month internship, and Mitacs matches it to create a <strong>$15,000 CAD</strong> research award.
+                </p>
+                
+                <h4 class="text-lg font-bold text-[var(--color-uoft-blue)] mb-3 mt-6">Benefits for Your Organization</h4>
+                <ul class="space-y-2 text-slate-600">
+                  <li class="flex items-start gap-2">
+                    <svg class="w-5 h-5 text-indigo-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    </svg>
+                    <span>Leverage government funding to stretch your research dollars</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <svg class="w-5 h-5 text-indigo-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    </svg>
+                    <span>Work with highly skilled graduate students, postdocs, and recent graduates</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <svg class="w-5 h-5 text-indigo-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    </svg>
+                    <span>Tackle specific problems with dedicated student researchers</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <svg class="w-5 h-5 text-indigo-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    </svg>
+                    <span>Identify potential hires through direct collaboration</span>
+                  </li>
+                </ul>
+                
+                <h4 class="text-lg font-bold text-[var(--color-uoft-blue)] mb-3 mt-6">How Carte Helps</h4>
+                <ul class="space-y-2 text-slate-600">
+                  <li class="flex items-start gap-2">
+                    <svg class="w-5 h-5 text-indigo-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    </svg>
+                      <span>We help you identify and match with qualified students</span>
+                    </li>
+                  <li class="flex items-start gap-2">
+                    <svg class="w-5 h-5 text-indigo-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    </svg>
+                    <span>We provide direct academic supervision</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <svg class="w-5 h-5 text-indigo-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    </svg>
+                    <span>We assist with application drafting and submission to ensure all requirements are met</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <svg class="w-5 h-5 text-indigo-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    </svg>
+                    <span>We support you through the entire process, from project scoping to completion</span>
+                  </li>
+                </ul>
+              </div>
+  
+              <div>
+                <h3 class="text-2xl font-bold text-[var(--color-uoft-blue)] mb-4">Funding Model</h3>
+                
+                <!-- Funding Model Visual - Standard -->
+                <div id="funding-visual-standard" class="bg-gradient-to-br from-indigo-50 to-purple-50 rounded-xl p-6 mb-6 border border-indigo-200 relative">
+                  <!-- Toggle Switch - Upper Right -->
+                  <div class="absolute top-6 right-6 flex items-center gap-2">
+                    <button 
+                      id="funding-toggle" 
+                      class="relative inline-flex h-7 w-14 items-center rounded-full bg-slate-300 transition-colors focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                      role="switch"
+                      aria-checked="false"
+                      aria-label="Toggle to Postdoc model"
+                    >
+                      <span 
+                        id="funding-toggle-slider"
+                        class="inline-block h-5 w-5 transform rounded-full bg-white transition-transform translate-x-1"
+                      ></span>
+                    </button>
+                    <span id="funding-toggle-label" class="text-sm font-medium text-slate-400">Postdoc</span>
+                  </div>
+                  
+                  <div class="text-center mb-6 pt-12">
+                    <p class="text-sm font-semibold text-slate-600 mb-4">Per 4- or 6-Month Internship</p>
+                    
+                    <!-- Funding Flow Diagram -->
+                    <div class="flex flex-col items-center gap-4">
+                      <!-- Partner Contribution -->
+                      <div class="w-full max-w-xs">
+                        <div class="bg-blue-600 rounded-lg p-4 text-white text-center shadow-md">
+                          <div class="text-xs font-medium mb-1 opacity-90">Your Contribution</div>
+                          <div class="text-2xl font-bold">$7,500 CAD</div>
+                        </div>
+                      </div>
+                      
+                      <!-- Plus Sign -->
+                      <div class="text-2xl font-bold text-slate-400">+</div>
+                      
+                      <!-- Mitacs Match -->
+                      <div class="w-full max-w-xs">
+                        <div class="bg-indigo-600 rounded-lg p-4 text-white text-center shadow-md">
+                          <div class="text-xs font-medium mb-1 opacity-90">Mitacs Match</div>
+                          <div class="text-2xl font-bold">$7,500 CAD</div>
+                        </div>
+                      </div>
+                      
+                      <!-- Equals Sign -->
+                      <div class="text-2xl font-bold text-slate-400">=</div>
+                      
+                      <!-- Total Award -->
+                      <div class="w-full max-w-xs">
+                        <div class="bg-gradient-to-r from-indigo-600 to-purple-600 rounded-lg p-5 text-white text-center shadow-lg border-2 border-indigo-400">
+                          <div class="text-xs font-medium mb-1 opacity-90">Total Research Award</div>
+                          <div class="text-3xl font-bold">$15,000 CAD</div>
+                          <div class="text-xs mt-2 opacity-90">($10,000+ to intern)</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <!-- Repeatability Note -->
+                  <div class="bg-white/60 rounded-lg p-4 border border-indigo-200">
+                    <p class="text-sm text-slate-700 text-center">
+                      <strong class="text-indigo-700">Internships are repeatable:</strong> For example, 3 four-month internships = one full year of research with sponsored funding
+                    </p>
+                  </div>
+                </div>
+                
+                <!-- Funding Model Visual - Postdoc -->
+                <div id="funding-visual-postdoc" class="bg-gradient-to-br from-indigo-50 to-purple-50 rounded-xl p-6 mb-6 border border-indigo-200 hidden relative">
+                  <!-- Toggle Switch - Upper Right -->
+                  <div class="absolute top-6 right-6 flex items-center gap-2">
+                    <button 
+                      id="funding-toggle-postdoc" 
+                      class="relative inline-flex h-7 w-14 items-center rounded-full bg-indigo-600 transition-colors focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                      role="switch"
+                      aria-checked="true"
+                      aria-label="Toggle to Standard model"
+                    >
+                      <span 
+                        id="funding-toggle-slider-postdoc"
+                        class="inline-block h-5 w-5 transform rounded-full bg-white transition-transform translate-x-8"
+                      ></span>
+                    </button>
+                    <span id="funding-toggle-label-postdoc" class="text-sm font-medium text-indigo-600 font-semibold">Postdoc</span>
+                  </div>
+                  
+                  <div class="text-center mb-6 pt-12">
+                    <p class="text-sm font-semibold text-slate-600 mb-4">Per 4- or 6-Month Internship</p>
+                    
+                    <!-- Funding Flow Diagram -->
+                    <div class="flex flex-col items-center gap-4">
+                      <!-- Partner Contribution -->
+                      <div class="w-full max-w-xs">
+                        <div class="bg-blue-600 rounded-lg p-4 text-white text-center shadow-md">
+                          <div class="text-xs font-medium mb-1 opacity-90">Your Contribution</div>
+                          <div class="text-2xl font-bold">$10,000 CAD</div>
+                        </div>
+                      </div>
+                      
+                      <!-- Plus Sign -->
+                      <div class="text-2xl font-bold text-slate-400">+</div>
+                      
+                      <!-- Mitacs Match -->
+                      <div class="w-full max-w-xs">
+                        <div class="bg-indigo-600 rounded-lg p-4 text-white text-center shadow-md">
+                          <div class="text-xs font-medium mb-1 opacity-90">Mitacs Match</div>
+                          <div class="text-2xl font-bold">$10,000 CAD</div>
+                        </div>
+                      </div>
+                      
+                      <!-- Equals Sign -->
+                      <div class="text-2xl font-bold text-slate-400">=</div>
+                      
+                      <!-- Total Award -->
+                      <div class="w-full max-w-xs">
+                        <div class="bg-gradient-to-r from-indigo-600 to-purple-600 rounded-lg p-5 text-white text-center shadow-lg border-2 border-indigo-400">
+                          <div class="text-xs font-medium mb-1 opacity-90">Total Research Award</div>
+                          <div class="text-3xl font-bold">$20,000 CAD</div>
+                          <div class="text-xs mt-2 opacity-90">($15,000+ to intern)</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <!-- Repeatability Note -->
+                  <div class="bg-white/60 rounded-lg p-4 border border-indigo-200">
+                    <p class="text-sm text-slate-700 text-center">
+                      <strong class="text-indigo-700">Internships are repeatable:</strong> For example, 3 four-month internships = one full year of research with sponsored funding
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+  
+          <div class="bg-slate-50 rounded-lg p-6 border border-slate-200">
+            <p class="text-slate-700 text-center">
+              <strong>Eligible organizations:</strong> For-profit corporations (must receive more than 50% of funds from non-government sources), eligible not-for-profit corporations, municipalities, or hospitals in Canada. International organizations can participate as additional partners on projects with a Canadian partner.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  
+
   <!-- Additional Engagement Options Carousel -->
   <section class="py-20 bg-gradient-to-b from-slate-50 to-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between mb-12">
         <div>
           <h2 class="text-3xl sm:text-4xl font-extrabold text-[var(--color-uoft-blue)] mb-4">Additional Engagement Options</h2>
-          <p class="text-lg text-slate-600 max-w-2xl">More ways to connect with Carte and the U of T engineering community.</p>
+          <p class="text-lg text-slate-600 max-w-2xl">More ways to connect with Carte and the UofT engineering community.</p>
         </div>
         <!-- Carousel Navigation -->
         <div class="flex items-center gap-3 mt-6 sm:mt-0">
@@ -238,12 +500,15 @@ const secondaryServices = allPartnerships
     #partnerships-carousel::-webkit-scrollbar {
       display: none;
     }
+    html {
+      scroll-behavior: smooth;
+    }
   </style>
   
   <script>
     const carousel = document.getElementById('partnerships-carousel');
-    const prevBtn = document.getElementById('carousel-prev');
-    const nextBtn = document.getElementById('carousel-next');
+    const prevBtn = document.getElementById('carousel-prev') as HTMLButtonElement | null;
+    const nextBtn = document.getElementById('carousel-next') as HTMLButtonElement | null;
     const cardWidth = 320 + 24; // card width + gap
     
     function updateButtons() {
@@ -263,6 +528,66 @@ const secondaryServices = allPartnerships
     
     carousel?.addEventListener('scroll', updateButtons);
     updateButtons();
+    
+    // Funding model toggle
+    const fundingToggle = document.getElementById('funding-toggle');
+    const fundingTogglePostdoc = document.getElementById('funding-toggle-postdoc');
+    const toggleSlider = document.getElementById('funding-toggle-slider');
+    const toggleSliderPostdoc = document.getElementById('funding-toggle-slider-postdoc');
+    const toggleLabel = document.getElementById('funding-toggle-label');
+    const toggleLabelPostdoc = document.getElementById('funding-toggle-label-postdoc');
+    const standardVisual = document.getElementById('funding-visual-standard');
+    const postdocVisual = document.getElementById('funding-visual-postdoc');
+    let isPostdoc = false;
+    
+    function toggleFundingModel() {
+      isPostdoc = !isPostdoc;
+      
+      if (isPostdoc) {
+        // Show postdoc, hide standard
+        standardVisual?.classList.add('hidden');
+        postdocVisual?.classList.remove('hidden');
+        toggleSlider?.classList.remove('translate-x-1');
+        toggleSlider?.classList.add('translate-x-8');
+        toggleSliderPostdoc?.classList.remove('translate-x-1');
+        toggleSliderPostdoc?.classList.add('translate-x-8');
+        // Update toggle colors - ON state
+        fundingToggle?.classList.remove('bg-slate-300');
+        fundingToggle?.classList.add('bg-indigo-600');
+        fundingTogglePostdoc?.classList.remove('bg-slate-300');
+        fundingTogglePostdoc?.classList.add('bg-indigo-600');
+        // Update label colors - ON state
+        toggleLabel?.classList.remove('text-slate-400');
+        toggleLabel?.classList.add('text-indigo-600', 'font-semibold');
+        toggleLabelPostdoc?.classList.remove('text-slate-400');
+        toggleLabelPostdoc?.classList.add('text-indigo-600', 'font-semibold');
+        fundingToggle?.setAttribute('aria-checked', 'true');
+        fundingTogglePostdoc?.setAttribute('aria-checked', 'true');
+      } else {
+        // Show standard, hide postdoc
+        standardVisual?.classList.remove('hidden');
+        postdocVisual?.classList.add('hidden');
+        toggleSlider?.classList.remove('translate-x-8');
+        toggleSlider?.classList.add('translate-x-1');
+        toggleSliderPostdoc?.classList.remove('translate-x-8');
+        toggleSliderPostdoc?.classList.add('translate-x-1');
+        // Update toggle colors - OFF state
+        fundingToggle?.classList.remove('bg-indigo-600');
+        fundingToggle?.classList.add('bg-slate-300');
+        fundingTogglePostdoc?.classList.remove('bg-indigo-600');
+        fundingTogglePostdoc?.classList.add('bg-slate-300');
+        // Update label colors - OFF state
+        toggleLabel?.classList.remove('text-indigo-600', 'font-semibold');
+        toggleLabel?.classList.add('text-slate-400');
+        toggleLabelPostdoc?.classList.remove('text-indigo-600', 'font-semibold');
+        toggleLabelPostdoc?.classList.add('text-slate-400');
+        fundingToggle?.setAttribute('aria-checked', 'false');
+        fundingTogglePostdoc?.setAttribute('aria-checked', 'false');
+      }
+    }
+    
+    fundingToggle?.addEventListener('click', toggleFundingModel);
+    fundingTogglePostdoc?.addEventListener('click', toggleFundingModel);
   </script>
 
   <!-- CTA Section -->

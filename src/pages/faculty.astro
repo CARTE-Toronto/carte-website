@@ -1,0 +1,410 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Faculty" description="Opportunities for UofT Engineering faculty to engage with applied AI through Mitacs Accelerate supervision, training programs, and funding support.">
+  <!-- Hero Section -->
+  <section class="relative overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 lg:pt-24 pb-8">
+      <div class="max-w-3xl">
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-[var(--color-uoft-blue)] leading-tight mb-6">
+          For UofT Engineering
+          <span class="bg-gradient-to-r from-indigo-600 via-purple-600 to-violet-600 bg-clip-text text-transparent">Faculty</span>
+        </h1>
+      </div>
+    </div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">      
+      <div class="text-center mb-16">
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-[var(--color-uoft-blue)] mb-4">Featured Opportunities</h2>
+        <p class="text-lg text-slate-600 max-w-2xl mx-auto">Supervise funded research projects, enhance your AI expertise, and navigate funding programs with Carte's support.</p>
+      </div>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12">
+        <!-- Mitacs Accelerate -->
+        <a href="#mitacs-faculty" class="group relative bg-white rounded-2xl shadow-lg shadow-slate-200/50 overflow-hidden hover:shadow-xl hover:shadow-slate-300/50 transition-all duration-500 hover:-translate-y-1 block flex flex-col">
+          <div class="relative h-56 bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-600 overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-to-br from-indigo-900/20 to-transparent"></div>
+            <div class="absolute inset-0 flex items-center justify-center">
+              <svg class="w-24 h-24 text-white/20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/>
+              </svg>
+            </div>
+            <div class="absolute bottom-0 left-0 right-0 h-8 bg-white" style="clip-path: ellipse(70% 100% at 50% 100%);"></div>
+          </div>
+          
+          <div class="p-8 flex flex-col flex-grow">            
+            <h3 class="text-2xl font-bold text-[var(--color-uoft-blue)] mb-4">Mitacs Accelerate</h3>
+            
+            <p class="text-lg font-semibold text-slate-700 mb-3">
+              Supervise paid student interns on industry-partnered research projects.
+            </p>
+            
+            <p class="text-slate-600 mb-6 leading-relaxed">
+              Work with motivated students on funded research projects that connect your lab with industry partners. Mitacs Accelerate provides $15,000-$20,000 research awards per internship, combining industry funding with government matching.
+            </p>
+            
+            <div class="inline-flex items-center justify-center w-full px-6 py-3 rounded-xl bg-indigo-600 text-white font-bold mt-auto">
+              Learn More
+              <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+              </svg>
+            </div>
+          </div>
+        </a>
+        
+        <!-- Faculty Training -->
+        <a href="#training" class="group relative bg-white rounded-2xl shadow-lg shadow-slate-200/50 overflow-hidden hover:shadow-xl hover:shadow-slate-300/50 transition-all duration-500 hover:-translate-y-1 block flex flex-col">
+          <div class="relative h-56 bg-gradient-to-br from-emerald-600 via-teal-600 to-cyan-600 overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-to-br from-emerald-900/20 to-transparent"></div>
+            <div class="absolute inset-0 flex items-center justify-center">
+              <svg class="w-24 h-24 text-white/20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+              </svg>
+            </div>
+            <div class="absolute bottom-0 left-0 right-0 h-8 bg-white" style="clip-path: ellipse(70% 100% at 50% 100%);"></div>
+          </div>
+          
+          <div class="p-8 flex flex-col flex-grow">
+            <h3 class="text-2xl font-bold text-[var(--color-uoft-blue)] mb-4">Faculty Training</h3>
+            
+            <p class="text-lg font-semibold text-slate-700 mb-3">
+              Annual ML bootcamp and ongoing workshops for faculty.
+            </p>
+            
+            <p class="text-slate-600 mb-6 leading-relaxed">
+              Join our annual 5-day intensive machine learning bootcamp designed specifically for faculty. Learn alongside colleagues from diverse research backgrounds and gain hands-on AI skills applicable to your research domain.
+            </p>
+            
+            <div class="inline-flex items-center justify-center w-full px-6 py-3 rounded-xl bg-emerald-600 text-white font-bold mt-auto">
+              Learn More
+              <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+              </svg>
+            </div>
+          </div>
+        </a>
+        
+        <!-- Funding Support -->
+        <a href="#funding" class="group relative bg-white rounded-2xl shadow-lg shadow-slate-200/50 overflow-hidden hover:shadow-xl hover:shadow-slate-300/50 transition-all duration-500 hover:-translate-y-1 block flex flex-col">
+          <div class="relative h-56 bg-gradient-to-br from-amber-600 via-orange-600 to-red-600 overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-to-br from-amber-900/20 to-transparent"></div>
+            <div class="absolute inset-0 flex items-center justify-center">
+              <svg class="w-24 h-24 text-white/20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+              </svg>
+            </div>
+            <div class="absolute bottom-0 left-0 right-0 h-8 bg-white" style="clip-path: ellipse(70% 100% at 50% 100%);"></div>
+          </div>
+          
+          <div class="p-8 flex flex-col flex-grow">
+            <h3 class="text-2xl font-bold text-[var(--color-uoft-blue)] mb-4">Funding Support</h3>
+            
+            <p class="text-lg font-semibold text-slate-700 mb-3">
+              Navigate NSERC Alliance, Mitacs, and other funding programs.
+            </p>
+            
+            <p class="text-slate-600 mb-6 leading-relaxed">
+              Get expert guidance on proposal development, partner matching, and application processes for major funding programs. We help you maximize your research investment through government funding opportunities.
+            </p>
+            
+            <div class="inline-flex items-center justify-center w-full px-6 py-3 rounded-xl bg-amber-600 text-white font-bold mt-auto">
+              Learn More
+              <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+              </svg>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mitacs Accelerate Detailed Section -->
+  <section id="mitacs-faculty" class="py-20 lg:py-28 bg-gradient-to-b from-slate-50 to-white scroll-mt-24">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-[var(--color-uoft-blue)] mb-4">Mitacs Accelerate</h2>
+        <p class="text-xl text-slate-600 max-w-2xl mx-auto">
+          Supervise funded research projects that connect your lab with industry partners.
+        </p>
+      </div>
+
+      <div class="prose prose-lg prose-slate max-w-none mb-8">
+        <p class="text-lg text-slate-700 leading-relaxed">
+          Mitacs Accelerate creates dynamic research collaborations between industry partners and academic institutions. As a faculty supervisor, you'll work with motivated students and industry partners on applied AI research projects while leveraging government-matched funding.
+        </p>
+
+        <h3 class="text-2xl font-bold text-[var(--color-uoft-blue)] mt-8 mb-4">Benefits for Faculty</h3>
+        <ul class="space-y-3 text-slate-600 mb-6">
+          <li class="flex items-start gap-3">
+            <svg class="w-6 h-6 text-indigo-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+            <span>Access to motivated, funded student researchers for your research projects</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <svg class="w-6 h-6 text-indigo-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+            <span>Industry connections that can lead to long-term research partnerships</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <svg class="w-6 h-6 text-indigo-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+            <span>Funded research opportunities without requiring your own grant funding</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <svg class="w-6 h-6 text-indigo-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+            <span>Opportunity to supervise students on applied AI challenges with real-world impact</span>
+          </li>
+        </ul>
+
+        <h3 class="text-2xl font-bold text-[var(--color-uoft-blue)] mt-8 mb-4">How Carte Helps</h3>
+        <p class="text-slate-600 mb-4">
+          Carte facilitates Mitacs Accelerate projects and provides comprehensive support throughout the process:
+        </p>
+        <ul class="space-y-3 text-slate-600 mb-6">
+          <li class="flex items-start gap-3">
+            <svg class="w-6 h-6 text-indigo-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+            <span>We help match you with qualified students who are interested in your research area</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <svg class="w-6 h-6 text-indigo-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+            <span>We connect you with industry partners looking for academic collaboration</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <svg class="w-6 h-6 text-indigo-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+            <span>We assist with application drafting and submission to ensure all requirements are met</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <svg class="w-6 h-6 text-indigo-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+            <span>We support you through every step, from project scoping to completion</span>
+          </li>
+        </ul>
+
+        <h3 class="text-2xl font-bold text-[var(--color-uoft-blue)] mt-8 mb-4">Funding Model</h3>
+        <div class="bg-indigo-50 rounded-lg p-6 mt-6 border-l-4 border-indigo-600">
+          <p class="text-slate-700 mb-3">
+            Each four- to six-month internship provides a <strong>$15,000 CAD</strong> research award (standard) or <strong>$20,000 CAD</strong> (postdoc), combining industry partner contributions with Mitacs matching funds.
+          </p>
+          <p class="text-slate-700">
+            Internships are repeatable, allowing for extended research collaborations. For example, three four-month internships can create a full year of funded research.
+          </p>
+        </div>
+
+        <h3 class="text-2xl font-bold text-[var(--color-uoft-blue)] mt-8 mb-4">Your Role as Supervisor</h3>
+        <p class="text-slate-600 mb-4">
+          As the academic supervisor, you'll provide research guidance and mentorship to the student intern while collaborating with the industry partner. This creates a valuable three-way collaboration that benefits all parties.
+        </p>
+      </div>
+
+      <div class="mt-10 text-center">
+        <a href="/partnerships#mitacs-accelerate" class="inline-flex items-center justify-center px-8 py-4 rounded-xl bg-indigo-600 text-white font-bold hover:bg-indigo-700 transition-colors text-lg mr-4">
+          Learn More About Mitacs
+          <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+          </svg>
+        </a>
+        <a href="/contact" class="inline-flex items-center justify-center px-8 py-4 rounded-xl bg-white text-indigo-600 font-bold hover:bg-indigo-50 transition-colors text-lg border-2 border-indigo-600">
+          Contact Us
+          <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Faculty Training Detailed Section -->
+  <section id="training" class="py-20 lg:py-28 bg-white scroll-mt-24">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-[var(--color-uoft-blue)] mb-4">Faculty Training</h2>
+        <p class="text-xl text-slate-600 max-w-2xl mx-auto">
+          Enhance your AI and machine learning expertise through our annual bootcamp and ongoing workshops.
+        </p>
+      </div>
+
+      <div class="prose prose-lg prose-slate max-w-none mb-8">
+        <p class="text-lg text-slate-700 leading-relaxed">
+          Our flagship faculty training program is an annual week-long intensive in collaboration with the Data Sciences Institute, designed to equip faculty with AI and machine learning skills applicable to their research domains.
+        </p>
+
+        <h3 class="text-2xl font-bold text-[var(--color-uoft-blue)] mt-8 mb-4">Annual ML Bootcamp</h3>
+        <p class="text-slate-600 mb-4">
+          The program takes faculty members from foundational concepts through to advanced topics like reinforcement learning, with hands-on workshops and collaborative discussions throughout. Our training agenda is revised annually to incorporate emerging technologies in the field.
+        </p>
+
+        <div class="bg-emerald-50 rounded-lg p-6 mt-6 border-l-4 border-emerald-600">
+          <p class="text-slate-700 italic mb-2">
+            "I've learned more in one week than in one year of self-directed efforts, which are generally bumped off track by the nature of running a lab/teaching."
+          </p>
+          <p class="text-slate-600 text-sm">
+            — Faculty participant, 2023
+          </p>
+        </div>
+
+        <h3 class="text-2xl font-bold text-[var(--color-uoft-blue)] mt-8 mb-4">What You'll Learn</h3>
+        <ul class="space-y-3 text-slate-600 mb-6">
+          <li class="flex items-start gap-3">
+            <svg class="w-6 h-6 text-emerald-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+            <span>Foundational machine learning concepts and techniques</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <svg class="w-6 h-6 text-emerald-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+            <span>Advanced topics including deep learning and reinforcement learning</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <svg class="w-6 h-6 text-emerald-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+            <span>Hands-on workshops with practical applications</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <svg class="w-6 h-6 text-emerald-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+            <span>Collaborative learning with colleagues from diverse research backgrounds</span>
+          </li>
+        </ul>
+
+        <h3 class="text-2xl font-bold text-[var(--color-uoft-blue)] mt-8 mb-4">Additional Workshops</h3>
+        <p class="text-slate-600 mb-4">
+          Beyond the annual bootcamp, we offer specialized workshops on topics like large language models and domain-specific AI applications. These workshops provide opportunities for continued learning and skill development.
+        </p>
+
+        <h3 class="text-2xl font-bold text-[var(--color-uoft-blue)] mt-8 mb-4">Why Faculty Choose Our Training</h3>
+        <p class="text-slate-600 mb-4">
+          Past participants have praised the excellent instruction and the opportunity to learn alongside colleagues from diverse research backgrounds. The intensive format allows you to focus fully on learning without the distractions of running a lab or teaching responsibilities.
+        </p>
+      </div>
+
+      <div class="mt-10 text-center">
+        <a href="/training" class="inline-flex items-center justify-center px-8 py-4 rounded-xl bg-emerald-600 text-white font-bold hover:bg-emerald-700 transition-colors text-lg mr-4">
+          View All Training Programs
+          <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+          </svg>
+        </a>
+        <a href="/contact" class="inline-flex items-center justify-center px-8 py-4 rounded-xl bg-white text-emerald-600 font-bold hover:bg-emerald-50 transition-colors text-lg border-2 border-emerald-600">
+          Contact Us
+          <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Funding Support Detailed Section -->
+  <section id="funding" class="py-20 lg:py-28 bg-gradient-to-b from-white to-slate-50 scroll-mt-24">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-[var(--color-uoft-blue)] mb-4">Funding Support</h2>
+        <p class="text-xl text-slate-600 max-w-2xl mx-auto">
+          Navigate NSERC Alliance, Mitacs, and other funding programs with expert guidance.
+        </p>
+      </div>
+
+      <div class="prose prose-lg prose-slate max-w-none mb-8">
+        <p class="text-lg text-slate-700 leading-relaxed">
+          Securing research funding can be complex, but you don't have to navigate it alone. Carte provides expert guidance on proposal development, partner matching, and application processes for major government funding programs.
+        </p>
+
+        <h3 class="text-2xl font-bold text-[var(--color-uoft-blue)] mt-8 mb-4">NSERC Alliance</h3>
+        <p class="text-slate-600 mb-4">
+          NSERC Alliance grants support collaborative research projects between academic institutions and partner organizations. We help you identify potential industry partners, develop strong proposals, and navigate the application process to maximize your chances of success.
+        </p>
+
+        <h3 class="text-2xl font-bold text-[var(--color-uoft-blue)] mt-8 mb-4">Mitacs Programs</h3>
+        <p class="text-slate-600 mb-4">
+          Beyond Mitacs Accelerate, we can help you explore other Mitacs programs that may be relevant to your research. These programs offer various funding mechanisms for collaborative research with industry partners.
+        </p>
+
+        <h3 class="text-2xl font-bold text-[var(--color-uoft-blue)] mt-8 mb-4">How Carte Assists</h3>
+        <ul class="space-y-3 text-slate-600 mb-6">
+          <li class="flex items-start gap-3">
+            <svg class="w-6 h-6 text-amber-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+            <span><strong>Proposal Review:</strong> We review your funding proposals and provide feedback to strengthen your applications</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <svg class="w-6 h-6 text-amber-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+            <span><strong>Partner Identification:</strong> We help you find industry partners who are interested in collaborating on research projects</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <svg class="w-6 h-6 text-amber-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+            <span><strong>Budget Planning:</strong> We assist with budget development and ensure your funding requests align with program requirements</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <svg class="w-6 h-6 text-amber-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+            <span><strong>Application Guidance:</strong> We guide you through the application process, ensuring all requirements are met and deadlines are met</span>
+          </li>
+        </ul>
+
+        <h3 class="text-2xl font-bold text-[var(--color-uoft-blue)] mt-8 mb-4">Why Work With Carte</h3>
+        <p class="text-slate-600 mb-4">
+          With over 100 faculty affiliates across 8 engineering departments, we have extensive experience navigating funding programs. We understand the requirements, timelines, and best practices for successful applications. Our goal is to help you maximize your research investment through effective use of government funding opportunities.
+        </p>
+      </div>
+
+      <div class="mt-10 text-center">
+        <a href="/contact" class="inline-flex items-center justify-center px-8 py-4 rounded-xl bg-amber-600 text-white font-bold hover:bg-amber-700 transition-colors text-lg">
+          Get Funding Support
+          <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-20">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div class="bg-gradient-to-br from-[var(--color-uoft-blue)] to-indigo-900 rounded-3xl p-12 shadow-2xl shadow-indigo-900/20">
+        <h2 class="text-3xl font-extrabold text-white mb-4">Questions or Need Help?</h2>
+        <p class="text-lg text-indigo-200 mb-8 max-w-2xl mx-auto">
+          Have questions about Mitacs supervision, training programs, or funding support? We're here to help you get started.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="/contact" class="inline-flex items-center justify-center px-8 py-3 rounded-xl bg-white text-[var(--color-uoft-blue)] font-bold hover:bg-indigo-50 transition-colors">
+            Contact Us
+            <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+  </style>
+</BaseLayout>
+

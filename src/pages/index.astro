@@ -7,6 +7,26 @@ import Section from '../components/Section.astro';
 <BaseLayout title="Home" scrollColorTransition={true}>
   <Hero />
 
+  <!-- Student & Faculty Callouts -->
+  <section class="py-8 bg-gradient-to-r from-emerald-50 to-indigo-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+        <div class="inline-flex items-center gap-2 px-6 py-3 bg-white border-2 border-emerald-300 rounded-full shadow-sm hover:shadow-md transition-all hover:scale-105">
+          <span class="text-emerald-700 font-semibold">Student?</span>
+          <a href="/students" class="text-emerald-700 font-bold hover:text-emerald-900 underline">
+            Click here for opportunities
+          </a>
+        </div>
+        <div class="inline-flex items-center gap-2 px-6 py-3 bg-white border-2 border-indigo-300 rounded-full shadow-sm hover:shadow-md transition-all hover:scale-105">
+          <span class="text-indigo-700 font-semibold">Faculty?</span>
+          <a href="/faculty" class="text-indigo-700 font-bold hover:text-indigo-900 underline">
+            Click here for resources
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Our Approach Section - Positioning/Differentiation -->
   <section class="py-16 lg:py-20">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -25,7 +45,7 @@ import Section from '../components/Section.astro';
             </svg>
           </div>
           <h3 class="font-bold text-[var(--color-uoft-blue)] mb-2">Research Partnerships</h3>
-          <p class="text-sm text-slate-600 mb-3 flex-grow">Access over 100 faculty across the entirety of U of T Engineering for interdisciplinary AI challenges.</p>
+          <p class="text-sm text-slate-600 mb-3 flex-grow">Access over 100 faculty across the entirety of UofT Engineering for interdisciplinary AI challenges.</p>
           <span class="text-sm font-medium text-[var(--color-uoft-blue)] group-hover:underline mt-auto">Partner with us &rarr;</span>
         </a>
         

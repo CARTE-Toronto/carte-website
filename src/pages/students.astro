@@ -1,0 +1,429 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Students" description="Opportunities for UofT Engineering students to engage with applied AI through capstone projects, hackathons, training, and research collaboration.">
+  <!-- Hero Section -->
+  <section class="relative overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 lg:pt-24 pb-8">
+      <div class="max-w-3xl">
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-[var(--color-uoft-blue)] leading-tight mb-6">
+          For UofT Engineering
+          <span class="bg-gradient-to-r from-emerald-600 via-teal-600 to-cyan-600 bg-clip-text text-transparent">Students</span>
+        </h1>
+      </div>
+    </div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">      
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12">
+        <!-- Mitacs Portal -->
+        <a href="#mitacs" class="group relative bg-white rounded-2xl shadow-lg shadow-slate-200/50 overflow-hidden hover:shadow-xl hover:shadow-slate-300/50 transition-all duration-500 hover:-translate-y-1 block flex flex-col">
+          <div class="relative h-56 bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-600 overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-to-br from-indigo-900/20 to-transparent"></div>
+            <div class="absolute inset-0 flex items-center justify-center">
+              <svg class="w-24 h-24 text-white/20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+              </svg>
+            </div>
+            <div class="absolute bottom-0 left-0 right-0 h-8 bg-white" style="clip-path: ellipse(70% 100% at 50% 100%);"></div>
+          </div>
+          
+          <div class="p-8 flex flex-col flex-grow">            
+            <h3 class="text-2xl font-bold text-[var(--color-uoft-blue)] mb-4">Mitacs Accelerate</h3>
+            
+            <p class="text-lg font-semibold text-slate-700 mb-3">
+              Did you know you can get paid at least <span class="text-indigo-600">$10,000</span> to work on an AI-related project?
+            </p>
+            
+            <p class="text-slate-600 mb-6 leading-relaxed">
+              Explore funded research opportunities through our Mitacs Project Explorer. Browse available projects from UofT faculty members and find opportunities that match your interests and skills. These paid positions let you work on cutting-edge AI research while earning significant compensation.
+            </p>
+            
+            <div class="inline-flex items-center justify-center w-full px-6 py-3 rounded-xl bg-indigo-600 text-white font-bold mt-auto">
+              Learn More
+              <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+              </svg>
+            </div>
+          </div>
+        </a>
+        
+        <!-- Student CV Bank -->
+        <a href="#cv-bank" class="group relative bg-white rounded-2xl shadow-lg shadow-slate-200/50 overflow-hidden hover:shadow-xl hover:shadow-slate-300/50 transition-all duration-500 hover:-translate-y-1 block flex flex-col">
+          <div class="relative h-56 bg-gradient-to-br from-emerald-600 via-teal-600 to-cyan-600 overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-to-br from-emerald-900/20 to-transparent"></div>
+            <div class="absolute inset-0 flex items-center justify-center">
+              <svg class="w-24 h-24 text-white/20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+              </svg>
+            </div>
+            <div class="absolute bottom-0 left-0 right-0 h-8 bg-white" style="clip-path: ellipse(70% 100% at 50% 100%);"></div>
+          </div>
+          
+          <div class="p-8 flex flex-col flex-grow">
+            <h3 class="text-2xl font-bold text-[var(--color-uoft-blue)] mb-4">Student CV Bank</h3>
+            
+            <p class="text-slate-600 mb-6 leading-relaxed">
+              Get your CV in front of UofT professors who are actively looking for students. Email us your CV and we'll add it to our Student CV Bank, which we share with faculty members across engineering who are seeking talented students for research projects, assistantships, and other opportunities.
+            </p>
+            
+            <div class="inline-flex items-center justify-center w-full px-6 py-3 rounded-xl bg-emerald-600 text-white font-bold mt-auto">
+              Learn More
+              <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+              </svg>
+            </div>
+          </div>
+        </a>
+        
+        <!-- Mailing List -->
+        <a href="#mailing-list" class="group relative bg-white rounded-2xl shadow-lg shadow-slate-200/50 overflow-hidden hover:shadow-xl hover:shadow-slate-300/50 transition-all duration-500 hover:-translate-y-1 block flex flex-col">
+          <div class="relative h-56 bg-gradient-to-br from-amber-600 via-orange-600 to-red-600 overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-to-br from-amber-900/20 to-transparent"></div>
+            <div class="absolute inset-0 flex items-center justify-center">
+              <svg class="w-24 h-24 text-white/20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+              </svg>
+            </div>
+            <div class="absolute bottom-0 left-0 right-0 h-8 bg-white" style="clip-path: ellipse(70% 100% at 50% 100%);"></div>
+          </div>
+          
+          <div class="p-8 flex flex-col flex-grow">
+            <h3 class="text-2xl font-bold text-[var(--color-uoft-blue)] mb-4">Join Our Mailing List</h3>
+            
+            <p class="text-lg font-semibold text-slate-700 mb-3">
+              Looking for opportunities? This is the mailing list to join.
+            </p>
+            
+            <p class="text-slate-600 mb-6 leading-relaxed">
+              We work hard to actively share opportunities from our industry partners and UofT professors. Get notified about paid research positions, project openings, hackathons, training programs, and more.
+            </p>
+            
+            <div class="inline-flex items-center justify-center w-full px-6 py-3 rounded-xl bg-amber-600 text-white font-bold mt-auto">
+              Learn More
+              <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+              </svg>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mitacs Detailed Section -->
+  <section id="mitacs" class="py-20 lg:py-28 bg-gradient-to-b from-slate-50 to-white scroll-mt-24">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-[var(--color-uoft-blue)] mb-4">Mitacs Accelerate</h2>
+        <p class="text-xl text-slate-600 max-w-2xl mx-auto">
+          Get paid at least <span class="text-indigo-600 font-bold">$10,000</span> to work on cutting-edge AI research projects.
+        </p>
+      </div>
+
+      <div class="prose prose-lg prose-slate max-w-none mb-8">
+        <p class="text-lg text-slate-700 leading-relaxed">
+          Mitacs Accelerate creates dynamic research collaborations between industry partners and academic institutions. As an intern, you'll work collaboratively with your academic supervisor and a partner organization on a research project while earning significant compensation.
+        </p>
+
+        <h3 class="text-2xl font-bold text-[var(--color-uoft-blue)] mt-8 mb-4">How Carte Supports You</h3>
+        <p class="text-slate-600 mb-4">
+          Carte runs Mitacs Accelerate projects with additional support to make the process as smooth as possible for students:
+        </p>
+        <ul class="space-y-3 text-slate-600 mb-6">
+          <li class="flex items-start gap-3">
+            <svg class="w-6 h-6 text-indigo-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+            <span>Start by exploring available projects in our <a href="/mitacs-project-explorer" class="text-indigo-600 hover:text-indigo-800 font-semibold underline">Mitacs Project Explorer</a> to find opportunities that match your interests</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <svg class="w-6 h-6 text-indigo-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+            <span>We either match you with a UofT professor who will supervise your project, or Carte directly supervises the project on the academic side</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <svg class="w-6 h-6 text-indigo-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+            <span>We help you draft your Mitacs application, ensuring all requirements are met and your proposal is strong</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <svg class="w-6 h-6 text-indigo-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+            <span>We support you through every step of the process, from project selection to application submission and beyond</span>
+          </li>
+        </ul>
+        <h3 class="text-2xl font-bold text-[var(--color-uoft-blue)] mt-8 mb-4">Funding & Compensation</h3>
+          <p class="text-slate-700 mb-3">
+            Each four to six month internship provides a research award, from which you receive at least <strong>$10,000 CAD</strong> as a stipend or salary.
+          </p>
+          <p class="text-slate-700">
+            <strong>Postdoctoral fellows</strong> are eligible for a minimum <strong>$15,000 CAD</strong> stipend.
+          </p>
+
+        <h3 class="text-2xl font-bold text-[var(--color-uoft-blue)] mt-8 mb-4">Eligibility</h3>
+        <p class="text-slate-600 mb-4">
+          You're eligible to participate in Mitacs Accelerate if you meet the following criteria:
+        </p>
+        <ul class="space-y-3 text-slate-600 mb-6">
+          <li class="flex items-start gap-3">
+            <svg class="w-6 h-6 text-indigo-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+            <span>You must be a registered student or postdoctoral fellow.</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <svg class="w-6 h-6 text-indigo-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+            <span>You may be eligible if you graduated within the last two years.</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <svg class="w-6 h-6 text-indigo-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+            <span>Postdoctoral fellows are eligible if your PhD graduation date is less than five years before the project start date (exceptions available).</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <svg class="w-6 h-6 text-indigo-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+            <span>Open to Canadian citizens, permanent residents, international students with a valid student visa, or international postdoctoral fellows with a valid work permit.</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <svg class="w-6 h-6 text-indigo-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+            <span>Must be 18 years or older.</span>
+          </li>
+        </ul>
+
+        <h3 class="text-2xl font-bold text-[var(--color-uoft-blue)] mt-8 mb-4">How Many Internships Can You Do?</h3>
+        <div class="grid md:grid-cols-2 gap-4 mt-6">
+          <div class="p-4 bg-indigo-50 rounded-lg">
+            <h4 class="font-bold text-indigo-900 mb-2">Students (Undergraduate or Graduate)</h4>
+            <p class="text-sm text-slate-700">Eligible for any number of internships. You must remain enrolled as a student throughout the internship and have time to commit to the project.</p>
+          </div>
+          <div class="p-4 bg-purple-50 rounded-lg">
+            <h4 class="font-bold text-purple-900 mb-2">Postdocs</h4>
+            <p class="text-sm text-slate-700">Can complete up to nine four-month internships, up to a maximum of three years total.</p>
+          </div>
+          <div class="p-4 bg-pink-50 rounded-lg">
+            <h4 class="font-bold text-pink-900 mb-2">Graduates</h4>
+            <p class="text-sm text-slate-700">Can complete up to three four-month internships within two years of your graduation date.</p>
+          </div>
+          <div class="p-4 bg-indigo-50 rounded-lg">
+            <h4 class="font-bold text-indigo-900 mb-2">Important</h4>
+            <p class="text-sm text-slate-700">You may not participate in more than one internship at the same time.</p>
+          </div>
+        </div>
+
+        <h3 class="text-2xl font-bold text-[var(--color-uoft-blue)] mt-8 mb-4">What You'll Gain</h3>
+        <ul class="space-y-3 text-slate-600 mb-6">
+          <li class="flex items-start gap-3">
+            <svg class="w-6 h-6 text-indigo-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+            <span>Broaden your professional network by connecting with industry partners and academic supervisors</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <svg class="w-6 h-6 text-indigo-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+            <span>Access funding opportunities by earning significant compensation while gaining research experience</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <svg class="w-6 h-6 text-indigo-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+            <span>Gain invaluable hands-on experience by working on real research challenges with for-profit and not-for-profit organizations</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <svg class="w-6 h-6 text-indigo-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+            <span>Internships start at four months and can scale up based on project needs</span>
+          </li>
+        </ul>
+
+        <h3 class="text-2xl font-bold text-[var(--color-uoft-blue)] mt-8 mb-4">Application Process</h3>
+        <p class="text-slate-600 mb-4">
+          When you work with Carte, we help you through the entire application process. We'll assist you in drafting your Mitacs application, ensuring all requirements are met and your proposal is strong. Applications are peer-reviewed by Mitacs and typically take approximately six to eight weeks. Proposals with multiple internships or that require revisions may take longer.
+        </p>
+      </div>
+
+      <div class="mt-10 text-center">
+        <a href="/mitacs-project-explorer" class="inline-flex items-center justify-center px-8 py-4 rounded-xl bg-indigo-600 text-white font-bold hover:bg-indigo-700 transition-colors text-lg">
+          Explore Available Projects
+          <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CV Bank Detailed Section -->
+  <section id="cv-bank" class="py-20 lg:py-28 bg-white scroll-mt-24">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-[var(--color-uoft-blue)] mb-4">Student CV Bank</h2>
+        <p class="text-xl text-slate-600 max-w-2xl mx-auto">
+          Get your CV in front of UofT professors who are actively looking for talented students.
+        </p>
+      </div>
+
+      <div class="prose prose-lg prose-slate max-w-none mb-8">
+        <p class="text-lg text-slate-700 leading-relaxed">
+          The Student CV Bank is a curated database of student profiles that we share with UofT faculty members across engineering and beyond. When professors are looking for students for research projects, assistantships, or other opportunities, they turn to our CV Bank to find qualified candidates.
+        </p>
+        
+        <h3 class="text-2xl font-bold text-[var(--color-uoft-blue)] mt-8 mb-4">How It Works</h3>
+        <ul class="space-y-3 text-slate-600">
+          <li class="flex items-start gap-3">
+            <svg class="w-6 h-6 text-emerald-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+            <span>Email us your CV with a brief note about your interests and availability</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <svg class="w-6 h-6 text-emerald-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+            <span>We'll add your CV to our secure database</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <svg class="w-6 h-6 text-emerald-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+            <span>Faculty members search the CV Bank when they need students</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <svg class="w-6 h-6 text-emerald-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+            <span>If a professor finds your profile interesting, they'll reach out directly</span>
+          </li>
+        </ul>
+
+        <h3 class="text-2xl font-bold text-[var(--color-uoft-blue)] mt-8 mb-4">What to Include in Your CV</h3>
+        <div class="bg-slate-50 rounded-lg p-6 mt-6">
+          <ul class="space-y-2 text-slate-700">
+            <li>✓ Your academic background and current program</li>
+            <li>✓ Relevant coursework and technical skills</li>
+            <li>✓ Previous research experience or projects</li>
+            <li>✓ Programming languages and tools you're familiar with</li>
+            <li>✓ Research interests and areas you'd like to explore</li>
+            <li>✓ Availability (full-time, part-time, summer, etc.)</li>
+          </ul>
+        </div>
+
+        <div class="bg-emerald-50 rounded-lg p-6 mt-6 border-l-4 border-emerald-600">
+          <p class="text-slate-700">
+            <strong>Need help with your CV?</strong> We'd be glad to review your CV before it's added to the bank. Just reach out to us at <a href="mailto:carte@utoronto.ca" class="text-emerald-700 hover:text-emerald-900 font-semibold underline">carte@utoronto.ca</a> and we'll provide feedback to help you present your skills and experience in the best possible way.
+          </p>
+        </div>
+
+      <div class="mt-10 text-center">
+        <a href="mailto:carte@utoronto.ca?subject=Student CV Bank Submission&body=Hi, I'd like to add my CV to the Student CV Bank.%0D%0A%0D%0AMy research interests include: [Please describe]%0D%0AAvailability: [Full-time/Part-time/Summer/etc.]%0D%0A%0D%0A[Please attach your CV]" class="inline-flex items-center justify-center px-8 py-4 rounded-xl bg-emerald-600 text-white font-bold hover:bg-emerald-700 transition-colors text-lg">
+          Submit Your CV
+          <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mailing List Detailed Section -->
+  <section id="mailing-list" class="py-20 lg:py-28 bg-gradient-to-b from-white to-slate-50 scroll-mt-24">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-[var(--color-uoft-blue)] mb-4">Join Our Mailing List</h2>
+      </div>
+
+      <div class="prose prose-lg prose-slate max-w-none mb-8">
+        <p class="text-lg text-slate-700 leading-relaxed">
+          We work hard to actively share opportunities from our industry partners and UofT professors. Our mailing list is one of the best ways to stay informed about paid research positions, project openings, hackathons, training programs, and other opportunities that come through Carte.
+        </p>
+        
+        <h3 class="text-2xl font-bold text-[var(--color-uoft-blue)] mt-8 mb-4">What You'll Receive</h3>
+        <ul class="space-y-3 text-slate-600">
+          <li class="flex items-start gap-3">
+            <svg class="w-6 h-6 text-amber-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+            <span>Mitacs projects and other funded research opportunities</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <svg class="w-6 h-6 text-amber-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+            <span>Opportunities from professors looking for students</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <svg class="w-6 h-6 text-amber-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+            <span>Student competitions and innovation challenges</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <svg class="w-6 h-6 text-amber-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+            <span>AI and machine learning workshops and events</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <svg class="w-6 h-6 text-amber-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+            <span>Industry speaker events and networking opportunities</span>
+          </li>
+        </ul>
+
+        <h3 class="text-2xl font-bold text-[var(--color-uoft-blue)] mt-8 mb-4">Why Our Mailing List is Different</h3>
+        <p class="text-slate-700 mb-4">
+          We work directly with industry partners and UofT professors to share opportunities that are specifically relevant to engineering students interested in applied AI.
+      </div>
+
+      <div class="mt-10 text-center">
+        <a href="/contact" class="inline-flex items-center justify-center px-8 py-4 rounded-xl bg-amber-600 text-white font-bold hover:bg-amber-700 transition-colors text-lg">
+          Subscribe to Mailing List
+          <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- CTA Section -->
+  <section class="py-20">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div class="bg-gradient-to-br from-[var(--color-uoft-blue)] to-indigo-900 rounded-3xl p-12 shadow-2xl shadow-indigo-900/20">
+        <h2 class="text-3xl font-extrabold text-white mb-4">Questions or Need Help?</h2>
+        <p class="text-lg text-indigo-200 mb-8 max-w-2xl mx-auto">
+          Have questions about Mitacs projects, the CV Bank, or other opportunities? We're here to help you get started.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="/contact" class="inline-flex items-center justify-center px-8 py-3 rounded-xl bg-white text-[var(--color-uoft-blue)] font-bold hover:bg-indigo-50 transition-colors">
+            Contact Us
+            <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+  </style>
+</BaseLayout>
+

@@ -1,9 +1,14 @@
 ---
 const navItems = [
-  { label: 'Research', href: '/research' },
   { label: 'Training', href: '/training' },
   { label: 'Partnerships', href: '/partnerships' },
-  { label: 'About', href: '/about' },
+  { 
+    label: 'UofT Community', 
+    dropdown: [
+      { label: 'For Students', href: '/students' },
+      { label: 'For Faculty', href: '/faculty' }
+    ]
+  },
 ];
 
 const socialLinks = [
@@ -51,13 +56,39 @@ const socialLinks = [
       </div>
       <div class="hidden sm:ml-10 sm:flex sm:items-center sm:space-x-10">
         {navItems.map(item => (
-          <a
-            href={item.href}
-            class="inline-flex items-center text-base font-medium text-gray-600 hover:text-uoft-accent transition-colors relative group"
-          >
-            {item.label}
-            <span class="absolute bottom-0 left-0 w-full h-0.5 bg-uoft-accent transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></span>
-          </a>
+          item.dropdown ? (
+            <div class="relative group">
+              <button
+                class="inline-flex items-center text-base font-medium text-gray-600 hover:text-uoft-accent transition-colors relative group"
+              >
+                {item.label}
+                <svg class="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                </svg>
+                <span class="absolute bottom-0 left-0 w-full h-0.5 bg-uoft-accent transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></span>
+              </button>
+              <div class="absolute left-0 mt-2 w-48 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                <div class="bg-white rounded-lg shadow-lg border border-slate-200 py-2">
+                  {item.dropdown.map(subItem => (
+                    <a
+                      href={subItem.href}
+                      class="block px-4 py-2 text-sm text-gray-700 hover:bg-slate-50 hover:text-uoft-accent transition-colors"
+                    >
+                      {subItem.label}
+                    </a>
+                  ))}
+                </div>
+              </div>
+            </div>
+          ) : (
+            <a
+              href={item.href}
+              class="inline-flex items-center text-base font-medium text-gray-600 hover:text-uoft-accent transition-colors relative group"
+            >
+              {item.label}
+              <span class="absolute bottom-0 left-0 w-full h-0.5 bg-uoft-accent transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></span>
+            </a>
+          )
         ))}
         <!-- Social links -->
         <div class="flex items-center gap-3 ml-6">
@@ -131,12 +162,28 @@ const socialLinks = [
   <div class="bg-[#FDFBF7]/80 backdrop-blur-lg border-t border-gray-100 shadow-lg">
     <div class="px-4 pt-4 pb-6 space-y-2">
       {navItems.map(item => (
-        <a
-          href={item.href}
-          class="block px-4 py-3 rounded-lg text-lg font-medium text-gray-700 hover:text-uoft-accent hover:bg-stone-100 transition-colors"
-        >
-          {item.label}
-        </a>
+        item.dropdown ? (
+          <div>
+            <div class="px-4 py-2 text-lg font-semibold text-gray-500">
+              {item.label}
+            </div>
+            {item.dropdown.map(subItem => (
+              <a
+                href={subItem.href}
+                class="block px-6 py-2 rounded-lg text-base font-medium text-gray-700 hover:text-uoft-accent hover:bg-stone-100 transition-colors"
+              >
+                {subItem.label}
+              </a>
+            ))}
+          </div>
+        ) : (
+          <a
+            href={item.href}
+            class="block px-4 py-3 rounded-lg text-lg font-medium text-gray-700 hover:text-uoft-accent hover:bg-stone-100 transition-colors"
+          >
+            {item.label}
+          </a>
+        )
       ))}
       <a 
         href="/contact" 
