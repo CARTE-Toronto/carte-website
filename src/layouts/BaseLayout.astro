@@ -8,9 +8,16 @@ interface Props {
   title: string;
   description?: string;
   scrollColorTransition?: boolean;
+  ogImage?: string;
 }
 
-const { title, description = "Centre for Analytics and Artificial Intelligence Engineering at University of Toronto", scrollColorTransition = false } = Astro.props;
+const { title, description = "Centre for Analytics and Artificial Intelligence Engineering at University of Toronto", scrollColorTransition = false, ogImage = "/hero-image.jpg" } = Astro.props;
+
+// Generate absolute URLs for meta tags
+const siteUrl = Astro.site?.href || 'https://carte.utoronto.ca';
+const currentUrl = new URL(Astro.url.pathname, siteUrl).href;
+const imageUrl = new URL(ogImage, siteUrl).href;
+const fullTitle = `${title} | Carte - University of Toronto`;
 ---
 
 <!doctype html>
@@ -21,7 +28,21 @@ const { title, description = "Centre for Analytics and Artificial Intelligence E
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=6" />
     <meta name="generator" content={Astro.generator} />
-    <title>{title} | Carte - University of Toronto</title>
+    <title>{fullTitle}</title>
+    
+    {/* Open Graph meta tags */}
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={imageUrl} />
+    <meta property="og:url" content={currentUrl} />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Carte - University of Toronto" />
+    
+    {/* Twitter Card meta tags */}
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={fullTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={imageUrl} />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Host+Grotesk:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
