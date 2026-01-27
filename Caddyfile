@@ -6,6 +6,7 @@ www.carte.utoronto.ca {
 # Main site
 carte.utoronto.ca {
     # Proxy /beta to the beta service
+    redir /beta /beta/
     handle_path /beta/* {
         reverse_proxy beta:80
     }
