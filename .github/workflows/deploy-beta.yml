@@ -41,6 +41,7 @@ jobs:
           tags: ${{ steps.meta.outputs.tags }}
           build-args: |
             BASE_PATH=/beta
+            CADDYFILE=Caddyfile.internal
 
   deploy:
     needs: build

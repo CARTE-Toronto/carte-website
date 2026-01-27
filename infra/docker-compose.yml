@@ -21,6 +21,11 @@ services:
     # No ports exposed to host, only internal
     networks:
       - carte-net
+    healthcheck:
+      test: [ "CMD", "wget", "-q", "--spider", "http://localhost/" ]
+      interval: 30s
+      timeout: 10s
+      retries: 3
 
 volumes:
   caddy_data:
