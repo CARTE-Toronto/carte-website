@@ -8,6 +8,7 @@ import mdx from '@astrojs/mdx';
 // https://astro.build/config
 export default defineConfig({
   site: 'https://carte.utoronto.ca',
+  base: process.env.BASE_PATH || '/',
   vite: {
     plugins: [tailwindcss()]
   },

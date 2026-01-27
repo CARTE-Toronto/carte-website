@@ -5,21 +5,29 @@ www.carte.utoronto.ca {
 
 # Main site
 carte.utoronto.ca {
-    root * /srv
-    file_server
+    # Proxy /beta to the beta service
+    handle_path /beta/* {
+        reverse_proxy beta:80
+    }
 
-    # Immutable cache for Astro assets (hashed filenames)
-    @astro path /_astro/*
-    header @astro Cache-Control "public, max-age=31536000, immutable"
+    # Main site
+    handle {
+        root * /srv
+        file_server
 
-    # Security headers
+        # Immutable cache for Astro assets (hashed filenames)
+        @astro path /_astro/*
+        header @astro Cache-Control "public, max-age=31536000, immutable"
+
+        try_files {path} {path}/ {path}/index.html {path}.html
+    }
+
+    # Security headers (gloasbal)
     header {
         X-Content-Type-Options "nosniff"
         X-Frame-Options "DENY"
         Referrer-Policy "strict-origin-when-cross-origin"
     }
-
-    try_files {path} {path}/ {path}/index.html {path}.html
 
     # Handle 404s gracefully
     handle_errors {

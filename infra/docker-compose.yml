@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  web:
+    image: ghcr.io/carte-toronto/carte-website:latest
+    container_name: carte-web
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - caddy_data:/data
+      - caddy_config:/config
+    networks:
+      - carte-net
+
+  beta:
+    image: ghcr.io/carte-toronto/carte-website:beta
+    container_name: carte-beta
+    restart: unless-stopped
+    # No ports exposed to host, only internal
+    networks:
+      - carte-net
+
+volumes:
+  caddy_data:
+  caddy_config:
+
+
+networks:
+  carte-net:
+    driver: bridge

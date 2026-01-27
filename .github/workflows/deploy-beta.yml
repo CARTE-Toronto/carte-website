@@ -1,8 +1,8 @@
-name: Deploy
+name: Deploy Beta
 
 on:
   push:
-    branches: [main]
+    branches: [beta]
   workflow_dispatch:
 
 env:
@@ -32,19 +32,22 @@ jobs:
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
           tags: |
-            type=sha,prefix=
-            type=raw,value=latest
+            type=raw,value=beta
 
       - uses: docker/build-push-action@v5
         with:
           context: .
           push: true
           tags: ${{ steps.meta.outputs.tags }}
+          build-args: |
+            BASE_PATH=/beta
 
   deploy:
     needs: build
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v4 # Need checkout to get infra/docker-compose.yml
+
       - name: Setup
         uses: appleboy/ssh-action@v1
         with:
@@ -74,9 +77,9 @@ jobs:
           script: |
             cd ~/carte
             
-            # Deploy Main Service
-            docker compose pull web
-            docker compose up -d web
+            # Deploy Beta Service
+            docker compose pull beta
+            docker compose up -d beta
             
             # Prune old images
             docker image prune -f
@@ -85,5 +88,4 @@ jobs:
         run: |
           echo "Waiting for deployment to stabilize..."
           sleep 30
-          curl -fL --retry 5 --retry-delay 15 https://carte.utoronto.ca/
-
+          curl -fL --retry 5 --retry-delay 15 https://carte.utoronto.ca/beta/
