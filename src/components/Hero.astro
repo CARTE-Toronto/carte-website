@@ -93,7 +93,8 @@
           </summary>
 
           <div
-            class="absolute left-0 sm:left-1/2 lg:left-0 sm:-translate-x-1/2 lg:translate-x-0 top-full mt-2 z-[9999] p-5 bg-white backdrop-blur-md rounded-xl border border-slate-200 shadow-2xl w-[calc(100vw-2rem)] sm:w-[400px] newsletter-panel"
+            class="absolute left-0 sm:left-1/2 lg:left-0 sm:-translate-x-1/2 lg:translate-x-0 top-full mt-2 z-[9999] p-5 bg-white backdrop-blur-md rounded-2xl border border-slate-200 shadow-2xl w-[calc(100vw-2rem)] sm:w-[400px] newsletter-panel transition-all duration-200 origin-top"
+            id="newsletter-panel"
           >
             <form
               action="https://utoronto.us6.list-manage.com/subscribe/post?u=2aa2e869966773113b0712d28&id=14f41f6d2f&f_id=0012c2e1f0"
@@ -206,6 +207,33 @@
             </form>
           </div>
         </details>
+
+        <script is:inline>
+          (function() {
+            const panel = document.getElementById('newsletter-panel');
+            const details = panel ? panel.closest('details') : null;
+            if (!details || !panel) return;
+
+            const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+            if (!prefersReduced) {
+              // Start hidden
+              panel.style.opacity = '0';
+              panel.style.transform = 'scaleY(0.95) translateY(-4px)';
+            }
+
+            details.addEventListener('toggle', () => {
+              if (prefersReduced) return;
+              if (details.open) {
+                panel.style.opacity = '1';
+                panel.style.removeProperty('transform');
+              } else {
+                panel.style.opacity = '0';
+                panel.style.transform = 'scaleY(0.95) translateY(-4px)';
+              }
+            });
+          })();
+        </script>
       </div>
     </div>
   </div>
