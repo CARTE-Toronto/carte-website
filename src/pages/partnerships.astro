@@ -25,6 +25,8 @@ const mitacsStatic = {
 const allFeatured = [
   mitacsStatic,
   ...featuredServices
+    // "Sponsored Research" is excluded here because it is represented by the
+    // hardcoded mitacsStatic entry above. TODO: remove once BUGS.md BUG-001 is fixed.
     .filter(s => s.data.title !== "Sponsored Research")
     .map(s => ({
       title: s.data.title,
@@ -53,7 +55,7 @@ const allFeatured = [
     </div>
   </section>
 
-  <!-- Featured Services Section (Static Grid) -->
+  <!-- Featured Services Section -->
   <section class="py-20 lg:py-28">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-16">
@@ -68,7 +70,7 @@ const allFeatured = [
               {String(index + 1).padStart(2, '0')}
             </span>
             <div class="flex-1 min-w-0">
-              {item.tags.length > 0 && (
+              {item.tags?.length > 0 && (
                 <div class="flex flex-wrap gap-3 mb-3">
                   {item.tags.map(tag => (
                     <span class="text-xs font-semibold tracking-wide uppercase text-[var(--color-uoft-accent)]">{tag}</span>
