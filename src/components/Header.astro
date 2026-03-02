@@ -248,7 +248,7 @@ const socialLinks = [
               {item.dropdown.map((subItem) => (
                 <a
                   href={subItem.href}
-                  class="block px-6 py-2 rounded-lg text-base font-medium text-gray-700 hover:text-uoft-accent hover:bg-stone-100 transition-colors"
+                  class="block px-6 py-2 rounded-lg text-base font-medium text-gray-700 hover:text-uoft-accent hover:bg-stone-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-uoft-accent transition-colors"
                 >
                   {subItem.label}
                 </a>
@@ -257,7 +257,7 @@ const socialLinks = [
           ) : (
             <a
               href={item.href}
-              class="block px-4 py-3 rounded-lg text-lg font-medium text-gray-700 hover:text-uoft-accent hover:bg-stone-100 transition-colors"
+              class="block px-4 py-3 rounded-lg text-lg font-medium text-gray-700 hover:text-uoft-accent hover:bg-stone-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-uoft-accent transition-colors"
             >
               {item.label}
             </a>
@@ -266,7 +266,7 @@ const socialLinks = [
       }
       <a
         href="/contact"
-        class="block mt-4 mx-4 px-6 py-3 text-center text-lg font-bold rounded-full text-white bg-uoft-blue hover:bg-uoft-accent transition-colors"
+        class="block mt-4 mx-4 px-6 py-3 text-center text-lg font-bold rounded-full text-white bg-uoft-blue hover:bg-uoft-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-uoft-accent focus-visible:ring-offset-2 transition-colors"
       >
         Contact
       </a>
