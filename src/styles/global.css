@@ -1,14 +1,14 @@
 @import "tailwindcss";
 
 @theme {
-  /* Deep, rich text color (almost black navy) */
-  --color-uoft-blue: #112338;
+  /* Official UofT Blue - Pantone 655 */
+  --color-uoft-blue: #1E3765;
   
-  /* A youthful, vibrant accent - "Electric Indigo" to replace the muted steel */
-  --color-uoft-accent: #6366F1; 
+  /* Official Secondary Blue - Pantone 307 */
+  --color-uoft-accent: #007894; 
   
-  /* A warm pop color for interactions - "Sunray" */
-  --color-pop: #F59E0B;
+  /* Official Energy Yellow - Pantone 124 */
+  --color-pop: #F1C500;
   
   --color-pale-bg: #FDFBF7;
   
