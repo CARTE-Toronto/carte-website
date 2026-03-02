@@ -13,6 +13,27 @@ const featuredServices = allPartnerships
 const secondaryServices = allPartnerships
   .filter(p => !p.data.featured)
   .sort((a, b) => a.data.order - b.data.order);
+
+const mitacsStatic = {
+  title: "Mitacs Accelerate",
+  description: "Use government funding to work with talented students on your AI research challenges. Contribute $7,500+ per internship and Mitacs matches it to create a $15,000+ research award.",
+  tags: ["Funding Program", "Research"],
+  cta: "See how Mitacs Accelerate works",
+  link: "#mitacs-accelerate",
+};
+
+const allFeatured = [
+  mitacsStatic,
+  ...featuredServices
+    .filter(s => s.data.title !== "Sponsored Research")
+    .map(s => ({
+      title: s.data.title,
+      description: s.data.description,
+      tags: s.data.tags,
+      cta: s.data.cta ?? "Learn more",
+      link: s.data.link ?? "#",
+    })),
+];
 ---
 
 <BaseLayout title="Partnerships" description="Partner with Carte for sponsored research, corporate training, AI consulting, and more.">
@@ -40,135 +61,33 @@ const secondaryServices = allPartnerships
         <p class="text-lg text-slate-600 max-w-2xl mx-auto">From funded research programs to customized training, we help you connect with U of T expertise.</p>
       </div>
       
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <!-- Mitacs Accelerate Card (First Position) -->
-        <a href="#mitacs-accelerate" class="group relative bg-white rounded-2xl shadow-lg shadow-slate-200/50 overflow-hidden hover:shadow-xl hover:shadow-slate-300/50 transition-all duration-500 hover:-translate-y-1 block">
-          <div class="relative h-56 bg-gradient-to-br from-uoft-blue to-uoft-accent overflow-hidden">
-            <svg class="absolute inset-0 w-full h-full opacity-20" viewBox="0 0 400 200" preserveAspectRatio="xMidYMid slice">
-              <g fill="white">
-                <circle cx="100" cy="100" r="40" fill="none" stroke="white" stroke-width="3"/>
-                <circle cx="100" cy="100" r="25" fill="none" stroke="white" stroke-width="2"/>
-                <circle cx="100" cy="100" r="8"/>
-                <path d="M140 100 h60" stroke="white" stroke-width="2"/>
-                <path d="M220 80 L260 100 L220 120" fill="none" stroke="white" stroke-width="2"/>
-                <circle cx="300" cy="100" r="30" fill="none" stroke="white" stroke-width="2"/>
-                <circle cx="300" cy="100" r="15"/>
-              </g>
-            </svg>
-            <div class="absolute bottom-0 left-0 right-0 h-8 bg-white" style="clip-path: ellipse(70% 100% at 50% 100%);"></div>
-          </div>
-          
-          <div class="p-6 pt-2">
-            <div class="flex flex-wrap gap-2 mb-3">
-              <span class="px-2.5 py-0.5 text-xs font-semibold rounded-full bg-blue-50 text-blue-700">Funding Program</span>
-              <span class="px-2.5 py-0.5 text-xs font-semibold rounded-full bg-blue-50 text-blue-700">Research</span>
-            </div>
-            
-            <h3 class="text-lg font-bold text-[var(--color-uoft-blue)] mb-3 leading-snug group-hover:text-blue-700 transition-colors">
-              Mitacs Accelerate
-            </h3>
-            
-            <p class="text-slate-600 text-sm leading-relaxed mb-4">
-              Use government funding to work with talented students on your AI research challenges. Contribute $7,500+ per internship and Mitacs matches it to create a $15,000+ research award.
-            </p>
-            
-            <div class="inline-flex items-center text-sm font-semibold text-blue-600 hover:text-blue-800 transition-colors">
-              See how Mitacs Accelerate works
-              <svg class="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
-              </svg>
-            </div>
-          </div>
-        </a>
-        
-        {featuredServices.filter(service => service.data.title !== "Sponsored Research").map((service, index) => (
-          <article class="group relative bg-white rounded-2xl shadow-lg shadow-slate-200/50 overflow-hidden hover:shadow-xl hover:shadow-slate-300/50 transition-all duration-500 hover:-translate-y-1">
-            <!-- Visual placeholder with gradient and pattern -->
-            <div class={`relative h-56 bg-gradient-to-br ${service.data.gradient} overflow-hidden`}>
-              <!-- Abstract pattern overlay -->
-              {service.data.pattern === "research" && (
-                <svg class="absolute inset-0 w-full h-full opacity-20" viewBox="0 0 400 200" preserveAspectRatio="xMidYMid slice">
-                  <g fill="white">
-                    <!-- Abstract research/discovery shapes -->
-                    <circle cx="100" cy="100" r="40" fill="none" stroke="white" stroke-width="3"/>
-                    <circle cx="100" cy="100" r="25" fill="none" stroke="white" stroke-width="2"/>
-                    <circle cx="100" cy="100" r="8"/>
-                    <path d="M140 100 h60" stroke="white" stroke-width="2"/>
-                    <path d="M220 80 L260 100 L220 120" fill="none" stroke="white" stroke-width="2"/>
-                    <circle cx="300" cy="100" r="30" fill="none" stroke="white" stroke-width="2"/>
-                    <circle cx="300" cy="100" r="15"/>
-                  </g>
-                </svg>
+      <div class="divide-y divide-slate-200">
+        {allFeatured.map((item, index) => (
+          <a href={item.link} class="group flex gap-8 py-10 hover:bg-slate-50/50 transition-colors duration-150 rounded-xl -mx-4 px-4">
+            <span class="hidden sm:block text-6xl font-extrabold text-slate-200 group-hover:text-[var(--color-uoft-accent)] transition-colors duration-150 leading-none pt-1 tabular-nums min-w-[3.5rem]">
+              {String(index + 1).padStart(2, '0')}
+            </span>
+            <div class="flex-1 min-w-0">
+              {item.tags.length > 0 && (
+                <div class="flex flex-wrap gap-3 mb-3">
+                  {item.tags.map(tag => (
+                    <span class="text-xs font-semibold tracking-wide uppercase text-[var(--color-uoft-accent)]">{tag}</span>
+                  ))}
+                </div>
               )}
-              {service.data.pattern === "training" && (
-                <svg class="absolute inset-0 w-full h-full opacity-20" viewBox="0 0 400 200" preserveAspectRatio="xMidYMid slice">
-                  <g fill="white">
-                    <!-- Desks/classroom -->
-                    <rect x="30" y="120" width="80" height="10" rx="2"/>
-                    <rect x="160" y="120" width="80" height="10" rx="2"/>
-                    <rect x="290" y="120" width="80" height="10" rx="2"/>
-                    <rect x="30" y="160" width="80" height="10" rx="2"/>
-                    <rect x="160" y="160" width="80" height="10" rx="2"/>
-                    <rect x="290" y="160" width="80" height="10" rx="2"/>
-                    <rect x="120" y="30" width="160" height="60" rx="4"/>
-                  </g>
-                </svg>
-              )}
-              {service.data.pattern === "consulting" && (
-                <svg class="absolute inset-0 w-full h-full opacity-15" viewBox="0 0 400 200" preserveAspectRatio="xMidYMid slice">
-                  <defs>
-                    <pattern id={`consulting-${index}`} width="50" height="50" patternUnits="userSpaceOnUse">
-                      <circle cx="25" cy="25" r="4" fill="white"/>
-                      <path d="M25 0v21M25 29v21M0 25h21M29 25h21" stroke="white" stroke-width="1"/>
-                    </pattern>
-                  </defs>
-                  <rect width="100%" height="100%" fill={`url(#consulting-${index})`}/>
-                  <circle cx="200" cy="100" r="60" stroke="white" stroke-width="3" fill="none"/>
-                  <circle cx="200" cy="100" r="30" stroke="white" stroke-width="2" fill="none"/>
-                </svg>
-              )}
-              {service.data.pattern === "network" && (
-                <svg class="absolute inset-0 w-full h-full opacity-15" viewBox="0 0 400 200" preserveAspectRatio="xMidYMid slice">
-                  <defs>
-                    <pattern id={`network-${index}`} width="50" height="50" patternUnits="userSpaceOnUse">
-                      <circle cx="25" cy="25" r="4" fill="white"/>
-                      <path d="M25 0v21M25 29v21M0 25h21M29 25h21" stroke="white" stroke-width="1"/>
-                    </pattern>
-                  </defs>
-                  <rect width="100%" height="100%" fill={`url(#network-${index})`}/>
-                </svg>
-              )}
-              
-              <!-- Decorative bottom curve -->
-              <div class="absolute bottom-0 left-0 right-0 h-8 bg-white" style="clip-path: ellipse(70% 100% at 50% 100%);"></div>
-            </div>
-            
-            <div class="p-6 pt-2">
-              <!-- Tags -->
-              <div class="flex flex-wrap gap-2 mb-3">
-                {service.data.tags.map(tag => (
-                  <span class="px-2.5 py-0.5 text-xs font-semibold rounded-full bg-blue-50 text-blue-700">{tag}</span>
-                ))}
-              </div>
-              
-              <h3 class="text-lg font-bold text-[var(--color-uoft-blue)] mb-3 leading-snug group-hover:text-blue-700 transition-colors">
-                {service.data.title}
+              <h3 class="text-xl font-bold text-[var(--color-uoft-blue)] mb-2 group-hover:text-[var(--color-uoft-accent)] transition-colors duration-150">
+                {item.title}
               </h3>
-              
-              <p class="text-slate-600 text-sm leading-relaxed mb-4">
-                {service.data.description}
+              <p class="text-slate-600 leading-relaxed max-w-2xl">
+                {item.description}
               </p>
-              
-              {service.data.link && (
-                <a href={service.data.link} class="inline-flex items-center text-sm font-semibold text-blue-600 hover:text-blue-800 transition-colors">
-                  {service.data.cta ?? "Learn more"}
-                  <svg class="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
-                  </svg>
-                </a>
-              )}
             </div>
-          </article>
+            <div class="hidden md:flex items-start pt-2 flex-shrink-0">
+              <span class="text-sm font-semibold text-[var(--color-uoft-accent)] group-hover:underline whitespace-nowrap">
+                {item.cta} →
+              </span>
+            </div>
+          </a>
         ))}
       </div>
     </div>
