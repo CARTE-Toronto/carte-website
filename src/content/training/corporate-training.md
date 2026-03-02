@@ -2,7 +2,7 @@
 title: "Executive AI Briefings"
 audience: "C-Suite & Senior Leaders"
 duration: "Half-day to full-day"
-description: "Strategic AI briefings designed for executive leadership, covering AI capabilities, industry trends, organizational implications, and how to develop an effective AI strategy."
+description: "AI briefings designed for executive leadership, covering AI capabilities, industry trends, organizational implications, and how to develop an effective AI strategy."
 featured: true
 gradient: "from-amber-500 via-orange-500 to-red-500"
 pattern: "corporate"
@@ -13,7 +13,7 @@ testimonial:
   attribution: "Corporate executive, 2023"
 ---
 
-Our executive briefings are tailored to help senior leaders understand the AI landscape and make informed strategic decisions. Sessions cover:
+Our executive briefings are tailored to help senior leaders understand the AI landscape and make informed decisions. Sessions cover:
 
 - Current state of AI and machine learning capabilities
 - Industry-specific trends and medium-term outlook

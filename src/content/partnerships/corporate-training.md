@@ -1,12 +1,13 @@
 ---
 title: "Corporate Training"
-description: "Upskill your workforce with customized AI training programs—from executive briefings for leadership to hands-on technical workshops for your teams."
+description: "Customized AI training programs for your workforce—from executive briefings for leadership to hands-on technical workshops for your teams."
 featured: true
 gradient: "from-amber-500 via-orange-500 to-red-500"
 pattern: "training"
-tags: ["Training", "Upskilling", "Custom"]
+tags: ["Training", "Custom"]
 order: 2
 link: "/training"
+cta: "Explore training programs"
 ---
 
 We design and deliver AI training programs tailored to your organization's needs, industry context, and skill levels.

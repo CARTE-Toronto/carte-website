@@ -12,7 +12,7 @@ testimonial:
   attribution: "Faculty participant, 2023"
 ---
 
-Our flagship faculty training agenda is revised annually to incorporate emerging technologies in the field. The program takes faculty members from foundational concepts through to advanced topics like reinforcement learning, with hands-on workshops and collaborative discussions throughout.
+Our flagship faculty training agenda is revised annually to incorporate emerging technologies. The program takes faculty members from foundational concepts through to advanced topics like reinforcement learning, with hands-on workshops and collaborative discussions throughout.
 
-Past participants have praised the excellent instruction and the opportunity to learn alongside colleagues from diverse research backgrounds.
+The intensive format means you can focus fully on learning — without the constant pull of lab management and teaching duties.
 

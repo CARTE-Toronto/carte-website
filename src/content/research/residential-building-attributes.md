@@ -3,7 +3,7 @@ title: "Image-based Prediction of Residential Building Attributes with Deep Lear
 authors: "Huang, W., Olson, A.W., Khalil, E.B. & Saxe, S."
 venue: "Journal of Industrial Ecology"
 year: 2025
-description: "Leveraging deep learning to predict residential building characteristics from imagery, supporting sustainable housing analysis and urban planning decisions."
+description: "Using deep learning to predict residential building characteristics from imagery, supporting sustainable housing analysis and urban planning decisions."
 featured: true
 gradient: "from-emerald-500 via-teal-500 to-cyan-600"
 pattern: "houses"

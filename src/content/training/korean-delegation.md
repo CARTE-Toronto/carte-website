@@ -11,5 +11,5 @@ order: 9
 
 Carte facilitates study abroad programs for international students in analytics, artificial intelligence, and machine learning. Our partnership with South Korea brings graduate students to the University of Toronto's Faculty of Applied Science & Engineering for a six-month applied AI program.
 
-School administrators interested in similar programs are encouraged to contact us to explore possibilities.
+School administrators interested in a similar program are welcome to get in touch.
 

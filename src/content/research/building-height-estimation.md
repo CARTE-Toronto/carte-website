@@ -11,5 +11,5 @@ tags: ["Computer Vision", "Urban Infrastructure"]
 order: 1
 ---
 
-This research presents a streamlined method for estimating building heights directly from single street-level photographs using EfficientNet, a state-of-the-art convolutional neural network architecture. The approach eliminates the need for expensive LiDAR surveys or complex multi-image photogrammetry, making urban infrastructure assessment more accessible and scalable for cities worldwide.
+This research presents a streamlined method for estimating building heights directly from single street-level photographs using EfficientNet, a convolutional neural network. The approach eliminates the need for expensive LiDAR surveys or complex multi-image photogrammetry, making urban infrastructure assessment more accessible and scalable for cities worldwide.
 

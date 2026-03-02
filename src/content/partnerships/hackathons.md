@@ -1,6 +1,6 @@
 ---
 title: "Hackathons & Competitions"
-description: "Sponsor student competitions on emerging AI technologies. A unique opportunity to engage talented students while exploring innovative solutions to your challenges."
+description: "Sponsor student competitions on emerging AI technologies. A unique opportunity to engage talented students while exploring new approaches to your challenges."
 featured: false
 icon: "trophy"
 tags: ["Events", "Students", "Innovation"]
@@ -16,7 +16,7 @@ Partner with Carte to run student competitions focused on emerging AI methodolog
 - Access to creative solutions from talented students
 - Brand visibility among top engineering students
 - Opportunity to identify potential hires
-- Hands-on engagement with cutting-edge technologies
+- Hands-on engagement with emerging AI technologies
 
 Interested in sponsoring a hackathon? Contact us to discuss possibilities.
 

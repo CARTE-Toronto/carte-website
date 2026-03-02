@@ -59,6 +59,8 @@ const partnerships = defineCollection({
     order: z.number().default(99),
     // Optional link to another page
     link: z.string().optional(),
+    // Optional CTA label (defaults to "Learn more" if omitted)
+    cta: z.string().optional(),
   }),
 });
 

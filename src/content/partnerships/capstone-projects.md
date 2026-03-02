@@ -7,7 +7,7 @@ tags: ["Students", "Projects"]
 order: 4
 ---
 
-If you have an applied AI research project but limited budget for sponsored research, consider engaging upper-year undergraduate students through capstone design projects.
+Have an applied AI challenge but not ready for sponsored research? Capstone projects are a practical way to explore AI applications with emerging talent.
 
 **How it works:**
 - You propose a real-world problem or challenge

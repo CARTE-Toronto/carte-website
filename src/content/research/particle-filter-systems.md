@@ -10,5 +10,5 @@ tags: ["Air Quality", "Building Science"]
 order: 6
 ---
 
-This study evaluates fixed and adaptive concentration thresholds for particle filter systems, contributing to the optimization of indoor air quality management. The research provides insights into how adaptive algorithms can improve filtration efficiency while reducing energy consumption in building ventilation systems.
+This study evaluates fixed and adaptive concentration thresholds for particle filter systems, helping improve indoor air quality. The research provides insights into how adaptive algorithms can improve filtration efficiency while reducing energy consumption in building ventilation systems.
 

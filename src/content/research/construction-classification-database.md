@@ -10,5 +10,5 @@ tags: ["Infrastructure", "Data"]
 order: 4
 ---
 
-This paper presents a comprehensive construction classification system database published in Nature's Scientific Data. The database enables researchers and practitioners to systematically analyze resource consumption patterns across different building types and construction methods, supporting more sustainable construction practices and informed policy decisions.
+This paper presents a construction classification system database published in Nature's Scientific Data. The database enables researchers and practitioners to systematically analyze resource consumption patterns across different building types and construction methods, supporting more sustainable construction practices and informed policy decisions.
 
