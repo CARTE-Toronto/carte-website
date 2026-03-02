@@ -17,8 +17,9 @@ const secondaryResearch = allResearch
 const featuredList = featuredResearch.map(paper => ({
   title: paper.data.title,
   description: paper.data.description,
+  // authors omitted intentionally in editorial list; shown in secondary carousel below
   tags: [
-    `${paper.data.venue} ${paper.data.year}`,
+    ...(paper.data.venue && paper.data.year ? [`${paper.data.venue} ${paper.data.year}`] : []),
     ...paper.data.tags,
   ],
 }));
