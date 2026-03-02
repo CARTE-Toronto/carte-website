@@ -10,6 +10,9 @@
   /* Official Energy Yellow - Pantone 124 */
   --color-pop: #F1C500;
   
+  /* Darkened yellow for icon use on light backgrounds (better contrast) */
+  --color-pop-dark: #D4A800;
+  
   /* Dark navy - used for dark section backgrounds and dot canvas */
   --color-uoft-dark: #112338;
   
