@@ -26,8 +26,6 @@ const featuredList = featuredTraining.map(program => ({
     ...(program.data.audience ? [program.data.audience] : []),
     ...program.data.tags,
   ],
-  cta: "See program details",
-  link: "#",
 }));
 ---
 
@@ -57,8 +55,8 @@ const featuredList = featuredTraining.map(program => ({
       
       <div class="divide-y divide-slate-200">
         {featuredList.map((item, index) => (
-          <a href={item.link} class="group flex gap-8 py-10 hover:bg-slate-50/50 transition-colors duration-150 rounded-xl -mx-4 px-4">
-            <span class="hidden sm:block text-6xl font-extrabold text-slate-200 group-hover:text-[var(--color-uoft-accent)] transition-colors duration-150 leading-none pt-1 tabular-nums min-w-[3.5rem]">
+          <div class="flex gap-8 py-10">
+            <span class="hidden sm:block text-6xl font-extrabold text-slate-200 leading-none pt-1 tabular-nums min-w-[3.5rem]">
               {String(index + 1).padStart(2, '0')}
             </span>
             <div class="flex-1 min-w-0">
@@ -69,19 +67,14 @@ const featuredList = featuredTraining.map(program => ({
                   ))}
                 </div>
               )}
-              <h3 class="text-xl font-bold text-[var(--color-uoft-blue)] mb-2 group-hover:text-[var(--color-uoft-accent)] transition-colors duration-150">
+              <h3 class="text-xl font-bold text-[var(--color-uoft-blue)] mb-2">
                 {item.title}
               </h3>
               <p class="text-slate-600 leading-relaxed max-w-2xl">
                 {item.description}
               </p>
             </div>
-            <div class="hidden md:flex items-start pt-2 flex-shrink-0">
-              <span class="text-sm font-semibold text-[var(--color-uoft-accent)] group-hover:underline whitespace-nowrap">
-                {item.cta} →
-              </span>
-            </div>
-          </a>
+          </div>
         ))}
       </div>
     </div>
