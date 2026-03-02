@@ -50,11 +50,13 @@ const facultyOpportunities = [
               {String(index + 1).padStart(2, '0')}
             </span>
             <div class="flex-1 min-w-0">
-              <div class="flex flex-wrap gap-3 mb-3">
-                {item.tags.map(tag => (
-                  <span class="text-xs font-semibold tracking-wide uppercase text-[var(--color-uoft-accent)]">{tag}</span>
-                ))}
-              </div>
+              {item.tags?.length > 0 && (
+                <div class="flex flex-wrap gap-3 mb-3">
+                  {item.tags.map(tag => (
+                    <span class="text-xs font-semibold tracking-wide uppercase text-[var(--color-uoft-accent)]">{tag}</span>
+                  ))}
+                </div>
+              )}
               <h3 class="text-xl font-bold text-[var(--color-uoft-blue)] mb-2 group-hover:text-[var(--color-uoft-accent)] transition-colors duration-150">
                 {item.title}
               </h3>
