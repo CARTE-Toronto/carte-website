@@ -12,28 +12,20 @@ import Section from "../components/Section.astro";
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <p class="text-center text-sm text-slate-500 mb-4">Part of the U of T community?</p>
       <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-        <div
-          class="inline-flex items-center gap-2 px-6 py-3 bg-white border-2 border-[#00A189] rounded-full shadow-sm hover:shadow-md transition-all hover:scale-105"
+        <a
+          href="/students"
+          class="inline-flex items-center gap-2 px-6 py-3 bg-white border-2 border-[#00A189] rounded-full shadow-sm hover:shadow-md hover:bg-[#F0FAF9] transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00A189]"
         >
           <span class="text-[#0D534D] font-semibold">U of T Student?</span>
-          <a
-            href="/students"
-            class="text-[#0D534D] font-bold hover:text-[#0D534D] underline"
-          >
-            Explore student opportunities
-          </a>
-        </div>
-        <div
-          class="inline-flex items-center gap-2 px-6 py-3 bg-white border-2 border-[#007894] rounded-full shadow-sm hover:shadow-md transition-all hover:scale-105"
+          <span class="text-[#0D534D] font-bold">Explore student opportunities &rarr;</span>
+        </a>
+        <a
+          href="/faculty"
+          class="inline-flex items-center gap-2 px-6 py-3 bg-white border-2 border-[#007894] rounded-full shadow-sm hover:shadow-md hover:bg-[#F0F7FA] transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#007894]"
         >
           <span class="text-[#007894] font-semibold">U of T Faculty?</span>
-          <a
-            href="/faculty"
-            class="text-[#007894] font-bold hover:text-[#1E3765] underline"
-          >
-            Access faculty resources
-          </a>
-        </div>
+          <span class="text-[#007894] font-bold">Access faculty resources &rarr;</span>
+        </a>
       </div>
     </div>
   </section>
