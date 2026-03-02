@@ -18,6 +18,17 @@ const secondaryTraining = allTraining
 const testimonials = allTraining
   .filter(t => t.data.testimonial)
   .map(t => ({ ...t.data.testimonial, source: t.data.title }));
+
+const featuredList = featuredTraining.map(program => ({
+  title: program.data.title,
+  description: program.data.description,
+  tags: [
+    ...(program.data.audience ? [program.data.audience] : []),
+    ...program.data.tags,
+  ],
+  cta: "See program details",
+  link: "#",
+}));
 ---
 
 <BaseLayout title="Training" description="Carte provides customizable AI and machine learning training for faculty, researchers, students, and industry partners.">
@@ -36,7 +47,7 @@ const testimonials = allTraining
     </div>
   </section>
 
-  <!-- Featured Training Section (Static Grid) -->
+  <!-- Featured Training Section -->
   <section class="py-20 lg:py-28">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-16">
@@ -44,110 +55,33 @@ const testimonials = allTraining
         <p class="text-lg text-slate-600 max-w-2xl mx-auto">Programs designed for every level — from executive briefings to hands-on technical workshops — tailored to your team's needs and background.</p>
       </div>
       
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {featuredTraining.map((program, index) => (
-          <article class="group relative bg-white rounded-2xl shadow-lg shadow-slate-200/50 overflow-hidden hover:shadow-xl hover:shadow-slate-300/50 transition-all duration-500 hover:-translate-y-1">
-            <!-- Visual placeholder with gradient and pattern -->
-            <div class={`relative h-56 bg-gradient-to-br ${program.data.gradient} overflow-hidden`}>
-              <!-- Abstract pattern overlay -->
-              {program.data.pattern === "classroom" && (
-                <svg class="absolute inset-0 w-full h-full opacity-20" viewBox="0 0 400 200" preserveAspectRatio="xMidYMid slice">
-                  <g fill="white">
-                    <!-- Desks/tables -->
-                    <rect x="30" y="120" width="80" height="10" rx="2"/>
-                    <rect x="160" y="120" width="80" height="10" rx="2"/>
-                    <rect x="290" y="120" width="80" height="10" rx="2"/>
-                    <rect x="30" y="160" width="80" height="10" rx="2"/>
-                    <rect x="160" y="160" width="80" height="10" rx="2"/>
-                    <rect x="290" y="160" width="80" height="10" rx="2"/>
-                    <!-- Whiteboard -->
-                    <rect x="120" y="30" width="160" height="60" rx="4"/>
-                  </g>
-                </svg>
-              )}
-              {program.data.pattern === "lab" && (
-                <svg class="absolute inset-0 w-full h-full opacity-20" viewBox="0 0 400 200" preserveAspectRatio="xMidYMid slice">
-                  <g fill="white">
-                    <!-- Flask shapes -->
-                    <path d="M80 60 L80 100 L60 150 L100 150 L80 100 Z"/>
-                    <circle cx="80" cy="50" r="15"/>
-                    <path d="M200 70 L200 110 L170 160 L230 160 L200 110 Z"/>
-                    <circle cx="200" cy="55" r="20"/>
-                    <path d="M320 65 L320 105 L295 155 L345 155 L320 105 Z"/>
-                    <circle cx="320" cy="50" r="18"/>
-                  </g>
-                </svg>
-              )}
-              {program.data.pattern === "corporate" && (
-                <svg class="absolute inset-0 w-full h-full opacity-15" viewBox="0 0 400 200" preserveAspectRatio="xMidYMid slice">
-                  <g fill="white">
-                    <!-- Building/office shapes -->
-                    <rect x="50" y="60" width="60" height="140" rx="2"/>
-                    <rect x="130" y="40" width="80" height="160" rx="2"/>
-                    <rect x="230" y="80" width="50" height="120" rx="2"/>
-                    <rect x="300" y="50" width="70" height="150" rx="2"/>
-                    <!-- Windows -->
-                    <rect x="60" y="75" width="15" height="15" fill="currentColor" opacity="0.3"/>
-                    <rect x="85" y="75" width="15" height="15" fill="currentColor" opacity="0.3"/>
-                    <rect x="145" y="55" width="20" height="20" fill="currentColor" opacity="0.3"/>
-                    <rect x="175" y="55" width="20" height="20" fill="currentColor" opacity="0.3"/>
-                  </g>
-                </svg>
-              )}
-              {program.data.pattern === "network" && (
-                <svg class="absolute inset-0 w-full h-full opacity-15" viewBox="0 0 400 200" preserveAspectRatio="xMidYMid slice">
-                  <defs>
-                    <pattern id={`network-${index}`} width="50" height="50" patternUnits="userSpaceOnUse">
-                      <circle cx="25" cy="25" r="4" fill="white"/>
-                      <path d="M25 0v21M25 29v21M0 25h21M29 25h21" stroke="white" stroke-width="1"/>
-                    </pattern>
-                  </defs>
-                  <rect width="100%" height="100%" fill={`url(#network-${index})`}/>
-                </svg>
-              )}
-              
-              <!-- Audience badge -->
-              <div class="absolute top-4 right-4 px-3 py-1 bg-white/20 backdrop-blur-sm rounded-full text-white text-sm font-bold">
-                {program.data.audience}
-              </div>
-              
-              <!-- Decorative bottom curve -->
-              <div class="absolute bottom-0 left-0 right-0 h-8 bg-white" style="clip-path: ellipse(70% 100% at 50% 100%);"></div>
-            </div>
-            
-            <div class="p-6 pt-2">
-              <!-- Tags -->
-              <div class="flex flex-wrap gap-2 mb-3">
-                {program.data.tags.map(tag => (
-                  <span class="px-2.5 py-0.5 text-xs font-semibold rounded-full bg-blue-50 text-uoft-accent">{tag}</span>
-                ))}
-              </div>
-              
-              <h3 class="text-lg font-bold text-[var(--color-uoft-blue)] mb-2 leading-snug group-hover:text-uoft-accent transition-colors">
-                {program.data.title}
-              </h3>
-              
-              {program.data.duration && (
-                <p class="text-sm text-slate-500 mb-3 flex items-center gap-1">
-                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                  </svg>
-                  {program.data.duration}
-                </p>
-              )}
-              
-              <p class="text-slate-600 text-sm leading-relaxed mb-4">
-                {program.data.description}
-              </p>
-              
-              {program.data.testimonial && (
-                <div class="pt-4 border-t border-slate-100">
-                  <blockquote class="text-sm text-slate-500 italic">"{program.data.testimonial.quote}"</blockquote>
-                  <p class="text-xs text-slate-400 mt-1">— {program.data.testimonial.attribution}</p>
+      <div class="divide-y divide-slate-200">
+        {featuredList.map((item, index) => (
+          <a href={item.link} class="group flex gap-8 py-10 hover:bg-slate-50/50 transition-colors duration-150 rounded-xl -mx-4 px-4">
+            <span class="hidden sm:block text-6xl font-extrabold text-slate-200 group-hover:text-[var(--color-uoft-accent)] transition-colors duration-150 leading-none pt-1 tabular-nums min-w-[3.5rem]">
+              {String(index + 1).padStart(2, '0')}
+            </span>
+            <div class="flex-1 min-w-0">
+              {item.tags?.length > 0 && (
+                <div class="flex flex-wrap gap-3 mb-3">
+                  {item.tags.map(tag => (
+                    <span class="text-xs font-semibold tracking-wide uppercase text-[var(--color-uoft-accent)]">{tag}</span>
+                  ))}
                 </div>
               )}
+              <h3 class="text-xl font-bold text-[var(--color-uoft-blue)] mb-2 group-hover:text-[var(--color-uoft-accent)] transition-colors duration-150">
+                {item.title}
+              </h3>
+              <p class="text-slate-600 leading-relaxed max-w-2xl">
+                {item.description}
+              </p>
             </div>
-          </article>
+            <div class="hidden md:flex items-start pt-2 flex-shrink-0">
+              <span class="text-sm font-semibold text-[var(--color-uoft-accent)] group-hover:underline whitespace-nowrap">
+                {item.cta} →
+              </span>
+            </div>
+          </a>
         ))}
       </div>
     </div>
