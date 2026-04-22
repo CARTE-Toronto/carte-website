@@ -54,73 +54,72 @@ const organicShapeBorderRadius = generateOrganicShape();
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
               </svg>
             </summary>
-            
+
             <div class="absolute left-0 sm:left-1/2 lg:left-0 sm:-translate-x-1/2 lg:translate-x-0 top-full mt-2 z-[9999] p-5 bg-white backdrop-blur-md rounded-xl border border-slate-200 shadow-2xl w-[calc(100vw-2rem)] sm:w-[400px] newsletter-panel">
-              <form 
-                action="https://utoronto.us6.list-manage.com/subscribe/post?u=2aa2e869966773113b0712d28&amp;id=14f41f6d2f&amp;f_id=0012c2e1f0" 
-                method="post" 
-                target="_blank"
-                class="space-y-3"
-              >
+              <form id="hero-subscribe-form" class="space-y-3">
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                  <input 
-                    type="email" 
-                    name="EMAIL" 
-                    placeholder="Email *" 
+                  <input
+                    type="email"
+                    name="email"
+                    placeholder="Email *"
                     class="px-3 py-2 rounded-lg border border-slate-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none text-sm"
                     required
                   />
-                  <input 
-                    type="text" 
-                    name="FNAME" 
+                  <input
+                    type="text"
+                    name="first_name"
                     placeholder="First name"
                     class="px-3 py-2 rounded-lg border border-slate-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none text-sm"
                   />
                 </div>
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                  <input 
-                    type="text" 
-                    name="COMPANY" 
+                  <input
+                    type="text"
+                    name="last_name"
+                    placeholder="Last name"
+                    class="px-3 py-2 rounded-lg border border-slate-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none text-sm"
+                  />
+                  <input
+                    type="text"
+                    name="organization"
                     placeholder="Organization (if not UofT)"
                     class="px-3 py-2 rounded-lg border border-slate-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none text-sm"
                   />
-                  <select 
-                    name="MMERGE3"
-                    class="px-3 py-2 rounded-lg border border-slate-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none text-sm bg-white text-slate-500"
-                  >
-                    <option value="">Academic Unit (if UofT)</option>
-                    <option value="Applied Science &amp; Engineering">Applied Science & Engineering</option>
-                    <option value="Arts &amp; Science">Arts & Science</option>
-                    <option value="Medicine">Medicine</option>
-                    <option value="Management">Management</option>
-                    <option value="Other">Other</option>
-                  </select>
                 </div>
+                <select
+                  name="academic_unit"
+                  class="w-full px-3 py-2 rounded-lg border border-slate-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none text-sm bg-white text-slate-500"
+                >
+                  <option value="">Academic Unit (if UofT)</option>
+                  <option value="Applied Science &amp; Engineering">Applied Science & Engineering</option>
+                  <option value="Arts &amp; Science">Arts & Science</option>
+                  <option value="Medicine">Medicine</option>
+                  <option value="Management">Management</option>
+                  <option value="Other">Other</option>
+                </select>
                 <div class="flex flex-wrap gap-x-4 gap-y-1 text-xs text-slate-500">
                   <div class="flex items-center gap-1.5">
-                    <input type="checkbox" id="newsletter-graduate" name="group[12960][4]" class="rounded border-slate-300 text-indigo-600 w-3.5 h-3.5 cursor-pointer" />
-                    <label for="newsletter-graduate" class="cursor-pointer">Graduate</label>
+                    <input type="checkbox" id="hero-graduate" name="affiliation" value="Graduate" class="rounded border-slate-300 text-indigo-600 w-3.5 h-3.5 cursor-pointer" />
+                    <label for="hero-graduate" class="cursor-pointer">Graduate</label>
                   </div>
                   <div class="flex items-center gap-1.5">
-                    <input type="checkbox" id="newsletter-faculty" name="group[12960][2]" class="rounded border-slate-300 text-indigo-600 w-3.5 h-3.5 cursor-pointer" />
-                    <label for="newsletter-faculty" class="cursor-pointer">Faculty</label>
+                    <input type="checkbox" id="hero-faculty" name="affiliation" value="Faculty" class="rounded border-slate-300 text-indigo-600 w-3.5 h-3.5 cursor-pointer" />
+                    <label for="hero-faculty" class="cursor-pointer">Faculty</label>
                   </div>
                   <div class="flex items-center gap-1.5">
-                    <input type="checkbox" id="newsletter-postdoc" name="group[12960][8]" class="rounded border-slate-300 text-indigo-600 w-3.5 h-3.5 cursor-pointer" />
-                    <label for="newsletter-postdoc" class="cursor-pointer">Postdoc</label>
+                    <input type="checkbox" id="hero-postdoc" name="affiliation" value="Postdoc" class="rounded border-slate-300 text-indigo-600 w-3.5 h-3.5 cursor-pointer" />
+                    <label for="hero-postdoc" class="cursor-pointer">Postdoc</label>
                   </div>
                   <div class="flex items-center gap-1.5">
-                    <input type="checkbox" id="newsletter-external" name="group[12960][128]" class="rounded border-slate-300 text-indigo-600 w-3.5 h-3.5 cursor-pointer" />
-                    <label for="newsletter-external" class="cursor-pointer">External</label>
+                    <input type="checkbox" id="hero-external" name="affiliation" value="External" class="rounded border-slate-300 text-indigo-600 w-3.5 h-3.5 cursor-pointer" />
+                    <label for="hero-external" class="cursor-pointer">External</label>
                   </div>
                 </div>
-                <!-- Honeypot -->
-                <div style="position: absolute; left: -5000px;" aria-hidden="true">
-                  <input type="text" name="b_2aa2e869966773113b0712d28_14f41f6d2f" tabindex="-1" value="" />
-                </div>
-                <button 
-                  type="submit" 
-                  class="w-full px-4 py-2 bg-uoft-blue text-white text-sm font-semibold rounded-lg hover:bg-uoft-accent transition-colors"
+                <p id="hero-subscribe-status" class="hidden text-sm"></p>
+                <button
+                  type="submit"
+                  id="hero-subscribe-btn"
+                  class="w-full px-4 py-2 bg-uoft-blue text-white text-sm font-semibold rounded-lg hover:bg-uoft-accent transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
                 >
                   Subscribe
                 </button>
@@ -164,4 +163,53 @@ const organicShapeBorderRadius = generateOrganicShape();
   document.addEventListener('astro:page-load', () => {
     generateOrganicShape();
   });
+</script>
+
+<script>
+  function setupHeroForm() {
+    const form = document.getElementById('hero-subscribe-form') as HTMLFormElement | null;
+    if (!form) return;
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const btn = document.getElementById('hero-subscribe-btn') as HTMLButtonElement;
+      const status = document.getElementById('hero-subscribe-status') as HTMLParagraphElement;
+
+      btn.disabled = true;
+      btn.textContent = 'Subscribing…';
+      status.className = 'hidden text-sm';
+
+      const data = new FormData(form);
+      const affiliationTypes = [...form.querySelectorAll<HTMLInputElement>('input[name="affiliation"]:checked')]
+        .map(el => el.value);
+
+      try {
+        const res = await fetch('/api/subscribe', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            email: data.get('email'),
+            firstName: data.get('first_name'),
+            lastName: data.get('last_name'),
+            organization: data.get('organization'),
+            academicUnit: data.get('academic_unit'),
+            affiliationTypes,
+          }),
+        });
+
+        if (res.ok) {
+          form.innerHTML = '<p class="text-sm text-emerald-600 font-medium py-2">You\'re subscribed! Thank you.</p>';
+        } else {
+          throw new Error('subscribe failed');
+        }
+      } catch {
+        status.textContent = 'Something went wrong. Please try again or email us at carte@utoronto.ca';
+        status.className = 'text-sm text-red-600';
+        btn.disabled = false;
+        btn.textContent = 'Subscribe';
+      }
+    });
+  }
+
+  document.addEventListener('astro:page-load', setupHeroForm);
 </script>
