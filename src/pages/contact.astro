@@ -145,68 +145,61 @@ import BaseLayout from '../layouts/BaseLayout.astro';
               <p class="text-slate-600 mb-6">
                 Get occasional updates about AI research, upcoming training opportunities, and events at Carte.
               </p>
-              <form 
-                action="https://utoronto.us6.list-manage.com/subscribe/post?u=2aa2e869966773113b0712d28&amp;id=14f41f6d2f&amp;f_id=0012c2e1f0" 
-                method="post" 
-                id="mc-embedded-subscribe-form" 
-                name="mc-embedded-subscribe-form" 
-                target="_blank"
-                class="space-y-4"
-              >
+              <form id="contact-subscribe-form" class="space-y-4">
                 <!-- Email -->
                 <div>
-                  <label for="mce-EMAIL" class="block text-sm font-medium text-slate-700 mb-1">
+                  <label for="contact-email" class="block text-sm font-medium text-slate-700 mb-1">
                     Email Address <span class="text-red-500">*</span>
                   </label>
-                  <input 
-                    type="email" 
-                    name="EMAIL" 
-                    id="mce-EMAIL"
-                    placeholder="you@example.com" 
+                  <input
+                    type="email"
+                    name="email"
+                    id="contact-email"
+                    placeholder="you@example.com"
                     class="w-full px-4 py-2.5 rounded-lg border border-slate-300 focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none transition-shadow text-sm"
                     required
                   />
                 </div>
-                
+
                 <!-- Name Row -->
                 <div class="grid grid-cols-2 gap-3">
                   <div>
-                    <label for="mce-FNAME" class="block text-sm font-medium text-slate-700 mb-1">First Name</label>
-                    <input 
-                      type="text" 
-                      name="FNAME" 
-                      id="mce-FNAME"
+                    <label for="contact-first-name" class="block text-sm font-medium text-slate-700 mb-1">First Name</label>
+                    <input
+                      type="text"
+                      name="first_name"
+                      id="contact-first-name"
                       class="w-full px-4 py-2.5 rounded-lg border border-slate-300 focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none transition-shadow text-sm"
                     />
                   </div>
                   <div>
-                    <label for="mce-LNAME" class="block text-sm font-medium text-slate-700 mb-1">Last Name</label>
-                    <input 
-                      type="text" 
-                      name="LNAME" 
-                      id="mce-LNAME"
+                    <label for="contact-last-name" class="block text-sm font-medium text-slate-700 mb-1">Last Name</label>
+                    <input
+                      type="text"
+                      name="last_name"
+                      id="contact-last-name"
                       class="w-full px-4 py-2.5 rounded-lg border border-slate-300 focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none transition-shadow text-sm"
                     />
                   </div>
                 </div>
-                
+
                 <!-- Organization -->
                 <div>
-                  <label for="mce-COMPANY" class="block text-sm font-medium text-slate-700 mb-1">Organization (if not UofT)</label>
-                  <input 
-                    type="text" 
-                    name="COMPANY" 
-                    id="mce-COMPANY"
+                  <label for="contact-organization" class="block text-sm font-medium text-slate-700 mb-1">Organization (if not UofT)</label>
+                  <input
+                    type="text"
+                    name="organization"
+                    id="contact-organization"
                     class="w-full px-4 py-2.5 rounded-lg border border-slate-300 focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none transition-shadow text-sm"
                   />
                 </div>
-                
+
                 <!-- Academic Unit -->
                 <div>
-                  <label for="mce-MMERGE3" class="block text-sm font-medium text-slate-700 mb-1">Academic Unit (if UofT)</label>
-                  <select 
-                    name="MMERGE3" 
-                    id="mce-MMERGE3"
+                  <label for="contact-academic-unit" class="block text-sm font-medium text-slate-700 mb-1">Academic Unit (if UofT)</label>
+                  <select
+                    name="academic_unit"
+                    id="contact-academic-unit"
                     class="w-full px-4 py-2.5 rounded-lg border border-slate-300 focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none transition-shadow text-sm bg-white"
                   >
                     <option value="">Select...</option>
@@ -231,55 +224,52 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                     <option value="Other">Other</option>
                   </select>
                 </div>
-                
+
                 <!-- Affiliation Type -->
                 <fieldset>
                   <legend class="block text-sm font-medium text-slate-700 mb-2">Affiliation Type</legend>
                   <div class="grid grid-cols-2 gap-2 text-sm">
                     <label class="flex items-center gap-2 cursor-pointer">
-                      <input type="checkbox" name="group[12960][1]" class="rounded border-slate-300 text-emerald-600 focus:ring-emerald-500" />
+                      <input type="checkbox" name="affiliation" value="Undergraduate" class="rounded border-slate-300 text-emerald-600 focus:ring-emerald-500" />
                       <span class="text-slate-600">Undergraduate</span>
                     </label>
                     <label class="flex items-center gap-2 cursor-pointer">
-                      <input type="checkbox" name="group[12960][4]" class="rounded border-slate-300 text-emerald-600 focus:ring-emerald-500" />
+                      <input type="checkbox" name="affiliation" value="Graduate Student" class="rounded border-slate-300 text-emerald-600 focus:ring-emerald-500" />
                       <span class="text-slate-600">Graduate Student</span>
                     </label>
                     <label class="flex items-center gap-2 cursor-pointer">
-                      <input type="checkbox" name="group[12960][8]" class="rounded border-slate-300 text-emerald-600 focus:ring-emerald-500" />
+                      <input type="checkbox" name="affiliation" value="Postdoc" class="rounded border-slate-300 text-emerald-600 focus:ring-emerald-500" />
                       <span class="text-slate-600">Postdoc</span>
                     </label>
                     <label class="flex items-center gap-2 cursor-pointer">
-                      <input type="checkbox" name="group[12960][2]" class="rounded border-slate-300 text-emerald-600 focus:ring-emerald-500" />
+                      <input type="checkbox" name="affiliation" value="Faculty" class="rounded border-slate-300 text-emerald-600 focus:ring-emerald-500" />
                       <span class="text-slate-600">Faculty</span>
                     </label>
                     <label class="flex items-center gap-2 cursor-pointer">
-                      <input type="checkbox" name="group[12960][16]" class="rounded border-slate-300 text-emerald-600 focus:ring-emerald-500" />
+                      <input type="checkbox" name="affiliation" value="Librarian" class="rounded border-slate-300 text-emerald-600 focus:ring-emerald-500" />
                       <span class="text-slate-600">Librarian</span>
                     </label>
                     <label class="flex items-center gap-2 cursor-pointer">
-                      <input type="checkbox" name="group[12960][32]" class="rounded border-slate-300 text-emerald-600 focus:ring-emerald-500" />
+                      <input type="checkbox" name="affiliation" value="UofT Staff" class="rounded border-slate-300 text-emerald-600 focus:ring-emerald-500" />
                       <span class="text-slate-600">UofT Staff</span>
                     </label>
                     <label class="flex items-center gap-2 cursor-pointer">
-                      <input type="checkbox" name="group[12960][64]" class="rounded border-slate-300 text-emerald-600 focus:ring-emerald-500" />
+                      <input type="checkbox" name="affiliation" value="Alumni" class="rounded border-slate-300 text-emerald-600 focus:ring-emerald-500" />
                       <span class="text-slate-600">Alumni</span>
                     </label>
                     <label class="flex items-center gap-2 cursor-pointer">
-                      <input type="checkbox" name="group[12960][128]" class="rounded border-slate-300 text-emerald-600 focus:ring-emerald-500" />
+                      <input type="checkbox" name="affiliation" value="External Partner" class="rounded border-slate-300 text-emerald-600 focus:ring-emerald-500" />
                       <span class="text-slate-600">External Partner</span>
                     </label>
                   </div>
                 </fieldset>
-                
-                <!-- Honeypot field for spam protection -->
-                <div style="position: absolute; left: -5000px;" aria-hidden="true">
-                  <input type="text" name="b_2aa2e869966773113b0712d28_14f41f6d2f" tabindex="-1" value="" />
-                </div>
-                
-                <button 
-                  type="submit" 
-                  name="subscribe"
-                  class="w-full px-6 py-3 bg-emerald-600 text-white font-semibold rounded-xl hover:bg-emerald-700 transition-colors"
+
+                <p id="contact-subscribe-status" class="hidden text-sm"></p>
+
+                <button
+                  type="submit"
+                  id="contact-subscribe-btn"
+                  class="w-full px-6 py-3 bg-emerald-600 text-white font-semibold rounded-xl hover:bg-emerald-700 transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
                 >
                   Subscribe
                 </button>
@@ -291,5 +281,54 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       </div>
     </div>
   </section>
+
+<script>
+  function setupContactForm() {
+    const form = document.getElementById('contact-subscribe-form') as HTMLFormElement | null;
+    if (!form) return;
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const btn = document.getElementById('contact-subscribe-btn') as HTMLButtonElement;
+      const status = document.getElementById('contact-subscribe-status') as HTMLParagraphElement;
+
+      btn.disabled = true;
+      btn.textContent = 'Subscribing…';
+      status.className = 'hidden text-sm';
+
+      const data = new FormData(form);
+      const affiliationTypes = [...form.querySelectorAll<HTMLInputElement>('input[name="affiliation"]:checked')]
+        .map(el => el.value);
+
+      try {
+        const res = await fetch('/api/subscribe', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            email: data.get('email'),
+            firstName: data.get('first_name'),
+            lastName: data.get('last_name'),
+            organization: data.get('organization'),
+            academicUnit: data.get('academic_unit'),
+            affiliationTypes,
+          }),
+        });
+
+        if (res.ok) {
+          form.innerHTML = '<p class="text-sm text-emerald-600 font-medium py-2">You\'re subscribed! Thank you.</p>';
+        } else {
+          throw new Error('subscribe failed');
+        }
+      } catch {
+        status.textContent = 'Something went wrong. Please try again or email us at carte@utoronto.ca';
+        status.className = 'text-sm text-red-600';
+        btn.disabled = false;
+        btn.textContent = 'Subscribe';
+      }
+    });
+  }
+
+  document.addEventListener('astro:page-load', setupContactForm);
+</script>
 
 </BaseLayout>
