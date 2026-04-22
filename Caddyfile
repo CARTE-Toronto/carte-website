@@ -11,6 +11,10 @@ carte.utoronto.ca {
         reverse_proxy beta:80
     }
 
+    handle /api/subscribe {
+        reverse_proxy subscribe-api:3000
+    }
+
     # Main site
     handle {
         root * /srv
