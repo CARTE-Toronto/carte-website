@@ -31,7 +31,7 @@ export async function handleRequest(req, res) {
 
   try {
     const response = await fetch(
-      `https://api.resend.com/audiences/${process.env.RESEND_AUDIENCE_ID}/contacts`,
+      'https://api.resend.com/contacts',
       {
         method: 'POST',
         headers: {
@@ -68,8 +68,8 @@ export async function handleRequest(req, res) {
 }
 
 if (process.argv[1]?.endsWith('server.mjs')) {
-  if (!process.env.RESEND_API_KEY || !process.env.RESEND_AUDIENCE_ID) {
-    console.error('Fatal: RESEND_API_KEY and RESEND_AUDIENCE_ID must be set');
+  if (!process.env.RESEND_API_KEY) {
+    console.error('Fatal: RESEND_API_KEY must be set');
     process.exit(1);
   }
   createServer(handleRequest).listen(PORT, () =>

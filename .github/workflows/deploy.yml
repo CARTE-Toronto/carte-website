@@ -76,17 +76,16 @@ jobs:
         uses: appleboy/ssh-action@v1
         env:
           RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
-          RESEND_AUDIENCE_ID: ${{ secrets.RESEND_AUDIENCE_ID }}
         with:
           host: ${{ secrets.DEPLOY_HOST }}
           username: ${{ secrets.DEPLOY_USER }}
           key: ${{ secrets.DEPLOY_SSH_KEY }}
-          envs: GITHUB_REPOSITORY,RESEND_API_KEY,RESEND_AUDIENCE_ID
+          envs: GITHUB_REPOSITORY,RESEND_API_KEY
           script: |
             cd ~/carte
 
             # Write env file for subscribe-api
-            printf "RESEND_API_KEY=%s\nRESEND_AUDIENCE_ID=%s\n" "$RESEND_API_KEY" "$RESEND_AUDIENCE_ID" > .env
+            printf "RESEND_API_KEY=%s\n" "$RESEND_API_KEY" > .env
 
             # Deploy
             docker compose pull web subscribe-api
