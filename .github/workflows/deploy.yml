@@ -41,6 +41,12 @@ jobs:
           push: true
           tags: ${{ steps.meta.outputs.tags }}
 
+      - uses: docker/build-push-action@v5
+        with:
+          context: ./subscribe-api
+          push: true
+          tags: ghcr.io/carte-toronto/carte-website-subscribe-api:latest
+
   deploy:
     needs: build
     runs-on: ubuntu-latest
@@ -68,18 +74,24 @@ jobs:
 
       - name: Deploy
         uses: appleboy/ssh-action@v1
+        env:
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          RESEND_AUDIENCE_ID: ${{ secrets.RESEND_AUDIENCE_ID }}
         with:
           host: ${{ secrets.DEPLOY_HOST }}
           username: ${{ secrets.DEPLOY_USER }}
           key: ${{ secrets.DEPLOY_SSH_KEY }}
-          envs: GITHUB_REPOSITORY
+          envs: GITHUB_REPOSITORY,RESEND_API_KEY,RESEND_AUDIENCE_ID
           script: |
             cd ~/carte
-            
-            # Deploy Main Service
-            docker compose pull web
-            docker compose up -d web
-            
+
+            # Write env file for subscribe-api
+            printf "RESEND_API_KEY=%s\nRESEND_AUDIENCE_ID=%s\n" "$RESEND_API_KEY" "$RESEND_AUDIENCE_ID" > .env
+
+            # Deploy
+            docker compose pull web subscribe-api
+            docker compose up -d web subscribe-api
+
             # Prune old images
             docker image prune -f
 
