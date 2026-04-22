@@ -23,9 +23,9 @@ export async function handleRequest(req, res) {
 
   const { email, firstName, lastName, organization, academicUnit, affiliationTypes } = data;
 
-  if (!email) {
+  if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
     res.writeHead(400, { 'Content-Type': 'application/json' });
-    res.end(JSON.stringify({ error: 'Email required' }));
+    res.end(JSON.stringify({ error: 'Valid email required' }));
     return;
   }
 
@@ -68,6 +68,10 @@ export async function handleRequest(req, res) {
 }
 
 if (process.argv[1]?.endsWith('server.mjs')) {
+  if (!process.env.RESEND_API_KEY || !process.env.RESEND_AUDIENCE_ID) {
+    console.error('Fatal: RESEND_API_KEY and RESEND_AUDIENCE_ID must be set');
+    process.exit(1);
+  }
   createServer(handleRequest).listen(PORT, () =>
     console.log(`Subscribe API listening on port ${PORT}`)
   );

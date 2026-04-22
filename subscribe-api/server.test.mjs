@@ -33,7 +33,14 @@ test('returns 400 when email is missing', async () => {
   const res = await post({ firstName: 'Jane' });
   assert.equal(res.status, 400);
   const json = await res.json();
-  assert.equal(json.error, 'Email required');
+  assert.equal(json.error, 'Valid email required');
+});
+
+test('returns 400 when email is invalid format', async () => {
+  const res = await post({ email: 'notanemail' });
+  assert.equal(res.status, 400);
+  const json = await res.json();
+  assert.equal(json.error, 'Valid email required');
 });
 
 test('returns 200 on successful subscription', async () => {
