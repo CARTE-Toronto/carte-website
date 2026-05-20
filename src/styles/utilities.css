@@ -1,0 +1,11 @@
+@utility wave-divider {
+  clip-path: ellipse(70% 100% at 50% 100%);
+}
+
+@utility hide-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}

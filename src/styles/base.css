@@ -1,0 +1,14 @@
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply antialiased text-slate-800;
+    background-color: var(--color-pale-bg);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-sans font-extrabold;
+  }
+}
