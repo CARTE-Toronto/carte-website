@@ -4,7 +4,7 @@ audience: "Technical Teams & Staff"
 duration: "3-5 days"
 description: "Intensive, hands-on machine learning training customized to your industry and use cases. Employees gain practical skills in Python, data handling, and building ML models relevant to your business."
 featured: true
-gradient: "from-sky-500 via-blue-500 to-indigo-600"
+gradient: "from-uoft-blue to-secondary-blue"
 pattern: "classroom"
 tags: ["Hands-On", "Technical", "Customized"]
 order: 2

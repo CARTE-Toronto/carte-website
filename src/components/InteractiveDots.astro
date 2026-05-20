@@ -10,8 +10,8 @@ interface Props {
 const { scrollColorTransition = false } = Astro.props;
 ---
 
-<div id="dots-container" class="absolute inset-0 pointer-events-none overflow-hidden" style="z-index: -1;" data-scroll-transition={scrollColorTransition.toString()}>
-  <canvas id="dots-canvas" class="pointer-events-none"></canvas>
+<div id="dots-container" class="absolute inset-0 -z-10 pointer-events-none overflow-hidden bg-pale-bg min-h-full" data-scroll-transition={scrollColorTransition.toString()}>
+  <canvas id="dots-canvas" class="block pointer-events-none"></canvas>
 </div>
 
 <script>
@@ -33,13 +33,13 @@ const { scrollColorTransition = false } = Astro.props;
   // Color themes for scroll-based transition
   // Light theme (top of page)
   const LIGHT_BG = [253, 251, 247];        // #FDFBF7 - pale cream
-  const LIGHT_DOT = [17, 35, 56];          // #112338 - dark blue
+  const LIGHT_DOT = [30, 55, 101];   // #1e3765 U of T Blue
   const LIGHT_DOT_BASE_OPACITY = 0.06;
   const LIGHT_DOT_ACTIVE_OPACITY = 0.15;
   const LIGHT_LINE_MAX_OPACITY = 0.18;
   
   // Dark theme (bottom of page)
-  const DARK_BG = [17, 35, 56];            // #112338 - dark blue
+  const DARK_BG = [30, 55, 101];       // #1e3765 U of T Blue
   const DARK_DOT = [253, 251, 247];        // #FDFBF7 - pale cream (inverted)
   const DARK_DOT_BASE_OPACITY = 0.12;
   const DARK_DOT_ACTIVE_OPACITY = 0.35;
@@ -407,14 +407,3 @@ const { scrollColorTransition = false } = Astro.props;
   
   init();
 </script>
-
-<style>
-  #dots-container {
-    background-color: var(--color-pale-bg);
-    min-height: 100%;
-  }
-  
-  #dots-canvas {
-    display: block;
-  }
-</style>

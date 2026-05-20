@@ -2,7 +2,7 @@
 title: "Corporate Training"
 description: "Upskill your workforce with customized AI training programs—from executive briefings for leadership to hands-on technical workshops for your teams."
 featured: true
-gradient: "from-amber-500 via-orange-500 to-red-500"
+gradient: "from-uoft-blue to-secondary-blue"
 pattern: "training"
 tags: ["Training", "Upskilling", "Custom"]
 order: 2
