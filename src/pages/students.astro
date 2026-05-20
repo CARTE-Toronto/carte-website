@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import WaveDivider from '../components/WaveDivider.astro';
+import Button from '../components/Button.astro';
 ---
 
 <BaseLayout title="Students" description="Opportunities for UofT Engineering students to engage with applied AI through capstone projects, hackathons, training, and research collaboration.">
@@ -256,12 +257,7 @@ import WaveDivider from '../components/WaveDivider.astro';
       </div>
 
       <div class="mt-10 text-center">
-        <a href="/mitacs-project-explorer" class="inline-flex items-center justify-center px-8 py-4 rounded-xl bg-indigo-600 text-white font-bold hover:bg-indigo-700 transition-colors text-lg">
-          Explore Available Projects
-          <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
-          </svg>
-        </a>
+        <Button href="/mitacs-project-explorer" class="text-lg">Explore Available Projects</Button>
       </div>
     </div>
   </section>
@@ -328,12 +324,7 @@ import WaveDivider from '../components/WaveDivider.astro';
         </div>
 
       <div class="mt-10 text-center">
-        <a href="mailto:carte@utoronto.ca?subject=Student CV Bank Submission&body=Hi, I'd like to add my CV to the Student CV Bank.%0D%0A%0D%0AMy research interests include: [Please describe]%0D%0AAvailability: [Full-time/Part-time/Summer/etc.]%0D%0A%0D%0A[Please attach your CV]" class="inline-flex items-center justify-center px-8 py-4 rounded-xl bg-emerald-600 text-white font-bold hover:bg-emerald-700 transition-colors text-lg">
-          Submit Your CV
-          <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
-          </svg>
-        </a>
+        <Button href="mailto:carte@utoronto.ca?subject=Student CV Bank Submission&body=Hi, I'd like to add my CV to the Student CV Bank.%0D%0A%0D%0AMy research interests include: [Please describe]%0D%0AAvailability: [Full-time/Part-time/Summer/etc.]%0D%0A%0D%0A[Please attach your CV]" class="text-lg">Submit Your CV</Button>
       </div>
     </div>
   </section>
@@ -390,12 +381,7 @@ import WaveDivider from '../components/WaveDivider.astro';
       </div>
 
       <div class="mt-10 text-center">
-        <a href="/contact" class="inline-flex items-center justify-center px-8 py-4 rounded-xl bg-amber-600 text-white font-bold hover:bg-amber-700 transition-colors text-lg">
-          Subscribe to Mailing List
-          <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
-          </svg>
-        </a>
+        <Button href="/contact" class="text-lg">Subscribe to Mailing List</Button>
       </div>
     </div>
   </section>
