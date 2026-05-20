@@ -43,12 +43,12 @@ const socialLinks = [
     <div class="flex justify-between h-24 items-center">
       <div class="flex items-center">
         <div class="flex-shrink-0 flex items-center">
-          <a href="/" class="text-uoft-blue font-bold text-2xl tracking-tighter hover:text-uoft-accent transition-colors group flex flex-col lg:flex-row lg:items-baseline gap-0 overflow-hidden">
+          <a href="/" class="text-uoft-blue font-bold text-2xl tracking-tighter hover:text-secondary-blue transition-colors group flex flex-col lg:flex-row lg:items-baseline gap-0 overflow-hidden">
             <span class="flex items-baseline">
               <span>Carte</span>
               <span class="hidden lg:inline-block ml-2 text-base font-medium tracking-normal text-slate-400">|</span>
             </span>
-            <span class="lg:ml-2 text-xs lg:text-sm font-medium tracking-normal text-slate-500 group-hover:text-uoft-accent transition-colors">
+            <span class="lg:ml-2 text-xs lg:text-sm font-medium tracking-normal text-slate-500 group-hover:text-secondary-blue transition-colors">
               Centre for Analytics & AI Engineering
             </span>
           </a>
@@ -59,20 +59,20 @@ const socialLinks = [
           item.dropdown ? (
             <div class="relative group">
               <button
-                class="inline-flex items-center text-base font-medium text-slate-600 hover:text-uoft-accent transition-colors relative group"
+                class="inline-flex items-center text-base font-medium text-slate-600 hover:text-secondary-blue transition-colors relative group"
               >
                 {item.label}
                 <svg class="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
                 </svg>
-                <span class="absolute bottom-0 left-0 w-full h-0.5 bg-uoft-accent transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></span>
+                <span class="absolute bottom-0 left-0 w-full h-0.5 bg-secondary-blue transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></span>
               </button>
               <div class="absolute left-0 mt-2 w-48 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
                 <div class="bg-white rounded-lg shadow-lg border border-slate-200 py-2">
                   {item.dropdown.map(subItem => (
                     <a
                       href={subItem.href}
-                      class="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-50 hover:text-uoft-accent transition-colors"
+                      class="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-50 hover:text-secondary-blue transition-colors"
                     >
                       {subItem.label}
                     </a>
@@ -83,10 +83,10 @@ const socialLinks = [
           ) : (
             <a
               href={item.href}
-              class="inline-flex items-center text-base font-medium text-slate-600 hover:text-uoft-accent transition-colors relative group"
+              class="inline-flex items-center text-base font-medium text-slate-600 hover:text-secondary-blue transition-colors relative group"
             >
               {item.label}
-              <span class="absolute bottom-0 left-0 w-full h-0.5 bg-uoft-accent transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></span>
+              <span class="absolute bottom-0 left-0 w-full h-0.5 bg-secondary-blue transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></span>
             </a>
           )
         ))}
@@ -97,7 +97,7 @@ const socialLinks = [
               href={social.href} 
               target="_blank" 
               rel="noopener noreferrer"
-              class="text-slate-400 hover:text-uoft-accent transition-colors flex items-center justify-center"
+              class="text-slate-400 hover:text-secondary-blue transition-colors flex items-center justify-center"
               aria-label={social.label}
             >
               {social.icon === 'linkedin' && (
@@ -125,7 +125,7 @@ const socialLinks = [
         </div>
         <a 
           href="/contact" 
-          class="inline-flex items-center px-6 py-2.5 text-base font-bold rounded-full text-white bg-uoft-blue hover:bg-uoft-accent hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300 ml-4"
+          class="inline-flex items-center px-6 py-2.5 text-base font-bold rounded-full text-white bg-uoft-blue hover:bg-secondary-blue hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300 ml-4"
         >
           Contact
         </a>
@@ -170,7 +170,7 @@ const socialLinks = [
             {item.dropdown.map(subItem => (
               <a
                 href={subItem.href}
-                class="block px-6 py-2 rounded-lg text-base font-medium text-slate-700 hover:text-uoft-accent hover:bg-slate-100 transition-colors"
+                class="block px-6 py-2 rounded-lg text-base font-medium text-slate-700 hover:text-secondary-blue hover:bg-slate-100 transition-colors"
               >
                 {subItem.label}
               </a>
@@ -179,7 +179,7 @@ const socialLinks = [
         ) : (
           <a
             href={item.href}
-            class="block px-4 py-3 rounded-lg text-lg font-medium text-slate-700 hover:text-uoft-accent hover:bg-slate-100 transition-colors"
+            class="block px-4 py-3 rounded-lg text-lg font-medium text-slate-700 hover:text-secondary-blue hover:bg-slate-100 transition-colors"
           >
             {item.label}
           </a>
@@ -187,7 +187,7 @@ const socialLinks = [
       ))}
       <a 
         href="/contact" 
-        class="block mt-4 mx-4 px-6 py-3 text-center text-lg font-bold rounded-full text-white bg-uoft-blue hover:bg-uoft-accent transition-colors"
+        class="block mt-4 mx-4 px-6 py-3 text-center text-lg font-bold rounded-full text-white bg-uoft-blue hover:bg-secondary-blue transition-colors"
       >
         Contact
       </a>
@@ -198,7 +198,7 @@ const socialLinks = [
             href={social.href} 
             target="_blank" 
             rel="noopener noreferrer"
-            class="text-slate-400 hover:text-uoft-accent transition-colors flex items-center justify-center"
+            class="text-slate-400 hover:text-secondary-blue transition-colors flex items-center justify-center"
             aria-label={social.label}
           >
             {social.icon === 'linkedin' && (
