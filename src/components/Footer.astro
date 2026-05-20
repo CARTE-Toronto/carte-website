@@ -1,4 +1,7 @@
 ---
+import uoftEngWhite from '../assets/uoft-eng-white.svg';
+import defyGravityWhite from '../assets/defy-gravity-white.svg';
+
 const year = new Date().getFullYear();
 
 const socialLinks = [
@@ -86,7 +89,18 @@ const socialLinks = [
       </ul>
     </div>
     <div>
-      <h3 class="text-lg font-semibold mb-4">University</h3>
+      <a
+        href="https://www.engineering.utoronto.ca/"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="block mb-4"
+      >
+        <img
+          src={uoftEngWhite.src}
+          alt="University of Toronto Engineering"
+          class="h-8 w-auto"
+        />
+      </a>
       <ul class="text-slate-300 text-sm space-y-2">
         <li><a href="https://www.engineering.utoronto.ca/" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors">UofT Engineering</a></li>
         <li><a href="https://www.utoronto.ca/" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors">University of Toronto</a></li>
@@ -94,10 +108,28 @@ const socialLinks = [
       </ul>
     </div>
   </div>
-  <div class="border-t border-uoft-blue">
-    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-      <p class="text-center text-xs text-slate-400">
-        &copy; {year} Centre for Analytics and Artificial Intelligence Engineering. All rights reserved.
+  <div class="border-t border-white/10 mt-4">
+    <div class="max-w-7xl mx-auto pt-6 pb-4 px-4 sm:px-6 lg:px-8">
+      <p class="text-center text-xs text-white/40 max-w-3xl mx-auto leading-relaxed">
+        We wish to acknowledge this land on which the University of Toronto operates.
+        For thousands of years it has been the traditional land of the Huron-Wendat,
+        the Seneca, and the Mississaugas of the Credit. Today, this meeting place is
+        still the home to many Indigenous people from across Turtle Island and we are
+        grateful to have the opportunity to work on this land.
+      </p>
+    </div>
+    <div class="max-w-7xl mx-auto pb-6 px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <a
+        href="https://defygravitycampaign.utoronto.ca/"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Defy Gravity campaign"
+      >
+        <img src={defyGravityWhite.src} alt="Defy Gravity" class="h-8 w-auto" />
+      </a>
+      <p class="text-center text-xs text-white/40">
+        &copy; {year} Centre for Analytics and Artificial Intelligence Engineering.
+        All rights reserved.
       </p>
     </div>
   </div>
