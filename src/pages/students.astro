@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import WaveDivider from '../components/WaveDivider.astro';
 import Button from '../components/Button.astro';
+import CheckItem from '../components/CheckItem.astro';
 ---
 
 <BaseLayout title="Students" description="Opportunities for UofT Engineering students to engage with applied AI through capstone projects, hackathons, training, and research collaboration.">
@@ -132,30 +133,10 @@ import Button from '../components/Button.astro';
           Carte runs Mitacs Accelerate projects with additional support to make the process as smooth as possible for students:
         </p>
         <ul class="space-y-3 text-slate-600 mb-6">
-          <li class="flex items-start gap-3">
-            <svg class="w-6 h-6 text-indigo-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-            </svg>
-            <span>Start by exploring available projects in our <a href="/mitacs-project-explorer" class="text-indigo-600 hover:text-indigo-800 font-semibold underline">Mitacs Project Explorer</a> to find opportunities that match your interests</span>
-          </li>
-          <li class="flex items-start gap-3">
-            <svg class="w-6 h-6 text-indigo-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-            </svg>
-            <span>We either match you with a UofT professor who will supervise your project, or Carte directly supervises the project on the academic side</span>
-          </li>
-          <li class="flex items-start gap-3">
-            <svg class="w-6 h-6 text-indigo-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-            </svg>
-            <span>We help you draft your Mitacs application, ensuring all requirements are met and your proposal is strong</span>
-          </li>
-          <li class="flex items-start gap-3">
-            <svg class="w-6 h-6 text-indigo-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-            </svg>
-            <span>We support you through every step of the process, from project selection to application submission and beyond</span>
-          </li>
+          <CheckItem iconClass="text-accent-purple">Start by exploring available projects in our <a href="/mitacs-project-explorer" class="text-indigo-600 hover:text-indigo-800 font-semibold underline">Mitacs Project Explorer</a> to find opportunities that match your interests</CheckItem>
+          <CheckItem iconClass="text-accent-purple">We either match you with a UofT professor who will supervise your project, or Carte directly supervises the project on the academic side</CheckItem>
+          <CheckItem iconClass="text-accent-purple">We help you draft your Mitacs application, ensuring all requirements are met and your proposal is strong</CheckItem>
+          <CheckItem iconClass="text-accent-purple">We support you through every step of the process, from project selection to application submission and beyond</CheckItem>
         </ul>
         <h3 class="text-2xl font-bold text-[var(--color-uoft-blue)] mt-8 mb-4">Funding & Compensation</h3>
           <p class="text-slate-700 mb-3">
@@ -170,36 +151,11 @@ import Button from '../components/Button.astro';
           You're eligible to participate in Mitacs Accelerate if you meet the following criteria:
         </p>
         <ul class="space-y-3 text-slate-600 mb-6">
-          <li class="flex items-start gap-3">
-            <svg class="w-6 h-6 text-indigo-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-            </svg>
-            <span>You must be a registered student or postdoctoral fellow.</span>
-          </li>
-          <li class="flex items-start gap-3">
-            <svg class="w-6 h-6 text-indigo-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-            </svg>
-            <span>You may be eligible if you graduated within the last two years.</span>
-          </li>
-          <li class="flex items-start gap-3">
-            <svg class="w-6 h-6 text-indigo-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-            </svg>
-            <span>Postdoctoral fellows are eligible if your PhD graduation date is less than five years before the project start date (exceptions available).</span>
-          </li>
-          <li class="flex items-start gap-3">
-            <svg class="w-6 h-6 text-indigo-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-            </svg>
-            <span>Open to Canadian citizens, permanent residents, international students with a valid student visa, or international postdoctoral fellows with a valid work permit.</span>
-          </li>
-          <li class="flex items-start gap-3">
-            <svg class="w-6 h-6 text-indigo-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-            </svg>
-            <span>Must be 18 years or older.</span>
-          </li>
+          <CheckItem iconClass="text-accent-purple">You must be a registered student or postdoctoral fellow.</CheckItem>
+          <CheckItem iconClass="text-accent-purple">You may be eligible if you graduated within the last two years.</CheckItem>
+          <CheckItem iconClass="text-accent-purple">Postdoctoral fellows are eligible if your PhD graduation date is less than five years before the project start date (exceptions available).</CheckItem>
+          <CheckItem iconClass="text-accent-purple">Open to Canadian citizens, permanent residents, international students with a valid student visa, or international postdoctoral fellows with a valid work permit.</CheckItem>
+          <CheckItem iconClass="text-accent-purple">Must be 18 years or older.</CheckItem>
         </ul>
 
         <h3 class="text-2xl font-bold text-[var(--color-uoft-blue)] mt-8 mb-4">How Many Internships Can You Do?</h3>
@@ -224,30 +180,10 @@ import Button from '../components/Button.astro';
 
         <h3 class="text-2xl font-bold text-[var(--color-uoft-blue)] mt-8 mb-4">What You'll Gain</h3>
         <ul class="space-y-3 text-slate-600 mb-6">
-          <li class="flex items-start gap-3">
-            <svg class="w-6 h-6 text-indigo-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-            </svg>
-            <span>Broaden your professional network by connecting with industry partners and academic supervisors</span>
-          </li>
-          <li class="flex items-start gap-3">
-            <svg class="w-6 h-6 text-indigo-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-            </svg>
-            <span>Access funding opportunities by earning significant compensation while gaining research experience</span>
-          </li>
-          <li class="flex items-start gap-3">
-            <svg class="w-6 h-6 text-indigo-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-            </svg>
-            <span>Gain invaluable hands-on experience by working on real research challenges with for-profit and not-for-profit organizations</span>
-          </li>
-          <li class="flex items-start gap-3">
-            <svg class="w-6 h-6 text-indigo-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-            </svg>
-            <span>Internships start at four months and can scale up based on project needs</span>
-          </li>
+          <CheckItem iconClass="text-accent-purple">Broaden your professional network by connecting with industry partners and academic supervisors</CheckItem>
+          <CheckItem iconClass="text-accent-purple">Access funding opportunities by earning significant compensation while gaining research experience</CheckItem>
+          <CheckItem iconClass="text-accent-purple">Gain invaluable hands-on experience by working on real research challenges with for-profit and not-for-profit organizations</CheckItem>
+          <CheckItem iconClass="text-accent-purple">Internships start at four months and can scale up based on project needs</CheckItem>
         </ul>
 
         <h3 class="text-2xl font-bold text-[var(--color-uoft-blue)] mt-8 mb-4">Application Process</h3>
@@ -279,30 +215,10 @@ import Button from '../components/Button.astro';
         
         <h3 class="text-2xl font-bold text-[var(--color-uoft-blue)] mt-8 mb-4">How It Works</h3>
         <ul class="space-y-3 text-slate-600">
-          <li class="flex items-start gap-3">
-            <svg class="w-6 h-6 text-emerald-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-            </svg>
-            <span>Email us your CV with a brief note about your interests and availability</span>
-          </li>
-          <li class="flex items-start gap-3">
-            <svg class="w-6 h-6 text-emerald-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-            </svg>
-            <span>We'll add your CV to our secure database</span>
-          </li>
-          <li class="flex items-start gap-3">
-            <svg class="w-6 h-6 text-emerald-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-            </svg>
-            <span>Faculty members search the CV Bank when they need students</span>
-          </li>
-          <li class="flex items-start gap-3">
-            <svg class="w-6 h-6 text-emerald-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-            </svg>
-            <span>If a professor finds your profile interesting, they'll reach out directly</span>
-          </li>
+          <CheckItem iconClass="text-accent-teal">Email us your CV with a brief note about your interests and availability</CheckItem>
+          <CheckItem iconClass="text-accent-teal">We'll add your CV to our secure database</CheckItem>
+          <CheckItem iconClass="text-accent-teal">Faculty members search the CV Bank when they need students</CheckItem>
+          <CheckItem iconClass="text-accent-teal">If a professor finds your profile interesting, they'll reach out directly</CheckItem>
         </ul>
 
         <h3 class="text-2xl font-bold text-[var(--color-uoft-blue)] mt-8 mb-4">What to Include in Your CV</h3>
@@ -343,36 +259,11 @@ import Button from '../components/Button.astro';
         
         <h3 class="text-2xl font-bold text-[var(--color-uoft-blue)] mt-8 mb-4">What You'll Receive</h3>
         <ul class="space-y-3 text-slate-600">
-          <li class="flex items-start gap-3">
-            <svg class="w-6 h-6 text-amber-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-            </svg>
-            <span>Mitacs projects and other funded research opportunities</span>
-          </li>
-          <li class="flex items-start gap-3">
-            <svg class="w-6 h-6 text-amber-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-            </svg>
-            <span>Opportunities from professors looking for students</span>
-          </li>
-          <li class="flex items-start gap-3">
-            <svg class="w-6 h-6 text-amber-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-            </svg>
-            <span>Student competitions and innovation challenges</span>
-          </li>
-          <li class="flex items-start gap-3">
-            <svg class="w-6 h-6 text-amber-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-            </svg>
-            <span>AI and machine learning workshops and events</span>
-          </li>
-          <li class="flex items-start gap-3">
-            <svg class="w-6 h-6 text-amber-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-            </svg>
-            <span>Industry speaker events and networking opportunities</span>
-          </li>
+          <CheckItem iconClass="text-accent-warm-red">Mitacs projects and other funded research opportunities</CheckItem>
+          <CheckItem iconClass="text-accent-warm-red">Opportunities from professors looking for students</CheckItem>
+          <CheckItem iconClass="text-accent-warm-red">Student competitions and innovation challenges</CheckItem>
+          <CheckItem iconClass="text-accent-warm-red">AI and machine learning workshops and events</CheckItem>
+          <CheckItem iconClass="text-accent-warm-red">Industry speaker events and networking opportunities</CheckItem>
         </ul>
 
         <h3 class="text-2xl font-bold text-[var(--color-uoft-blue)] mt-8 mb-4">Why Our Mailing List is Different</h3>

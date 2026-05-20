@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import WaveDivider from '../components/WaveDivider.astro';
 import Button from '../components/Button.astro';
+import CheckItem from '../components/CheckItem.astro';
 ---
 
 <BaseLayout title="Faculty" description="Opportunities for UofT Engineering faculty to engage with applied AI through Mitacs Accelerate supervision, training programs, and funding support.">
@@ -138,30 +139,10 @@ import Button from '../components/Button.astro';
 
         <h3 class="text-2xl font-bold text-[var(--color-uoft-blue)] mt-8 mb-4">Benefits for Faculty</h3>
         <ul class="space-y-3 text-slate-600 mb-6">
-          <li class="flex items-start gap-3">
-            <svg class="w-6 h-6 text-indigo-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-            </svg>
-            <span>Access to motivated, funded student researchers for your research projects</span>
-          </li>
-          <li class="flex items-start gap-3">
-            <svg class="w-6 h-6 text-indigo-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-            </svg>
-            <span>Industry connections that can lead to long-term research partnerships</span>
-          </li>
-          <li class="flex items-start gap-3">
-            <svg class="w-6 h-6 text-indigo-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-            </svg>
-            <span>Funded research opportunities without requiring your own grant funding</span>
-          </li>
-          <li class="flex items-start gap-3">
-            <svg class="w-6 h-6 text-indigo-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-            </svg>
-            <span>Opportunity to supervise students on applied AI challenges with real-world impact</span>
-          </li>
+          <CheckItem iconClass="text-accent-purple">Access to motivated, funded student researchers for your research projects</CheckItem>
+          <CheckItem iconClass="text-accent-purple">Industry connections that can lead to long-term research partnerships</CheckItem>
+          <CheckItem iconClass="text-accent-purple">Funded research opportunities without requiring your own grant funding</CheckItem>
+          <CheckItem iconClass="text-accent-purple">Opportunity to supervise students on applied AI challenges with real-world impact</CheckItem>
         </ul>
 
         <h3 class="text-2xl font-bold text-[var(--color-uoft-blue)] mt-8 mb-4">How Carte Helps</h3>
@@ -169,30 +150,10 @@ import Button from '../components/Button.astro';
           Carte facilitates Mitacs Accelerate projects and provides comprehensive support throughout the process:
         </p>
         <ul class="space-y-3 text-slate-600 mb-6">
-          <li class="flex items-start gap-3">
-            <svg class="w-6 h-6 text-indigo-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-            </svg>
-            <span>We help match you with qualified students who are interested in your research area</span>
-          </li>
-          <li class="flex items-start gap-3">
-            <svg class="w-6 h-6 text-indigo-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-            </svg>
-            <span>We connect you with industry partners looking for academic collaboration</span>
-          </li>
-          <li class="flex items-start gap-3">
-            <svg class="w-6 h-6 text-indigo-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-            </svg>
-            <span>We assist with application drafting and submission to ensure all requirements are met</span>
-          </li>
-          <li class="flex items-start gap-3">
-            <svg class="w-6 h-6 text-indigo-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-            </svg>
-            <span>We support you through every step, from project scoping to completion</span>
-          </li>
+          <CheckItem iconClass="text-accent-purple">We help match you with qualified students who are interested in your research area</CheckItem>
+          <CheckItem iconClass="text-accent-purple">We connect you with industry partners looking for academic collaboration</CheckItem>
+          <CheckItem iconClass="text-accent-purple">We assist with application drafting and submission to ensure all requirements are met</CheckItem>
+          <CheckItem iconClass="text-accent-purple">We support you through every step, from project scoping to completion</CheckItem>
         </ul>
 
         <h3 class="text-2xl font-bold text-[var(--color-uoft-blue)] mt-8 mb-4">Funding Model</h3>
@@ -249,30 +210,10 @@ import Button from '../components/Button.astro';
 
         <h3 class="text-2xl font-bold text-[var(--color-uoft-blue)] mt-8 mb-4">What You'll Learn</h3>
         <ul class="space-y-3 text-slate-600 mb-6">
-          <li class="flex items-start gap-3">
-            <svg class="w-6 h-6 text-emerald-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-            </svg>
-            <span>Foundational machine learning concepts and techniques</span>
-          </li>
-          <li class="flex items-start gap-3">
-            <svg class="w-6 h-6 text-emerald-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-            </svg>
-            <span>Advanced topics including deep learning and reinforcement learning</span>
-          </li>
-          <li class="flex items-start gap-3">
-            <svg class="w-6 h-6 text-emerald-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-            </svg>
-            <span>Hands-on workshops with practical applications</span>
-          </li>
-          <li class="flex items-start gap-3">
-            <svg class="w-6 h-6 text-emerald-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-            </svg>
-            <span>Collaborative learning with colleagues from diverse research backgrounds</span>
-          </li>
+          <CheckItem iconClass="text-accent-teal">Foundational machine learning concepts and techniques</CheckItem>
+          <CheckItem iconClass="text-accent-teal">Advanced topics including deep learning and reinforcement learning</CheckItem>
+          <CheckItem iconClass="text-accent-teal">Hands-on workshops with practical applications</CheckItem>
+          <CheckItem iconClass="text-accent-teal">Collaborative learning with colleagues from diverse research backgrounds</CheckItem>
         </ul>
 
         <h3 class="text-2xl font-bold text-[var(--color-uoft-blue)] mt-8 mb-4">Additional Workshops</h3>
@@ -320,30 +261,10 @@ import Button from '../components/Button.astro';
 
         <h3 class="text-2xl font-bold text-[var(--color-uoft-blue)] mt-8 mb-4">How Carte Assists</h3>
         <ul class="space-y-3 text-slate-600 mb-6">
-          <li class="flex items-start gap-3">
-            <svg class="w-6 h-6 text-amber-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-            </svg>
-            <span><strong>Proposal Review:</strong> We review your funding proposals and provide feedback to strengthen your applications</span>
-          </li>
-          <li class="flex items-start gap-3">
-            <svg class="w-6 h-6 text-amber-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-            </svg>
-            <span><strong>Partner Identification:</strong> We help you find industry partners who are interested in collaborating on research projects</span>
-          </li>
-          <li class="flex items-start gap-3">
-            <svg class="w-6 h-6 text-amber-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-            </svg>
-            <span><strong>Budget Planning:</strong> We assist with budget development and ensure your funding requests align with program requirements</span>
-          </li>
-          <li class="flex items-start gap-3">
-            <svg class="w-6 h-6 text-amber-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-            </svg>
-            <span><strong>Application Guidance:</strong> We guide you through the application process, ensuring all requirements are met and deadlines are met</span>
-          </li>
+          <CheckItem iconClass="text-accent-warm-red"><strong>Proposal Review:</strong> We review your funding proposals and provide feedback to strengthen your applications</CheckItem>
+          <CheckItem iconClass="text-accent-warm-red"><strong>Partner Identification:</strong> We help you find industry partners who are interested in collaborating on research projects</CheckItem>
+          <CheckItem iconClass="text-accent-warm-red"><strong>Budget Planning:</strong> We assist with budget development and ensure your funding requests align with program requirements</CheckItem>
+          <CheckItem iconClass="text-accent-warm-red"><strong>Application Guidance:</strong> We guide you through the application process, ensuring all requirements are met and deadlines are met</CheckItem>
         </ul>
 
         <h3 class="text-2xl font-bold text-[var(--color-uoft-blue)] mt-8 mb-4">Why Work With Carte</h3>
