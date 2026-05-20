@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import WaveDivider from '../components/WaveDivider.astro';
 import { getCollection } from 'astro:content';
 
 // Fetch all research papers from content collection
@@ -91,7 +92,7 @@ const secondaryResearch = allResearch
               </div>
               
               <!-- Decorative bottom curve -->
-              <div class="absolute bottom-0 left-0 right-0 h-8 bg-white" style="clip-path: ellipse(70% 100% at 50% 100%);"></div>
+              <WaveDivider />
             </div>
             
             <div class="p-6 pt-2">
