@@ -26,6 +26,18 @@ services:
       timeout: 10s
       retries: 3
 
+  neighbourhoods:
+    image: ghcr.io/carte-toronto/toronto-neighbourhoods:latest
+    container_name: carte-neighbourhoods
+    restart: unless-stopped
+    networks:
+      - carte-net
+    healthcheck:
+      test: [ "CMD", "wget", "-q", "--spider", "http://localhost/" ]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
   subscribe-api:
     image: ghcr.io/carte-toronto/carte-website-subscribe-api:latest
     container_name: carte-subscribe-api
