@@ -8,7 +8,6 @@ on:
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}
-  IMAGE_NAME_LOWER: carte-toronto/carte-website
 
 jobs:
   build:
@@ -45,7 +44,7 @@ jobs:
         with:
           context: ./subscribe-api
           push: true
-          tags: ghcr.io/carte-toronto/carte-website-subscribe-api:latest
+          tags: ghcr.io/uoft-carte/carte-website-subscribe-api:latest
 
   deploy:
     needs: build
