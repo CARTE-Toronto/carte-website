@@ -1,4 +1,7 @@
 ---
+import uoftEngBlue from '../assets/uoft-eng-blue.svg';
+import uoftCrest from '../assets/uoft-crest.svg';
+
 const navItems = [
   { label: 'Training', href: '/training' },
   { label: 'Partnerships', href: '/partnerships' },
@@ -42,7 +45,26 @@ const socialLinks = [
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex justify-between h-24 items-center">
       <div class="flex items-center">
-        <div class="flex-shrink-0 flex items-center">
+        <div class="flex-shrink-0 flex items-center gap-2 sm:gap-3">
+          <!-- U of T Engineering logo - full on lg+, crest on smaller screens -->
+          <a
+            href="https://www.engineering.utoronto.ca/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="flex-shrink-0"
+          >
+            <img
+              src={uoftEngBlue.src}
+              alt="University of Toronto Engineering"
+              class="hidden lg:block h-10 xl:h-12 w-auto"
+            />
+            <img
+              src={uoftCrest.src}
+              alt="University of Toronto"
+              class="lg:hidden h-8 w-auto"
+            />
+          </a>
+          <div class="w-px h-6 sm:h-8 bg-slate-300"></div>
           <a href="/" class="text-uoft-blue font-bold text-2xl tracking-tighter hover:text-secondary-blue transition-colors group flex flex-col lg:flex-row lg:items-baseline gap-0 overflow-hidden">
             <span class="flex items-baseline">
               <span>Carte</span>
