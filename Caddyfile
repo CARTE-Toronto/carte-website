@@ -11,6 +11,12 @@ carte.utoronto.ca {
         reverse_proxy beta:80
     }
 
+    # Proxy /neighbourhoods to the toronto-neighbourhoods service
+    redir /neighbourhoods /neighbourhoods/
+    handle_path /neighbourhoods/* {
+        reverse_proxy neighbourhoods:80
+    }
+
     handle /api/subscribe {
         reverse_proxy subscribe-api:3000
     }

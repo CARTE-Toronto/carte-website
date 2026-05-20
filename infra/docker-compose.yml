@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   web:
-    image: ghcr.io/carte-toronto/carte-website:latest
+    image: ghcr.io/uoft-carte/carte-website:latest
     container_name: carte-web
     restart: unless-stopped
     ports:
@@ -15,7 +15,7 @@ services:
       - carte-net
 
   beta:
-    image: ghcr.io/carte-toronto/carte-website:beta
+    image: ghcr.io/uoft-carte/carte-website:beta
     container_name: carte-beta
     restart: unless-stopped
     networks:
@@ -26,8 +26,20 @@ services:
       timeout: 10s
       retries: 3
 
+  neighbourhoods:
+    image: ghcr.io/uoft-carte/toronto-neighbourhoods:latest
+    container_name: carte-neighbourhoods
+    restart: unless-stopped
+    networks:
+      - carte-net
+    healthcheck:
+      test: [ "CMD", "wget", "-q", "--spider", "http://localhost/" ]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
   subscribe-api:
-    image: ghcr.io/carte-toronto/carte-website-subscribe-api:latest
+    image: ghcr.io/uoft-carte/carte-website-subscribe-api:latest
     container_name: carte-subscribe-api
     restart: unless-stopped
     env_file: .env
