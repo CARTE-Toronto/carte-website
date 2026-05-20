@@ -27,7 +27,7 @@ services:
       retries: 3
 
   neighbourhoods:
-    image: ghcr.io/carte-toronto/toronto-neighbourhoods:latest
+    image: ghcr.io/uoft-carte/toronto-neighbourhoods:latest
     container_name: carte-neighbourhoods
     restart: unless-stopped
     networks:
