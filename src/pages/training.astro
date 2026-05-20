@@ -189,9 +189,8 @@ const testimonials = allTraining
       <!-- Carousel Container -->
       <div class="relative -mx-4 px-4">
         <div 
-          id="training-carousel" 
-          class="flex gap-6 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-4 -mb-4"
-          style="scrollbar-width: none; -ms-overflow-style: none;"
+          id="training-carousel"
+          class="hide-scrollbar flex gap-6 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-4 -mb-4"
         >
           {secondaryTraining.map((program) => (
             <article class="group bg-white rounded-xl border border-slate-200 p-6 hover:border-accent-teal/40 hover:shadow-lg hover:shadow-accent-teal/10 transition-all duration-300 flex-shrink-0 w-[320px] snap-start">
@@ -273,25 +272,7 @@ const testimonials = allTraining
       </div>
     </div>
   </section>
-  
-  <style>
-    #training-carousel::-webkit-scrollbar {
-      display: none;
-    }
-    .line-clamp-2 {
-      display: -webkit-box;
-      -webkit-line-clamp: 2;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
-    }
-    .line-clamp-3 {
-      display: -webkit-box;
-      -webkit-line-clamp: 3;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
-    }
-  </style>
-  
+
   <script>
     const carousel = document.getElementById('training-carousel');
     const prevBtn = document.getElementById('carousel-prev');

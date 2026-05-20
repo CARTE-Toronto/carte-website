@@ -160,9 +160,8 @@ const secondaryResearch = allResearch
       <!-- Carousel Container -->
       <div class="relative -mx-4 px-4">
         <div 
-          id="portfolio-carousel" 
-          class="flex gap-6 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-4 -mb-4"
-          style="scrollbar-width: none; -ms-overflow-style: none;"
+          id="portfolio-carousel"
+          class="hide-scrollbar flex gap-6 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-4 -mb-4"
         >
           {secondaryResearch.map((paper) => (
             <article class="group bg-white rounded-xl border border-slate-200 p-6 hover:border-secondary-blue hover:shadow-lg hover:shadow-secondary-blue/10 transition-all duration-300 flex-shrink-0 w-[320px] snap-start">
@@ -244,31 +243,7 @@ const secondaryResearch = allResearch
       </div>
     </div>
   </section>
-  
-  <style>
-    #portfolio-carousel::-webkit-scrollbar {
-      display: none;
-    }
-    .line-clamp-1 {
-      display: -webkit-box;
-      -webkit-line-clamp: 1;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
-    }
-    .line-clamp-2 {
-      display: -webkit-box;
-      -webkit-line-clamp: 2;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
-    }
-    .line-clamp-3 {
-      display: -webkit-box;
-      -webkit-line-clamp: 3;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
-    }
-  </style>
-  
+
   <script>
     const carousel = document.getElementById('portfolio-carousel');
     const prevBtn = document.getElementById('carousel-prev');
