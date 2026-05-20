@@ -23,7 +23,7 @@ const secondaryResearch = allResearch
       <div class="max-w-3xl">
         <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-uoft-blue leading-tight mb-6">
           Applied AI Research<br/>
-          <span class="bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">That Translates</span>
+          <span class="bg-gradient-to-r from-uoft-blue to-secondary-blue bg-clip-text text-transparent">That Translates</span>
         </h1>
         <p class="text-xl text-slate-600 leading-relaxed">
           Carte supports collaborative research designed for real-world impact — bridging AI with civil engineering, healthcare, sustainability, and beyond. We help partners navigate funding and connect with faculty who can solve their specific challenges.
@@ -165,9 +165,9 @@ const secondaryResearch = allResearch
           style="scrollbar-width: none; -ms-overflow-style: none;"
         >
           {secondaryResearch.map((paper) => (
-            <article class="group bg-white rounded-xl border border-slate-200 p-6 hover:border-secondary-blue hover:shadow-lg hover:shadow-secondary-blue/50 transition-all duration-300 flex-shrink-0 w-[320px] snap-start">
+            <article class="group bg-white rounded-xl border border-slate-200 p-6 hover:border-secondary-blue hover:shadow-lg hover:shadow-secondary-blue/10 transition-all duration-300 flex-shrink-0 w-[320px] snap-start">
               <!-- Icon -->
-              <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-slate-100 to-slate-50 flex items-center justify-center mb-4 group-hover:from-secondary-blue/10 group-hover:to-secondary-blue/10 transition-colors">
+              <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-slate-100 to-slate-50 flex items-center justify-center mb-4 group-hover:bg-secondary-blue/10 transition-colors">
                 {paper.data.icon === "database" && (
                   <svg class="w-6 h-6 text-slate-600 group-hover:text-secondary-blue transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4"/>
@@ -297,7 +297,7 @@ const secondaryResearch = allResearch
   <!-- CTA Section -->
   <section class="py-20">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <div class="bg-gradient-to-br from-uoft-blue to-uoft-blue rounded-3xl p-12 shadow-2xl shadow-uoft-blue/20">
+      <div class="bg-gradient-to-br from-uoft-blue to-secondary-blue rounded-3xl p-12 shadow-2xl shadow-uoft-blue/20">
         <h2 class="text-3xl font-extrabold text-white mb-4">Collaborate With Us</h2>
         <p class="text-lg text-slate-200 mb-8 max-w-2xl mx-auto">
           Whether you're a faculty member seeking AI expertise, an industry partner looking to sponsor research, or a student interested in applied AI projects—we're here to help.

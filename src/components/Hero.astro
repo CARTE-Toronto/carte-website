@@ -25,7 +25,7 @@ const organicShapeBorderRadius = generateOrganicShape();
       <main class="mt-6 mx-auto max-w-7xl px-4 sm:mt-8 sm:px-6 md:mt-10 lg:mt-12 lg:px-8 xl:mt-16 overflow-visible">
         <div class="sm:text-center lg:text-left overflow-visible">
           <h1 class="text-5xl tracking-tight font-extrabold text-uoft-blue sm:text-6xl md:text-7xl leading-[1.1]">
-            <span class="bg-gradient-to-r from-blue-600 to-secondary-blue bg-clip-text text-transparent">Learn and apply AI</span> with Canada's leading engineers.
+            <span class="bg-gradient-to-r from-uoft-blue to-secondary-blue bg-clip-text text-transparent">Learn and apply AI</span> with Canada's leading engineers.
           </h1>
           <p class="mt-6 text-lg text-slate-600 sm:mt-8 sm:text-xl sm:max-w-xl sm:mx-auto md:mt-8 md:text-xl lg:mx-0 font-normal leading-relaxed">
             One partnership connects you to AI expertise across the entirety of UofT Engineering.<br><br>From executive workshops to multi-year research collaborations, we help you move AI from concept to practice.
@@ -37,7 +37,7 @@ const organicShapeBorderRadius = generateOrganicShape();
               </a>
             </div>
             <div>
-              <a href="/training" class="w-full flex items-center justify-center px-8 py-4 border-2 border-uoft-blue text-lg font-medium rounded-full text-uoft-blue bg-transparent hover:bg-blue-50 md:py-4 md:text-lg md:px-10 font-sans transition-colors">
+              <a href="/training" class="w-full flex items-center justify-center px-8 py-4 border-2 border-uoft-blue text-lg font-medium rounded-full text-uoft-blue bg-transparent hover:bg-secondary-blue/10 md:py-4 md:text-lg md:px-10 font-sans transition-colors">
                 Build AI Skills
               </a>
             </div>
@@ -198,13 +198,13 @@ const organicShapeBorderRadius = generateOrganicShape();
         });
 
         if (res.ok) {
-          form.innerHTML = '<p class="text-sm text-emerald-600 font-medium py-2">You\'re subscribed! Thank you.</p>';
+          form.innerHTML = '<p class="text-sm text-accent-dark-green font-medium py-2">You\'re subscribed! Thank you.</p>';
         } else {
           throw new Error('subscribe failed');
         }
       } catch {
         status.textContent = 'Something went wrong. Please try again or email us at carte@utoronto.ca';
-        status.className = 'text-sm text-red-600';
+        status.className = 'text-sm text-accent-warm-red';
         btn.disabled = false;
         btn.textContent = 'Subscribe';
       }
