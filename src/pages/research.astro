@@ -1,5 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import WaveDivider from '../components/WaveDivider.astro';
+import Button from '../components/Button.astro';
 import { getCollection } from 'astro:content';
 
 // Fetch all research papers from content collection
@@ -20,9 +22,9 @@ const secondaryResearch = allResearch
   <section class="relative overflow-hidden">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-24">
       <div class="max-w-3xl">
-        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-[var(--color-uoft-blue)] leading-tight mb-6">
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-uoft-blue leading-tight mb-6">
           Applied AI Research<br/>
-          <span class="bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">That Translates</span>
+          <span class="bg-gradient-to-r from-uoft-blue to-secondary-blue bg-clip-text text-transparent">That Translates</span>
         </h1>
         <p class="text-xl text-slate-600 leading-relaxed">
           Carte supports collaborative research designed for real-world impact — bridging AI with civil engineering, healthcare, sustainability, and beyond. We help partners navigate funding and connect with faculty who can solve their specific challenges.
@@ -35,7 +37,7 @@ const secondaryResearch = allResearch
   <section class="py-20 lg:py-28">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-16">
-        <h2 class="text-3xl sm:text-4xl font-extrabold text-[var(--color-uoft-blue)] mb-4">Featured Publications</h2>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-uoft-blue mb-4">Featured Publications</h2>
         <p class="text-lg text-slate-600 max-w-2xl mx-auto">Carte-supported research solving real engineering challenges — from building science to healthcare to sustainability.</p>
       </div>
       
@@ -91,18 +93,18 @@ const secondaryResearch = allResearch
               </div>
               
               <!-- Decorative bottom curve -->
-              <div class="absolute bottom-0 left-0 right-0 h-8 bg-white" style="clip-path: ellipse(70% 100% at 50% 100%);"></div>
+              <WaveDivider />
             </div>
             
             <div class="p-6 pt-2">
               <!-- Tags -->
               <div class="flex flex-wrap gap-2 mb-3">
                 {paper.data.tags.map(tag => (
-                  <span class="px-2.5 py-0.5 text-xs font-semibold rounded-full bg-indigo-50 text-indigo-700">{tag}</span>
+                  <span class="px-2.5 py-0.5 text-xs font-semibold rounded-full bg-secondary-blue/10 text-secondary-blue">{tag}</span>
                 ))}
               </div>
               
-              <h3 class="text-lg font-bold text-[var(--color-uoft-blue)] mb-2 leading-snug group-hover:text-indigo-700 transition-colors">
+              <h3 class="text-lg font-bold text-uoft-blue mb-2 leading-snug group-hover:text-secondary-blue transition-colors">
                 {paper.data.title}
               </h3>
               
@@ -125,11 +127,11 @@ const secondaryResearch = allResearch
   </section>
 
   <!-- Research Portfolio Carousel Section -->
-  <section class="py-20 bg-gradient-to-b from-slate-50 to-white">
+  <section class="py-20 lg:py-28 bg-gradient-to-b from-slate-50 to-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between mb-12">
         <div>
-          <h2 class="text-3xl sm:text-4xl font-extrabold text-[var(--color-uoft-blue)] mb-4">Research Portfolio</h2>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-uoft-blue mb-4">Research Portfolio</h2>
           <p class="text-lg text-slate-600 max-w-2xl">Collaborative research across 8 engineering departments — with a focus on practical applications and real-world impact.</p>
         </div>
         <!-- Carousel Navigation -->
@@ -137,7 +139,7 @@ const secondaryResearch = allResearch
           <span class="text-sm text-slate-500 mr-2">{secondaryResearch.length} publications</span>
           <button 
             id="carousel-prev" 
-            class="w-10 h-10 rounded-full bg-white border border-slate-200 flex items-center justify-center hover:bg-indigo-50 hover:border-indigo-300 transition-colors shadow-sm disabled:opacity-40 disabled:cursor-not-allowed"
+            class="w-10 h-10 rounded-full bg-white border border-slate-200 flex items-center justify-center hover:bg-secondary-blue/10 hover:border-secondary-blue transition-colors shadow-sm disabled:opacity-40 disabled:cursor-not-allowed"
             aria-label="Previous"
           >
             <svg class="w-5 h-5 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -146,7 +148,7 @@ const secondaryResearch = allResearch
           </button>
           <button 
             id="carousel-next" 
-            class="w-10 h-10 rounded-full bg-white border border-slate-200 flex items-center justify-center hover:bg-indigo-50 hover:border-indigo-300 transition-colors shadow-sm disabled:opacity-40 disabled:cursor-not-allowed"
+            class="w-10 h-10 rounded-full bg-white border border-slate-200 flex items-center justify-center hover:bg-secondary-blue/10 hover:border-secondary-blue transition-colors shadow-sm disabled:opacity-40 disabled:cursor-not-allowed"
             aria-label="Next"
           >
             <svg class="w-5 h-5 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -159,51 +161,50 @@ const secondaryResearch = allResearch
       <!-- Carousel Container -->
       <div class="relative -mx-4 px-4">
         <div 
-          id="portfolio-carousel" 
-          class="flex gap-6 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-4 -mb-4"
-          style="scrollbar-width: none; -ms-overflow-style: none;"
+          id="portfolio-carousel"
+          class="hide-scrollbar flex gap-6 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-4 -mb-4"
         >
           {secondaryResearch.map((paper) => (
-            <article class="group bg-white rounded-xl border border-slate-200 p-6 hover:border-indigo-300 hover:shadow-lg hover:shadow-indigo-100/50 transition-all duration-300 flex-shrink-0 w-[320px] snap-start">
+            <article class="group bg-white rounded-xl border border-slate-200 p-6 hover:border-secondary-blue hover:shadow-lg hover:shadow-secondary-blue/10 transition-all duration-300 flex-shrink-0 w-[320px] snap-start">
               <!-- Icon -->
-              <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-slate-100 to-slate-50 flex items-center justify-center mb-4 group-hover:from-indigo-100 group-hover:to-indigo-50 transition-colors">
+              <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-slate-100 to-slate-50 flex items-center justify-center mb-4 group-hover:bg-secondary-blue/10 transition-colors">
                 {paper.data.icon === "database" && (
-                  <svg class="w-6 h-6 text-slate-600 group-hover:text-indigo-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg class="w-6 h-6 text-slate-600 group-hover:text-secondary-blue transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4"/>
                   </svg>
                 )}
                 {paper.data.icon === "health" && (
-                  <svg class="w-6 h-6 text-slate-600 group-hover:text-indigo-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg class="w-6 h-6 text-slate-600 group-hover:text-secondary-blue transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
                   </svg>
                 )}
                 {paper.data.icon === "air" && (
-                  <svg class="w-6 h-6 text-slate-600 group-hover:text-indigo-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg class="w-6 h-6 text-slate-600 group-hover:text-secondary-blue transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"/>
                   </svg>
                 )}
                 {paper.data.icon === "code" && (
-                  <svg class="w-6 h-6 text-slate-600 group-hover:text-indigo-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg class="w-6 h-6 text-slate-600 group-hover:text-secondary-blue transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/>
                   </svg>
                 )}
                 {paper.data.icon === "chart" && (
-                  <svg class="w-6 h-6 text-slate-600 group-hover:text-indigo-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg class="w-6 h-6 text-slate-600 group-hover:text-secondary-blue transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
                   </svg>
                 )}
                 {paper.data.icon === "globe" && (
-                  <svg class="w-6 h-6 text-slate-600 group-hover:text-indigo-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg class="w-6 h-6 text-slate-600 group-hover:text-secondary-blue transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
                   </svg>
                 )}
                 {paper.data.icon === "houses" && (
-                  <svg class="w-6 h-6 text-slate-600 group-hover:text-indigo-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg class="w-6 h-6 text-slate-600 group-hover:text-secondary-blue transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
                   </svg>
                 )}
                 {paper.data.icon === "people" && (
-                  <svg class="w-6 h-6 text-slate-600 group-hover:text-indigo-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg class="w-6 h-6 text-slate-600 group-hover:text-secondary-blue transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
                   </svg>
                 )}
@@ -216,7 +217,7 @@ const secondaryResearch = allResearch
                 ))}
               </div>
               
-              <h3 class="text-base font-bold text-[var(--color-uoft-blue)] mb-2 leading-snug group-hover:text-indigo-700 transition-colors line-clamp-2">
+              <h3 class="text-base font-bold text-uoft-blue mb-2 leading-snug group-hover:text-secondary-blue transition-colors line-clamp-2">
                 {paper.data.title}
               </h3>
               
@@ -243,31 +244,7 @@ const secondaryResearch = allResearch
       </div>
     </div>
   </section>
-  
-  <style>
-    #portfolio-carousel::-webkit-scrollbar {
-      display: none;
-    }
-    .line-clamp-1 {
-      display: -webkit-box;
-      -webkit-line-clamp: 1;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
-    }
-    .line-clamp-2 {
-      display: -webkit-box;
-      -webkit-line-clamp: 2;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
-    }
-    .line-clamp-3 {
-      display: -webkit-box;
-      -webkit-line-clamp: 3;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
-    }
-  </style>
-  
+
   <script>
     const carousel = document.getElementById('portfolio-carousel');
     const prevBtn = document.getElementById('carousel-prev');
@@ -296,19 +273,14 @@ const secondaryResearch = allResearch
   <!-- CTA Section -->
   <section class="py-20">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <div class="bg-gradient-to-br from-[var(--color-uoft-blue)] to-indigo-900 rounded-3xl p-12 shadow-2xl shadow-indigo-900/20">
+      <div class="bg-gradient-to-br from-uoft-blue to-secondary-blue rounded-3xl p-12 shadow-2xl shadow-uoft-blue/20">
         <h2 class="text-3xl font-extrabold text-white mb-4">Collaborate With Us</h2>
-        <p class="text-lg text-indigo-200 mb-8 max-w-2xl mx-auto">
+        <p class="text-lg text-slate-200 mb-8 max-w-2xl mx-auto">
           Whether you're a faculty member seeking AI expertise, an industry partner looking to sponsor research, or a student interested in applied AI projects—we're here to help.
         </p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <a href="/contact" class="inline-flex items-center justify-center px-8 py-3 rounded-xl bg-white text-[var(--color-uoft-blue)] font-bold hover:bg-indigo-50 transition-colors">
-            Get in Touch
-            <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
-            </svg>
-          </a>
-          <a href="/about" class="inline-flex items-center justify-center px-8 py-3 rounded-xl bg-indigo-800/50 text-white font-bold hover:bg-indigo-800 transition-colors border border-indigo-600">
+          <Button href="/contact" variant="on-dark">Get in Touch</Button>
+          <a href="/about" class="inline-flex items-center justify-center px-8 py-4 rounded-xl bg-uoft-blue/50 text-white font-bold hover:bg-uoft-blue transition-colors border border-secondary-blue">
             About Carte
           </a>
         </div>

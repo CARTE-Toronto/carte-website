@@ -4,7 +4,7 @@ audience: "C-Suite & Senior Leaders"
 duration: "Half-day to full-day"
 description: "Strategic AI briefings designed for executive leadership, covering AI capabilities, industry trends, organizational implications, and how to develop an effective AI strategy."
 featured: true
-gradient: "from-amber-500 via-orange-500 to-red-500"
+gradient: "from-uoft-blue to-secondary-blue"
 pattern: "corporate"
 tags: ["Executive", "Strategy", "Leadership"]
 order: 1

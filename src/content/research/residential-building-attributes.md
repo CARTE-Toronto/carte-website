@@ -5,7 +5,7 @@ venue: "Journal of Industrial Ecology"
 year: 2025
 description: "Leveraging deep learning to predict residential building characteristics from imagery, supporting sustainable housing analysis and urban planning decisions."
 featured: true
-gradient: "from-emerald-500 via-teal-500 to-cyan-600"
+gradient: "from-uoft-blue to-secondary-blue"
 pattern: "houses"
 tags: ["Deep Learning", "Sustainability"]
 order: 2

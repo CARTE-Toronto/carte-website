@@ -4,7 +4,7 @@ audience: "Project Teams"
 duration: "Ongoing"
 description: "Hands-on consulting and guidance for your organization's AI initiatives. We help teams scope, develop, and implement applied analytics projects that drive real business value."
 featured: true
-gradient: "from-emerald-500 via-teal-500 to-cyan-600"
+gradient: "from-uoft-blue to-secondary-blue"
 pattern: "network"
 tags: ["Consulting", "Projects", "Implementation"]
 order: 3

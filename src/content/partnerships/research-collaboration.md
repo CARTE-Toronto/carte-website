@@ -2,7 +2,7 @@
 title: "Sponsored Research"
 description: "Partner with world-class faculty on applied AI research. We facilitate collaborations and help leverage government funding through NSERC Alliance, MITACS, and other programs."
 featured: true
-gradient: "from-blue-600 via-indigo-500 to-violet-600"
+gradient: "from-uoft-blue to-secondary-blue"
 pattern: "research"
 tags: ["Research", "Funding", "Collaboration"]
 order: 1

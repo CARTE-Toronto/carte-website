@@ -1,0 +1,23 @@
+@theme {
+  /* Brand — primary & secondary */
+  --color-uoft-blue:           #1e3765;
+  --color-secondary-blue:      #007894;
+  --color-secondary-blue-dark: #006279;
+
+  /* Official accent colours — small details only */
+  --color-accent-purple:      #6d247a;
+  --color-accent-warm-red:    #dc4633;
+  --color-accent-cool-blue:   #6fc7ea;
+  --color-accent-teal:        #00a189;
+  --color-accent-fuchsia:     #ab1368;
+  --color-accent-dark-green:  #0d534d;
+  --color-accent-yellow:      #f1c500;
+  --color-accent-light-green: #8dbf2e;
+
+  /* Neutrals */
+  --color-cool-gray: #d0d1c9;
+  --color-pale-bg:   #FDFBF7;
+
+  /* Fonts */
+  --font-sans: 'Host Grotesk', system-ui, sans-serif;
+}
