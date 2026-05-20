@@ -1,7 +1,7 @@
 ---
 interface Props {
   href: string;
-  variant?: 'primary' | 'secondary';
+  variant?: 'primary' | 'secondary' | 'on-dark';
   class?: string;
 }
 
@@ -12,6 +12,7 @@ const base = 'inline-flex items-center justify-center px-8 py-4 rounded-xl font-
 const variants: Record<string, string> = {
   primary: 'bg-secondary-blue text-white hover:bg-secondary-blue-dark',
   secondary: 'bg-white text-secondary-blue border-2 border-secondary-blue hover:bg-secondary-blue/10',
+  'on-dark': 'bg-white text-uoft-blue hover:bg-secondary-blue/10',
 };
 ---
 
