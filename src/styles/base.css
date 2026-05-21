@@ -4,11 +4,13 @@
   }
 
   body {
-    @apply antialiased text-slate-800;
-    background-color: var(--color-pale-bg);
+    @apply antialiased;
+    background-color: var(--surface-page);
+    color: var(--text-body);
   }
 
   h1, h2, h3, h4, h5, h6 {
     @apply font-sans font-extrabold;
+    color: var(--text-strong);
   }
 }
