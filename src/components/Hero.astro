@@ -47,14 +47,14 @@ const organicShapeBorderRadius = generateOrganicShape();
             <div class="absolute left-0 sm:left-1/2 lg:left-0 sm:-translate-x-1/2 lg:translate-x-0 top-full mt-2 z-[9999] p-5 bg-white rounded-xl border border-slate-200 w-[calc(100vw-2rem)] sm:w-[400px] newsletter-panel">
               <form id="hero-subscribe-form" class="space-y-3">
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                  <input type="email" name="email" placeholder="Email *" class="carte-input" required />
-                  <input type="text" name="first_name" placeholder="First name" class="carte-input" />
+                  <input type="email" name="email" placeholder="Email *" class="carte-input" aria-label="Email address (required)" required />
+                  <input type="text" name="first_name" placeholder="First name" class="carte-input" aria-label="First name" />
                 </div>
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                  <input type="text" name="last_name" placeholder="Last name" class="carte-input" />
-                  <input type="text" name="organization" placeholder="Organization (if not UofT)" class="carte-input" />
+                  <input type="text" name="last_name" placeholder="Last name" class="carte-input" aria-label="Last name" />
+                  <input type="text" name="organization" placeholder="Organization (if not UofT)" class="carte-input" aria-label="Organization (if not UofT)" />
                 </div>
-                <select name="academic_unit" class="carte-select">
+                <select name="academic_unit" class="carte-select" aria-label="Academic unit (if UofT)">
                   <option value="">Academic Unit (if UofT)</option>
                   <option value="Applied Science &amp; Engineering">Applied Science & Engineering</option>
                   <option value="Arts &amp; Science">Arts & Science</option>

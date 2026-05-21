@@ -58,7 +58,7 @@
   background: var(--surface-inverse); color: var(--text-on-inverse);
   border-radius: var(--radius-3xl); padding: 40px; text-align: center;
 }
-.inverse-cta h3 { margin: 0 0 10px; font: 800 28px var(--font-sans); letter-spacing: -.015em; }
+.inverse-cta h3 { margin: 0 0 10px; font: 800 28px var(--font-sans); letter-spacing: -.015em; color: inherit; }
 .inverse-cta p  { margin: 0 auto 22px; max-width: 48ch; color: var(--text-on-inverse-muted); font: 500 16px/1.55 var(--font-sans); }
 .inverse-cta .row { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
 
