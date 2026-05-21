@@ -6,12 +6,16 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "a11y": "pa11y-ci --config .pa11yci.json"
   },
   "dependencies": {
     "@astrojs/mdx": "^4.3.13",
     "@tailwindcss/vite": "^4.1.17",
     "astro": "^5.16.5",
     "tailwindcss": "^4.1.17"
+  },
+  "devDependencies": {
+    "pa11y-ci": "^4.1.1"
   }
 }

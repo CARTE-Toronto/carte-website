@@ -1,0 +1,282 @@
+/* ======================================================================
+   Carte Components — extracted from the Carte Design System
+   Centre for Analytics & AI Engineering, University of Toronto
+
+   Contains:
+     1. Primitive tokens (palette, type, radii, spacing, motion)
+     2. Semantic tokens (surface/text/border/brand/feedback)
+     3. Component CSS (.carte-btn-*, .carte-input, .carte-card, .carte-badge, …)
+
+   Author product CSS against SEMANTIC tokens (--surface-card, --text-strong,
+   --brand-primary). The paint can change without touching components.
+   ====================================================================== */
+
+/* ======================================================================
+   1. PRIMITIVE TOKENS
+   ====================================================================== */
+:root {
+  /* ---- Official U of T palette ---- */
+  --color-uoft-blue:        #1E3765;   /* PMS 655   · Primary */
+  --color-uoft-secondary:   #007894;   /* PMS 633   · Secondary */
+
+  --color-uoft-purple:      #6D247A;
+  --color-uoft-warm-red:    #DC4633;
+  --color-uoft-cool-blue:   #6FC7EA;
+  --color-uoft-teal:        #00A189;
+  --color-uoft-fuchsia:     #AB1368;
+  --color-uoft-dark-green:  #0D534D;
+  --color-uoft-yellow:      #F1C500;
+  --color-uoft-light-green: #8DBF2E;
+
+  --color-white:            #FFFFFF;
+  --color-black:            #000000;
+
+  /* ---- Carte-specific extensions ---- */
+  --color-pale-bg:          #FDFBF7;   /* Carte cream page canvas */
+  --color-warm-bg:          #F2F0EB;
+
+  --color-uoft-blue-900:    #12244A;
+  --color-uoft-blue-700:    #1E3765;
+  --color-uoft-blue-500:    #3E5A8F;
+  --color-uoft-blue-100:    #E2E8F2;
+  --color-uoft-blue-050:    #F1F4F9;
+
+  /* Slate neutrals for UI chrome */
+  --color-slate-900: #0F172A;
+  --color-slate-700: #334155;
+  --color-slate-600: #475569;
+  --color-slate-500: #64748B;
+  --color-slate-400: #94A3B8;
+  --color-slate-300: #CBD5E1;
+  --color-slate-200: #E2E8F0;
+  --color-slate-100: #F1F5F9;
+  --color-slate-050: #F8FAFC;
+
+  /* ---- Feedback ---- */
+  --color-success:    #0D6B4C;
+  --color-success-bg: #E6F2E5;
+  --color-warning:    #8A4B00;
+  --color-warning-bg: #FCEBCC;
+  --color-danger:     #DC2626;
+  --color-danger-bg:  #FEE2E2;
+  --color-info:       var(--color-uoft-secondary);
+  --color-info-bg:    var(--color-uoft-blue-050);
+
+  /* ---- Type primitives ---- */
+  --font-sans: 'Host Grotesk', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+  /* ---- Radii ---- */
+  --radius-sm:   6px;
+  --radius-md:   8px;
+  --radius-lg:  12px;
+  --radius-xl:  16px;
+  --radius-2xl: 20px;
+  --radius-3xl: 24px;
+  --radius-pill: 9999px;
+
+  /* ---- Spacing ---- */
+  --space-1:  4px;
+  --space-2:  8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10:40px;
+  --space-12:48px;
+  --space-16:64px;
+  --space-20:80px;
+  --space-28:112px;
+
+  /* ---- Elevation: Carte never uses shadows. Kept as no-ops. ---- */
+  --shadow-xs: none;
+  --shadow-sm: none;
+  --shadow-md: none;
+  --shadow-lg: none;
+  --shadow-xl: none;
+
+  /* ---- Motion ---- */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-std: cubic-bezier(0.4, 0, 0.2, 1);
+  --dur-fast: 150ms;
+  --dur-base: 300ms;
+  --dur-slow: 500ms;
+
+  /* ======================================================================
+     2. SEMANTIC TOKENS — prefer these in authored CSS
+     ====================================================================== */
+
+  /* Surfaces */
+  --surface-page:    var(--color-pale-bg);
+  --surface-card:    var(--color-white);
+  --surface-sunken:  var(--color-slate-050);
+  --surface-warm:    var(--color-warm-bg);
+  --surface-info:    var(--color-uoft-blue-050);
+  --surface-inverse: var(--color-uoft-blue);
+
+  /* Text */
+  --text-strong:          var(--color-uoft-blue-900);
+  --text-body:            var(--color-uoft-blue);
+  --text-muted:           var(--color-uoft-blue-500);
+  --text-subtle:          #5E6B84;
+  --text-on-inverse:      var(--color-white);
+  --text-on-inverse-muted:rgba(255, 255, 255, 0.78);
+  --text-link:            var(--color-uoft-secondary);
+
+  /* Borders */
+  --border-subtle: var(--color-slate-200);
+  --border-warm:   #E7E5E0;
+  --border-strong: var(--color-uoft-blue);
+  --border-focus:  var(--color-uoft-secondary);
+
+  /* Brand roles */
+  --brand-primary:     var(--color-uoft-blue);
+  --brand-secondary:   var(--color-uoft-secondary);
+  --brand-accent-warm: var(--color-uoft-yellow);
+  --brand-accent-cool: var(--color-uoft-cool-blue);
+
+  --focus-ring: 0 0 0 3px rgba(0, 120, 148, 0.30);
+}
+
+/* ======================================================================
+   3. COMPONENTS
+   ====================================================================== */
+
+/* ---- Buttons ------------------------------------------------------- */
+.carte-btn-primary {
+  display: inline-flex; align-items: center; justify-content: center;
+  padding: 14px 32px;
+  font-family: var(--font-sans); font-weight: 700; font-size: 16px;
+  color: var(--text-on-inverse); background: var(--brand-primary);
+  border: none; border-radius: var(--radius-pill);
+  cursor: pointer;
+  transition: background var(--dur-base) var(--ease-out);
+}
+.carte-btn-primary:hover { background: var(--brand-secondary); }
+
+.carte-btn-ghost {
+  display: inline-flex; align-items: center; justify-content: center;
+  padding: 12px 30px;
+  font-weight: 600; font-size: 16px;
+  color: var(--brand-primary); background: transparent;
+  border: 2px solid var(--brand-primary);
+  border-radius: var(--radius-pill); cursor: pointer;
+  transition: all var(--dur-base) var(--ease-out);
+}
+.carte-btn-ghost:hover { background: var(--color-uoft-blue-100); }
+
+/* ---- Forms --------------------------------------------------------- */
+.carte-label {
+  display: block;
+  font-family: var(--font-sans); font-weight: 600; font-size: 14px;
+  color: var(--color-slate-700);
+  margin-bottom: 6px; letter-spacing: -0.005em;
+}
+.carte-label__req { color: var(--color-danger); margin-left: 2px; }
+.carte-help  { font: 400 12px var(--font-sans); color: var(--color-slate-500); margin: 6px 0 0; }
+.carte-error { font: 500 12px var(--font-sans); color: var(--color-danger); margin: 6px 0 0; }
+
+.carte-input,
+.carte-select,
+.carte-textarea {
+  width: 100%; box-sizing: border-box;
+  padding: 10px 16px; border-radius: var(--radius-md);
+  font: 400 14px var(--font-sans); color: var(--text-strong);
+  background: var(--surface-card); border: 1px solid var(--color-slate-300);
+  outline: none;
+  transition: border-color var(--dur-fast) var(--ease-out);
+}
+.carte-textarea { padding: 12px 16px; min-height: 112px; resize: vertical; line-height: 1.55; }
+.carte-input::placeholder,
+.carte-textarea::placeholder { color: var(--color-slate-500); }
+
+.carte-input:hover,
+.carte-select:hover,
+.carte-textarea:hover { border-color: var(--text-subtle); }
+
+.carte-input:focus,
+.carte-select:focus,
+.carte-textarea:focus {
+  border-color: var(--border-focus);
+  outline: 2px solid var(--border-focus);
+  outline-offset: 2px;
+}
+.carte-input--invalid,
+.carte-input--invalid:focus {
+  border-color: var(--color-danger);
+  outline: 2px solid var(--color-danger);
+  outline-offset: 2px;
+}
+
+.carte-select {
+  appearance: none; -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8' fill='none'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%231E3765' stroke-width='1.75' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat; background-position: right 14px center;
+  padding-right: 38px;
+}
+
+.carte-check {
+  display: inline-flex; align-items: center; gap: 10px; cursor: pointer;
+  font: 400 14px var(--font-sans); color: var(--color-slate-600);
+}
+.carte-check input[type="checkbox"],
+.carte-check input[type="radio"] {
+  appearance: none; -webkit-appearance: none;
+  width: 18px; height: 18px; flex: none; margin: 0;
+  border: 1.5px solid var(--color-slate-300); background: #fff;
+  border-radius: 4px; cursor: pointer; position: relative;
+  transition: all var(--dur-fast) var(--ease-out);
+}
+.carte-check input[type="radio"] { border-radius: 50%; }
+.carte-check input[type="checkbox"]:hover,
+.carte-check input[type="radio"]:hover { border-color: var(--brand-primary); }
+.carte-check input[type="checkbox"]:checked {
+  background: var(--brand-primary); border-color: var(--brand-primary);
+}
+.carte-check input[type="checkbox"]:checked::after {
+  content: ""; position: absolute; left: 5px; top: 1.5px;
+  width: 5px; height: 10px; border: solid #fff; border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+.carte-check input[type="radio"]:checked {
+  border-color: var(--brand-primary); border-width: 5px;
+}
+.carte-check input[type="checkbox"]:focus-visible,
+.carte-check input[type="radio"]:focus-visible {
+  outline: 2px solid var(--border-focus);
+  outline-offset: 2px;
+}
+
+/* ---- Card ---------------------------------------------------------- */
+.carte-card {
+  background: var(--surface-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-2xl);
+  padding: var(--space-6);
+  transition: border-color var(--dur-base) var(--ease-out);
+}
+.carte-card:hover { border-color: var(--brand-secondary); }
+
+/* ---- Badge / pill -------------------------------------------------- */
+.carte-badge {
+  display: inline-flex; align-items: center;
+  padding: 4px 12px; border-radius: var(--radius-pill);
+  font: 700 12px var(--font-sans); letter-spacing: 0.05em; text-transform: uppercase;
+  background: var(--surface-info); color: var(--brand-primary);
+}
+.carte-badge--success { background: var(--color-success-bg); color: var(--color-success); }
+.carte-badge--warning { background: var(--color-warning-bg); color: var(--color-warning); }
+.carte-badge--danger  { background: var(--color-danger-bg);  color: var(--color-danger); }
+
+/* ---- Global focus -------------------------------------------------- */
+:focus-visible {
+  outline: 2px solid var(--border-focus);
+  outline-offset: 2px;
+}
+.carte-input:focus-visible,
+.carte-select:focus-visible,
+.carte-textarea:focus-visible,
+.carte-btn-primary:focus-visible,
+.carte-btn-ghost:focus-visible,
+.carte-check input:focus-visible { outline: none; }
