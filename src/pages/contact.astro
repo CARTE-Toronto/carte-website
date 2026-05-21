@@ -29,7 +29,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           <div class="space-y-8">
             <!-- Email -->
             <div class="flex items-start gap-4">
-              <div class="w-12 h-12 rounded-xl bg-secondary-blue/10 flex items-center justify-center flex-shrink-0">
+              <div class="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0" style="background:var(--surface-info)">
                 <svg class="w-6 h-6 text-secondary-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
                 </svg>
@@ -44,7 +44,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             
             <!-- Location -->
             <div class="flex items-start gap-4">
-              <div class="w-12 h-12 rounded-xl bg-secondary-blue/10 flex items-center justify-center flex-shrink-0">
+              <div class="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0" style="background:var(--surface-info)">
                 <svg class="w-6 h-6 text-secondary-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
@@ -62,7 +62,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             
             <!-- Social -->
             <div class="flex items-start gap-4">
-              <div class="w-12 h-12 rounded-xl bg-secondary-blue/10 flex items-center justify-center flex-shrink-0">
+              <div class="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0" style="background:var(--surface-info)">
                 <svg class="w-6 h-6 text-secondary-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"/>
                 </svg>
@@ -125,8 +125,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           -->
           
           <!-- Newsletter Signup -->
-          <details class="group bg-white rounded-2xl border border-slate-200 shadow-lg overflow-hidden">
-            <summary class="bg-gradient-to-r from-uoft-blue to-secondary-blue px-6 py-5 cursor-pointer list-none select-none">
+          <details class="group bg-white rounded-2xl border border-slate-200 overflow-hidden">
+            <summary class="px-6 py-5 cursor-pointer list-none select-none" style="background:var(--brand-primary)">
               <div class="flex items-center justify-between">
                 <div>
                   <h2 class="text-xl font-bold text-white flex items-center gap-3">
@@ -149,7 +149,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
               <form id="contact-subscribe-form" class="space-y-4">
                 <!-- Email -->
                 <div>
-                  <label for="contact-email" class="block text-sm font-medium text-slate-700 mb-1">
+                  <label for="contact-email" class="carte-label">
                     Email Address <span class="text-accent-warm-red">*</span>
                   </label>
                   <input
@@ -157,7 +157,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                     name="email"
                     id="contact-email"
                     placeholder="you@example.com"
-                    class="w-full px-4 py-2.5 rounded-lg border border-slate-300 focus:ring-2 focus:ring-secondary-blue focus:border-secondary-blue outline-none transition-shadow text-sm"
+                    class="carte-input"
                     required
                   />
                 </div>
@@ -165,43 +165,43 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                 <!-- Name Row -->
                 <div class="grid grid-cols-2 gap-3">
                   <div>
-                    <label for="contact-first-name" class="block text-sm font-medium text-slate-700 mb-1">First Name</label>
+                    <label for="contact-first-name" class="carte-label">First Name</label>
                     <input
                       type="text"
                       name="first_name"
                       id="contact-first-name"
-                      class="w-full px-4 py-2.5 rounded-lg border border-slate-300 focus:ring-2 focus:ring-secondary-blue focus:border-secondary-blue outline-none transition-shadow text-sm"
+                      class="carte-input"
                     />
                   </div>
                   <div>
-                    <label for="contact-last-name" class="block text-sm font-medium text-slate-700 mb-1">Last Name</label>
+                    <label for="contact-last-name" class="carte-label">Last Name</label>
                     <input
                       type="text"
                       name="last_name"
                       id="contact-last-name"
-                      class="w-full px-4 py-2.5 rounded-lg border border-slate-300 focus:ring-2 focus:ring-secondary-blue focus:border-secondary-blue outline-none transition-shadow text-sm"
+                      class="carte-input"
                     />
                   </div>
                 </div>
 
                 <!-- Organization -->
                 <div>
-                  <label for="contact-organization" class="block text-sm font-medium text-slate-700 mb-1">Organization (if not UofT)</label>
+                  <label for="contact-organization" class="carte-label">Organization (if not UofT)</label>
                   <input
                     type="text"
                     name="organization"
                     id="contact-organization"
-                    class="w-full px-4 py-2.5 rounded-lg border border-slate-300 focus:ring-2 focus:ring-secondary-blue focus:border-secondary-blue outline-none transition-shadow text-sm"
+                    class="carte-input"
                   />
                 </div>
 
                 <!-- Academic Unit -->
                 <div>
-                  <label for="contact-academic-unit" class="block text-sm font-medium text-slate-700 mb-1">Academic Unit (if UofT)</label>
+                  <label for="contact-academic-unit" class="carte-label">Academic Unit (if UofT)</label>
                   <select
                     name="academic_unit"
                     id="contact-academic-unit"
-                    class="w-full px-4 py-2.5 rounded-lg border border-slate-300 focus:ring-2 focus:ring-secondary-blue focus:border-secondary-blue outline-none transition-shadow text-sm bg-white"
+                    class="carte-select"
                   >
                     <option value="">Select...</option>
                     <option value="Applied Science &amp; Engineering">Applied Science & Engineering</option>
@@ -228,40 +228,16 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
                 <!-- Affiliation Type -->
                 <fieldset>
-                  <legend class="block text-sm font-medium text-slate-700 mb-2">Affiliation Type</legend>
+                  <legend class="carte-label">Affiliation Type</legend>
                   <div class="grid grid-cols-2 gap-2 text-sm">
-                    <label class="flex items-center gap-2 cursor-pointer">
-                      <input type="checkbox" name="affiliation" value="Undergraduate" class="rounded border-slate-300 text-secondary-blue focus:ring-secondary-blue" />
-                      <span class="text-slate-600">Undergraduate</span>
-                    </label>
-                    <label class="flex items-center gap-2 cursor-pointer">
-                      <input type="checkbox" name="affiliation" value="Graduate Student" class="rounded border-slate-300 text-secondary-blue focus:ring-secondary-blue" />
-                      <span class="text-slate-600">Graduate Student</span>
-                    </label>
-                    <label class="flex items-center gap-2 cursor-pointer">
-                      <input type="checkbox" name="affiliation" value="Postdoc" class="rounded border-slate-300 text-secondary-blue focus:ring-secondary-blue" />
-                      <span class="text-slate-600">Postdoc</span>
-                    </label>
-                    <label class="flex items-center gap-2 cursor-pointer">
-                      <input type="checkbox" name="affiliation" value="Faculty" class="rounded border-slate-300 text-secondary-blue focus:ring-secondary-blue" />
-                      <span class="text-slate-600">Faculty</span>
-                    </label>
-                    <label class="flex items-center gap-2 cursor-pointer">
-                      <input type="checkbox" name="affiliation" value="Librarian" class="rounded border-slate-300 text-secondary-blue focus:ring-secondary-blue" />
-                      <span class="text-slate-600">Librarian</span>
-                    </label>
-                    <label class="flex items-center gap-2 cursor-pointer">
-                      <input type="checkbox" name="affiliation" value="UofT Staff" class="rounded border-slate-300 text-secondary-blue focus:ring-secondary-blue" />
-                      <span class="text-slate-600">UofT Staff</span>
-                    </label>
-                    <label class="flex items-center gap-2 cursor-pointer">
-                      <input type="checkbox" name="affiliation" value="Alumni" class="rounded border-slate-300 text-secondary-blue focus:ring-secondary-blue" />
-                      <span class="text-slate-600">Alumni</span>
-                    </label>
-                    <label class="flex items-center gap-2 cursor-pointer">
-                      <input type="checkbox" name="affiliation" value="External Partner" class="rounded border-slate-300 text-secondary-blue focus:ring-secondary-blue" />
-                      <span class="text-slate-600">External Partner</span>
-                    </label>
+                    <label class="carte-check"><input type="checkbox" name="affiliation" value="Undergraduate" /> Undergraduate</label>
+                    <label class="carte-check"><input type="checkbox" name="affiliation" value="Graduate Student" /> Graduate Student</label>
+                    <label class="carte-check"><input type="checkbox" name="affiliation" value="Postdoc" /> Postdoc</label>
+                    <label class="carte-check"><input type="checkbox" name="affiliation" value="Faculty" /> Faculty</label>
+                    <label class="carte-check"><input type="checkbox" name="affiliation" value="Librarian" /> Librarian</label>
+                    <label class="carte-check"><input type="checkbox" name="affiliation" value="UofT Staff" /> UofT Staff</label>
+                    <label class="carte-check"><input type="checkbox" name="affiliation" value="Alumni" /> Alumni</label>
+                    <label class="carte-check"><input type="checkbox" name="affiliation" value="External Partner" /> External Partner</label>
                   </div>
                 </fieldset>
 
@@ -270,7 +246,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                 <button
                   type="submit"
                   id="contact-subscribe-btn"
-                  class="w-full px-6 py-3 bg-uoft-blue text-white font-semibold rounded-xl hover:bg-secondary-blue transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
+                  class="carte-btn-primary w-full disabled:opacity-60 disabled:cursor-not-allowed"
                 >
                   Subscribe
                 </button>
