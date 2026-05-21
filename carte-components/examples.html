@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Carte Components — reference markup</title>
+<link rel="stylesheet" href="carte-components.css">
+<style>
+  body { background: var(--surface-page); margin: 0; padding: 48px 64px 96px; }
+  .wrap { max-width: 1100px; margin: 0 auto; }
+  .eyebrow { font: 700 12px var(--font-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--brand-secondary); margin: 0 0 8px; }
+  h1 { font: 800 48px var(--font-sans); letter-spacing: -.025em; color: var(--text-strong); margin: 0 0 14px; }
+  .lede { font: 500 18px/1.55 var(--font-sans); color: var(--text-muted); max-width: 68ch; margin: 0 0 48px; }
+  .sect { margin: 56px 0; }
+  .sect-head { display: flex; justify-content: space-between; align-items: baseline; gap: 24px; flex-wrap: wrap; margin-bottom: 18px; border-bottom: 1px solid var(--border-subtle); padding-bottom: 10px; }
+  .sect-title { font: 700 22px var(--font-sans); color: var(--text-strong); margin: 0; }
+  .sect-kicker { font: 500 13px var(--font-mono); color: var(--text-subtle); }
+  .sect-note { font: 500 14px/1.55 var(--font-sans); color: var(--text-muted); max-width: 70ch; margin: 0 0 18px; }
+  code { font-family: var(--font-mono); font-size: 12.5px; color: var(--brand-primary); background: var(--surface-info); padding: 2px 6px; border-radius: 4px; }
+
+  .block { background: var(--surface-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-xl); padding: 28px; display: flex; flex-wrap: wrap; gap: 14px; align-items: center; }
+  .grid2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+  .grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+  .link-arrow { display: inline-flex; align-items: center; gap: 6px; color: var(--brand-primary); font: 600 15px var(--font-sans); text-decoration: none; }
+  .link-arrow:hover { color: var(--brand-secondary); }
+
+  .card-demo h4 { margin: 0 0 8px; font: 700 18px var(--font-sans); color: var(--text-strong); }
+  .card-demo p { margin: 0 0 14px; font: 400 14px/1.55 var(--font-sans); color: var(--text-muted); }
+  .card-demo .tag { display: inline-flex; padding: 4px 10px; border-radius: 999px; background: var(--surface-info); color: var(--brand-primary); font: 700 11px var(--font-sans); letter-spacing: .06em; text-transform: uppercase; margin-bottom: 10px; }
+
+  .alert { display: flex; gap: 14px; padding: 14px 18px; border-radius: var(--radius-lg); font: 500 14px/1.5 var(--font-sans); border: 1px solid transparent; }
+  .alert .icon { width: 20px; height: 20px; flex: none; margin-top: 1px; }
+  .alert.info { background: var(--color-info-bg); color: var(--brand-primary); border-color: rgba(0,120,148,.15); }
+  .alert.success { background: var(--color-success-bg); color: var(--color-success); border-color: rgba(13,107,76,.15); }
+  .alert.warning { background: var(--color-warning-bg); color: var(--color-warning); border-color: rgba(138,75,0,.18); }
+  .alert.danger { background: var(--color-danger-bg); color: var(--color-danger); border-color: rgba(220,38,38,.18); }
+  .alert b { font-weight: 700; }
+
+  .empty { background: var(--surface-card); border: 1px dashed var(--color-slate-300); border-radius: var(--radius-xl); padding: 40px 28px; text-align: center; }
+  .empty .title { font: 700 16px var(--font-sans); color: var(--text-strong); margin: 12px 0 4px; }
+  .empty .sub { font: 500 13px/1.5 var(--font-sans); color: var(--text-subtle); margin: 0 auto 14px; max-width: 40ch; }
+  .empty svg { color: var(--text-muted); }
+
+  .table { width: 100%; border-collapse: collapse; background: var(--surface-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-xl); overflow: hidden; font: 500 13px var(--font-sans); }
+  .table th, .table td { padding: 12px 16px; text-align: left; }
+  .table thead th { background: var(--surface-sunken); font: 700 11px var(--font-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--text-subtle); border-bottom: 1px solid var(--border-subtle); }
+  .table tbody tr { border-bottom: 1px solid var(--border-subtle); }
+  .table tbody tr:last-child { border-bottom: 0; }
+  .table td { color: var(--text-body); }
+  .table .num { font: 600 14px var(--font-mono); color: var(--text-strong); }
+
+  .inverse-cta { background: var(--surface-inverse); color: var(--text-on-inverse); border-radius: var(--radius-3xl); padding: 40px; text-align: center; }
+  .inverse-cta h3 { margin: 0 0 10px; font: 800 28px var(--font-sans); letter-spacing: -.015em; }
+  .inverse-cta p { margin: 0 auto 22px; max-width: 48ch; color: var(--text-on-inverse-muted); font: 500 16px/1.55 var(--font-sans); }
+  .inverse-cta .row { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+  .inv-btn { display: inline-flex; align-items: center; padding: 12px 26px; border-radius: 999px; font: 700 15px var(--font-sans); text-decoration: none; }
+  .inv-btn.primary { background: #fff; color: var(--brand-primary); }
+  .inv-btn.ghost { color: #fff; border: 2px solid rgba(255,255,255,.35); }
+
+  .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+
+  .callout { display: grid; grid-template-columns: auto 1fr auto; align-items: center; background: var(--surface-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-xl); overflow: hidden; transition: all var(--dur-base) var(--ease-out); }
+  .callout:hover { border-color: var(--brand-secondary); }
+  .callout .chip { align-self: stretch; display: inline-flex; align-items: center; gap: 8px; padding: 0 18px; background: var(--brand-primary); color: #fff; font: 700 12px var(--font-sans); letter-spacing: .06em; text-transform: uppercase; }
+  .callout .chip .dot { width: 7px; height: 7px; border-radius: 999px; background: var(--brand-accent-warm); }
+  .callout .pitch { padding: 14px 0 14px 16px; color: var(--text-body); font: 500 14px/1.45 var(--font-sans); }
+  .callout .cta { display: inline-flex; align-items: center; gap: 6px; padding: 14px 20px; color: var(--brand-primary); font: 700 14px var(--font-sans); text-decoration: none; white-space: nowrap; }
+  .callout .cta .label { border-bottom: 2px solid var(--brand-accent-warm); padding-bottom: 2px; }
+
+  .stat { text-align: center; padding: 28px 20px; border-radius: var(--radius-xl); background: var(--surface-card); border: 1px solid var(--border-subtle); }
+  .stat .num { font: 800 56px/1 var(--font-sans); color: var(--brand-primary); letter-spacing: -.03em; }
+  .stat .lbl { font: 500 15px var(--font-sans); color: var(--text-muted); margin-top: 6px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <p class="eyebrow">Carte Components</p>
+  <h1>Components reference</h1>
+  <p class="lede">Product primitives — buttons, forms, cards, badges — plus the common compositions they make. Anything larger than these composes from them; no new tokens unless a pattern is genuinely reusable.</p>
+
+  <!-- BUTTONS -->
+  <section class="sect">
+    <div class="sect-head"><h2 class="sect-title">Buttons &amp; links</h2><div class="sect-kicker"><code>.carte-btn-primary</code> · <code>.carte-btn-ghost</code></div></div>
+    <p class="sect-note">Primary is pill-shaped U of T Blue; hover shifts to Secondary Blue. Ghost uses a 2px primary border. Inline link-arrows stay in-line text — <code>→</code> is the canonical Carte arrow, not an SVG.</p>
+    <div class="block">
+      <button class="carte-btn-primary">Partner with us</button>
+      <button class="carte-btn-ghost">Build AI skills</button>
+      <a class="link-arrow" href="#">Learn more →</a>
+      <a class="link-arrow" href="#" style="color:var(--brand-secondary)">Hire students →</a>
+    </div>
+  </section>
+
+  <!-- BADGES -->
+  <section class="sect">
+    <div class="sect-head"><h2 class="sect-title">Badges</h2><div class="sect-kicker"><code>.carte-badge</code> + variants</div></div>
+    <div class="block">
+      <span class="carte-badge">Partnership</span>
+      <span class="carte-badge carte-badge--success">Accepted</span>
+      <span class="carte-badge carte-badge--warning">Pending review</span>
+      <span class="carte-badge carte-badge--danger">Deadline passed</span>
+    </div>
+  </section>
+
+  <!-- CARDS -->
+  <section class="sect">
+    <div class="sect-head"><h2 class="sect-title">Cards</h2><div class="sect-kicker"><code>.carte-card</code> · hairline border · hover shifts border</div></div>
+    <div class="grid3">
+      <div class="carte-card card-demo">
+        <span class="tag">Training</span>
+        <h4>Foundations of Applied AI</h4>
+        <p>A three-day technical bootcamp for ML engineers shipping models into regulated environments.</p>
+        <a class="link-arrow" href="#">Explore course →</a>
+      </div>
+      <div class="carte-card card-demo">
+        <span class="tag">Partnership</span>
+        <h4>NSERC Alliance · Stream 1</h4>
+        <p>Co-funded industry collaborations, twelve to eighteen months, matched with a faculty lead.</p>
+        <a class="link-arrow" href="#">See the process →</a>
+      </div>
+      <div class="carte-card card-demo">
+        <span class="tag">Research</span>
+        <h4>Decision-Making Under Shift</h4>
+        <p>Guardrails for deployed foundation models, with Engineering Science and the Schwartz Reisman Institute.</p>
+        <a class="link-arrow" href="#">Read the paper →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FORMS -->
+  <section class="sect">
+    <div class="sect-head"><h2 class="sect-title">Forms</h2><div class="sect-kicker"><code>.carte-input</code> · <code>.carte-select</code> · <code>.carte-textarea</code> · <code>.carte-check</code></div></div>
+    <div class="carte-card" style="padding:28px">
+      <div class="form-grid">
+        <div>
+          <label class="carte-label">Full name<span class="carte-label__req">*</span></label>
+          <input class="carte-input" placeholder="e.g. Alex Morgan">
+          <p class="carte-help">Goes in your application acknowledgement.</p>
+        </div>
+        <div>
+          <label class="carte-label">U of T email</label>
+          <input class="carte-input" placeholder="you@mail.utoronto.ca">
+        </div>
+        <div>
+          <label class="carte-label">Organisation</label>
+          <input class="carte-input carte-input--invalid" value="Not a valid email">
+          <p class="carte-error">This doesn't look like a valid U of T email.</p>
+        </div>
+        <div>
+          <label class="carte-label">Role at Carte</label>
+          <select class="carte-select">
+            <option>Industry partner</option>
+            <option>Faculty affiliate</option>
+            <option>Student / postdoc</option>
+          </select>
+        </div>
+        <div style="grid-column:1/-1">
+          <label class="carte-label">What are you hoping Carte can help with?</label>
+          <textarea class="carte-textarea" placeholder="Briefly describe your project or goal."></textarea>
+        </div>
+        <div style="grid-column:1/-1;display:flex;gap:18px;flex-wrap:wrap">
+          <label class="carte-check"><input type="checkbox" checked> Send me Carte's quarterly digest</label>
+          <label class="carte-check"><input type="checkbox"> I've read the partnership FAQ</label>
+          <label class="carte-check"><input type="radio" name="t" checked> Short engagement</label>
+          <label class="carte-check"><input type="radio" name="t"> Multi-year</label>
+        </div>
+        <div style="grid-column:1/-1;display:flex;gap:12px;margin-top:4px">
+          <button class="carte-btn-primary">Submit application</button>
+          <button class="carte-btn-ghost">Save draft</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEEDBACK -->
+  <section class="sect">
+    <div class="sect-head"><h2 class="sect-title">Feedback</h2><div class="sect-kicker">alerts · empty states</div></div>
+    <p class="sect-note">Alerts use the semantic feedback tokens. Copy follows Carte's voice — plainspoken, a single clause, never excited.</p>
+    <div class="grid2" style="margin-bottom:18px">
+      <div class="alert info"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg><div><b>Applications open January 15.</b> We'll email you when submissions are live.</div></div>
+      <div class="alert success"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><div><b>Application submitted.</b> You'll hear back within ten business days.</div></div>
+      <div class="alert warning"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9v4"/><path d="M12 17h.01"/><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/></svg><div><b>Submissions close in 48 hours.</b> Leave enough time for letters of support.</div></div>
+      <div class="alert danger"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m15 9-6 6"/><path d="m9 9 6 6"/></svg><div><b>Something went wrong on our end.</b> Try again in a minute.</div></div>
+    </div>
+    <div class="empty">
+      <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M12 18v-6"/><path d="M9 15h6"/></svg>
+      <p class="title">No projects yet.</p>
+      <p class="sub">Start by adding your first. You can invite collaborators once it's created.</p>
+      <button class="carte-btn-primary" style="padding:10px 22px;font-size:14px">Add project</button>
+    </div>
+  </section>
+
+  <!-- TABLE / DATA -->
+  <section class="sect">
+    <div class="sect-head"><h2 class="sect-title">Data display</h2><div class="sect-kicker">table · stats</div></div>
+    <table class="table" style="margin-bottom:22px">
+      <thead><tr><th>Project</th><th>Partner</th><th>Status</th><th style="text-align:right">Funding</th></tr></thead>
+      <tbody>
+        <tr><td>Decision-Making Under Shift</td><td>Royal Bank of Canada</td><td><span class="carte-badge carte-badge--success">Active</span></td><td class="num" style="text-align:right">$180,000</td></tr>
+        <tr><td>Foundation Model Guardrails</td><td>Shopify</td><td><span class="carte-badge">Kickoff</span></td><td class="num" style="text-align:right">$240,000</td></tr>
+        <tr><td>Clinical Triage Forecasting</td><td>UHN</td><td><span class="carte-badge carte-badge--warning">On hold</span></td><td class="num" style="text-align:right">$95,000</td></tr>
+      </tbody>
+    </table>
+    <div class="grid3">
+      <div class="stat"><div class="num">150+</div><div class="lbl">Professionals trained</div></div>
+      <div class="stat"><div class="num">4.8<span style="font-size:28px;opacity:.5">/5</span></div><div class="lbl">Training satisfaction</div></div>
+      <div class="stat"><div class="num">30+</div><div class="lbl">Applied AI projects</div></div>
+    </div>
+  </section>
+
+  <!-- CALLOUT -->
+  <section class="sect">
+    <div class="sect-head"><h2 class="sect-title">Callout row</h2><div class="sect-kicker">composed pattern</div></div>
+    <p class="sect-note">A common composed pattern: brand chip, pitch, CTA. Built from primitives — no new tokens needed.</p>
+    <div class="grid2">
+      <div class="callout"><span class="chip"><span class="dot"></span>For Students</span><span class="pitch">Research roles, AI Scholars, capstone projects.</span><a class="cta" href="#"><span class="label">Find yours</span>→</a></div>
+      <div class="callout"><span class="chip" style="background:var(--color-uoft-dark-green)"><span class="dot" style="background:var(--brand-accent-cool)"></span>For Faculty</span><span class="pitch">Funding, co-supervision, training for your cohort.</span><a class="cta" href="#"><span class="label">See resources</span>→</a></div>
+    </div>
+  </section>
+
+  <!-- INVERSE CTA -->
+  <section class="sect">
+    <div class="sect-head"><h2 class="sect-title">Inverse CTA</h2><div class="sect-kicker"><code>--surface-inverse</code> block</div></div>
+    <div class="inverse-cta">
+      <h3>Bring a real problem. Leave with a plan.</h3>
+      <p>Tell us what you're trying to ship. We'll scope a partnership that fits the timeline and the team you have today.</p>
+      <div class="row"><a class="inv-btn primary" href="#">Partner with us</a><a class="inv-btn ghost" href="#">Book an intro call</a></div>
+    </div>
+  </section>
+</div>
+</body>
+</html>

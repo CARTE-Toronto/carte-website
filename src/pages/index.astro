@@ -7,142 +7,109 @@ import Section from '../components/Section.astro';
 <BaseLayout title="Home" scrollColorTransition={true}>
   <Hero />
 
-  <!-- Student & Faculty Callouts -->
-  <section class="py-8 bg-secondary-blue/10">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-        <div class="inline-flex items-center gap-2 px-6 py-3 bg-white border-2 border-secondary-blue rounded-full shadow-sm hover:shadow-md transition-all hover:scale-105">
-          <span class="text-secondary-blue font-semibold">Student?</span>
-          <a href="/students" class="text-secondary-blue font-bold hover:text-uoft-blue underline">
-            Click here for opportunities
-          </a>
-        </div>
-        <div class="inline-flex items-center gap-2 px-6 py-3 bg-white border-2 border-secondary-blue rounded-full shadow-sm hover:shadow-md transition-all hover:scale-105">
-          <span class="text-secondary-blue font-semibold">Faculty?</span>
-          <a href="/faculty" class="text-secondary-blue font-bold hover:text-uoft-blue underline">
-            Click here for resources
-          </a>
-        </div>
+  <!-- Student & Faculty Callout rows -->
+  <section class="py-8" style="background:var(--surface-warm)">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row gap-4">
+      <div class="callout flex-1">
+        <span class="chip"><span class="dot"></span>For Students</span>
+        <span class="pitch">Research roles, AI Scholars, capstone projects.</span>
+        <a class="cta" href="/students"><span class="label">Find yours</span> →</a>
+      </div>
+      <div class="callout flex-1">
+        <span class="chip" style="background:var(--color-uoft-dark-green)"><span class="dot" style="background:var(--brand-accent-cool)"></span>For Faculty</span>
+        <span class="pitch">Funding, co-supervision, training for your cohort.</span>
+        <a class="cta" href="/faculty"><span class="label">See resources</span> →</a>
       </div>
     </div>
   </section>
 
-  <!-- Our Approach Section - Positioning/Differentiation -->
+  <!-- Our Approach Section -->
   <section class="py-20 lg:py-28">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="max-w-3xl mx-auto text-center mb-12">
-        <h2 class="text-3xl sm:text-4xl font-extrabold text-uoft-blue mb-6">Applied AI for Real Problems</h2>
-        <p class="text-lg text-slate-600 leading-relaxed">
-          We're not a traditional research lab. Carte specializes in translation — helping organizations implement AI through training, partnerships, and practical collaboration. Whether you need a half-day executive briefing or a multi-year research project, we meet you where you are.
+        <h2 class="text-3xl sm:text-4xl font-extrabold mb-6" style="color:var(--text-strong)">Applied AI for Real Problems</h2>
+        <p class="text-lg leading-relaxed" style="color:var(--text-muted)">
+          We're not a traditional research lab. Carte specializes in translation — helping organizations implement AI through training, partnerships, and practical collaboration.
         </p>
       </div>
-      
+
       <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
-        <a href="/partnerships" class="bg-white rounded-xl p-6 border border-slate-200 hover:border-secondary-blue hover:shadow-lg transition-all duration-300 group flex flex-col">
-          <div class="w-12 h-12 rounded-lg bg-secondary-blue/10 flex items-center justify-center mb-4">
-            <svg class="w-6 h-6 text-uoft-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
-            </svg>
-          </div>
-          <h3 class="font-bold text-uoft-blue mb-2">Research Partnerships</h3>
-          <p class="text-sm text-slate-600 mb-3 flex-grow">Access over 100 faculty across the entirety of UofT Engineering for interdisciplinary AI challenges.</p>
-          <span class="text-sm font-medium text-uoft-blue group-hover:underline mt-auto">Partner with us &rarr;</span>
+        <a href="/partnerships" class="carte-card card-demo flex flex-col">
+          <svg class="w-6 h-6 mb-4" style="color:var(--brand-primary)" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
+          </svg>
+          <h3>Research Partnerships</h3>
+          <p class="flex-grow">Access over 100 faculty across UofT Engineering for interdisciplinary AI challenges.</p>
+          <span class="link-arrow mt-auto">Partner with us →</span>
         </a>
-        
-        <a href="/training" class="bg-white rounded-xl p-6 border border-slate-200 hover:border-secondary-blue hover:shadow-lg transition-all duration-300 group flex flex-col">
-          <div class="w-12 h-12 rounded-lg bg-accent-teal/10 flex items-center justify-center mb-4">
-            <svg class="w-6 h-6 text-accent-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
-            </svg>
-          </div>
-          <h3 class="font-bold text-uoft-blue mb-2">Custom Training</h3>
-          <p class="text-sm text-slate-600 mb-3 flex-grow">Industry-focused AI training tailored to your team's needs and technical level.</p>
-          <span class="text-sm font-medium text-uoft-blue group-hover:underline mt-auto">Explore programs &rarr;</span>
+
+        <a href="/training" class="carte-card card-demo flex flex-col">
+          <svg class="w-6 h-6 mb-4" style="color:var(--brand-primary)" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+          </svg>
+          <h3>Custom Training</h3>
+          <p class="flex-grow">Industry-focused AI training tailored to your team's needs and technical level.</p>
+          <span class="link-arrow mt-auto">Explore programs →</span>
         </a>
-        
-        <a href="/partnerships" class="bg-white rounded-xl p-6 border border-slate-200 hover:border-secondary-blue hover:shadow-lg transition-all duration-300 group flex flex-col">
-          <div class="w-12 h-12 rounded-lg bg-accent-warm-red/10 flex items-center justify-center mb-4">
-            <svg class="w-6 h-6 text-accent-warm-red" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
-            </svg>
-          </div>
-          <h3 class="font-bold text-uoft-blue mb-2">Funding Support</h3>
-          <p class="text-sm text-slate-600 mb-3 flex-grow">Programs like Mitacs fund AI initiatives in industry and academia. We support you from application through project delivery.</p>
-          <span class="text-sm font-medium text-uoft-blue group-hover:underline mt-auto">Learn more &rarr;</span>
+
+        <a href="/partnerships" class="carte-card card-demo flex flex-col">
+          <svg class="w-6 h-6 mb-4" style="color:var(--brand-primary)" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+          </svg>
+          <h3>Funding Support</h3>
+          <p class="flex-grow">Programs like Mitacs fund AI initiatives. We support you from application through delivery.</p>
+          <span class="link-arrow mt-auto">Learn more →</span>
         </a>
-        
-        <a href="/partnerships" class="bg-white rounded-xl p-6 border border-slate-200 hover:border-secondary-blue hover:shadow-lg transition-all duration-300 group flex flex-col">
-          <div class="w-12 h-12 rounded-lg bg-accent-purple/10 flex items-center justify-center mb-4">
-            <svg class="w-6 h-6 text-accent-purple" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
-            </svg>
-          </div>
-          <h3 class="font-bold text-uoft-blue mb-2">Talent Pipeline</h3>
-          <p class="text-sm text-slate-600 mb-3 flex-grow">Capstone projects, internships, and direct access to top engineering students.</p>
-          <span class="text-sm font-medium text-uoft-blue group-hover:underline mt-auto">Hire students &rarr;</span>
+
+        <a href="/partnerships" class="carte-card card-demo flex flex-col">
+          <svg class="w-6 h-6 mb-4" style="color:var(--brand-primary)" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+          </svg>
+          <h3>Talent Pipeline</h3>
+          <p class="flex-grow">Capstone projects, internships, and direct access to top engineering students.</p>
+          <span class="link-arrow mt-auto">Hire students →</span>
         </a>
       </div>
     </div>
   </section>
 
-  <!-- Impact / By the Numbers Section -->
-  <section class="py-20 lg:py-28">
+  <!-- Impact / By the Numbers -->
+  <section class="py-20 lg:py-28" style="background:var(--surface-inverse)">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-16">
-        <h2 class="text-3xl sm:text-4xl font-extrabold text-white mb-4">Our Impact</h2>
-        <p class="text-lg text-slate-200 max-w-2xl mx-auto">
+        <h2 class="text-3xl sm:text-4xl font-extrabold mb-4" style="color:var(--text-on-inverse)">Our Impact</h2>
+        <p class="text-lg max-w-2xl mx-auto" style="color:var(--text-on-inverse-muted)">
           Since 2019, we've trained professionals, built partnerships, and connected talent across sectors.
         </p>
       </div>
-      
-      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-        <!-- Professionals Trained -->
-        <div class="text-center">
-          <div class="text-5xl lg:text-6xl font-extrabold text-white mb-2">150+</div>
-          <div class="text-slate-200 font-medium mb-2">Professionals Trained</div>
-          <p class="text-sm text-slate-300/80">Through multi-day AI training for faculty, researchers, and industry</p>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+        <div class="stat">
+          <div class="num">150+</div>
+          <div class="lbl">Professionals Trained</div>
         </div>
-        
-        <!-- Sectors -->
-        <div class="text-center">
-          <div class="text-5xl lg:text-6xl font-extrabold text-white mb-2">5+</div>
-          <div class="text-slate-200 font-medium mb-2">Sectors Served</div>
-          <p class="text-sm text-slate-300/80">Manufacturing, finance, energy, healthcare, and public sector</p>
+        <div class="stat">
+          <div class="num">5+</div>
+          <div class="lbl">Sectors Served</div>
         </div>
-        
-        <!-- Student Community -->
-        <div class="text-center">
-          <div class="text-5xl lg:text-6xl font-extrabold text-white mb-2">1,000+</div>
-          <div class="text-slate-200 font-medium mb-2">Student Community</div>
-          <p class="text-sm text-slate-300/80">Engaged through events, training, and career opportunities</p>
+        <div class="stat">
+          <div class="num">1,000+</div>
+          <div class="lbl">Student Community</div>
         </div>
-        
-        <!-- Applied Projects -->
-        <div class="text-center">
-          <div class="text-5xl lg:text-6xl font-extrabold text-white mb-2">30+</div>
-          <div class="text-slate-200 font-medium mb-2">Applied AI Projects</div>
-          <p class="text-sm text-slate-300/80">MEng capstones tackling real challenges from LLMs to climate-health</p>
+        <div class="stat">
+          <div class="num">30+</div>
+          <div class="lbl">Applied AI Projects</div>
         </div>
       </div>
-      
-      <!-- Highlight callout -->
-      <div class="mt-16 bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20">
-        <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
-          <div>
-            <p class="text-white font-medium text-lg mb-2">
-              "From a 3-day genomic ML intensive at a major cancer centre to LLM workshops for educators — we design sector-specific AI training that delivers."
-            </p>
-            <p class="text-slate-300 text-sm">Training satisfaction rating: <span class="text-white font-bold">4.8/5</span></p>
-          </div>
-          <a href="/training" class="flex-shrink-0 inline-flex items-center justify-center px-6 py-3 rounded-xl bg-white text-uoft-blue font-bold hover:bg-secondary-blue/10 transition-colors">
-            Explore Training
-            <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
-            </svg>
-          </a>
+
+      <div class="inverse-cta">
+        <h3>Bring a real problem. Leave with a plan.</h3>
+        <p>From a 3-day genomic ML intensive to LLM workshops for educators — we design sector-specific AI training that delivers. Training satisfaction: 4.8/5.</p>
+        <div class="row">
+          <a class="inv-btn primary" href="/training">Explore Training</a>
+          <a class="inv-btn ghost" href="/contact">Get in Touch</a>
         </div>
       </div>
     </div>
   </section>
-
 </BaseLayout>

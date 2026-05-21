@@ -2,18 +2,15 @@
 import { Image } from 'astro:assets';
 import heroImage from '../assets/hero-image.jpg';
 
-// Generate organic shape values at build/render time for eager loading
 function generateOrganicShape() {
   const tl = Math.floor(Math.random() * 40) + 30;
   const tr = Math.floor(Math.random() * 40) + 30;
   const br = Math.floor(Math.random() * 40) + 30;
   const bl = Math.floor(Math.random() * 40) + 30;
-  
   const tl2 = Math.floor(Math.random() * 40) + 30;
   const tr2 = Math.floor(Math.random() * 40) + 30;
   const br2 = Math.floor(Math.random() * 40) + 30;
   const bl2 = Math.floor(Math.random() * 40) + 30;
-
   return `${tl}% ${tr}% ${br}% ${bl}% / ${tl2}% ${tr2}% ${br2}% ${bl2}%`;
 }
 
@@ -25,27 +22,19 @@ const organicShapeBorderRadius = generateOrganicShape();
       <main class="mt-6 mx-auto max-w-7xl px-4 sm:mt-8 sm:px-6 md:mt-10 lg:mt-12 lg:px-8 xl:mt-16 overflow-visible">
         <div class="sm:text-center lg:text-left overflow-visible">
           <h1 class="text-5xl tracking-tight font-extrabold text-uoft-blue sm:text-6xl md:text-7xl leading-[1.1]">
-            <span class="bg-gradient-to-r from-uoft-blue to-secondary-blue bg-clip-text text-transparent">Learn and apply AI</span> with Canada's leading engineers.
+            Learn and apply AI with Canada's leading engineers.
           </h1>
-          <p class="mt-6 text-lg text-slate-600 sm:mt-8 sm:text-xl sm:max-w-xl sm:mx-auto md:mt-8 md:text-xl lg:mx-0 font-normal leading-relaxed">
+          <p class="mt-6 text-lg sm:mt-8 sm:text-xl sm:max-w-xl sm:mx-auto md:mt-8 md:text-xl lg:mx-0 font-normal leading-relaxed" style="color:var(--text-muted)">
             One partnership connects you to AI expertise across the entirety of UofT Engineering.<br><br>From executive workshops to multi-year research collaborations, we help you move AI from concept to practice.
           </p>
           <div class="mt-8 sm:mt-10 flex flex-col sm:flex-row sm:justify-center lg:justify-start gap-4">
-            <div class="rounded-full shadow-lg hover:shadow-xl transition-shadow">
-              <a href="/partnerships" class="w-full flex items-center justify-center px-8 py-4 border border-transparent text-lg font-medium rounded-full text-white bg-uoft-blue hover:bg-secondary-blue md:py-4 md:text-lg md:px-10 font-sans transition-all duration-300">
-                Partner With Us
-              </a>
-            </div>
-            <div>
-              <a href="/training" class="w-full flex items-center justify-center px-8 py-4 border-2 border-uoft-blue text-lg font-medium rounded-full text-uoft-blue bg-transparent hover:bg-secondary-blue/10 md:py-4 md:text-lg md:px-10 font-sans transition-colors">
-                Build AI Skills
-              </a>
-            </div>
+            <a href="/partnerships" class="carte-btn-primary">Partner With Us</a>
+            <a href="/training" class="carte-btn-ghost">Build AI Skills</a>
           </div>
-          
+
           <!-- Newsletter signup -->
           <details class="mt-8 sm:mt-10 group sm:text-center lg:text-left relative">
-            <summary class="inline-flex items-center gap-2 text-sm text-slate-500 hover:text-uoft-blue cursor-pointer list-none select-none transition-colors">
+            <summary class="inline-flex items-center gap-2 text-sm cursor-pointer list-none select-none transition-colors" style="color:var(--text-muted)">
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
               </svg>
@@ -55,41 +44,17 @@ const organicShapeBorderRadius = generateOrganicShape();
               </svg>
             </summary>
 
-            <div class="absolute left-0 sm:left-1/2 lg:left-0 sm:-translate-x-1/2 lg:translate-x-0 top-full mt-2 z-[9999] p-5 bg-white backdrop-blur-md rounded-xl border border-slate-200 shadow-2xl w-[calc(100vw-2rem)] sm:w-[400px] newsletter-panel">
+            <div class="absolute left-0 sm:left-1/2 lg:left-0 sm:-translate-x-1/2 lg:translate-x-0 top-full mt-2 z-[9999] p-5 bg-white rounded-xl border border-slate-200 w-[calc(100vw-2rem)] sm:w-[400px] newsletter-panel">
               <form id="hero-subscribe-form" class="space-y-3">
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                  <input
-                    type="email"
-                    name="email"
-                    placeholder="Email *"
-                    class="px-3 py-2 rounded-lg border border-slate-300 focus:ring-2 focus:ring-secondary-blue focus:border-secondary-blue outline-none text-sm"
-                    required
-                  />
-                  <input
-                    type="text"
-                    name="first_name"
-                    placeholder="First name"
-                    class="px-3 py-2 rounded-lg border border-slate-300 focus:ring-2 focus:ring-secondary-blue focus:border-secondary-blue outline-none text-sm"
-                  />
+                  <input type="email" name="email" placeholder="Email *" class="carte-input" aria-label="Email address (required)" required />
+                  <input type="text" name="first_name" placeholder="First name" class="carte-input" aria-label="First name" />
                 </div>
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                  <input
-                    type="text"
-                    name="last_name"
-                    placeholder="Last name"
-                    class="px-3 py-2 rounded-lg border border-slate-300 focus:ring-2 focus:ring-secondary-blue focus:border-secondary-blue outline-none text-sm"
-                  />
-                  <input
-                    type="text"
-                    name="organization"
-                    placeholder="Organization (if not UofT)"
-                    class="px-3 py-2 rounded-lg border border-slate-300 focus:ring-2 focus:ring-secondary-blue focus:border-secondary-blue outline-none text-sm"
-                  />
+                  <input type="text" name="last_name" placeholder="Last name" class="carte-input" aria-label="Last name" />
+                  <input type="text" name="organization" placeholder="Organization (if not UofT)" class="carte-input" aria-label="Organization (if not UofT)" />
                 </div>
-                <select
-                  name="academic_unit"
-                  class="w-full px-3 py-2 rounded-lg border border-slate-300 focus:ring-2 focus:ring-secondary-blue focus:border-secondary-blue outline-none text-sm bg-white text-slate-500"
-                >
+                <select name="academic_unit" class="carte-select" aria-label="Academic unit (if UofT)">
                   <option value="">Academic Unit (if UofT)</option>
                   <option value="Applied Science &amp; Engineering">Applied Science & Engineering</option>
                   <option value="Arts &amp; Science">Arts & Science</option>
@@ -97,30 +62,14 @@ const organicShapeBorderRadius = generateOrganicShape();
                   <option value="Management">Management</option>
                   <option value="Other">Other</option>
                 </select>
-                <div class="flex flex-wrap gap-x-4 gap-y-1 text-xs text-slate-500">
-                  <div class="flex items-center gap-1.5">
-                    <input type="checkbox" id="hero-graduate" name="affiliation" value="Graduate Student" class="rounded border-slate-300 text-secondary-blue w-3.5 h-3.5 cursor-pointer" />
-                    <label for="hero-graduate" class="cursor-pointer">Graduate</label>
-                  </div>
-                  <div class="flex items-center gap-1.5">
-                    <input type="checkbox" id="hero-faculty" name="affiliation" value="Faculty" class="rounded border-slate-300 text-secondary-blue w-3.5 h-3.5 cursor-pointer" />
-                    <label for="hero-faculty" class="cursor-pointer">Faculty</label>
-                  </div>
-                  <div class="flex items-center gap-1.5">
-                    <input type="checkbox" id="hero-postdoc" name="affiliation" value="Postdoc" class="rounded border-slate-300 text-secondary-blue w-3.5 h-3.5 cursor-pointer" />
-                    <label for="hero-postdoc" class="cursor-pointer">Postdoc</label>
-                  </div>
-                  <div class="flex items-center gap-1.5">
-                    <input type="checkbox" id="hero-external" name="affiliation" value="External Partner" class="rounded border-slate-300 text-secondary-blue w-3.5 h-3.5 cursor-pointer" />
-                    <label for="hero-external" class="cursor-pointer">External</label>
-                  </div>
+                <div class="flex flex-wrap gap-x-4 gap-y-1">
+                  <label class="carte-check"><input type="checkbox" name="affiliation" value="Graduate Student" /> Graduate</label>
+                  <label class="carte-check"><input type="checkbox" name="affiliation" value="Faculty" /> Faculty</label>
+                  <label class="carte-check"><input type="checkbox" name="affiliation" value="Postdoc" /> Postdoc</label>
+                  <label class="carte-check"><input type="checkbox" name="affiliation" value="External Partner" /> External</label>
                 </div>
                 <p id="hero-subscribe-status" class="hidden text-sm"></p>
-                <button
-                  type="submit"
-                  id="hero-subscribe-btn"
-                  class="w-full px-4 py-2 bg-uoft-blue text-white text-sm font-semibold rounded-lg hover:bg-secondary-blue transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
-                >
+                <button type="submit" id="hero-subscribe-btn" class="carte-btn-primary w-full disabled:opacity-60 disabled:cursor-not-allowed">
                   Subscribe
                 </button>
               </form>
@@ -130,39 +79,31 @@ const organicShapeBorderRadius = generateOrganicShape();
       </main>
     </div>
   </div>
-  
-  <!-- Soft organic shape for the image container (hidden on mobile/tablet) -->
+
+  <!-- Organic shape image (desktop only) -->
   <div class="hidden lg:flex lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2 p-4 lg:p-12 items-center justify-center">
-     <div class="w-full h-96 lg:h-full bg-gradient-to-br from-uoft-blue to-secondary-blue shadow-2xl flex items-center justify-center overflow-hidden relative organic-shape" style={`border-radius: ${organicShapeBorderRadius}`}>
-        <Image src={heroImage} alt="Carte" class="w-full h-full object-cover" loading="eager" />
-        <div class="absolute inset-0 bg-gradient-to-br from-uoft-blue/40 to-secondary-blue/40"></div>
-     </div>
+    <div class="w-full h-96 lg:h-full bg-uoft-blue flex items-center justify-center overflow-hidden relative organic-shape" style={`border-radius: ${organicShapeBorderRadius}`}>
+      <Image src={heroImage} alt="Carte" class="w-full h-full object-cover" loading="eager" />
+    </div>
   </div>
 </div>
 
 <script>
-  // Regenerate shape on view transitions to maintain randomness across navigations
   function generateOrganicShape() {
     const tl = Math.floor(Math.random() * 40) + 30;
     const tr = Math.floor(Math.random() * 40) + 30;
     const br = Math.floor(Math.random() * 40) + 30;
     const bl = Math.floor(Math.random() * 40) + 30;
-    
     const tl2 = Math.floor(Math.random() * 40) + 30;
     const tr2 = Math.floor(Math.random() * 40) + 30;
     const br2 = Math.floor(Math.random() * 40) + 30;
     const bl2 = Math.floor(Math.random() * 40) + 30;
-
     const shape = document.querySelector('.organic-shape') as HTMLElement;
     if (shape) {
       shape.style.borderRadius = `${tl}% ${tr}% ${br}% ${bl}% / ${tl2}% ${tr2}% ${br2}% ${bl2}%`;
     }
   }
-
-  // Only regenerate on view transitions (not initial load, since it's already set)
-  document.addEventListener('astro:page-load', () => {
-    generateOrganicShape();
-  });
+  generateOrganicShape();
 </script>
 
 <script>
@@ -198,13 +139,14 @@ const organicShapeBorderRadius = generateOrganicShape();
         });
 
         if (res.ok) {
-          form.innerHTML = '<p class="text-sm text-accent-dark-green font-medium py-2">You\'re subscribed! Thank you.</p>';
+          form.innerHTML = '<p class="text-sm font-medium py-2" style="color:var(--color-success)">You\'re subscribed. Thank you.</p>';
         } else {
           throw new Error('subscribe failed');
         }
       } catch {
         status.textContent = 'Something went wrong. Please try again or email us at carte@utoronto.ca';
-        status.className = 'text-sm text-accent-warm-red';
+        status.className = 'text-sm';
+        status.style.color = 'var(--color-danger)';
         btn.disabled = false;
         btn.textContent = 'Subscribe';
       }

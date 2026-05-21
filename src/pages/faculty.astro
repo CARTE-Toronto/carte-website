@@ -1,7 +1,5 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import WaveDivider from '../components/WaveDivider.astro';
-import Button from '../components/Button.astro';
 import CheckItem from '../components/CheckItem.astro';
 ---
 
@@ -12,7 +10,7 @@ import CheckItem from '../components/CheckItem.astro';
       <div class="max-w-3xl">
         <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-uoft-blue leading-tight mb-6">
           For UofT Engineering
-          <span class="bg-gradient-to-r from-uoft-blue to-secondary-blue bg-clip-text text-transparent">Faculty</span>
+          Faculty
         </h1>
       </div>
     </div>
@@ -24,106 +22,31 @@ import CheckItem from '../components/CheckItem.astro';
       
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12">
         <!-- Mitacs Accelerate -->
-        <a href="#mitacs-faculty" class="group relative bg-white rounded-2xl shadow-lg shadow-slate-200/50 overflow-hidden hover:shadow-xl hover:shadow-slate-300/50 transition-all duration-500 hover:-translate-y-1 block flex flex-col">
-          <div class="relative h-56 bg-gradient-to-br from-uoft-blue to-secondary-blue overflow-hidden">
-            <div class="absolute inset-0 bg-gradient-to-br from-uoft-blue/20 to-transparent"></div>
-            <div class="absolute inset-0 flex items-center justify-center">
-              <svg class="w-24 h-24 text-white/20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/>
-              </svg>
-            </div>
-            <WaveDivider />
-          </div>
-          
-          <div class="p-8 flex flex-col flex-grow">            
-            <h3 class="text-2xl font-bold text-uoft-blue mb-4">Mitacs Accelerate</h3>
-            
-            <p class="text-lg font-semibold text-slate-700 mb-3">
-              Supervise paid student interns on industry-partnered research projects.
-            </p>
-            
-            <p class="text-slate-600 mb-6 leading-relaxed">
-              Work with motivated students on funded research projects that connect your lab with industry partners. Mitacs Accelerate provides $15,000-$20,000 research awards per internship, combining industry funding with government matching.
-            </p>
-            
-            <div class="inline-flex items-center justify-center w-full px-6 py-3 rounded-xl bg-secondary-blue text-white font-bold mt-auto">
-              Learn More
-              <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
-              </svg>
-            </div>
-          </div>
+        <a href="#mitacs-faculty" class="carte-card card-demo block">
+          <h3>Mitacs Accelerate</h3>
+          <p>Supervise paid student interns on industry-partnered research projects. Work with motivated students on funded research projects that connect your lab with industry partners. Mitacs Accelerate provides $15,000-$20,000 research awards per internship, combining industry funding with government matching.</p>
+          <span class="link-arrow">Learn More →</span>
         </a>
         
         <!-- Faculty Training -->
-        <a href="#training" class="group relative bg-white rounded-2xl shadow-lg shadow-slate-200/50 overflow-hidden hover:shadow-xl hover:shadow-slate-300/50 transition-all duration-500 hover:-translate-y-1 block flex flex-col">
-          <div class="relative h-56 bg-gradient-to-br from-uoft-blue to-secondary-blue overflow-hidden">
-            <div class="absolute inset-0 bg-gradient-to-br from-uoft-blue/20 to-transparent"></div>
-            <div class="absolute inset-0 flex items-center justify-center">
-              <svg class="w-24 h-24 text-white/20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
-              </svg>
-            </div>
-            <WaveDivider />
-          </div>
-          
-          <div class="p-8 flex flex-col flex-grow">
-            <h3 class="text-2xl font-bold text-uoft-blue mb-4">Faculty Training</h3>
-            
-            <p class="text-lg font-semibold text-slate-700 mb-3">
-              Annual ML bootcamp and ongoing workshops for faculty.
-            </p>
-            
-            <p class="text-slate-600 mb-6 leading-relaxed">
-              Join our annual 5-day intensive machine learning bootcamp designed specifically for faculty. Learn alongside colleagues from diverse research backgrounds and gain hands-on AI skills applicable to your research domain.
-            </p>
-            
-            <div class="inline-flex items-center justify-center w-full px-6 py-3 rounded-xl bg-secondary-blue text-white font-bold mt-auto">
-              Learn More
-              <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
-              </svg>
-            </div>
-          </div>
+        <a href="#training" class="carte-card card-demo block">
+          <h3>Faculty Training</h3>
+          <p>Annual ML bootcamp and ongoing workshops for faculty. Join our annual 5-day intensive machine learning bootcamp designed specifically for faculty. Learn alongside colleagues from diverse research backgrounds and gain hands-on AI skills applicable to your research domain.</p>
+          <span class="link-arrow">Learn More →</span>
         </a>
         
         <!-- Funding Support -->
-        <a href="#funding" class="group relative bg-white rounded-2xl shadow-lg shadow-slate-200/50 overflow-hidden hover:shadow-xl hover:shadow-slate-300/50 transition-all duration-500 hover:-translate-y-1 block flex flex-col">
-          <div class="relative h-56 bg-gradient-to-br from-uoft-blue to-secondary-blue overflow-hidden">
-            <div class="absolute inset-0 bg-gradient-to-br from-uoft-blue/20 to-transparent"></div>
-            <div class="absolute inset-0 flex items-center justify-center">
-              <svg class="w-24 h-24 text-white/20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
-              </svg>
-            </div>
-            <WaveDivider />
-          </div>
-          
-          <div class="p-8 flex flex-col flex-grow">
-            <h3 class="text-2xl font-bold text-uoft-blue mb-4">Funding Support</h3>
-            
-            <p class="text-lg font-semibold text-slate-700 mb-3">
-              Navigate NSERC Alliance, Mitacs, and other funding programs.
-            </p>
-            
-            <p class="text-slate-600 mb-6 leading-relaxed">
-              Get expert guidance on proposal development, partner matching, and application processes for major funding programs. We help you maximize your research investment through government funding opportunities.
-            </p>
-            
-            <div class="inline-flex items-center justify-center w-full px-6 py-3 rounded-xl bg-secondary-blue text-white font-bold mt-auto">
-              Learn More
-              <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
-              </svg>
-            </div>
-          </div>
+        <a href="#funding" class="carte-card card-demo block">
+          <h3>Funding Support</h3>
+          <p>Navigate NSERC Alliance, Mitacs, and other funding programs. Get expert guidance on proposal development, partner matching, and application processes for major funding programs. We help you maximize your research investment through government funding opportunities.</p>
+          <span class="link-arrow">Learn More →</span>
         </a>
       </div>
     </div>
   </section>
 
   <!-- Mitacs Accelerate Detailed Section -->
-  <section id="mitacs-faculty" class="py-20 lg:py-28 bg-gradient-to-b from-slate-50 to-white scroll-mt-24">
+  <section id="mitacs-faculty" class="py-20 lg:py-28 scroll-mt-24">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-12">
         <h2 class="text-3xl sm:text-4xl font-extrabold text-uoft-blue mb-4">Mitacs Accelerate</h2>
@@ -172,9 +95,9 @@ import CheckItem from '../components/CheckItem.astro';
         </p>
       </div>
 
-      <div class="mt-10 text-center">
-        <Button href="/partnerships#mitacs-accelerate" class="text-lg mr-4">Learn More About Mitacs</Button>
-        <Button href="/contact" variant="secondary" class="text-lg">Contact Us</Button>
+      <div class="mt-10 text-center flex flex-wrap gap-4 justify-center">
+        <a class="carte-btn-primary" href="/partnerships#mitacs-accelerate">Learn More About Mitacs</a>
+        <a class="carte-btn-ghost" href="/contact">Contact Us</a>
       </div>
     </div>
   </section>
@@ -227,15 +150,15 @@ import CheckItem from '../components/CheckItem.astro';
         </p>
       </div>
 
-      <div class="mt-10 text-center">
-        <Button href="/training" class="text-lg mr-4">View All Training Programs</Button>
-        <Button href="/contact" variant="secondary" class="text-lg">Contact Us</Button>
+      <div class="mt-10 text-center flex flex-wrap gap-4 justify-center">
+        <a class="carte-btn-primary" href="/training">View All Training Programs</a>
+        <a class="carte-btn-ghost" href="/contact">Contact Us</a>
       </div>
     </div>
   </section>
 
   <!-- Funding Support Detailed Section -->
-  <section id="funding" class="py-20 lg:py-28 bg-gradient-to-b from-white to-slate-50 scroll-mt-24">
+  <section id="funding" class="py-20 lg:py-28 scroll-mt-24">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-12">
         <h2 class="text-3xl sm:text-4xl font-extrabold text-uoft-blue mb-4">Funding Support</h2>
@@ -274,21 +197,19 @@ import CheckItem from '../components/CheckItem.astro';
       </div>
 
       <div class="mt-10 text-center">
-        <Button href="/contact" class="text-lg">Get Funding Support</Button>
+        <a class="carte-btn-primary" href="/contact">Get Funding Support</a>
       </div>
     </div>
   </section>
 
   <!-- CTA Section -->
-  <section class="py-20">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <div class="bg-gradient-to-br from-uoft-blue to-secondary-blue rounded-3xl p-12 shadow-2xl shadow-uoft-blue/20">
-        <h2 class="text-3xl font-extrabold text-white mb-4">Questions or Need Help?</h2>
-        <p class="text-lg text-slate-200 mb-8 max-w-2xl mx-auto">
-          Have questions about Mitacs supervision, training programs, or funding support? We're here to help you get started.
-        </p>
-        <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <Button href="/contact" variant="on-dark">Contact Us</Button>
+  <section class="py-20 lg:py-28">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="inverse-cta">
+        <h3>Questions or Need Help?</h3>
+        <p>Have questions about Mitacs supervision, training programs, or funding support? We're here to help you get started.</p>
+        <div class="row">
+          <a class="inv-btn primary" href="/contact">Get in Touch</a>
         </div>
       </div>
     </div>

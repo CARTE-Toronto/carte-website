@@ -1,0 +1,262 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Button from '../components/Button.astro';
+import CheckItem from '../components/CheckItem.astro';
+
+const contactEmail = 'alex.olson@utoronto.ca';
+const mailto = `mailto:${contactEmail}?subject=${encodeURIComponent('Generative AI Training Program — interest')}`;
+
+const faqs = [
+  {
+    q: 'How much of my time does this take?',
+    a: 'Roughly 15 to 25 hours in total, concentrated in July and August. It covers the one-day training session on July 10, 2026, designing your module over the summer, and supporting your facilitator through the fall workshops. Faculty already comfortable with generative AI tools tend to land near the low end of that range; those building familiarity with the tools at the same time, nearer the high end. You shape the content; you are not building a full course or teaching it.',
+  },
+  {
+    q: 'What exactly is a module?',
+    a: 'A short learning unit on generative AI for students in your field: about two hours of student-facing material, typically a set of slides, one hands-on exercise or notebook, and a short assessment. For example, a module might guide students through using generative AI for a task common in the discipline, such as reviewing literature, generating and checking code, or analysing data. A first version is due in early August.',
+  },
+  {
+    q: 'Do I have to deliver the workshops myself?',
+    a: 'No. A graduate student or postdoc facilitator is paired with you and trained to deliver the workshops to students in the fall. Facilitators are recruited, funded, and trained by the program. They are not your students and do not draw on your supervision budget. Your role is to design the module.',
+  },
+  {
+    q: 'Who will take the modules?',
+    a: 'Undergraduate students from across U of T, with or without prior experience in AI. Each module is typically delivered as three to four workshop sessions of 30 to 40 students, reaching roughly 120 to 160 students over the term.',
+  },
+  {
+    q: 'Do I have a say in how my module is delivered?',
+    a: 'Yes. By default, your module runs as a co-curricular workshop in the fall, delivered by your paired facilitators and open to undergraduates across your discipline, with participation recorded on the student\'s Co-Curricular Record. If you teach a relevant undergraduate course, you can also embed the module in it as a guest session, lab, or assignment, and you decide which course and how it fits. Student recruitment beyond your own course, facilitator assignment, and overall cohort size are handled by the program.',
+  },
+  {
+    q: 'Who is eligible to take part?',
+    a: 'Faculty from any division of U of T. The aim is broad disciplinary coverage, so the program is designed for faculty whether or not generative AI is a focus of their research.',
+  },
+  {
+    q: 'What support will I have?',
+    a: 'The program runs the operational side: scheduling and room bookings, catering and A/V, computational and cloud resources, recruitment of the facilitators and the student participants, evaluation surveys and reporting, and the July 10 training session itself. You also have instructional design support as you build your module.',
+  },
+];
+---
+
+<BaseLayout
+  title="Generative AI Training Program"
+  description="A University of Toronto program recruiting faculty to design short generative AI learning modules for their own disciplines. Led by the Centre for Analytics and AI Engineering (Carte)."
+>
+  <!-- Hero -->
+  <section class="relative overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 lg:pt-24 pb-12">
+      <div class="max-w-3xl">
+        <span class="inline-block px-4 py-1.5 rounded-full bg-secondary-blue/10 text-secondary-blue font-semibold text-sm mb-6">
+          Faculty recruitment open
+        </span>
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-uoft-blue leading-tight mb-6">
+          The Cognizant–U of T
+          Generative AI Training Program
+        </h1>
+        <p class="text-xl text-slate-600 leading-relaxed mb-8">
+          Students across the University of Toronto are already using generative AI, but the
+          training available to them is mostly generic. This program recruits faculty to design
+          short learning modules for their own disciplines, so students learn how these tools
+          apply to their field of study.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4">
+          <Button href={mailto} class="text-lg">Express your interest</Button>
+          <Button href="#the-role" variant="secondary" class="text-lg">See the faculty role</Button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- At a glance -->
+  <section class="pb-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid sm:grid-cols-3 gap-6 lg:gap-8">
+        <div class="carte-card p-8">
+          <h2 class="font-bold text-uoft-blue mb-2">Time commitment</h2>
+          <p class="text-slate-600">Roughly 15 to 25 hours between July and December, most of it in July and August. No teaching load.</p>
+        </div>
+        <div class="carte-card p-8">
+          <h2 class="font-bold text-uoft-blue mb-2">What you design</h2>
+          <p class="text-slate-600">One short module for your discipline: about two hours of student-facing material. A facilitator delivers it; you do not.</p>
+        </div>
+        <div class="carte-card p-8">
+          <h2 class="font-bold text-uoft-blue mb-2">Recognition</h2>
+          <p class="text-slate-600">CAD $4,000 in research or professional development funds, directed to your faculty account.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- The faculty role -->
+  <section id="the-role" class="py-20 lg:py-28 scroll-mt-24">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-uoft-blue mb-4">The faculty role</h2>
+        <p class="text-xl text-slate-600 max-w-2xl mx-auto">
+          The commitment is modest and well-supported: roughly 15 to 25 hours in total, most of it
+          in July and August. You contribute the disciplinary expertise; the program provides
+          instructional design, training, and delivery.
+        </p>
+      </div>
+
+      <ul class="space-y-4 text-lg text-slate-700 mb-10">
+        <CheckItem iconClass="text-secondary-blue">
+          <strong>Attend one training session.</strong> A one-day session on AI pedagogy and
+          module design, held July 10, 2026.
+        </CheckItem>
+        <CheckItem iconClass="text-secondary-blue">
+          <strong>Design one module over the summer.</strong> About two hours of student-facing
+          material for your discipline: typically a set of slides, one hands-on exercise or
+          notebook, and a short assessment. A first version is due in early August.
+        </CheckItem>
+        <CheckItem iconClass="text-secondary-blue">
+          <strong>You do not deliver the module.</strong> A graduate student or postdoc facilitator
+          runs the student workshops in the fall. Facilitators are recruited, funded, and trained
+          by the program; they are not your students and do not draw on your supervision budget.
+        </CheckItem>
+        <CheckItem iconClass="text-secondary-blue">
+          <strong>Shape the content.</strong> Your contribution is disciplinary judgment: what
+          generative AI means for students in your field, and what they need to learn.
+        </CheckItem>
+      </ul>
+
+      <div class="bg-secondary-blue/10 rounded-lg p-6 border-l-4 border-secondary-blue">
+        <h3 class="font-bold text-uoft-blue mb-2">Recognition and support</h3>
+        <p class="text-slate-700 mb-2">
+          You receive CAD $4,000 in research or professional development funds,
+          directed to your faculty account, in recognition of your time.
+        </p>
+        <p class="text-slate-700">
+          The program runs the operational side throughout: scheduling and room bookings, catering
+          and A/V, computational and cloud resources, recruitment of the facilitators and student
+          participants, evaluation and reporting, and the July 10 training session itself.
+          Instructional design support is available as you build your module.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- How it works -->
+  <section class="py-20 lg:py-28 bg-white scroll-mt-24">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-uoft-blue mb-4">How it works</h2>
+        <p class="text-xl text-slate-600 max-w-2xl mx-auto">
+          The program runs in three stages, from faculty design through to student workshops.
+        </p>
+      </div>
+
+      <div class="space-y-6 mb-14">
+        <div class="flex items-start gap-5">
+          <div class="flex-shrink-0 w-12 h-12 rounded-xl bg-uoft-blue text-white font-bold flex items-center justify-center text-lg">1</div>
+          <div>
+            <h3 class="text-xl font-bold text-uoft-blue mb-1">Faculty design the modules</h3>
+            <p class="text-slate-600">Around 29 faculty across disciplines each design a short module, based on how generative AI is used in their field.</p>
+          </div>
+        </div>
+        <div class="flex items-start gap-5">
+          <div class="flex-shrink-0 w-12 h-12 rounded-xl bg-secondary-blue text-white font-bold flex items-center justify-center text-lg">2</div>
+          <div>
+            <h3 class="text-xl font-bold text-uoft-blue mb-1">Facilitators are trained to deliver</h3>
+            <p class="text-slate-600">About 60 graduate students and postdocs are recruited, paired with faculty, and trained to run the workshops with students.</p>
+          </div>
+        </div>
+        <div class="flex items-start gap-5">
+          <div class="flex-shrink-0 w-12 h-12 rounded-xl bg-accent-teal/15 font-bold flex items-center justify-center text-lg" style="color:var(--brand-primary)">3</div>
+          <div>
+            <h3 class="text-xl font-bold text-uoft-blue mb-1">Students learn AI for their discipline</h3>
+            <p class="text-slate-600">Roughly 4,100 undergraduates take the workshops, from any discipline and with no prior AI experience required. Modules run as co-curricular workshops and, where a faculty member chooses, embedded in their own courses.</p>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="text-2xl font-bold text-uoft-blue mb-6 text-center">Key dates</h3>
+      <div class="grid sm:grid-cols-3 gap-6">
+        <div class="bg-slate-50 rounded-xl p-6 text-center">
+          <div class="font-bold text-secondary-blue mb-1">July 10, 2026</div>
+          <p class="text-slate-600 text-sm">Faculty training session</p>
+        </div>
+        <div class="bg-slate-50 rounded-xl p-6 text-center">
+          <div class="font-bold text-secondary-blue mb-1">Early August 2026</div>
+          <p class="text-slate-600 text-sm">First version of your module</p>
+        </div>
+        <div class="bg-slate-50 rounded-xl p-6 text-center">
+          <div class="font-bold text-secondary-blue mb-1">Fall 2026</div>
+          <p class="text-slate-600 text-sm">Facilitators run student workshops</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- What participating faculty can expect -->
+  <section class="py-20 lg:py-28">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-uoft-blue mb-4">What participating faculty can expect</h2>
+        <p class="text-xl text-slate-600 max-w-2xl mx-auto">
+          A few things worth stating plainly, so you know where you stand before you reply.
+        </p>
+      </div>
+
+      <div class="space-y-5">
+        <div class="bg-white rounded-xl border border-slate-200 p-6">
+          <h3 class="text-lg font-bold text-uoft-blue mb-1">You keep the rights to what you create</h3>
+          <p class="text-slate-600">Copyright in the teaching materials you design rests with you, as it does for the other course materials you create at U of T. How your module may be used and shared within the university is set out with you in full before you commit.</p>
+        </div>
+        <div class="bg-white rounded-xl border border-slate-200 p-6">
+          <h3 class="text-lg font-bold text-uoft-blue mb-1">The academic work is yours</h3>
+          <p class="text-slate-600">The Cognizant Foundation funds the program; the content of your module is your academic work. The funder's role, and how it is recognized, are set out with you in full before you commit.</p>
+        </div>
+        <div class="bg-white rounded-xl border border-slate-200 p-6">
+          <h3 class="text-lg font-bold text-uoft-blue mb-1">You have final say over your module</h3>
+          <p class="text-slate-600">You approve any version of the module that carries your name or your discipline. Changes suggested by facilitators or program staff come to you for sign-off before students see them.</p>
+        </div>
+        <div class="bg-white rounded-xl border border-slate-200 p-6">
+          <h3 class="text-lg font-bold text-uoft-blue mb-1">The CAD $4,000 is not tied to enrolment</h3>
+          <p class="text-slate-600">It is paid in recognition of designing your module and mentoring your facilitator. It does not depend on how many students enrol in or attend the workshops.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="py-20 lg:py-28">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-uoft-blue mb-4">Common questions</h2>
+      </div>
+      <div class="space-y-4">
+        {faqs.map(faq => (
+          <details class="group bg-white rounded-2xl border border-slate-200 overflow-hidden">
+            <summary class="px-6 py-5 cursor-pointer list-none select-none flex items-center justify-between gap-4">
+              <h3 class="text-lg font-semibold text-uoft-blue">{faq.q}</h3>
+              <svg class="w-5 h-5 text-secondary-blue transition-transform duration-300 group-open:rotate-180 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+              </svg>
+            </summary>
+            <div class="px-6 pb-5 -mt-1">
+              <p class="text-slate-600 leading-relaxed">{faq.a}</p>
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-20">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="inverse-cta">
+        <h3>Interested, or have questions?</h3>
+        <p>Contact the program lead, Alex Olson, to ask a question or to express your interest in taking part. There is no commitment in getting in touch.</p>
+        <div class="row">
+          <a class="inv-btn primary" href="/contact">Get in Touch</a>
+        </div>
+      </div>
+      <p class="text-slate-500 text-sm mt-8 max-w-2xl mx-auto text-center">
+        The Cognizant–U of T Generative AI Training Program is led by the Centre for Analytics and
+        AI Engineering (Carte) at the University of Toronto, and funded by the Cognizant Foundation.
+      </p>
+    </div>
+  </section>
+</BaseLayout>

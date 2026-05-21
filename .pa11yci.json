@@ -1,0 +1,19 @@
+{
+  "defaults": {
+    "standard": "WCAG2AA",
+    "timeout": 30000,
+    "wait": 500
+  },
+  "urls": [
+    "http://localhost:4321/",
+    "http://localhost:4321/training",
+    "http://localhost:4321/partnerships",
+    "http://localhost:4321/students",
+    "http://localhost:4321/faculty",
+    "http://localhost:4321/about",
+    "http://localhost:4321/contact",
+    "http://localhost:4321/research",
+    "http://localhost:4321/genai-training-program",
+    "http://localhost:4321/mitacs-project-explorer"
+  ]
+}
