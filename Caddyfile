@@ -11,6 +11,10 @@ carte.utoronto.ca {
         reverse_proxy beta:80
     }
 
+    # Legacy WordPress URL — the "What is Carte" page is now /about
+    @what_is_carte path /what-is-carte /what-is-carte/
+    redir @what_is_carte /about permanent
+
     # Redirect US spelling to Canadian spelling
     @us_spelling path_regexp us_spelling ^/neighborhoods(/.*)?$
     redir @us_spelling /neighbourhoods{re.us_spelling.1} permanent
