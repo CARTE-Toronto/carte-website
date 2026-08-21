@@ -1,5 +1,5 @@
 ---
-title: "South Korea Study Abroad Program"
+title: "South Korea study abroad program"
 audience: "International Graduate Students"
 duration: "6 months"
 description: "Partnership program bringing graduate students from South Korea to Toronto for an applied AI program, facilitated by Carte in collaboration with Korean institutions."

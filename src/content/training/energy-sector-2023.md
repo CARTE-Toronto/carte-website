@@ -1,5 +1,5 @@
 ---
-title: "Energy Sector ML Training"
+title: "Energy sector ML training"
 audience: "Public Energy Organization"
 duration: "5 days"
 year: 2023

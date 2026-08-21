@@ -1,5 +1,5 @@
 ---
-title: "Schmidt AI Postdocs Tutorial Series"
+title: "Schmidt AI postdocs tutorial series"
 audience: "Schmidt AI Postdoctoral Fellows"
 duration: "Half-day tutorials"
 year: 2024

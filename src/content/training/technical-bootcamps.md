@@ -1,5 +1,5 @@
 ---
-title: "Customized Technical Training"
+title: "Customized technical training"
 audience: "Technical Teams & Staff"
 duration: "3-5 days"
 description: "Intensive, hands-on machine learning training customized to your industry and use cases. Employees gain practical skills in Python, data handling, and building ML models relevant to your business."
