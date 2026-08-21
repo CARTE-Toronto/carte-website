@@ -1,5 +1,5 @@
 ---
-title: "LLM & ChatGPT Workshops for Educators"
+title: "LLM & ChatGPT workshops for educators"
 audience: "Instructors & Educational Staff"
 duration: "1–2 hour sessions"
 year: 2023

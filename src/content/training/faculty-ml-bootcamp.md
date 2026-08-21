@@ -1,5 +1,5 @@
 ---
-title: "Machine Learning Training for Faculty"
+title: "Machine learning training for faculty"
 audience: "Faculty Members"
 duration: "5 days"
 description: "Annual week-long intensive in collaboration with the Data Sciences Institute, designed to equip faculty with AI and machine learning skills applicable to their research domains."

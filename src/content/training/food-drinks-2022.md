@@ -1,5 +1,5 @@
 ---
-title: "Food & Beverage Industry Training"
+title: "Food & beverage industry training"
 audience: "Major Food & Drinks Corporation"
 duration: "Multi-day"
 year: 2022

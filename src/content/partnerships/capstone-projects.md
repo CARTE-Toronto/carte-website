@@ -1,5 +1,5 @@
 ---
-title: "Capstone Design Projects"
+title: "Capstone design projects"
 description: "Engage talented upper-year engineering students to work on applied AI projects for your organization through our capstone design program."
 featured: false
 icon: "academic"

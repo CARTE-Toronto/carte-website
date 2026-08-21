@@ -1,5 +1,5 @@
 ---
-title: "Genomic Data Science Intensive"
+title: "Genomic data science intensive"
 audience: "Clinical & Genomics Researchers"
 duration: "3 days"
 year: 2024

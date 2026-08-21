@@ -1,5 +1,5 @@
 ---
-title: "Hackathons & Competitions"
+title: "Hackathons & competitions"
 description: "Sponsor student competitions on emerging AI technologies. A unique opportunity to engage talented students while exploring innovative solutions to your challenges."
 featured: false
 icon: "trophy"

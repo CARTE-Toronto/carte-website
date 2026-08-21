@@ -1,5 +1,5 @@
 ---
-title: "Trade Consulting Executive Training"
+title: "Trade consulting executive training"
 audience: "Trade Consulting Firm"
 duration: "Executive session"
 year: 2024

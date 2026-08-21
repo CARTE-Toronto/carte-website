@@ -1,5 +1,5 @@
 ---
-title: "Corporate Training"
+title: "Corporate training"
 description: "Upskill your workforce with customized AI training programs—from executive briefings for leadership to hands-on technical workshops for your teams."
 featured: true
 gradient: "from-uoft-blue to-secondary-blue"
