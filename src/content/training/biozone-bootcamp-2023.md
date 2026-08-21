@@ -1,5 +1,5 @@
 ---
-title: "BioZone Machine Learning Intensive"
+title: "BioZone machine learning intensive"
 audience: "BioZone Researchers"
 duration: "3 days"
 year: 2023

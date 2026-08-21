@@ -1,5 +1,5 @@
 ---
-title: "Digital Tech Skills Cohort"
+title: "Digital tech skills cohort"
 audience: "Graduate Students & Early-Career Staff"
 duration: "Multi-session cohort"
 year: 2024

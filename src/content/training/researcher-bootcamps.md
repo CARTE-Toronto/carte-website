@@ -1,5 +1,5 @@
 ---
-title: "Customized ML Training for Research Groups"
+title: "Customized ML training for research groups"
 audience: "Research Groups"
 duration: "3-5 days"
 description: "Fully customized machine learning training tailored to specific research domains, from biomedical sciences to postdoctoral fellows in AI-adjacent fields."

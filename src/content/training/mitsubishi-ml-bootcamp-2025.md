@@ -1,5 +1,5 @@
 ---
-title: "Mitsubishi AI Intensive"
+title: "Mitsubishi AI intensive"
 audience: "Corporate Innovation & Strategy Teams"
 duration: "3 days"
 year: 2025
