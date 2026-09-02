@@ -37,13 +37,13 @@ const socialLinks = [
         University of Toronto
       </p>
       <!-- Social Links -->
-      <div class="flex items-center gap-4">
+      <div class="flex items-center -ml-2.5">
         {socialLinks.map(social => (
           <a 
             href={social.href} 
             target="_blank" 
             rel="noopener noreferrer"
-            class="text-slate-400 hover:text-white transition-colors flex items-center justify-center"
+            class="w-10 h-10 text-slate-400 hover:text-white transition-colors flex items-center justify-center"
             aria-label={social.label}
           >
             {social.icon === 'linkedin' && (
