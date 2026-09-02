@@ -21,6 +21,9 @@ const RULES = [
   { id: 'no-title-case-buttons', re: />(Partner With Us|Build AI Skills|Get in Touch|Explore Training|Contact Us|View All Training Programs|Subscribe to Mailing List|Submit Your CV|Learn More About Mitacs|Get Funding Support|Explore Available Projects)</, why: 'Buttons are sentence case and imperative.' },
   { id: 'no-title-case-stats', re: /class="lbl">(Professionals Trained|Sectors Served|Student Community|Applied AI Projects)</, why: 'Labels are sentence case.' },
   { id: 'no-slate-body-copy', re: /<p[^>]*\btext-slate-(500|600|700|800|900)\b/, why: 'Paragraph copy uses --text-body / --text-muted / --text-subtle; slate is UI chrome only.' },
+  { id: 'no-nested-main', re: /<main\b/, only: /src\/components\//, why: 'One <main> landmark per page; it lives in BaseLayout.' },
+  { id: 'no-outline-none', re: /\bfocus:outline-none\b/, why: 'Keep the global :focus-visible ring; never remove the outline.' },
+  { id: 'no-literal-hex', re: /(?<![\w-])#[0-9a-fA-F]{6}\b/, only: /src\/(pages|components)\//, skip: /^\s*(\/\/|\*)/, why: 'Colours come from tokens (var(--…)), not literals.' },
 ];
 
 function walk(dir, out = []) {
@@ -38,6 +41,8 @@ for (const file of files) {
   const lines = readFileSync(file, 'utf8').split('\n');
   lines.forEach((line, i) => {
     for (const rule of RULES) {
+      if (rule.only && !rule.only.test(file)) continue;
+      if (rule.skip && (rule.skip.test(line) || rule.skip.test(file))) continue;
       if (rule.re.test(line)) findings.push({ file: relative(ROOT, file), line: i + 1, id: rule.id, why: rule.why });
     }
   });

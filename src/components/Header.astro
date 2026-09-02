@@ -57,16 +57,17 @@ const socialLinks = [
             rel="noopener noreferrer"
             class="flex-shrink-0"
           >
-            <img
-              src={uoftEngBlue.src}
-              alt="University of Toronto Engineering"
-              class="hidden xl:block h-12 w-auto"
-            />
-            <img
-              src={uoftCrest.src}
-              alt="University of Toronto"
-              class="xl:hidden h-8 w-auto"
-            />
+            <!-- <picture> so only one of the two marks is downloaded -->
+            <picture>
+              <source media="(min-width: 1280px)" srcset={uoftEngBlue.src} width={uoftEngBlue.width} height={uoftEngBlue.height} />
+              <img
+                src={uoftCrest.src}
+                alt="University of Toronto Engineering"
+                width={uoftCrest.width}
+                height={uoftCrest.height}
+                class="h-8 xl:h-12 w-auto"
+              />
+            </picture>
           </a>
           <div class="w-px h-6 sm:h-8 bg-slate-300"></div>
           <a href="/" class="text-uoft-blue font-bold text-2xl tracking-tighter hover:text-secondary-blue transition-colors">
@@ -282,7 +283,7 @@ const socialLinks = [
           header.classList.add('bg-transparent');
           header.classList.remove('bg-pale-bg/80', 'backdrop-blur-lg');
         }
-      });
+      }, { passive: true });
     }
 
     // Mobile menu toggle

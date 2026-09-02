@@ -1,7 +1,11 @@
 ---
-// Interactive dot grid background with cascading network activation
-// Creates a neural network aesthetic where activation spreads through connections
-// Optionally shifts colors based on scroll position: light theme → dark theme
+// Interactive dot grid background with cascading network activation.
+// The dot field lives in page space (it scrolls with the content), but the
+// canvas is only ever viewport-sized: each frame translates by scrollY and
+// draws the dots that are in view. The frame loop runs only while something
+// is changing (cursor activation fading, a scroll, the colour transition) and
+// stops when the page is idle or hidden.
+// Optionally shifts colours based on scroll position: light theme → dark theme.
 
 interface Props {
   scrollColorTransition?: boolean;
@@ -10,400 +14,340 @@ interface Props {
 const { scrollColorTransition = false } = Astro.props;
 ---
 
-<div id="dots-container" class="absolute inset-0 -z-10 pointer-events-none overflow-hidden bg-pale-bg min-h-full" data-scroll-transition={scrollColorTransition.toString()}>
+<div id="dots-container" class="fixed inset-0 -z-10 pointer-events-none overflow-hidden bg-pale-bg" data-scroll-transition={scrollColorTransition.toString()} aria-hidden="true">
   <canvas id="dots-canvas" class="block pointer-events-none"></canvas>
 </div>
 
 <script>
   const canvas = document.getElementById('dots-canvas') as HTMLCanvasElement;
   const ctx = canvas.getContext('2d')!;
-  
+  const container = document.getElementById('dots-container')!;
+
   // Configuration
   const GRID_SIZE = 24;
   const DOT_RADIUS = 1.5;
   const ACTIVATION_RADIUS = 60; // pixels from cursor to directly activate dots
   const FADE_SPEED = 0.08; // how fast activation changes (lower = smoother)
-  const MAX_LINE_OPACITY = 0.18; // maximum opacity for connecting lines
-  const MAX_CONNECTION_DISTANCE = GRID_SIZE * 3; // search for neighbors within 3 grid cells
-  const MIN_CONNECTIONS = 2; // minimum connections per dot
-  const MAX_CONNECTIONS = 4; // maximum connections per dot
+  const MAX_CONNECTION_DISTANCE = GRID_SIZE * 3; // search for neighbours within 3 grid cells
+  const MIN_CONNECTIONS = 2;
+  const MAX_CONNECTIONS = 4;
   const MAX_HOPS = 4; // how many hops activation can spread
-  const HOP_DECAY = 0.55; // opacity multiplier per hop (0.5 = halve each hop)
-  
-  // Color themes for scroll-based transition
-  // Light theme (top of page)
-  const LIGHT_BG = [253, 251, 247];        // #FDFBF7 - pale cream
-  const LIGHT_DOT = [30, 55, 101];   // #1e3765 U of T Blue
+  const HOP_DECAY = 0.55; // opacity multiplier per hop
+  const MAX_DPR = 2; // 3x backing stores triple the fill cost for no visible gain at 1.5px dots
+  const CULL_MARGIN = MAX_CONNECTION_DISTANCE; // draw a little beyond the viewport so lines don't clip
+
+  // Colour themes for the scroll-based transition (canvas needs RGB triples;
+  // these mirror --surface-page / --brand-primary in carte-components.css)
+  const LIGHT_BG = [253, 251, 247];
+  const LIGHT_DOT = [30, 55, 101];
   const LIGHT_DOT_BASE_OPACITY = 0.06;
   const LIGHT_DOT_ACTIVE_OPACITY = 0.15;
   const LIGHT_LINE_MAX_OPACITY = 0.18;
-  
-  // Dark theme (bottom of page)
-  const DARK_BG = [30, 55, 101];       // #1e3765 U of T Blue
-  const DARK_DOT = [253, 251, 247];        // #FDFBF7 - pale cream (inverted)
+
+  const DARK_BG = [30, 55, 101];
+  const DARK_DOT = [253, 251, 247];
   const DARK_DOT_BASE_OPACITY = 0.12;
   const DARK_DOT_ACTIVE_OPACITY = 0.35;
   const DARK_LINE_MAX_OPACITY = 0.25;
-  
-  // Scroll transition config (mobile transitions faster)
+
+  // Scroll transition config (mobile transitions sooner)
   const isMobile = window.innerWidth < 640;
-  const TRANSITION_START = isMobile ? 0.55 : 0.75;  // Start transitioning at 55% (mobile) or 75% (desktop)
-  const TRANSITION_END = isMobile ? 0.60 : 0.80;    // Fully dark by 75% (mobile) or 95% (desktop)
-  
-  let mouseX = -1000;
+  const TRANSITION_START = isMobile ? 0.55 : 0.75;
+  const TRANSITION_END = isMobile ? 0.60 : 0.80;
+  const SCROLL_TRANSITION_ENABLED = container.dataset.scrollTransition === 'true';
+
+  interface Connection {
+    neighborIdx: number;
+    baseOpacity: number; // per-connection multiplier (0.6 – 1.0)
+  }
+
+  interface Dot {
+    x: number;
+    y: number; // page-space y
+    connections: Connection[]; // outgoing ("forward") links
+    incoming: Connection[]; // reverse index so BFS never scans the whole field
+    currentActivation: number;
+    targetActivation: number;
+  }
+
+  let dots: Dot[] = [];
+  let cols = 0;
+  let rows = 0;
+  let viewportW = 0;
+  let viewportH = 0;
+  let dpr = 1;
+  let scrollY = window.scrollY;
+  let mouseX = -1000; // viewport space
   let mouseY = -1000;
-  let animationId: number;
-  let currentScrollT = 0; // Current interpolation value (0 = light, 1 = dark)
-  
-  // Check if scroll color transition is enabled via data attribute
-  const container = document.getElementById('dots-container');
-  const SCROLL_TRANSITION_ENABLED = container?.dataset.scrollTransition === 'true';
-  
-  // Seeded random number generator for consistent randomness
+  let currentScrollT = 0; // 0 = light, 1 = dark
+  let animationId = 0;
+  let running = false;
+  let anyActivation = false;
+
+  // Seeded random number generator for stable, repeatable connections
   function seededRandom(seed: number): () => number {
-    return function() {
+    return function () {
       seed = (seed * 1103515245 + 12345) & 0x7fffffff;
       return seed / 0x7fffffff;
     };
   }
-  
-  interface Connection {
-    neighborIdx: number;
-    baseOpacity: number; // individual opacity multiplier (0.5 - 1.0)
+
+  function getDistance(x1: number, y1: number, x2: number, y2: number): number {
+    return Math.sqrt((x2 - x1) ** 2 + (y2 - y1) ** 2);
   }
-  
-  interface Dot {
-    x: number;
-    y: number;
-    connections: Connection[];
-    currentActivation: number; // current animated activation level (0-1)
-    targetActivation: number; // target activation level for this frame
+
+  function documentHeight(): number {
+    return Math.max(document.documentElement.scrollHeight, document.body.scrollHeight, window.innerHeight);
   }
-  
-  let dots: Dot[] = [];
-  let cols = 0;
-  
-  function resize() {
-    const dpr = window.devicePixelRatio || 1;
-    const width = window.innerWidth;
-    const height = Math.max(
-      document.documentElement.scrollHeight,
-      document.body.scrollHeight,
-      window.innerHeight
-    );
-    
-    // Size the container to the full page
-    const container = document.getElementById('dots-container');
-    if (container) {
-      container.style.height = `${height}px`;
-    }
-    
-    canvas.width = width * dpr;
-    canvas.height = height * dpr;
-    canvas.style.width = `${width}px`;
-    canvas.style.height = `${height}px`;
-    
-    generateDots(width, height);
-  }
-  
+
+  // Build the dot field over the whole document (positions only; cheap even
+  // for very long pages), with 2–4 seeded forward connections per dot.
   function generateDots(width: number, height: number) {
     dots = [];
     cols = Math.ceil(width / GRID_SIZE) + 1;
-    const rows = Math.ceil(height / GRID_SIZE) + 1;
-    
-    // First pass: create all dots
+    rows = Math.ceil(height / GRID_SIZE) + 1;
+
     for (let row = 0; row < rows; row++) {
       for (let col = 0; col < cols; col++) {
-        dots.push({
-          x: col * GRID_SIZE,
-          y: row * GRID_SIZE,
-          connections: [],
-          currentActivation: 0,
-          targetActivation: 0
-        });
+        dots.push({ x: col * GRID_SIZE, y: row * GRID_SIZE, connections: [], incoming: [], currentActivation: 0, targetActivation: 0 });
       }
     }
-    
-    // Second pass: find and select random neighbors for each dot
+
     for (let i = 0; i < dots.length; i++) {
       const dot = dots[i];
       const col = i % cols;
       const row = Math.floor(i / cols);
-      
-      // Create a seeded random generator based on dot position
       const rand = seededRandom(col * 10000 + row * 100 + 42);
-      
-      // Find all potential neighbors (only "forward" to avoid duplicate lines)
-      const potentialNeighbors: { idx: number; dist: number }[] = [];
-      
-      // Search in a wider area for more organic connections
+
+      const potential: number[] = [];
       for (let dr = 0; dr <= 3; dr++) {
         for (let dc = -2; dc <= 3; dc++) {
-          // Skip self and "backward" connections (already handled by other dots)
-          if (dr === 0 && dc <= 0) continue;
-          
+          if (dr === 0 && dc <= 0) continue; // only "forward" so each line exists once
           const nc = col + dc;
           const nr = row + dr;
-          
-          if (nc >= 0 && nc < cols && nr >= 0 && nr < rows) {
-            const neighborIdx = nr * cols + nc;
-            if (neighborIdx < dots.length && neighborIdx !== i) {
-              const neighbor = dots[neighborIdx];
-              const dist = getDistance(dot.x, dot.y, neighbor.x, neighbor.y);
-              if (dist <= MAX_CONNECTION_DISTANCE && dist > 0) {
-                potentialNeighbors.push({ idx: neighborIdx, dist });
-              }
-            }
-          }
+          if (nc < 0 || nc >= cols || nr < 0 || nr >= rows) continue;
+          const j = nr * cols + nc;
+          if (j >= dots.length || j === i) continue;
+          const dist = getDistance(dot.x, dot.y, dots[j].x, dots[j].y);
+          if (dist > 0 && dist <= MAX_CONNECTION_DISTANCE) potential.push(j);
         }
       }
-      
-      // Shuffle potential neighbors using seeded random
-      for (let j = potentialNeighbors.length - 1; j > 0; j--) {
+
+      for (let j = potential.length - 1; j > 0; j--) {
         const k = Math.floor(rand() * (j + 1));
-        [potentialNeighbors[j], potentialNeighbors[k]] = [potentialNeighbors[k], potentialNeighbors[j]];
+        [potential[j], potential[k]] = [potential[k], potential[j]];
       }
-      
-      // Select a random number of connections (between MIN and MAX)
-      const numConnections = MIN_CONNECTIONS + Math.floor(rand() * (MAX_CONNECTIONS - MIN_CONNECTIONS + 1));
-      const selectedNeighbors = potentialNeighbors.slice(0, Math.min(numConnections, potentialNeighbors.length));
-      
-      // Create connections
-      for (const { idx: neighborIdx } of selectedNeighbors) {
-        // Random base opacity for this connection (creates visual hierarchy)
-        const baseOpacity = 0.6 + rand() * 0.4; // 0.6 to 1.0
-        
-        dot.connections.push({
-          neighborIdx,
-          baseOpacity
-        });
+
+      const count = MIN_CONNECTIONS + Math.floor(rand() * (MAX_CONNECTIONS - MIN_CONNECTIONS + 1));
+      for (const j of potential.slice(0, count)) {
+        const baseOpacity = 0.6 + rand() * 0.4;
+        dot.connections.push({ neighborIdx: j, baseOpacity });
+        dots[j].incoming.push({ neighborIdx: i, baseOpacity });
       }
     }
   }
-  
-  function getDistance(x1: number, y1: number, x2: number, y2: number): number {
-    return Math.sqrt((x2 - x1) ** 2 + (y2 - y1) ** 2);
-  }
-  
-  // Spread activation through the network using BFS
-  function calculateActivations(mouseX: number, mouseY: number) {
-    // Reset all target activations
-    for (const dot of dots) {
-      dot.targetActivation = 0;
-    }
-    
-    // If mouse is off-screen, everything fades out
-    if (mouseX < -500 || mouseY < -500) return;
-    
-    // Find dots directly under/near the cursor (seed activation)
-    const activated = new Map<number, number>(); // dot index -> hop count
+
+  // Spread activation from the cursor through the network (BFS, both directions).
+  function calculateActivations(px: number, py: number) {
+    anyActivation = false;
+    for (const dot of dots) dot.targetActivation = 0;
+    if (px < -500 || py < -500) return;
+
+    const visited = new Map<number, number>(); // dot index → hop count
     const queue: { idx: number; hops: number }[] = [];
-    
-    for (let i = 0; i < dots.length; i++) {
-      const dot = dots[i];
-      const dist = getDistance(dot.x, dot.y, mouseX, mouseY);
-      
-      if (dist < ACTIVATION_RADIUS) {
-        // Direct activation - strength based on distance from cursor
-        const strength = Math.pow(1 - dist / ACTIVATION_RADIUS, 1.5);
-        activated.set(i, 0);
-        dots[i].targetActivation = strength;
-        queue.push({ idx: i, hops: 0 });
+
+    // Seeds: only rows near the cursor can be within ACTIVATION_RADIUS
+    const rowFrom = Math.max(0, Math.floor((py - ACTIVATION_RADIUS) / GRID_SIZE));
+    const rowTo = Math.min(rows - 1, Math.ceil((py + ACTIVATION_RADIUS) / GRID_SIZE));
+    for (let row = rowFrom; row <= rowTo; row++) {
+      for (let col = 0; col < cols; col++) {
+        const i = row * cols + col;
+        const dist = getDistance(dots[i].x, dots[i].y, px, py);
+        if (dist < ACTIVATION_RADIUS) {
+          dots[i].targetActivation = Math.pow(1 - dist / ACTIVATION_RADIUS, 1.5);
+          visited.set(i, 0);
+          queue.push({ idx: i, hops: 0 });
+          anyActivation = true;
+        }
       }
     }
-    
-    // BFS to spread activation through network
-    while (queue.length > 0) {
-      const { idx, hops } = queue.shift()!;
-      
+
+    let head = 0;
+    while (head < queue.length) {
+      const { idx, hops } = queue[head++];
       if (hops >= MAX_HOPS) continue;
-      
-      const dot = dots[idx];
-      const parentActivation = dot.targetActivation;
-      
-      // Spread to connected neighbors
-      for (const connection of dot.connections) {
-        const neighborIdx = connection.neighborIdx;
-        const existingHops = activated.get(neighborIdx);
-        
-        // Only process if we haven't visited this node, or if we found a shorter path
-        if (existingHops === undefined || existingHops > hops + 1) {
-          activated.set(neighborIdx, hops + 1);
-          
-          // Activation decays with each hop
-          const neighborActivation = parentActivation * HOP_DECAY * connection.baseOpacity;
-          
-          if (neighborActivation > dots[neighborIdx].targetActivation) {
-            dots[neighborIdx].targetActivation = neighborActivation;
-          }
-          
-          if (neighborActivation > 0.01) {
-            queue.push({ idx: neighborIdx, hops: hops + 1 });
-          }
-        }
-      }
-      
-      // Also check reverse connections (dots that connect TO this dot)
-      for (let i = 0; i < dots.length; i++) {
-        const otherDot = dots[i];
-        for (const conn of otherDot.connections) {
-          if (conn.neighborIdx === idx) {
-            const existingHops = activated.get(i);
-            if (existingHops === undefined || existingHops > hops + 1) {
-              activated.set(i, hops + 1);
-              
-              const otherActivation = parentActivation * HOP_DECAY * conn.baseOpacity;
-              
-              if (otherActivation > dots[i].targetActivation) {
-                dots[i].targetActivation = otherActivation;
-              }
-              
-              if (otherActivation > 0.01) {
-                queue.push({ idx: i, hops: hops + 1 });
-              }
-            }
-          }
-        }
-      }
+      const parent = dots[idx].targetActivation;
+      const spread = (conn: Connection) => {
+        const j = conn.neighborIdx;
+        const seen = visited.get(j);
+        if (seen !== undefined && seen <= hops + 1) return;
+        visited.set(j, hops + 1);
+        const v = parent * HOP_DECAY * conn.baseOpacity;
+        if (v > dots[j].targetActivation) dots[j].targetActivation = v;
+        if (v > 0.01) queue.push({ idx: j, hops: hops + 1 });
+      };
+      for (const c of dots[idx].connections) spread(c);
+      for (const c of dots[idx].incoming) spread(c);
     }
   }
-  
-  // Linear interpolation helper
+
   function lerp(a: number, b: number, t: number): number {
     return a + (b - a) * t;
   }
-  
-  // Get scroll-based transition value (0 = light theme, 1 = dark theme)
+
   function getScrollT(): number {
-    // If scroll transition is disabled, always return 0 (light theme)
     if (!SCROLL_TRANSITION_ENABLED) return 0;
-    
-    const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
-    if (scrollHeight <= 0) return 0;
-    
-    const scrollPercent = window.scrollY / scrollHeight;
-    
-    // Map scroll percent to transition range
-    if (scrollPercent <= TRANSITION_START) return 0;
-    if (scrollPercent >= TRANSITION_END) return 1;
-    
-    return (scrollPercent - TRANSITION_START) / (TRANSITION_END - TRANSITION_START);
+    const range = documentHeight() - window.innerHeight;
+    if (range <= 0) return 0;
+    const p = scrollY / range;
+    if (p <= TRANSITION_START) return 0;
+    if (p >= TRANSITION_END) return 1;
+    return (p - TRANSITION_START) / (TRANSITION_END - TRANSITION_START);
   }
-  
-  // Get interpolated color as RGB array
-  function getInterpolatedColor(lightColor: number[], darkColor: number[], t: number): number[] {
-    return [
-      Math.round(lerp(lightColor[0], darkColor[0], t)),
-      Math.round(lerp(lightColor[1], darkColor[1], t)),
-      Math.round(lerp(lightColor[2], darkColor[2], t))
-    ];
+
+  function mix(a: number[], b: number[], t: number): number[] {
+    return [Math.round(lerp(a[0], b[0], t)), Math.round(lerp(a[1], b[1], t)), Math.round(lerp(a[2], b[2], t))];
   }
-  
+
+  function resize() {
+    dpr = Math.min(window.devicePixelRatio || 1, MAX_DPR);
+    viewportW = window.innerWidth;
+    viewportH = window.innerHeight;
+    canvas.width = viewportW * dpr;
+    canvas.height = viewportH * dpr;
+    canvas.style.width = `${viewportW}px`;
+    canvas.style.height = `${viewportH}px`;
+    generateDots(viewportW, documentHeight());
+    kick();
+  }
+
   function draw() {
-    const dpr = window.devicePixelRatio || 1;
-    
-    // Smoothly animate the scroll transition value
-    const targetScrollT = getScrollT();
-    currentScrollT += (targetScrollT - currentScrollT) * 0.1;
-    
-    // Calculate current colors based on scroll position
-    const bgColor = getInterpolatedColor(LIGHT_BG, DARK_BG, currentScrollT);
-    const dotColor = getInterpolatedColor(LIGHT_DOT, DARK_DOT, currentScrollT);
-    const dotBaseOpacity = lerp(LIGHT_DOT_BASE_OPACITY, DARK_DOT_BASE_OPACITY, currentScrollT);
-    const dotActiveOpacity = lerp(LIGHT_DOT_ACTIVE_OPACITY, DARK_DOT_ACTIVE_OPACITY, currentScrollT);
-    const lineMaxOpacity = lerp(LIGHT_LINE_MAX_OPACITY, DARK_LINE_MAX_OPACITY, currentScrollT);
-    
-    // Update container background color
-    const container = document.getElementById('dots-container');
-    if (container) {
-      container.style.backgroundColor = `rgb(${bgColor[0]}, ${bgColor[1]}, ${bgColor[2]})`;
-    }
-    
-    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    
-    // Mouse Y in page coordinates (canvas is in page space, mouse is in viewport space)
-    const scrollY = window.scrollY;
-    const pageMouseY = mouseY + scrollY;
-    
-    // Calculate target activations based on network propagation
-    calculateActivations(mouseX, pageMouseY);
-    
-    // Animate activations toward targets
+    // Ease the colour transition toward the scroll target
+    const targetT = getScrollT();
+    const dT = targetT - currentScrollT;
+    currentScrollT = Math.abs(dT) < 0.002 ? targetT : currentScrollT + dT * 0.1;
+
+    const bg = mix(LIGHT_BG, DARK_BG, currentScrollT);
+    const dotColor = mix(LIGHT_DOT, DARK_DOT, currentScrollT);
+    const baseOpacity = lerp(LIGHT_DOT_BASE_OPACITY, DARK_DOT_BASE_OPACITY, currentScrollT);
+    const activeOpacity = lerp(LIGHT_DOT_ACTIVE_OPACITY, DARK_DOT_ACTIVE_OPACITY, currentScrollT);
+    const lineMax = lerp(LIGHT_LINE_MAX_OPACITY, DARK_LINE_MAX_OPACITY, currentScrollT);
+    container.style.backgroundColor = `rgb(${bg[0]}, ${bg[1]}, ${bg[2]})`;
+
+    // Page-space drawing on a viewport-sized canvas
+    ctx.setTransform(dpr, 0, 0, dpr, 0, -scrollY * dpr);
+    ctx.clearRect(0, scrollY, viewportW, viewportH);
+
+    calculateActivations(mouseX, mouseY + scrollY);
+
+    let stillFading = false;
+    const top = scrollY - CULL_MARGIN;
+    const bottom = scrollY + viewportH + CULL_MARGIN;
+    const rowFrom = Math.max(0, Math.floor(top / GRID_SIZE));
+    const rowTo = Math.min(rows - 1, Math.ceil(bottom / GRID_SIZE));
+
     for (const dot of dots) {
+      const before = dot.currentActivation;
       dot.currentActivation += (dot.targetActivation - dot.currentActivation) * FADE_SPEED;
       if (dot.currentActivation < 0.001) dot.currentActivation = 0;
+      if (dot.currentActivation !== before) stillFading = true;
     }
-    
-    // Draw connections where both endpoints are activated
-    for (let i = 0; i < dots.length; i++) {
-      const dot = dots[i];
-      
-      for (const connection of dot.connections) {
-        const neighbor = dots[connection.neighborIdx];
-        
-        // Connection opacity based on the minimum activation of both endpoints
-        const connectionStrength = Math.min(dot.currentActivation, neighbor.currentActivation);
-        
-        if (connectionStrength > 0.001) {
-          const opacity = connectionStrength * lineMaxOpacity * connection.baseOpacity;
-          
-          ctx.beginPath();
-          ctx.moveTo(dot.x, dot.y);
-          ctx.lineTo(neighbor.x, neighbor.y);
-          ctx.strokeStyle = `rgba(${dotColor[0]}, ${dotColor[1]}, ${dotColor[2]}, ${opacity})`;
-          ctx.lineWidth = 0.5;
-          ctx.stroke();
+
+    const rgb = `${dotColor[0]}, ${dotColor[1]}, ${dotColor[2]}`;
+    ctx.lineWidth = 0.5;
+    for (let row = rowFrom; row <= rowTo; row++) {
+      for (let col = 0; col < cols; col++) {
+        const dot = dots[row * cols + col];
+        for (const conn of dot.connections) {
+          const n = dots[conn.neighborIdx];
+          const s = Math.min(dot.currentActivation, n.currentActivation);
+          if (s > 0.001) {
+            ctx.beginPath();
+            ctx.moveTo(dot.x, dot.y);
+            ctx.lineTo(n.x, n.y);
+            ctx.strokeStyle = `rgba(${rgb}, ${s * lineMax * conn.baseOpacity})`;
+            ctx.stroke();
+          }
         }
       }
     }
-    
-    // Draw all dots (slightly brighter when activated)
-    for (const dot of dots) {
-      const opacity = dotBaseOpacity + (dotActiveOpacity - dotBaseOpacity) * dot.currentActivation;
-      
-      ctx.beginPath();
-      ctx.arc(dot.x, dot.y, DOT_RADIUS, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(${dotColor[0]}, ${dotColor[1]}, ${dotColor[2]}, ${opacity})`;
-      ctx.fill();
+
+    for (let row = rowFrom; row <= rowTo; row++) {
+      for (let col = 0; col < cols; col++) {
+        const dot = dots[row * cols + col];
+        ctx.beginPath();
+        ctx.arc(dot.x, dot.y, DOT_RADIUS, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(${rgb}, ${baseOpacity + (activeOpacity - baseOpacity) * dot.currentActivation})`;
+        ctx.fill();
+      }
     }
-    
+
+    // Keep animating only while something is still changing
+    if (anyActivation || stillFading || currentScrollT !== targetT) {
+      animationId = requestAnimationFrame(draw);
+    } else {
+      running = false;
+    }
+  }
+
+  function kick() {
+    if (running || document.hidden) return;
+    running = true;
     animationId = requestAnimationFrame(draw);
   }
-  
-  // Track mouse position
+
   function handleMouseMove(e: MouseEvent) {
     mouseX = e.clientX;
     mouseY = e.clientY;
+    kick();
   }
-  
+
   function handleMouseLeave() {
     mouseX = -1000;
     mouseY = -1000;
+    kick();
   }
-  
-  // Initialize
+
+  function handleScroll() {
+    scrollY = window.scrollY;
+    kick();
+  }
+
+  function handleVisibility() {
+    if (document.hidden) {
+      cancelAnimationFrame(animationId);
+      running = false;
+    } else {
+      kick();
+    }
+  }
+
   function init() {
-    document.addEventListener('mousemove', handleMouseMove);
+    document.addEventListener('mousemove', handleMouseMove, { passive: true });
     document.addEventListener('mouseleave', handleMouseLeave);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     window.addEventListener('resize', resize);
-    
-    // Watch for content changes that might affect page height
-    const resizeObserver = new ResizeObserver(() => {
-      resize();
+    document.addEventListener('visibilitychange', handleVisibility);
+
+    // Regenerate the field when content changes the page height
+    let pending = 0;
+    const observer = new ResizeObserver(() => {
+      cancelAnimationFrame(pending);
+      pending = requestAnimationFrame(resize);
     });
-    resizeObserver.observe(document.body);
-    
+    observer.observe(document.body);
+
     resize();
-    draw();
   }
-  
-  // Cleanup on page navigation (for Astro view transitions)
+
   document.addEventListener('astro:before-swap', () => {
     cancelAnimationFrame(animationId);
     document.removeEventListener('mousemove', handleMouseMove);
     document.removeEventListener('mouseleave', handleMouseLeave);
+    window.removeEventListener('scroll', handleScroll);
+    window.removeEventListener('resize', resize);
+    document.removeEventListener('visibilitychange', handleVisibility);
   });
-  
+
   init();
 </script>

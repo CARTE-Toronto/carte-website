@@ -43,9 +43,7 @@ const fullTitle = `${title} | Carte - University of Toronto`;
     <meta name="twitter:title" content={fullTitle} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={imageUrl} />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Host+Grotesk:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+    <link rel="preload" href="/fonts/hostgrotesk-normal-latin.woff2" as="font" type="font/woff2" crossorigin />
   </head>
   <body class="flex flex-col min-h-screen">
     <InteractiveDots scrollColorTransition={scrollColorTransition} />
