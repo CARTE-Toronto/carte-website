@@ -5,8 +5,6 @@ venue: "Findings"
 year: 2024
 description: "A simplified, scalable approach to estimating building heights from single street-level images using deep learning, enabling rapid urban infrastructure assessment."
 featured: true
-gradient: "from-uoft-blue to-secondary-blue"
-pattern: "buildings"
 tags: ["Computer Vision", "Urban Infrastructure"]
 order: 1
 ---

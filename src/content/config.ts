@@ -10,9 +10,6 @@ const research = defineCollection({
     year: z.number(),
     description: z.string(),
     featured: z.boolean().default(false),
-    // For featured papers (large cards with visuals)
-    gradient: z.string().optional(),
-    pattern: z.enum(["buildings", "houses", "digital"]).optional(),
     // For secondary papers (smaller cards with icons)
     icon: z.enum(["database", "health", "air", "code", "chart", "globe", "houses", "people"]).optional(),
     tags: z.array(z.string()).default([]),
@@ -29,9 +26,6 @@ const training = defineCollection({
     year: z.number().optional(),
     description: z.string(),
     featured: z.boolean().default(false),
-    // For featured trainings (large cards with visuals)
-    gradient: z.string().optional(),
-    pattern: z.enum(["classroom", "network", "corporate", "lab"]).optional(),
     // For secondary trainings (smaller cards with icons)
     icon: z.enum(["academic", "flask", "briefcase", "users", "globe", "calendar"]).optional(),
     tags: z.array(z.string()).default([]),
@@ -50,9 +44,6 @@ const partnerships = defineCollection({
     title: z.string(),
     description: z.string(),
     featured: z.boolean().default(false),
-    // For featured services (large cards with visuals)
-    gradient: z.string().optional(),
-    pattern: z.enum(["research", "training", "consulting", "network"]).optional(),
     // For secondary services (smaller cards with icons)
     icon: z.enum(["beaker", "academic", "briefcase", "users", "mic", "trophy"]).optional(),
     tags: z.array(z.string()).default([]),

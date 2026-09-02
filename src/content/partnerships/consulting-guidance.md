@@ -2,8 +2,6 @@
 title: "AI consulting & guidance"
 description: "Get expert guidance on your AI initiatives—from project scoping and feasibility assessment to technical implementation support and best practices."
 featured: true
-gradient: "from-uoft-blue to-secondary-blue"
-pattern: "consulting"
 tags: ["Consulting", "Projects", "Strategy"]
 order: 3
 ---
