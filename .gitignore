@@ -30,3 +30,8 @@ pnpm-debug.log*
 
 # internal strategy docs
 COPY_STRATEGY.md
+
+# agent tooling (local only)
+.agents/
+.impeccable/
+skills-lock.json
