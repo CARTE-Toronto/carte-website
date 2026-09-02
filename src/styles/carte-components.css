@@ -181,6 +181,10 @@
   /* Overlays */
   --overlay-photo:   rgba(30, 55, 101, 0.35);  /* flat blue over photography */
   --overlay-section: rgba(30, 55, 101, 0.88);
+  /* Section washes that let the dot field read through a band (site extension) */
+  --tint-warm:  rgba(253, 251, 247, 0.70);
+  --tint-white: rgba(255, 255, 255, 0.50);
+  --tint-info:  rgba(0, 120, 148, 0.05);
   --focus-ring: 0 0 0 3px rgba(0, 120, 148, 0.30);
 }
 

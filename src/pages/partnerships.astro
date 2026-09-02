@@ -151,7 +151,7 @@ const secondaryServices = allPartnerships
                   <div class="absolute top-6 right-6 flex items-center gap-2">
                     <button 
                       id="funding-toggle" 
-                      class="relative inline-flex h-7 w-14 items-center rounded-full bg-slate-300 transition-colors focus:outline-none focus:ring-2 focus:ring-secondary-blue focus:ring-offset-2"
+                      class="relative inline-flex h-7 w-14 items-center rounded-full bg-slate-300 transition-colors"
                       role="switch"
                       aria-checked="false"
                       aria-label="Toggle to Postdoc model"
@@ -216,7 +216,7 @@ const secondaryServices = allPartnerships
                   <div class="absolute top-6 right-6 flex items-center gap-2">
                     <button 
                       id="funding-toggle-postdoc" 
-                      class="relative inline-flex h-7 w-14 items-center rounded-full bg-secondary-blue transition-colors focus:outline-none focus:ring-2 focus:ring-secondary-blue focus:ring-offset-2"
+                      class="relative inline-flex h-7 w-14 items-center rounded-full bg-secondary-blue transition-colors"
                       role="switch"
                       aria-checked="true"
                       aria-label="Toggle to Standard model"
@@ -377,8 +377,8 @@ const secondaryServices = allPartnerships
         </div>
         
         <!-- Fade edges -->
-        <div class="absolute left-0 top-0 bottom-4 w-8 bg-gradient-to-r from-[#FDFBF7] to-transparent pointer-events-none"></div>
-        <div class="absolute right-0 top-0 bottom-4 w-8 bg-gradient-to-l from-[#FDFBF7] to-transparent pointer-events-none"></div>
+        <div class="absolute left-0 top-0 bottom-4 w-8 bg-gradient-to-r from-(--surface-page) to-transparent pointer-events-none"></div>
+        <div class="absolute right-0 top-0 bottom-4 w-8 bg-gradient-to-l from-(--surface-page) to-transparent pointer-events-none"></div>
       </div>
     </div>
   </section>

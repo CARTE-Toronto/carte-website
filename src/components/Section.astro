@@ -13,10 +13,10 @@ const bgClass = background === 'gray' ? 'bg-cool-gray' : '';
 
 const tintStyles: Record<string, string> = {
   'none': '',
-  'warm': 'rgba(253, 251, 247, 0.7)',
-  'white': 'rgba(255, 255, 255, 0.5)',
-  'blue-light': 'rgba(0, 120, 148, 0.05)',
-  'blue-dark': 'rgba(30, 55, 101, 0.88)',
+  'warm': 'var(--tint-warm)',
+  'white': 'var(--tint-white)',
+  'blue-light': 'var(--tint-info)',
+  'blue-dark': 'var(--overlay-section)',
 };
 
 const tintColor = tintStyles[tint] || '';
