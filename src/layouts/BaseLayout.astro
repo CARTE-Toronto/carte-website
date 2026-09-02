@@ -46,9 +46,10 @@ const fullTitle = `${title} | Carte - University of Toronto`;
     <link rel="preload" href="/fonts/hostgrotesk-normal-latin.woff2" as="font" type="font/woff2" crossorigin />
   </head>
   <body class="flex flex-col min-h-screen">
+    <a href="#main" class="skip-link">Skip to content</a>
     <InteractiveDots scrollColorTransition={scrollColorTransition} />
     <Header />
-    <main class="flex-grow">
+    <main id="main" class="flex-grow" tabindex="-1">
       <slot />
     </main>
     <Footer />

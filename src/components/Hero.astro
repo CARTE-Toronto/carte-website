@@ -19,7 +19,7 @@ const organicShapeBorderRadius = generateOrganicShape();
 <div class="relative bg-transparent overflow-visible">
   <div class="max-w-7xl mx-auto overflow-visible">
     <div class="relative z-10 pb-8 sm:pb-16 md:pb-20 lg:max-w-2xl lg:w-full lg:pb-28 xl:pb-32 pt-12 overflow-visible">
-      <main class="mt-6 mx-auto max-w-7xl px-4 sm:mt-8 sm:px-6 md:mt-10 lg:mt-12 lg:px-8 xl:mt-16 overflow-visible">
+      <div class="mt-6 mx-auto max-w-7xl px-4 sm:mt-8 sm:px-6 md:mt-10 lg:mt-12 lg:px-8 xl:mt-16 overflow-visible">
         <div class="sm:text-center lg:text-left overflow-visible">
           <h1 class="text-5xl tracking-tight font-extrabold text-uoft-blue sm:text-6xl md:text-7xl leading-[1.1]">
             Learn and apply AI with Canada's leading engineers.
@@ -46,28 +46,47 @@ const organicShapeBorderRadius = generateOrganicShape();
 
             <div class="absolute left-0 sm:left-1/2 lg:left-0 sm:-translate-x-1/2 lg:translate-x-0 top-full mt-2 z-[9999] p-5 bg-white rounded-xl border border-slate-200 w-[calc(100vw-2rem)] sm:w-[400px] newsletter-panel">
               <form id="hero-subscribe-form" class="space-y-3">
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                  <input type="email" name="email" placeholder="Email *" class="carte-input" aria-label="Email address (required)" required />
-                  <input type="text" name="first_name" placeholder="First name" class="carte-input" aria-label="First name" />
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-left">
+                  <div>
+                    <label for="hero-email" class="carte-label">Email<span class="carte-label__req">*</span></label>
+                    <input type="email" name="email" id="hero-email" class="carte-input" autocomplete="email" required />
+                  </div>
+                  <div>
+                    <label for="hero-first-name" class="carte-label">First name</label>
+                    <input type="text" name="first_name" id="hero-first-name" class="carte-input" autocomplete="given-name" />
+                  </div>
                 </div>
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                  <input type="text" name="last_name" placeholder="Last name" class="carte-input" aria-label="Last name" />
-                  <input type="text" name="organization" placeholder="Organization (if not UofT)" class="carte-input" aria-label="Organization (if not UofT)" />
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-left">
+                  <div>
+                    <label for="hero-last-name" class="carte-label">Last name</label>
+                    <input type="text" name="last_name" id="hero-last-name" class="carte-input" autocomplete="family-name" />
+                  </div>
+                  <div>
+                    <label for="hero-organization" class="carte-label">Organization</label>
+                    <input type="text" name="organization" id="hero-organization" class="carte-input" autocomplete="organization" />
+                    <p class="carte-help">If you're not at UofT.</p>
+                  </div>
                 </div>
-                <select name="academic_unit" class="carte-select" aria-label="Academic unit (if UofT)">
-                  <option value="">Academic Unit (if UofT)</option>
-                  <option value="Applied Science &amp; Engineering">Applied Science & Engineering</option>
-                  <option value="Arts &amp; Science">Arts & Science</option>
-                  <option value="Medicine">Medicine</option>
-                  <option value="Management">Management</option>
-                  <option value="Other">Other</option>
-                </select>
-                <div class="flex flex-wrap gap-x-4 gap-y-1">
-                  <label class="carte-check"><input type="checkbox" name="affiliation" value="Graduate Student" /> Graduate</label>
-                  <label class="carte-check"><input type="checkbox" name="affiliation" value="Faculty" /> Faculty</label>
-                  <label class="carte-check"><input type="checkbox" name="affiliation" value="Postdoc" /> Postdoc</label>
-                  <label class="carte-check"><input type="checkbox" name="affiliation" value="External Partner" /> External</label>
+                <div class="text-left">
+                  <label for="hero-academic-unit" class="carte-label">Academic unit</label>
+                  <select name="academic_unit" id="hero-academic-unit" class="carte-select">
+                    <option value="">Select if you're at UofT</option>
+                    <option value="Applied Science &amp; Engineering">Applied Science & Engineering</option>
+                    <option value="Arts &amp; Science">Arts & Science</option>
+                    <option value="Medicine">Medicine</option>
+                    <option value="Management">Management</option>
+                    <option value="Other">Other</option>
+                  </select>
                 </div>
+                <fieldset class="text-left">
+                  <legend class="carte-label">Affiliation</legend>
+                  <div class="flex flex-wrap gap-x-4 gap-y-1">
+                    <label class="carte-check"><input type="checkbox" name="affiliation" value="Graduate Student" /> Graduate</label>
+                    <label class="carte-check"><input type="checkbox" name="affiliation" value="Faculty" /> Faculty</label>
+                    <label class="carte-check"><input type="checkbox" name="affiliation" value="Postdoc" /> Postdoc</label>
+                    <label class="carte-check"><input type="checkbox" name="affiliation" value="External Partner" /> External</label>
+                  </div>
+                </fieldset>
                 <p id="hero-subscribe-status" class="hidden text-sm"></p>
                 <button type="submit" id="hero-subscribe-btn" class="carte-btn-primary w-full disabled:opacity-60 disabled:cursor-not-allowed">
                   Subscribe
@@ -76,7 +95,7 @@ const organicShapeBorderRadius = generateOrganicShape();
             </div>
           </details>
         </div>
-      </main>
+      </div>
     </div>
   </div>
 

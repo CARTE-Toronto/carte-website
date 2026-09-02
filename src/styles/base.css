@@ -21,3 +21,23 @@
   a { color: var(--text-link); text-decoration: none; }
   a:hover { color: var(--brand-primary); }
 }
+
+/* Skip link: visually hidden until focused, then a brand pill at the top-left */
+.skip-link {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  z-index: 100;
+  padding: 10px 20px;
+  border-radius: var(--radius-pill);
+  background: var(--brand-primary);
+  color: var(--text-on-inverse);
+  font: 700 14px var(--font-sans);
+  transform: translateY(-200%);
+  transition: transform var(--dur-fast) var(--ease-out);
+}
+.skip-link:focus-visible {
+  transform: translateY(0);
+  outline: 2px solid var(--border-focus);
+  outline-offset: 2px;
+}
