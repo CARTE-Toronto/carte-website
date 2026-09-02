@@ -56,6 +56,10 @@ const { scrollColorTransition = false } = Astro.props;
   const TRANSITION_END = isMobile ? 0.60 : 0.80;
   const SCROLL_TRANSITION_ENABLED = container.dataset.scrollTransition === 'true';
 
+  // Reduced motion: the field stays as a static texture. No cursor activation,
+  // and the light→dark colour shift steps with scroll position instead of easing.
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
   interface Connection {
     neighborIdx: number;
     baseOpacity: number; // per-connection multiplier (0.6 – 1.0)
@@ -225,7 +229,7 @@ const { scrollColorTransition = false } = Astro.props;
     // Ease the colour transition toward the scroll target
     const targetT = getScrollT();
     const dT = targetT - currentScrollT;
-    currentScrollT = Math.abs(dT) < 0.002 ? targetT : currentScrollT + dT * 0.1;
+    currentScrollT = reducedMotion.matches || Math.abs(dT) < 0.002 ? targetT : currentScrollT + dT * 0.1;
 
     const bg = mix(LIGHT_BG, DARK_BG, currentScrollT);
     const dotColor = mix(LIGHT_DOT, DARK_DOT, currentScrollT);
@@ -297,6 +301,7 @@ const { scrollColorTransition = false } = Astro.props;
   }
 
   function handleMouseMove(e: MouseEvent) {
+    if (reducedMotion.matches) return;
     mouseX = e.clientX;
     mouseY = e.clientY;
     kick();

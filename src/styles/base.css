@@ -41,3 +41,17 @@
   outline: 2px solid var(--border-focus);
   outline-offset: 2px;
 }
+
+/* Reduced motion: keep colour and opacity feedback, drop spatial movement.
+   The dot field goes static in InteractiveDots; here we stop smooth scrolling
+   and restrict transitions to non-spatial properties. */
+@media (prefers-reduced-motion: reduce) {
+  html, .scroll-smooth { scroll-behavior: auto !important; }
+  *, ::before, ::after {
+    transition-property: color, background-color, border-color, outline-color, opacity !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+  .skip-link { transform: translateY(-200%); }
+  .skip-link:focus-visible { transform: none; }
+}
