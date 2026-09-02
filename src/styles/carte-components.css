@@ -18,6 +18,7 @@
   /* ---- Official U of T palette ---- */
   --color-uoft-blue:        #1E3765;   /* PMS 655   · Primary */
   --color-uoft-secondary:   #007894;   /* PMS 633   · Secondary */
+  --color-uoft-secondary-dark: #006279;
 
   --color-uoft-purple:      #6D247A;
   --color-uoft-warm-red:    #DC4633;
@@ -29,6 +30,7 @@
   --color-uoft-light-green: #8DBF2E;
 
   --color-white:            #FFFFFF;
+  --color-cool-gray:        #D0D1C9;
   --color-black:            #000000;
 
   /* ---- Carte-specific extensions ---- */
@@ -41,7 +43,16 @@
   --color-uoft-blue-100:    #E2E8F2;
   --color-uoft-blue-050:    #F1F4F9;
 
-  /* Slate neutrals for UI chrome */
+  /* Accent tint backgrounds — chart fills, callout washes */
+  --color-bg-blue-100:      #E2E8F2;
+  --color-bg-teal-100:      #D6F2EC;
+  --color-bg-yellow-100:    #FDF3C2;
+  --color-bg-purple-100:    #ECDBF0;
+  --color-bg-red-100:       #FADBD4;
+  --color-bg-fuchsia-100:   #F5D0E3;
+  --color-bg-green-100:     #E6F2D0;
+
+  /* Slate neutrals — UI chrome only */
   --color-slate-900: #0F172A;
   --color-slate-700: #334155;
   --color-slate-600: #475569;
@@ -65,6 +76,37 @@
   /* ---- Type primitives ---- */
   --font-sans: 'Host Grotesk', system-ui, -apple-system, 'Segoe UI', sans-serif;
   --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+  --weight-light: 300;     /* long-form editorial only */
+  --weight-regular: 400;   /* body */
+  --weight-medium: 500;    /* nav, small */
+  --weight-semibold: 600;  /* labels, links */
+  --weight-bold: 700;      /* h2–h4, micro */
+  --weight-extrabold: 800; /* display, h1 */
+
+  --text-display: 76px;
+  --text-h1: 60px;
+  --text-h2: 42px;
+  --text-h3: 24px;
+  --text-h4: 18px;
+  --text-lead: 20px;
+  --text-body-size: 16px;
+  --text-small: 14px;
+  --text-micro: 12px;
+  --text-mono-size: 13px;
+
+  --tracking-display: -0.03em;
+  --tracking-h1: -0.025em;
+  --tracking-h2: -0.02em;
+  --tracking-micro: 0.1em;
+  --leading-display: 1.02;
+  --leading-body: 1.65;
+
+  /* ---- Layout ---- */
+  --container-max: 1280px;   /* max-w-7xl — the content rail */
+  --section-py: 80px;        /* py-20 */
+  --section-py-lg: 112px;    /* lg:py-28 */
+  --header-h: 96px;          /* h-24 sticky header */
 
   /* ---- Radii ---- */
   --radius-sm:   6px;
@@ -136,6 +178,9 @@
   --brand-accent-warm: var(--color-uoft-yellow);
   --brand-accent-cool: var(--color-uoft-cool-blue);
 
+  /* Overlays */
+  --overlay-photo:   rgba(30, 55, 101, 0.35);  /* flat blue over photography */
+  --overlay-section: rgba(30, 55, 101, 0.88);
   --focus-ring: 0 0 0 3px rgba(0, 120, 148, 0.30);
 }
 

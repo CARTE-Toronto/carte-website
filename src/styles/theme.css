@@ -14,9 +14,26 @@
   --color-accent-yellow:      #f1c500;
   --color-accent-light-green: #8dbf2e;
 
+  /* Design-system names for the same values (carte-design-system/tokens/colors.css) */
+  --color-uoft-secondary:      #007894;
+  --color-uoft-secondary-dark: #006279;
+  --color-uoft-purple:         #6d247a;
+  --color-uoft-warm-red:       #dc4633;
+  --color-uoft-cool-blue:      #6fc7ea;
+  --color-uoft-teal:           #00a189;
+  --color-uoft-fuchsia:        #ab1368;
+  --color-uoft-dark-green:     #0d534d;
+  --color-uoft-yellow:         #f1c500;
+  --color-uoft-light-green:    #8dbf2e;
+  --color-uoft-blue-900:       #12244a;
+  --color-uoft-blue-500:       #3e5a8f;
+  --color-uoft-blue-100:       #e2e8f2;
+  --color-uoft-blue-050:       #f1f4f9;
+
   /* Neutrals */
   --color-cool-gray: #d0d1c9;
   --color-pale-bg:   #FDFBF7;
+  --color-warm-bg:   #F2F0EB;
 
   /* Fonts */
   --font-sans: 'Host Grotesk', system-ui, sans-serif;

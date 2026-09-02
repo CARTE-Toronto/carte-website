@@ -8,7 +8,7 @@ import CheckItem from '../components/CheckItem.astro';
   <section class="relative overflow-hidden">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 lg:pt-24 pb-8">
       <div class="max-w-3xl">
-        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-uoft-blue leading-tight mb-6">
+        <h1 class="carte-h1 mb-6">
           For UofT Engineering
           faculty
         </h1>
@@ -16,8 +16,8 @@ import CheckItem from '../components/CheckItem.astro';
     </div>
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">      
       <div class="text-center mb-16">
-        <h2 class="text-3xl sm:text-4xl font-extrabold text-uoft-blue mb-4">Featured opportunities</h2>
-        <p class="text-lg text-slate-600 max-w-2xl mx-auto">Supervise funded research projects, enhance your AI expertise, and navigate funding programs with Carte's support.</p>
+        <h2 class="carte-h2 mb-4">Featured opportunities</h2>
+        <p class="text-lg text-muted max-w-2xl mx-auto">Supervise funded research projects, enhance your AI expertise, and navigate funding programs with Carte's support.</p>
       </div>
       
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12">
@@ -49,55 +49,55 @@ import CheckItem from '../components/CheckItem.astro';
   <section id="mitacs-faculty" class="py-20 lg:py-28 scroll-mt-24">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-12">
-        <h2 class="text-3xl sm:text-4xl font-extrabold text-uoft-blue mb-4">Mitacs Accelerate</h2>
-        <p class="text-xl text-slate-600 max-w-2xl mx-auto">
+        <h2 class="carte-h2 mb-4">Mitacs Accelerate</h2>
+        <p class="text-xl text-muted max-w-2xl mx-auto">
           Supervise funded research projects that connect your lab with industry partners.
         </p>
       </div>
 
       <div class="prose prose-lg prose-slate max-w-none mb-8">
-        <p class="text-lg text-slate-700 leading-relaxed">
+        <p class="text-lg text-body leading-relaxed">
           Mitacs Accelerate creates dynamic research collaborations between industry partners and academic institutions. As a faculty supervisor, you'll work with motivated students and industry partners on applied AI research projects while leveraging government-matched funding.
         </p>
 
-        <h3 class="text-2xl font-bold text-uoft-blue mt-8 mb-4">Benefits for faculty</h3>
-        <ul class="space-y-3 text-slate-600 mb-6">
-          <CheckItem iconClass="text-accent-purple">Access to motivated, funded student researchers for your research projects</CheckItem>
-          <CheckItem iconClass="text-accent-purple">Industry connections that can lead to long-term research partnerships</CheckItem>
-          <CheckItem iconClass="text-accent-purple">Funded research opportunities without requiring your own grant funding</CheckItem>
-          <CheckItem iconClass="text-accent-purple">Opportunity to supervise students on applied AI challenges with real-world impact</CheckItem>
+        <h3 class="carte-h3 mt-8 mb-4">Benefits for faculty</h3>
+        <ul class="space-y-3 text-muted mb-6">
+          <CheckItem>Access to motivated, funded student researchers for your research projects</CheckItem>
+          <CheckItem>Industry connections that can lead to long-term research partnerships</CheckItem>
+          <CheckItem>Funded research opportunities without requiring your own grant funding</CheckItem>
+          <CheckItem>Opportunity to supervise students on applied AI challenges with real-world impact</CheckItem>
         </ul>
 
-        <h3 class="text-2xl font-bold text-uoft-blue mt-8 mb-4">How Carte helps</h3>
-        <p class="text-slate-600 mb-4">
+        <h3 class="carte-h3 mt-8 mb-4">How Carte helps</h3>
+        <p class="text-muted mb-4">
           Carte facilitates Mitacs Accelerate projects and provides comprehensive support throughout the process:
         </p>
-        <ul class="space-y-3 text-slate-600 mb-6">
-          <CheckItem iconClass="text-accent-purple">We help match you with qualified students who are interested in your research area</CheckItem>
-          <CheckItem iconClass="text-accent-purple">We connect you with industry partners looking for academic collaboration</CheckItem>
-          <CheckItem iconClass="text-accent-purple">We assist with application drafting and submission to ensure all requirements are met</CheckItem>
-          <CheckItem iconClass="text-accent-purple">We support you through every step, from project scoping to completion</CheckItem>
+        <ul class="space-y-3 text-muted mb-6">
+          <CheckItem>We help match you with qualified students who are interested in your research area</CheckItem>
+          <CheckItem>We connect you with industry partners looking for academic collaboration</CheckItem>
+          <CheckItem>We assist with application drafting and submission to ensure all requirements are met</CheckItem>
+          <CheckItem>We support you through every step, from project scoping to completion</CheckItem>
         </ul>
 
-        <h3 class="text-2xl font-bold text-uoft-blue mt-8 mb-4">Funding model</h3>
-        <div class="bg-secondary-blue/10 rounded-lg p-6 mt-6 border-l-4 border-secondary-blue">
-          <p class="text-slate-700 mb-3">
+        <h3 class="carte-h3 mt-8 mb-4">Funding model</h3>
+        <div class="bg-info rounded-xl p-6 mt-6 border border-slate-200">
+          <p class="text-body mb-3">
             Each four- to six-month internship provides a <strong>$15,000 CAD</strong> research award (standard) or <strong>$20,000 CAD</strong> (postdoc), combining industry partner contributions with Mitacs matching funds.
           </p>
-          <p class="text-slate-700">
+          <p class="text-body">
             Internships are repeatable, allowing for extended research collaborations. For example, three four-month internships can create a full year of funded research.
           </p>
         </div>
 
-        <h3 class="text-2xl font-bold text-uoft-blue mt-8 mb-4">Your role as supervisor</h3>
-        <p class="text-slate-600 mb-4">
+        <h3 class="carte-h3 mt-8 mb-4">Your role as supervisor</h3>
+        <p class="text-muted mb-4">
           As the academic supervisor, you'll provide research guidance and mentorship to the student intern while collaborating with the industry partner. This creates a valuable three-way collaboration that benefits all parties.
         </p>
       </div>
 
       <div class="mt-10 text-center flex flex-wrap gap-4 justify-center">
-        <a class="carte-btn-primary" href="/partnerships#mitacs-accelerate">Learn More About Mitacs</a>
-        <a class="carte-btn-ghost" href="/contact">Contact Us</a>
+        <a class="carte-btn-primary" href="/partnerships#mitacs-accelerate">Learn more about Mitacs</a>
+        <a class="carte-btn-ghost" href="/contact">Contact us</a>
       </div>
     </div>
   </section>
@@ -106,53 +106,53 @@ import CheckItem from '../components/CheckItem.astro';
   <section id="training" class="py-20 lg:py-28 bg-white scroll-mt-24">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-12">
-        <h2 class="text-3xl sm:text-4xl font-extrabold text-uoft-blue mb-4">Faculty training</h2>
-        <p class="text-xl text-slate-600 max-w-2xl mx-auto">
+        <h2 class="carte-h2 mb-4">Faculty training</h2>
+        <p class="text-xl text-muted max-w-2xl mx-auto">
           Enhance your AI and machine learning expertise through our annual bootcamp and ongoing workshops.
         </p>
       </div>
 
       <div class="prose prose-lg prose-slate max-w-none mb-8">
-        <p class="text-lg text-slate-700 leading-relaxed">
+        <p class="text-lg text-body leading-relaxed">
           Our flagship faculty training program is an annual week-long intensive in collaboration with the Data Sciences Institute, designed to equip faculty with AI and machine learning skills applicable to their research domains.
         </p>
 
-        <h3 class="text-2xl font-bold text-uoft-blue mt-8 mb-4">Annual ML bootcamp</h3>
-        <p class="text-slate-600 mb-4">
+        <h3 class="carte-h3 mt-8 mb-4">Annual ML bootcamp</h3>
+        <p class="text-muted mb-4">
           The program takes faculty members from foundational concepts through to advanced topics like reinforcement learning, with hands-on workshops and collaborative discussions throughout. Our training agenda is revised annually to incorporate emerging technologies in the field.
         </p>
 
-        <div class="bg-accent-teal/10 rounded-lg p-6 mt-6 border-l-4 border-accent-teal">
-          <p class="text-slate-700 italic mb-2">
+        <div class="bg-info rounded-xl p-6 mt-6 border border-slate-200">
+          <p class="text-body italic mb-2">
             "I've learned more in one week than in one year of self-directed efforts, which are generally bumped off track by the nature of running a lab/teaching."
           </p>
-          <p class="text-slate-600 text-sm">
+          <p class="text-muted text-sm">
             — Faculty participant, 2023
           </p>
         </div>
 
-        <h3 class="text-2xl font-bold text-uoft-blue mt-8 mb-4">What you'll learn</h3>
-        <ul class="space-y-3 text-slate-600 mb-6">
-          <CheckItem iconClass="text-accent-teal">Foundational machine learning concepts and techniques</CheckItem>
-          <CheckItem iconClass="text-accent-teal">Advanced topics including deep learning and reinforcement learning</CheckItem>
-          <CheckItem iconClass="text-accent-teal">Hands-on workshops with practical applications</CheckItem>
-          <CheckItem iconClass="text-accent-teal">Collaborative learning with colleagues from diverse research backgrounds</CheckItem>
+        <h3 class="carte-h3 mt-8 mb-4">What you'll learn</h3>
+        <ul class="space-y-3 text-muted mb-6">
+          <CheckItem>Foundational machine learning concepts and techniques</CheckItem>
+          <CheckItem>Advanced topics including deep learning and reinforcement learning</CheckItem>
+          <CheckItem>Hands-on workshops with practical applications</CheckItem>
+          <CheckItem>Collaborative learning with colleagues from diverse research backgrounds</CheckItem>
         </ul>
 
-        <h3 class="text-2xl font-bold text-uoft-blue mt-8 mb-4">Additional workshops</h3>
-        <p class="text-slate-600 mb-4">
+        <h3 class="carte-h3 mt-8 mb-4">Additional workshops</h3>
+        <p class="text-muted mb-4">
           Beyond the annual bootcamp, we offer specialized workshops on topics like large language models and domain-specific AI applications. These workshops provide opportunities for continued learning and skill development.
         </p>
 
-        <h3 class="text-2xl font-bold text-uoft-blue mt-8 mb-4">Why faculty choose our training</h3>
-        <p class="text-slate-600 mb-4">
+        <h3 class="carte-h3 mt-8 mb-4">Why faculty choose our training</h3>
+        <p class="text-muted mb-4">
           Past participants have praised the excellent instruction and the opportunity to learn alongside colleagues from diverse research backgrounds. The intensive format allows you to focus fully on learning without the distractions of running a lab or teaching responsibilities.
         </p>
       </div>
 
       <div class="mt-10 text-center flex flex-wrap gap-4 justify-center">
-        <a class="carte-btn-primary" href="/training">View All Training Programs</a>
-        <a class="carte-btn-ghost" href="/contact">Contact Us</a>
+        <a class="carte-btn-primary" href="/training">View all training programs</a>
+        <a class="carte-btn-ghost" href="/contact">Contact us</a>
       </div>
     </div>
   </section>
@@ -161,43 +161,43 @@ import CheckItem from '../components/CheckItem.astro';
   <section id="funding" class="py-20 lg:py-28 scroll-mt-24">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-12">
-        <h2 class="text-3xl sm:text-4xl font-extrabold text-uoft-blue mb-4">Funding support</h2>
-        <p class="text-xl text-slate-600 max-w-2xl mx-auto">
+        <h2 class="carte-h2 mb-4">Funding support</h2>
+        <p class="text-xl text-muted max-w-2xl mx-auto">
           Navigate NSERC Alliance, Mitacs, and other funding programs with expert guidance.
         </p>
       </div>
 
       <div class="prose prose-lg prose-slate max-w-none mb-8">
-        <p class="text-lg text-slate-700 leading-relaxed">
+        <p class="text-lg text-body leading-relaxed">
           Securing research funding can be complex, but you don't have to navigate it alone. Carte provides expert guidance on proposal development, partner matching, and application processes for major government funding programs.
         </p>
 
-        <h3 class="text-2xl font-bold text-uoft-blue mt-8 mb-4">NSERC Alliance</h3>
-        <p class="text-slate-600 mb-4">
+        <h3 class="carte-h3 mt-8 mb-4">NSERC Alliance</h3>
+        <p class="text-muted mb-4">
           NSERC Alliance grants support collaborative research projects between academic institutions and partner organizations. We help you identify potential industry partners, develop strong proposals, and navigate the application process to maximize your chances of success.
         </p>
 
-        <h3 class="text-2xl font-bold text-uoft-blue mt-8 mb-4">Mitacs programs</h3>
-        <p class="text-slate-600 mb-4">
+        <h3 class="carte-h3 mt-8 mb-4">Mitacs programs</h3>
+        <p class="text-muted mb-4">
           Beyond Mitacs Accelerate, we can help you explore other Mitacs programs that may be relevant to your research. These programs offer various funding mechanisms for collaborative research with industry partners.
         </p>
 
-        <h3 class="text-2xl font-bold text-uoft-blue mt-8 mb-4">How Carte assists</h3>
-        <ul class="space-y-3 text-slate-600 mb-6">
-          <CheckItem iconClass="text-accent-warm-red"><strong>Proposal Review:</strong> We review your funding proposals and provide feedback to strengthen your applications</CheckItem>
-          <CheckItem iconClass="text-accent-warm-red"><strong>Partner Identification:</strong> We help you find industry partners who are interested in collaborating on research projects</CheckItem>
-          <CheckItem iconClass="text-accent-warm-red"><strong>Budget Planning:</strong> We assist with budget development and ensure your funding requests align with program requirements</CheckItem>
-          <CheckItem iconClass="text-accent-warm-red"><strong>Application Guidance:</strong> We guide you through the application process, ensuring all requirements are met and deadlines are met</CheckItem>
+        <h3 class="carte-h3 mt-8 mb-4">How Carte assists</h3>
+        <ul class="space-y-3 text-muted mb-6">
+          <CheckItem><strong>Proposal Review:</strong> We review your funding proposals and provide feedback to strengthen your applications</CheckItem>
+          <CheckItem><strong>Partner Identification:</strong> We help you find industry partners who are interested in collaborating on research projects</CheckItem>
+          <CheckItem><strong>Budget Planning:</strong> We assist with budget development and ensure your funding requests align with program requirements</CheckItem>
+          <CheckItem><strong>Application Guidance:</strong> We guide you through the application process, ensuring all requirements are met and deadlines are met</CheckItem>
         </ul>
 
-        <h3 class="text-2xl font-bold text-uoft-blue mt-8 mb-4">Why work with Carte</h3>
-        <p class="text-slate-600 mb-4">
+        <h3 class="carte-h3 mt-8 mb-4">Why work with Carte</h3>
+        <p class="text-muted mb-4">
           With over 100 faculty affiliates across 8 engineering departments, we have extensive experience navigating funding programs. We understand the requirements, timelines, and best practices for successful applications. Our goal is to help you maximize your research investment through effective use of government funding opportunities.
         </p>
       </div>
 
       <div class="mt-10 text-center">
-        <a class="carte-btn-primary" href="/contact">Get Funding Support</a>
+        <a class="carte-btn-primary" href="/contact">Get funding support</a>
       </div>
     </div>
   </section>
@@ -209,7 +209,7 @@ import CheckItem from '../components/CheckItem.astro';
         <h3>Questions or need help?</h3>
         <p>Have questions about Mitacs supervision, training programs, or funding support? We're here to help you get started.</p>
         <div class="row">
-          <a class="inv-btn primary" href="/contact">Get in Touch</a>
+          <a class="inv-btn primary" href="/contact">Get in touch</a>
         </div>
       </div>
     </div>

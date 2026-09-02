@@ -14,6 +14,10 @@ const navItems = [
   },
 ];
 
+// Active route: Secondary Blue text + 2px underline (design system Header)
+const current = Astro.url.pathname.replace(/\/$/, '') || '/';
+const isActive = (href: string) => current === href;
+
 const socialLinks = [
   { 
     label: 'LinkedIn', 
@@ -75,16 +79,22 @@ const socialLinks = [
           item.dropdown ? (
             <div class="relative group">
               <button
-                class="inline-flex items-center text-base font-medium text-slate-600 hover:text-secondary-blue transition-colors relative group"
+                class:list={[
+                  'inline-flex items-center text-base font-medium hover:text-secondary-blue transition-colors relative group',
+                  item.dropdown.some(s => isActive(s.href)) ? 'text-secondary-blue' : 'text-slate-600',
+                ]}
               >
                 {item.label}
                 <svg class="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
                 </svg>
-                <span class="absolute bottom-0 left-0 w-full h-0.5 bg-secondary-blue transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></span>
+                <span class:list={[
+                  'absolute bottom-0 left-0 w-full h-0.5 bg-secondary-blue transform group-hover:scale-x-100 transition-transform origin-left',
+                  item.dropdown.some(s => isActive(s.href)) ? 'scale-x-100' : 'scale-x-0',
+                ]}></span>
               </button>
               <div class="absolute left-0 mt-2 w-48 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
-                <div class="bg-white rounded-lg shadow-lg border border-slate-200 py-2">
+                <div class="bg-white rounded-lg border border-slate-200 py-2">
                   {item.dropdown.map(subItem => (
                     <a
                       href={subItem.href}
@@ -99,10 +109,17 @@ const socialLinks = [
           ) : (
             <a
               href={item.href}
-              class="inline-flex items-center text-base font-medium text-slate-600 hover:text-secondary-blue transition-colors relative group"
+              aria-current={isActive(item.href) ? 'page' : undefined}
+              class:list={[
+                'inline-flex items-center text-base font-medium hover:text-secondary-blue transition-colors relative group',
+                isActive(item.href) ? 'text-secondary-blue' : 'text-slate-600',
+              ]}
             >
               {item.label}
-              <span class="absolute bottom-0 left-0 w-full h-0.5 bg-secondary-blue transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></span>
+              <span class:list={[
+                'absolute bottom-0 left-0 w-full h-0.5 bg-secondary-blue transform group-hover:scale-x-100 transition-transform origin-left',
+                isActive(item.href) ? 'scale-x-100' : 'scale-x-0',
+              ]}></span>
             </a>
           )
         ))}
@@ -141,7 +158,7 @@ const socialLinks = [
         </div>
         <a 
           href="/contact" 
-          class="inline-flex items-center px-6 py-2.5 text-base font-bold rounded-full text-white bg-uoft-blue hover:bg-secondary-blue hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300 ml-4"
+          class="inline-flex items-center px-6 py-2.5 text-base font-bold rounded-full text-white bg-uoft-blue hover:bg-secondary-blue hover:-translate-y-0.5 transition-all duration-300 ml-4"
         >
           Contact
         </a>
@@ -175,7 +192,7 @@ const socialLinks = [
   class="sm:hidden hidden fixed left-0 right-0 top-24 z-40" 
   id="mobile-menu"
 >
-  <div class="bg-pale-bg/80 backdrop-blur-lg border-t border-slate-100 shadow-lg">
+  <div class="bg-pale-bg/80 backdrop-blur-lg border-t border-slate-100">
     <div class="px-4 pt-4 pb-6 space-y-2">
       {navItems.map(item => (
         item.dropdown ? (
@@ -260,10 +277,10 @@ const socialLinks = [
         
         if (window.scrollY > scrollThreshold) {
           header.classList.remove('bg-transparent');
-          header.classList.add('bg-pale-bg/80', 'backdrop-blur-lg', 'shadow-sm');
+          header.classList.add('bg-pale-bg/80', 'backdrop-blur-lg');
         } else {
           header.classList.add('bg-transparent');
-          header.classList.remove('bg-pale-bg/80', 'backdrop-blur-lg', 'shadow-sm');
+          header.classList.remove('bg-pale-bg/80', 'backdrop-blur-lg');
         }
       });
     }

@@ -9,3 +9,18 @@
     display: none;
   }
 }
+
+/* Semantic text colours — prefer these over text-slate-* for copy */
+@utility text-strong { color: var(--text-strong); }
+@utility text-body   { color: var(--text-body); }
+@utility text-muted  { color: var(--text-muted); }
+@utility text-subtle { color: var(--text-subtle); }
+@utility text-link   { color: var(--text-link); }
+
+/* Semantic surfaces */
+@utility bg-page    { background-color: var(--surface-page); }
+@utility bg-card    { background-color: var(--surface-card); }
+@utility bg-sunken  { background-color: var(--surface-sunken); }
+@utility bg-warm    { background-color: var(--surface-warm); }
+@utility bg-info    { background-color: var(--surface-info); }
+@utility bg-inverse { background-color: var(--surface-inverse); }

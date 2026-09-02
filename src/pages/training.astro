@@ -25,10 +25,10 @@ const testimonials = allTraining
   <section class="relative overflow-hidden">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-24">
       <div class="max-w-3xl">
-        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-uoft-blue leading-tight mb-6">
+        <h1 class="carte-h1 mb-6">
           Upskill your organization in AI & machine learning
         </h1>
-        <p class="text-xl text-slate-600 leading-relaxed">
+        <p class="text-xl text-muted leading-relaxed">
           Custom AI training designed for your team — not academic courses, but practical skills you can apply immediately. From half-day executive briefings to multi-day technical workshops, we meet you where you are.
         </p>
       </div>
@@ -39,8 +39,8 @@ const testimonials = allTraining
   <section class="py-20 lg:py-28">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-16">
-        <h2 class="text-3xl sm:text-4xl font-extrabold text-uoft-blue mb-4">Industry training programs</h2>
-        <p class="text-lg text-slate-600 max-w-2xl mx-auto">Practical AI training tailored to your organization's needs and technical level — delivered by experts who understand real-world implementation.</p>
+        <h2 class="carte-h2 mb-4">Industry training programs</h2>
+        <p class="text-lg text-muted max-w-2xl mx-auto">Practical AI training tailored to your organization's needs and technical level — delivered by experts who understand real-world implementation.</p>
       </div>
       
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -79,27 +79,27 @@ const testimonials = allTraining
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between mb-12">
         <div>
-          <h2 class="text-3xl sm:text-4xl font-extrabold text-uoft-blue mb-4">Additional training programs</h2>
-          <p class="text-lg text-slate-600 max-w-2xl">We also deliver training for university faculty, research groups, and international partnerships.</p>
+          <h2 class="carte-h2 mb-4">Additional training programs</h2>
+          <p class="text-lg text-muted max-w-2xl">We also deliver training for university faculty, research groups, and international partnerships.</p>
         </div>
         <!-- Carousel Navigation -->
         <div class="flex items-center gap-3 mt-6 sm:mt-0">
-          <span class="text-sm text-slate-500 mr-2">{secondaryTraining.length} programs</span>
+          <span class="text-sm text-subtle mr-2">{secondaryTraining.length} programs</span>
           <button 
             id="carousel-prev" 
-            class="w-10 h-10 rounded-full bg-white border border-slate-200 flex items-center justify-center hover:bg-accent-teal/10 hover:border-accent-teal/40 transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
+            class="w-10 h-10 rounded-full bg-white border border-slate-200 flex items-center justify-center hover:bg-info hover:border-secondary-blue transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
             aria-label="Previous"
           >
-            <svg class="w-5 h-5 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg class="w-5 h-5 text-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
             </svg>
           </button>
           <button
             id="carousel-next"
-            class="w-10 h-10 rounded-full bg-white border border-slate-200 flex items-center justify-center hover:bg-accent-teal/10 hover:border-accent-teal/40 transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
+            class="w-10 h-10 rounded-full bg-white border border-slate-200 flex items-center justify-center hover:bg-info hover:border-secondary-blue transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
             aria-label="Next"
           >
-            <svg class="w-5 h-5 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg class="w-5 h-5 text-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
             </svg>
           </button>
@@ -161,7 +161,7 @@ const testimonials = allTraining
                 {program.data.title}
               </h3>
               
-              <div class="flex items-center gap-3 text-sm text-slate-500 mb-3">
+              <div class="flex items-center gap-3 text-sm text-subtle mb-3">
                 {program.data.duration && (
                   <span class="flex items-center gap-1">
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -175,11 +175,11 @@ const testimonials = allTraining
                 )}
               </div>
               
-              <p class="text-slate-600 text-sm leading-relaxed mb-4 line-clamp-3">
+              <p class="text-muted text-sm leading-relaxed mb-4 line-clamp-3">
                 {program.data.description}
               </p>
               
-              <div class="text-xs text-slate-600 font-medium">
+              <div class="text-xs text-muted font-medium">
                 {program.data.audience}
               </div>
             </article>
@@ -225,7 +225,7 @@ const testimonials = allTraining
         <h3>Interested in training?</h3>
         <p>Whether you're a faculty member, research group leader, or industry partner — we can design a training program tailored to your needs.</p>
         <div class="row">
-          <a class="inv-btn primary" href="/contact">Get in Touch</a>
+          <a class="inv-btn primary" href="/contact">Get in touch</a>
         </div>
       </div>
     </div>

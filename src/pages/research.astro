@@ -21,11 +21,11 @@ const secondaryResearch = allResearch
   <section class="relative overflow-hidden">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-24">
       <div class="max-w-3xl">
-        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-uoft-blue leading-tight mb-6">
+        <h1 class="carte-h1 mb-6">
           Applied AI research<br/>
           that translates
         </h1>
-        <p class="text-xl text-slate-600 leading-relaxed">
+        <p class="text-xl text-muted leading-relaxed">
           Carte supports collaborative research designed for real-world impact — bridging AI with civil engineering, healthcare, sustainability, and beyond. We help partners navigate funding and connect with faculty who can solve their specific challenges.
         </p>
       </div>
@@ -36,8 +36,8 @@ const secondaryResearch = allResearch
   <section class="py-20 lg:py-28">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-16">
-        <h2 class="text-3xl sm:text-4xl font-extrabold text-uoft-blue mb-4">Featured publications</h2>
-        <p class="text-lg text-slate-600 max-w-2xl mx-auto">Carte-supported research solving real engineering challenges — from building science to healthcare to sustainability.</p>
+        <h2 class="carte-h2 mb-4">Featured publications</h2>
+        <p class="text-lg text-muted max-w-2xl mx-auto">Carte-supported research solving real engineering challenges — from building science to healthcare to sustainability.</p>
       </div>
       
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -62,27 +62,27 @@ const secondaryResearch = allResearch
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between mb-12">
         <div>
-          <h2 class="text-3xl sm:text-4xl font-extrabold text-uoft-blue mb-4">Research portfolio</h2>
-          <p class="text-lg text-slate-600 max-w-2xl">Collaborative research across 8 engineering departments — with a focus on practical applications and real-world impact.</p>
+          <h2 class="carte-h2 mb-4">Research portfolio</h2>
+          <p class="text-lg text-muted max-w-2xl">Collaborative research across 8 engineering departments — with a focus on practical applications and real-world impact.</p>
         </div>
         <!-- Carousel Navigation -->
         <div class="flex items-center gap-3 mt-6 sm:mt-0">
-          <span class="text-sm text-slate-500 mr-2">{secondaryResearch.length} publications</span>
+          <span class="text-sm text-subtle mr-2">{secondaryResearch.length} publications</span>
           <button 
             id="carousel-prev" 
-            class="w-10 h-10 rounded-full bg-white border border-slate-200 flex items-center justify-center hover:bg-secondary-blue/10 hover:border-secondary-blue transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
+            class="w-10 h-10 rounded-full bg-white border border-slate-200 flex items-center justify-center hover:bg-info hover:border-secondary-blue transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
             aria-label="Previous"
           >
-            <svg class="w-5 h-5 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg class="w-5 h-5 text-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
             </svg>
           </button>
           <button 
             id="carousel-next" 
-            class="w-10 h-10 rounded-full bg-white border border-slate-200 flex items-center justify-center hover:bg-secondary-blue/10 hover:border-secondary-blue transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
+            class="w-10 h-10 rounded-full bg-white border border-slate-200 flex items-center justify-center hover:bg-info hover:border-secondary-blue transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
             aria-label="Next"
           >
-            <svg class="w-5 h-5 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg class="w-5 h-5 text-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
             </svg>
           </button>
@@ -194,7 +194,7 @@ const secondaryResearch = allResearch
         <h3>Collaborate with us</h3>
         <p>Whether you're a faculty member seeking AI expertise, an industry partner looking to sponsor research, or a student interested in applied AI projects—we're here to help.</p>
         <div class="row">
-          <a class="inv-btn primary" href="/contact">Get in Touch</a>
+          <a class="inv-btn primary" href="/contact">Get in touch</a>
         </div>
       </div>
     </div>
